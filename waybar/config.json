@@ -1,0 +1,244 @@
+{
+	"layer": "top",
+	"exclusive": true,
+	"passthrough": false,
+	"position": "top",
+	"spacing": 0,
+	"fixed-center": true,
+	"ipc": true,
+	"margin-top": 0,
+	"margin-bottom": 0,
+	"margin-left": 0,
+	"margin-right": 0,
+	"modules-left": [
+		"hyprland/language",
+		"battery",
+		"custom/updater",
+		"custom/weather",
+		"custom/playerlabel"
+	],
+	"modules-center": [
+		"wlr/workspaces"
+	],
+	"modules-right": [
+		"hyprland/window",
+		"tray",
+		"custom/wireguard-manager",
+		"backlight",
+		"pulseaudio#microphone",
+		"pulseaudio",
+		"clock"
+	],
+
+
+	"wlr/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"all-outputs": true,
+		"sort-by-number": true,
+		"format-icons": {
+			"11": "󰭵",
+			
+			"21": "󰊯",
+			"22": "󰗹",
+			"23": "󱜅",
+			
+			"29": "",
+			"30": "",
+			
+			"31": "",
+			"32": ""
+		},
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1"
+	},
+	"custom/playerlabel": {
+		"format": "<span>{}</span>",
+		"tooltip-format": "<span>{}</span>",
+		"return-type": "json",
+		"max-length": 36,
+		"exec": "playerctl -s -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}'",
+		"interval": 1
+	},
+	"hyprland/window": {
+		"format": "{}",
+		"rewrite": {
+			"(.+)": " $1",
+			"(.*) - Google Chrome": "Google Chrome"
+		},
+		"max-length": 24,
+		"separate-outputs": true
+	},
+	"custom/wireguard-manager": {
+		"interval": 1,
+		"return-type": "json",
+		"format-icons": {
+			"connected": "<span color=\"#80A673\">󰤪 </span>",
+			"disconnected": "<span color=\"#5C6773\">󱛏 </span>"
+		},
+		"on-click": "exec ~/.config/hypr/scripts/WireguardManager.sh -t",
+		"exec": "exec ~/.config/hypr/scripts/WireguardManager.sh -s",
+		"format": "{icon}"
+	},
+	"backlight": {
+		"interval": 2,
+		"align": 0,
+		"rotate": 0,
+		//"format": "{icon} {percent}%",
+		"format": "{icon}",
+		"format-icons": ["󰃞", "󰃟", "󰃠"],
+		"icon-size": 10,
+		"on-click": "",
+		"on-click-middle": "",
+		"on-click-right": "",
+		"on-update": "",
+		"on-scroll-up": "~/.config/hypr/scripts/Brightness.sh --inc",
+		"on-scroll-down": "~/.config/hypr/scripts/Brightness.sh --dec",
+		"smooth-scrolling-threshold": 1
+	},
+	"battery": {
+		"interval": 1,
+		"align": 0,
+		"rotate": 0,
+		"full-at": 95,
+		"design-capacity": false,
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": " {capacity}%",
+		"format-plugged": " {capacity}%",
+		"format-full": "{icon} {capacity}%",
+		"format-alt": "{icon} {time}",
+		"format-icons": [" ", " ", " ", " ", " "],
+		"format-time": "{H}h {M}min",
+		"tooltip": true,
+		"on-click-middle": "~/.config/hypr/scripts/ChangeBlur.sh",
+		"on-click-right": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown"
+	},
+	"bluetooth": {
+		"format-connected": " {num_connections}",
+		"format": "",
+		"format-disabled": "",
+		"tooltip-format": " {device_alias}",
+		"tooltip-format-connected": "{device_enumerate}",
+		"tooltip-format-enumerate-connected": " {device_alias}"
+	},
+	"clock": {
+		"interval": 1,
+		"format": " {:%H:%M:%S}",
+		"format-alt": " {:%e.%m.%y}",
+		"tooltip-format": "<big>{:%e %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "none",
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		}
+	},
+	"hyprland/language": {
+		"format": "[{}]",
+		"format-en": "US",
+		"format-uk": "UA",
+		"format-ru": "RU",
+		"keyboard-name": "juchen-usb-keyboard",
+		"on-click": "hyprctl switchxkblayout $SET_KB next",
+		"tooltip": false
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": " Mute",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", "", ""],
+			"ignored-sinks": ["Easy Effects Sink"]
+		},
+		"scroll-step": 5.0,
+		"on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
+		"on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+		"smooth-scrolling-threshold": 1
+	},
+	"pulseaudio#microphone": {
+		"format": "{format_source}",
+		//		"format-source": " {volume}%",
+		"format-source": "",
+		"format-source-muted": " Mute",
+		"on-click": "~/.config/hypr/scripts/Volume.sh --toggle-mic",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "~/.config/hypr/scripts/Volume.sh --mic-inc",
+		"on-scroll-down": "~/.config/hypr/scripts/Volume.sh --mic-dec",
+		"scroll-step": 5
+	},
+	"temperature": {
+		"interval": 10,
+		"tooltip": false,
+		//"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+		"thermal-zone": 0,
+		"critical-threshold": 82,
+		"format-critical": "{temperatureC}°C {icon}",
+		"format": "{temperatureC}°C {icon}",
+		"format-icons": [""],
+		"on-click-right": "kitty --title btop sh -c 'btop'"
+	},
+	"tray": {
+		"icon-size": 16,
+		"spacing": 8
+	},
+	"wireplumber": {
+		"format": "{icon} {volume}%",
+		"format-muted": " Mute",
+		"on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
+		"on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+		"format-icons": ["", "", ""]
+	},
+	"wlr/taskbar": {
+		"format": "{icon} {name} ",
+		"icon-size": 16,
+		"all-outputs": false,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": ["wofi"]
+	},
+	"custom/wallpapers": {
+		"format": " ",
+		"on-click": "~/.config/hypr/scripts/WallpaperSelect.sh",
+		"tooltip": false
+	},
+	"custom/updater": {
+		"format": " {}",
+		"exec": "checkupdates | wc -l",
+		"exec-if": "[[ $(checkupdates | wc -l) ]]",
+		"interval": 15,
+		"on-click": "kitty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
+		"tooltip": false
+	},
+	"custom/weather": {
+		"format": "{}",
+		"interval": 60,
+		"return-type": "json",
+		"exec": "~/.config/hypr/scripts/Weather.py",
+		"exec-if": "ping wttr.in -c1",
+		"tooltip": true
+	}
+}

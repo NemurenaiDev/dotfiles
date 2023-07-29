@@ -1,0 +1,153 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: normal;
+    font-style: normal;
+    min-height: 0;
+    font-size: 100%;
+    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+    padding: 0;
+}
+
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+}
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+
+tooltip {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+tooltip label {
+    color: #cba6f7;
+    padding: 5px 10px;
+}
+
+
+/*-----module groups----*/
+.modules-right {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 0 solid #b4befe;
+    border-radius: 0 0 0 10px;
+    padding: 2px;
+}
+
+.modules-center {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 0 solid #b4befe;
+    border-radius: 0 0 10px 10px;
+    padding: 2px;
+}
+
+.modules-left {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 0 solid #b4befe;
+    border-radius: 0 0 10px 0;
+    padding: 2px;
+}
+
+
+#workspaces button { color: #6E6A86; padding: 2px; margin-right: 5px }
+
+#workspaces button.active { color: #cba6f7 }
+#workspaces button.focused { color: #d8dee9 }
+#workspaces button.urgent { color: #f38ba8 }
+#workspaces button:hover { color: #9CCFD8 }
+
+
+#clock,
+#battery,
+#temperature,
+#pulseaudio,
+#wireplumber,
+#mode,
+#tray,
+#backlight,
+#mpd,
+#bluetooth,
+#taskbar,
+#taskbar button,
+#workspaces,
+#window,
+#custom-playerlabel,
+#custom-updater,
+#custom-wallpapers,
+#custom-wireguard-manager,
+#language {
+    color: #cba7f7;
+    padding: 0 8px;
+    border-radius: 10px;
+}
+
+
+#custom-wireguard-manager { padding: 0 5px }
+#language { padding: 0 5px; color: #cad3f5 }
+
+
+#custom-updater { color: #8bd5ca }
+#backlight { color: #eed49f }
+#pulseaudio { color: #91d7e3 }
+#clock { color: #cad3f5 }
+
+
+#window {
+    padding: 0;
+    color: #cad3f5;
+    font-weight: normal;
+    font-style: normal;
+}
+
+#custom-playerlabel {
+    /*    color: #A3BE8C; !* Light green text color *!*/
+    /*    color: #FF6B6B; !* Coral pink text color *!*/
+    /*    color: #EBCB8B; !* Golden yellow text color *!*/
+    /*    color: #D08770; !* Soft orange text color *!*/
+    /*    color: #B48EAD; !* Light pink text color *!*/
+
+    color: #cad3f5;
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#custom-weather,
+#custom-weather.severe,
+#custom-weather.sunnyDay,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.default {
+    padding: 0 5px;
+    border-radius: 10px;
+}
+
+
+#temperature.critical {
+    background-color: #ff0000;
+}
+
+@keyframes blink {
+    to {
+        color: #000000;
+    }
+}
+
+#taskbar button.active {
+    background-color: #7f849c;
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

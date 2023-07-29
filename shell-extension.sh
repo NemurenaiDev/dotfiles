@@ -1,0 +1,41 @@
+[ -f ~/.config/LF_ICONS ] && {
+        LF_ICONS="$(tr '\n' ':' <~/.config/LF_ICONS)" && export LF_ICONS
+}
+
+
+r() {
+        ranger --choosedir="$HOME/.rangerdir";
+        cd "$(cat "$HOME/.rangerdir")";
+        if [ -f "$HOME/.rangerhold" ]; then
+                rm "$HOME/.rangerhold";
+        fi;
+        clear
+}
+
+lfcd() {
+        LF_SHELLCD_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
+        export LF_SHELLCD_TEMPDIR
+        lf -last-dir-path "$LF_SHELLCD_TEMPDIR/lastdir" -command "source '$HOME/.config/lf/lfrc'" "$@"
+        if [ -e "$LF_SHELLCD_TEMPDIR/changecwd" ] && \
+                dir="$(cat "$LF_SHELLCD_TEMPDIR/lastdir")" 2>/dev/null; then
+                cd "$dir"
+        fi
+        rm -rf "$LF_SHELLCD_TEMPDIR"
+        unset LF_SHELLCD_TEMPDIR    
+}
+
+
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+alias vim='nvim'
+alias vi='nvim'
+
+alias l='lsd'
+alias ll='lsd -lh'
+alias lll='lsd -lAh'
+
+alias lf='lfcd'
+alias brc='nano ~/.bashrc'
+alias ncdu='ncdu --exclude ~/.sshfs'

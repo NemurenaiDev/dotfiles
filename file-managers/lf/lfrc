@@ -1,0 +1,32 @@
+set icons true
+
+set previewer ~/.config/lf/lf-kitty-preview
+set cleaner ~/.config/lf/lf-kitty-clean
+
+
+
+map g/ cd /
+map gm cd /mnt
+map ge cd /etc
+
+map gh cd ~
+map g. cd ~/.config
+map gc cd ~/.config
+map gd cd ~/Downloads
+map gp cd ~/Projects
+map gs cd ~/.sshfs
+
+map h set hidden!
+
+
+
+cmd trash %trash-put -d "$fx"
+map <delete> trash
+
+
+
+map q quitcd
+cmd quitcd ${{
+	echo "1" > "$LF_SHELLCD_TEMPDIR/changecwd"
+	lf -remote "send $id quit"
+}}
