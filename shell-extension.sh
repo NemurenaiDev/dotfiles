@@ -39,3 +39,6 @@ alias lll='lsd -lAh'
 alias lf='lfcd'
 alias brc='nano ~/.bashrc'
 alias ncdu='ncdu --exclude ~/.sshfs'
+
+alias git-push='git add *; git commit -m update; git push origin master'
+alias git-pull='git pull origin master'

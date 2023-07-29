@@ -15,13 +15,13 @@
 		"battery",
 		"custom/updater",
 		"custom/weather",
-		"custom/playerlabel"
+		"hyprland/window"
 	],
 	"modules-center": [
 		"wlr/workspaces"
 	],
 	"modules-right": [
-		"hyprland/window",
+//		"custom/playerlabel",
 		"tray",
 		"custom/wireguard-manager",
 		"backlight",
@@ -56,7 +56,7 @@
 		"format": "<span>{}</span>",
 		"tooltip-format": "<span>{}</span>",
 		"return-type": "json",
-		"max-length": 36,
+		"max-length": 32,
 		"exec": "playerctl -s -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}'",
 		"interval": 1
 	},
@@ -66,7 +66,7 @@
 			"(.+)": " $1",
 			"(.*) - Google Chrome": "Google Chrome"
 		},
-		"max-length": 24,
+		"max-length": 36,
 		"separate-outputs": true
 	},
 	"custom/wireguard-manager": {
@@ -84,8 +84,7 @@
 		"interval": 2,
 		"align": 0,
 		"rotate": 0,
-		//"format": "{icon} {percent}%",
-		"format": "{icon}",
+		"format": "{icon} {percent}%",
 		"format-icons": ["󰃞", "󰃟", "󰃠"],
 		"icon-size": 10,
 		"on-click": "",
@@ -109,7 +108,7 @@
 		},
 		"format": "{icon} {capacity}%",
 		"format-charging": " {capacity}%",
-		"format-plugged": " {capacity}%",
+		"format-plugged": "  {capacity}%",
 		"format-full": "{icon} {capacity}%",
 		"format-alt": "{icon} {time}",
 		"format-icons": [" ", " ", " ", " ", " "],
@@ -178,9 +177,8 @@
 	},
 	"pulseaudio#microphone": {
 		"format": "{format_source}",
-		//		"format-source": " {volume}%",
-		"format-source": "",
-		"format-source-muted": "",
+		"format-source": " {volume}%",
+		"format-source-muted": " Mute",
 		"on-click": "~/.config/hypr/scripts/Volume.sh --toggle-mic",
 		"on-click-right": "pavucontrol",
 		"on-scroll-up": "~/.config/hypr/scripts/Volume.sh --mic-inc",
