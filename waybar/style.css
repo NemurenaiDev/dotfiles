@@ -50,7 +50,7 @@ tooltip label {
 }
 
 
-#workspaces button { color: #6E6A86; padding: 2px; margin-right: 5px }
+#workspaces button { color: #6E6A86; padding: 2px; margin: 0 2px }
 
 #workspaces button.active { color: #cba6f7 }
 #workspaces button.focused { color: #d8dee9 }
