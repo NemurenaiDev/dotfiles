@@ -24,7 +24,7 @@ get_icon() {
 }
 # Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Keyboard Brightness : $current%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments -i "$icon" "Keyboard Brightness : $current%"
 }
 
 # Change brightness

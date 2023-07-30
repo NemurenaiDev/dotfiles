@@ -25,7 +25,7 @@ get_icon() {
 
 # Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Brightness : $current%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments -i "$icon" "Brightness : $current%"
 }
 
 # Change brightness
