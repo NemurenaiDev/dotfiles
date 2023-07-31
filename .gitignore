@@ -1,2 +1,3 @@
 scripts/variables/*
 !scripts/variables/.gitkeep
+.idea
