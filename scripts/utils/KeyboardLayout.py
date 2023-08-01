@@ -1,4 +1,5 @@
 import subprocess
+import json
 import os
 import sys
 
@@ -8,7 +9,6 @@ groups = [
 ]
 
 variables = os.path.expanduser("~/.config/hypr/scripts/variables/keyboard-layout-status")
-kb_name_file = os.path.expanduser("~/.config/hypr/scripts/variables/keyboard-layout-kb-name")
 
 try:
     with open(variables, 'r') as file:
@@ -17,13 +17,10 @@ try:
         currentLayout = int(lines[1].strip())
         lastSelectedLayouts = [int(layout.strip()) for layout in lines[2:]]
         lastSelectedLayouts.extend([0] * (len(groups) - len(lastSelectedLayouts)))
-    with open(kb_name_file, 'r') as file:
-        kb_name = str(file.readline())
 except Exception as e:
     currentGroup = 0
     currentLayout = 0
     lastSelectedLayouts = [0] * len(groups)
-    kb_name = ""
 
 
 def init():
@@ -32,8 +29,8 @@ def init():
     currentLayout = lastSelectedLayouts[currentGroup]
     set_layout(groups[currentGroup][currentLayout])
     save_layout_status()
-    
-    
+
+
 def get():
     print(groups[currentGroup][currentLayout].upper())
 
@@ -61,9 +58,26 @@ def shell_exec(command):
     except subprocess.CalledProcessError as e:
         return f"Error: {e}\nCommand: {e.cmd}\nOutput: {e.output}"
 
+
+def get_keyboard_names():
+    try:
+        command_output = subprocess.check_output(["hyprctl", "-j", "devices"])
+        device_info = json.loads(command_output)
+        return [keyboard.get("name") for keyboard in device_info.get("keyboards", [])]
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing hyprctl: {e}")
+        return []
+
+
 def set_layout(layout):
     shell_exec(f"hyprctl keyword input:kb_layout us,{layout}")
-    shell_exec(f"hyprctl switchxkblayout {kb_name} 1")
+    try:
+        keyboard_names = get_keyboard_names()
+        for keyboard_name in keyboard_names:
+            shell_exec(f"hyprctl switchxkblayout {keyboard_name} 1")
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing hyprctl: {e}")
 
 
 def save_layout_status():
