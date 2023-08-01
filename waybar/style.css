@@ -125,12 +125,8 @@ tooltip label {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.default {
-    padding: 0 5px;
-    padding-right: 0;
+    padding: 0 8px;
     border-radius: 10px;
-}
-#window {
-/*    padding-right: 8px;*/
 }
 
 

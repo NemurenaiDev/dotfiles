@@ -15,13 +15,13 @@
 		"battery",
 		"custom/updater",
 		"custom/weather",
-		"custom/playerlabel"
+		"hyprland/window"
 	],
 	"modules-center": [
 		"wlr/workspaces"
 	],
 	"modules-right": [
-		"hyprland/window",
+		"custom/playerlabel",
 		"tray",
 		"custom/wireguard-manager",
 		"backlight",
@@ -63,7 +63,7 @@
 	"hyprland/window": {
 		"format": "{}",
 		"rewrite": {
-			"(.+)": " $1",
+			"(.+)": " $1 ",
 			"(.*) - Google Chrome": "Google Chrome"
 		},
 		"max-length": 24,

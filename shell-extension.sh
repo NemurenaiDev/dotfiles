@@ -5,15 +5,6 @@ DOTFILES_PATH=~/Hyprland
 }
 
 
-r() {
-        ranger --choosedir="$HOME/.rangerdir";
-        cd "$(cat "$HOME/.rangerdir")";
-        if [ -f "$HOME/.rangerhold" ]; then
-                rm "$HOME/.rangerhold";
-        fi;
-        clear
-}
-
 lfcd() {
         LF_SHELLCD_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
         export LF_SHELLCD_TEMPDIR
