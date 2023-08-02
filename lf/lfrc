@@ -65,7 +65,7 @@ map m
 #cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
 
 cmd quitcd ${{
-	echo "1" > "$LF_SHELLCD_TEMPDIR/changecwd"
+	echo "1" > "/tmp/lf-shellcd-changecwd"
 	lf -remote "send $id quit"
 }}
 
