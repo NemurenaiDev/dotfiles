@@ -8,7 +8,7 @@ groups = [
     ["ua", "ru"]
 ]
 
-variables = os.path.expanduser("~/.config/hypr/scripts/variables/keyboard-layout-status")
+variables = os.path.expanduser("/tmp/keyboard-layout-status")
 
 try:
     with open(variables, 'r') as file:

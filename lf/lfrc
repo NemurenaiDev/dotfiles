@@ -1,4 +1,7 @@
 set icons true
+set drawbox true
+set preview true
+set ignorecase true
 
 set previewer ~/.config/lf/lf-kitty-preview
 set cleaner ~/.config/lf/lf-kitty-clean
@@ -18,17 +21,111 @@ map gd cd ~/Downloads
 map gp cd ~/Projects
 map gs cd ~/.sshfs
 
-map h set hidden!
-
-
-
-cmd trash %trash-put -d "$fx"
-map <delete> trash
-
-
 
 map q quitcd
+
+map <delete> trash
+map <enter> open
+
+map h set hidden!
+map . set hidden!
+
+map r rename
+map x cut
+map y copy
+map p paste
+
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+
+map az zip
+map at tar
+map ag targz
+map au unarchive
+
+map H top
+map L bottom
+
+map R reload
+map C clear
+map U unselect
+
+
+map m
+#map o
+#map n
+#map "'"
+#map '"'
+#map d
+#map e
+#map f
+
+
+#cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
+
 cmd quitcd ${{
 	echo "1" > "$LF_SHELLCD_TEMPDIR/changecwd"
 	lf -remote "send $id quit"
 }}
+
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        *) xdg-open "$f" ;;
+    esac
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    file=${files%%;*}
+    trash-put "$(basename "$file")"
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+#cmd clear_trash %trash-empty
+
+cmd restore_trash ${{
+  trash-restore
+}}
+
+cmd stripspace %stripspace "$f"

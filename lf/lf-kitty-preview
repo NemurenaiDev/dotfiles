@@ -6,14 +6,30 @@ x=$4
 y=$5
 
 
-if [[ "$( file -Lb --mime-type "$file")" =~ ^image ]]; then
-    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
-    exit 1
-fi
+case "$(file -Lb --mime-type -- "$file")" in
+    image/*)
+      kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
+      exit 1
+    ;;
+    video/*)
+      CACHE=$(mktemp /tmp/lf-thumbcache.XXXXX) < /dev/null > /dev/tty
+      ffmpegthumbnailer -i "$1" -o "$CACHE" -s 0 < /dev/null > /dev/tty
+      kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$CACHE" < /dev/null > /dev/tty
+      exit 1
+    ;;
+    audio/flac)
+      CACHE=$(mktemp /tmp/lf-thumbcache.XXXXX) < /dev/null > /dev/tty
+      ffmpeg -i "$file" -an -vn -c:v copy -loglevel quiet -y -f image2 "$CACHE" < /dev/null > /dev/tty
+      kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$CACHE" < /dev/null > /dev/tty
+      exit 1
+    ;;
+    audio/*)
+      CACHE=$(mktemp /tmp/lf-thumbcache.XXXXX) < /dev/null > /dev/tty
+      ffmpeg -i "$file" -an -vcodec copy -loglevel quiet -y -f image2 "$CACHE" < /dev/null > /dev/tty
+      kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$CACHE" < /dev/null > /dev/tty
+      exit 1
+    ;;
+esac
+
 
 pistol "$file"
-
-
-# kitty @ set-window-title "lf - preview" > /dev/null 2>&1
-# hyprctl setprop address:$(hyprctl -j activewindow | jq -r ".address") alpha 1 lock > /dev/null 2>&1
-# hyprctl setprop address:$(hyprctl -j activewindow | jq -r ".address") alpha 1 > /dev/null 2>&1

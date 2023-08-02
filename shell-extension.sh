@@ -1,10 +1,5 @@
 DOTFILES_PATH=~/Hyprland
 
-[ -f ~/.config/LF_ICONS ] && {
-        LF_ICONS="$(tr '\n' ':' <~/.config/LF_ICONS)" && export LF_ICONS
-}
-
-
 lfcd() {
         LF_SHELLCD_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
         export LF_SHELLCD_TEMPDIR
@@ -16,7 +11,6 @@ lfcd() {
         rm -rf "$LF_SHELLCD_TEMPDIR"
         unset LF_SHELLCD_TEMPDIR    
 }
-
 
 
 alias ls='ls --color=auto'
