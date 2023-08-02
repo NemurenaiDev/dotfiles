@@ -102,12 +102,6 @@ tooltip label {
 }
 
 #custom-playerlabel {
-    /*    color: #A3BE8C; !* Light green text color *!*/
-    /*    color: #FF6B6B; !* Coral pink text color *!*/
-    /*    color: #EBCB8B; !* Golden yellow text color *!*/
-    /*    color: #D08770; !* Soft orange text color *!*/
-    /*    color: #B48EAD; !* Light pink text color *!*/
-
     color: #cad3f5;
     font-weight: normal;
     font-style: normal;
