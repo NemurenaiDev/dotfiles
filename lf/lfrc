@@ -8,6 +8,8 @@ set cleaner ~/.config/lf/lf-kitty-clean
 map g/ cd /
 map gm cd /mnt
 map ge cd /etc
+map go cd /opt
+map gu cd /usr
 
 map gh cd ~
 map g. cd ~/.config
