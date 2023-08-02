@@ -16,7 +16,7 @@ ${SCRIPTSDIR}/startup/Mako.sh &
 ${SCRIPTSDIR}/startup/Waybar.sh &
 ${SCRIPTSDIR}/WireguardManager.sh -i &
 
-${BUILDSDIR}/lan-mouse/lan-mouse &
+${BUILDSDIR}/lan-mouse/target/release/lan-mouse &
 
 
 # rclone sync "GoogleDrive:/" "$HOME/GoogleDrive" >> ~/.config/hypr/autorun/hyprland-autorun.log 2>&1 &
