@@ -2,4 +2,3 @@
 *.log
 scripts/variables/*
 !scripts/variables/.gitkeep
-scripts/startup/config.toml

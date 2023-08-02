@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ROOTDIR=$HOME/.config/hypr
-SCRIPTSDIR=${ROOTDIR}/scripts
+BUILDSDIR=$HOME/.config/hypr/builds
+SCRIPTSDIR=$HOME/.config/hypr/scripts
 
 
 _ps=(waybar mako)
@@ -16,7 +16,7 @@ ${SCRIPTSDIR}/startup/Mako.sh &
 ${SCRIPTSDIR}/startup/Waybar.sh &
 ${SCRIPTSDIR}/WireguardManager.sh -i &
 
-${ROOTDIR}/lan-mouse/lan-mouse &
+${BUILDSDIR}/lan-mouse/lan-mouse &
 
 
 # rclone sync "GoogleDrive:/" "$HOME/GoogleDrive" >> ~/.config/hypr/autorun/hyprland-autorun.log 2>&1 &
