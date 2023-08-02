@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rclone sync "GoogleDrive:/" "$HOME/GoogleDrive" >> ~/.config/hypr/autorun/hyprland-autorun.log 2>&1 &
+# rclone sync "GoogleDrive:/" "$HOME/GoogleDrive" >> ~/.config/hypr/autorun/hyprland-autorun.log 2>&1 &
 
 
 telegram-desktop -startintray &
