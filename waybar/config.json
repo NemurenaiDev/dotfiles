@@ -12,9 +12,9 @@
 	"margin-right": 0,
 	"modules-left": [
 		"clock",
+		"battery",
 		"custom/weather",
 		"custom/updater",
-		"battery",
 		"hyprland/window"
 	],
 	"modules-center": [
