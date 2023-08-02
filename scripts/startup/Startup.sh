@@ -1,8 +1,9 @@
 #!/bin/bash
 
-SCRIPTSDIR=$HOME/.config/hypr/scripts
+ROOTDIR=$HOME/.config/hypr
+SCRIPTSDIR=${ROOTDIR}/scripts
 
-# Kill already running process
+
 _ps=(waybar mako)
 for _prs in "${_ps[@]}"; do
 	if [[ $(pidof ${_prs}) ]]; then
@@ -10,8 +11,18 @@ for _prs in "${_ps[@]}"; do
 	fi
 done
 
-# Lauch notification daemon (mako)
-${SCRIPTSDIR}/startup/Mako.sh &
 
-# Lauch statusbar (waybar)
+${SCRIPTSDIR}/startup/Mako.sh &
 ${SCRIPTSDIR}/startup/Waybar.sh &
+${SCRIPTSDIR}/WireguardManager.sh -i &
+
+${ROOTDIR}/lan-mouse/lan-mouse &
+
+
+# rclone sync "GoogleDrive:/" "$HOME/GoogleDrive" >> ~/.config/hypr/autorun/hyprland-autorun.log 2>&1 &
+
+telegram-desktop -startintray &
+# telegram-desktop -startintray -workdir "/home/silvan/.local/share/TelegramDesktop/tdata-work" &
+
+
+sleep 1 && swww init &

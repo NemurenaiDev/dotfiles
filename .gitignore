@@ -1,4 +1,5 @@
-scripts/variables/*
-!scripts/variables/.gitkeep
 .idea
 *.log
+scripts/variables/*
+!scripts/variables/.gitkeep
+scripts/startup/config.toml
