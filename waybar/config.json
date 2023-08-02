@@ -14,6 +14,7 @@
 		"clock",
 		"custom/weather",
 		"custom/updater",
+		"battery",
 		"hyprland/window"
 	],
 	"modules-center": [
@@ -23,7 +24,6 @@
 		"custom/playerlabel",
 		"tray",
 		"custom/wireguard-manager",
-		"battery",
 		"backlight",
 		"pulseaudio#microphone",
 		"pulseaudio",
