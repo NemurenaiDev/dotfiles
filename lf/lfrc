@@ -3,6 +3,12 @@ set drawbox true
 set preview true
 set ignorecase true
 
+# set number true
+# set relativenumber true
+
+set info size
+set ratios '1:100:100'
+
 set previewer ~/.config/lf/lf-kitty-preview
 set cleaner ~/.config/lf/lf-kitty-clean
 
