@@ -72,7 +72,6 @@ tooltip label {
 #taskbar button,
 #workspaces,
 #window,
-#custom-window,
 #custom-playerlabel,
 #custom-updater,
 #custom-wallpapers,
@@ -93,14 +92,16 @@ tooltip label {
 #backlight { color: #eed49f }
 #pulseaudio { color: #91d7e3 }
 #clock { color: #cad3f5 }
-#custom-window { color: #cad3f5 }
+#window { color: #cad3f5 }
 
-/*#window {*/
-/*    padding: 0;*/
-/*    color: #cad3f5;*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
-/*}*/
+#window {
+    font-weight: normal;
+    font-style: normal;
+}
+#waybar.empty #window {
+    padding: 0;
+    margin: 0;
+}
 
 #custom-playerlabel {
     color: #cad3f5;
@@ -147,12 +148,3 @@ tooltip label {
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
-
-
-
-/*#custom-updater {*/
-/*    padding-right: 0;*/
-/*}*/
-/*#window {*/
-/*    padding-right: 8px;*/
-/*}*/

@@ -15,8 +15,7 @@
 		"battery",
 		"custom/weather",
 		"custom/updater",
-//		"hyprland/window"
-		"custom/window"
+		"hyprland/window"
 	],
 	"modules-center": [
 		"wlr/workspaces"
@@ -30,6 +29,7 @@
 		"pulseaudio",
 		"custom/language"
 	],
+
 
 
 	"wlr/workspaces": {
@@ -64,7 +64,7 @@
 	"hyprland/window": {
 		"format": "{}",
 		"rewrite": {
-			"(.+)": "  $1",
+			"(.+)": "$1",
 			"(.*) - Google Chrome": "Google Chrome"
 		},
 		"max-length": 24,
@@ -162,9 +162,9 @@
 		"tooltip": false
 	},
 	"custom/language": {
-		"interval": 1,
-		"format": "[{}]",
-		"exec": "python ~/.config/hypr/scripts/utils/KeyboardLayout.py get",
+		"format": "<span>[{}]</span>",
+		"return-type": "json",
+		"exec": "~/.config/hypr/scripts/utils/KeyboardLayoutHook.sh",
 		"tooltip": false
 	},
 	"pulseaudio": {
