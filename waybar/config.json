@@ -1,11 +1,11 @@
 {
 	"layer": "top",
+	"position": "top",
 	"exclusive": true,
 	"passthrough": false,
-	"position": "top",
-	"spacing": 0,
 	"fixed-center": true,
 	"ipc": true,
+	"spacing": 0,
 	"margin-top": 0,
 	"margin-bottom": 0,
 	"margin-left": 0,
@@ -69,13 +69,6 @@
 		},
 		"max-length": 24,
 		"separate-outputs": true
-	},
-	"custom/window": {
-		"exec": "hyprctl -j activewindow | jq -r '.title'",
-		"exec-if": "[[ \"$(hyprctl -j activewindow | jq -r '.title')\" != null ]]",
-		"format": "{}",
-		"max-length": 24,
-		"interval": 1
 	},
 	"custom/wireguard-manager": {
 		"interval": 1,
@@ -154,17 +147,10 @@
 			}
 		}
 	},
-	"hyprland/language": {
-		"format": "[{}]",
-		"format-en": "US",
-		"format-uk": "UA",
-		"format-ru": "RU",
-		"tooltip": false
-	},
 	"custom/language": {
 		"format": "<span>[{}]</span>",
 		"return-type": "json",
-		"exec": "~/.config/hypr/scripts/utils/KeyboardLayoutHook.sh",
+		"exec": "~/.config/hypr/scripts/hooks/KeyboardLayoutHook.sh",
 		"tooltip": false
 	},
 	"pulseaudio": {
