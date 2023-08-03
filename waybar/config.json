@@ -15,7 +15,8 @@
 		"battery",
 		"custom/weather",
 		"custom/updater",
-		"hyprland/window"
+//		"hyprland/window"
+		"custom/window"
 	],
 	"modules-center": [
 		"wlr/workspaces"
@@ -68,6 +69,13 @@
 		},
 		"max-length": 24,
 		"separate-outputs": true
+	},
+	"custom/window": {
+		"exec": "hyprctl -j activewindow | jq -r '.title'",
+		"exec-if": "[[ \"$(hyprctl -j activewindow | jq -r '.title')\" != null ]]",
+		"format": "{}",
+		"max-length": 24,
+		"interval": 1
 	},
 	"custom/wireguard-manager": {
 		"interval": 1,
@@ -230,9 +238,9 @@
 	},
 	"custom/updater": {
 		"format": " {}",
-		"exec": "checkupdates | wc -l",
-		"exec-if": "[[ $(checkupdates | wc -l) ]]",
 		"interval": 15,
+		"exec": "checkupdates | wc -l",
+		"exec-if": "[[ $(checkupdates | wc -l) -gt 0 ]]",
 		"on-click": "kitty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
 		"tooltip": false
 	},

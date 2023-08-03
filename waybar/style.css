@@ -72,6 +72,7 @@ tooltip label {
 #taskbar button,
 #workspaces,
 #window,
+#custom-window,
 #custom-playerlabel,
 #custom-updater,
 #custom-wallpapers,
@@ -92,14 +93,14 @@ tooltip label {
 #backlight { color: #eed49f }
 #pulseaudio { color: #91d7e3 }
 #clock { color: #cad3f5 }
+#custom-window { color: #cad3f5 }
 
-
-#window {
-    padding: 0;
-    color: #cad3f5;
-    font-weight: normal;
-    font-style: normal;
-}
+/*#window {*/
+/*    padding: 0;*/
+/*    color: #cad3f5;*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
 
 #custom-playerlabel {
     color: #cad3f5;
@@ -149,9 +150,9 @@ tooltip label {
 
 
 
-#custom-updater {
-    padding-right: 0;
-}
-#window {
-    padding-right: 8px;
-}
+/*#custom-updater {*/
+/*    padding-right: 0;*/
+/*}*/
+/*#window {*/
+/*    padding-right: 8px;*/
+/*}*/
