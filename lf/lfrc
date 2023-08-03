@@ -31,6 +31,9 @@ map gsm cd ~/.sshfs/main
 map gsk cd ~/.sshfs/keitaro
 
 
+map bg setwallpaper
+
+
 map q quitcd
 
 map <delete> trash
@@ -71,7 +74,9 @@ map m
 #map f
 
 
-#cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
+cmd setwallpaper ${{
+	~/.config/hypr/scripts/WallpaperManager.sh "$f"
+}}
 
 cmd quitcd ${{
 	echo "1" > "/tmp/lf-shellcd-changecwd"
