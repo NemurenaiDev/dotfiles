@@ -32,3 +32,5 @@ alias dots-push='git -C "$DOTFILES_PATH" add . && git -C "$DOTFILES_PATH" commit
 alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
 
 alias dc='docker-compose'
+
+eval "$(thefuck --alias)"

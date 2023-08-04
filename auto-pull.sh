@@ -16,19 +16,15 @@ while true; do
   if git -C "$DOTFILES_PATH" diff --quiet HEAD..origin/master; then
     :
   else
-    if dots-pull; then
-      send_notification -u low "Dotfiles Auto-Pull" "Dotfiles pulled from the remote repository."
-      NOTIFICATION_SENT=false
-    else
-      send_notification -u critical "Dotfiles Auto-Pull" "An error occurred while pulling Dotfiles from the remote repository."
-    fi
+    send_notification -u low "Dotfiles Auto-Pull" "Dotfiles pulled from the remote repository."
+    NOTIFICATION_SENT=false
   fi
 
   if [[ -z $(git -C "$DOTFILES_PATH" status --porcelain) ]]; then
     :
   else
     if ! $NOTIFICATION_SENT; then
-      send_notification -u low "Dotfiles Local Changes" "Dotfiles changed locally..."
+      send_notification -u critical "Dotfiles Local Changes" "Dotfiles changed locally"
       NOTIFICATION_SENT=true
     fi
   fi
