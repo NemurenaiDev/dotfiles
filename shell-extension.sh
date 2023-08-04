@@ -1,5 +1,7 @@
 DOTFILES_PATH=~/Hyprland
 
+eval "$(thefuck --alias)"
+
 
 lfcd() {
 		rm "/tmp/lf-shellcd-lastdir" "/tmp/lf-shellcd-changecwd" 2>/dev/null
@@ -33,4 +35,3 @@ alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
 
 alias dc='docker-compose'
 
-eval "$(thefuck --alias)"

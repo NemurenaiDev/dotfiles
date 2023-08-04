@@ -217,11 +217,6 @@
 		"on-click-middle": "close",
 		"ignore-list": ["wofi"]
 	},
-	"custom/wallpapers": {
-		"format": " ",
-		"on-click": "~/.config/hypr/scripts/WallpaperSelect.sh",
-		"tooltip": false
-	},
 	"custom/updater": {
 		"format": " {}",
 		"interval": 15,
