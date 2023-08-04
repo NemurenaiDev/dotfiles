@@ -13,23 +13,22 @@ send_notification() {
 while true; do
   git -C "$DOTFILES_PATH" fetch
 
-  LOCAL=$(git -C "$DOTFILES_PATH" rev-parse @)
-  REMOTE=$(git -C "$DOTFILES_PATH" rev-parse @{u})
-  BASE=$(git -C "$DOTFILES_PATH" merge-base @ @{u})
-
-  if [ "$LOCAL" = "$REMOTE" ]; then
+  if git -C "$DOTFILES_PATH" diff --quiet HEAD..origin/master; then
     :
-  elif [ "$LOCAL" = "$BASE" ]; then
+  else
     if git -C "$DOTFILES_PATH" pull; then
       send_notification -u low "Dotfiles Auto-Pull" "Dotfiles pulled from the remote repository."
       NOTIFICATION_SENT=false
     else
       send_notification -u critical "Dotfiles Auto-Pull" "An error occurred while pulling Dotfiles from the remote repository."
-      NOTIFICATION_SENT=false
     fi
+  fi
+
+  if [[ -z $(git -C "$DOTFILES_PATH" status --porcelain) ]]; then
+    :
   else
     if ! $NOTIFICATION_SENT; then
-      send_notification -u low "Dotfiles Auto-Pull" "Dotfiles changed locally"
+      send_notification -u low "Dotfiles Local Changes" "Dotfiles changed locally..."
       NOTIFICATION_SENT=true
     fi
   fi
