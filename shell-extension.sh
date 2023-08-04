@@ -23,10 +23,12 @@ alias lll='lsd -lAh'
 
 alias lf='lfcd'
 alias brc='nano ~/.bashrc'
-alias ncdu='ncdu --exclude ~/.sshfs'
+alias ncdu='ncdu --exclude ".sshfs"'
 
 alias git-push='git add * && git commit -m update && git push origin master'
 alias git-pull='git pull origin master'
 
 alias dots-push='git -C "$DOTFILES_PATH" add . && git -C "$DOTFILES_PATH" commit -m update && git -C "$DOTFILES_PATH" push origin master'
 alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
+
+alias dc='docker-compose'
