@@ -16,6 +16,7 @@ while true; do
   if git -C "$DOTFILES_PATH" diff --quiet HEAD..origin/master; then
     :
   else
+    git -C "$DOTFILES_PATH" pull origin master
     send_notification -u low "Dotfiles Auto-Pull" "Dotfiles pulled from the remote repository."
     NOTIFICATION_SENT=false
   fi
