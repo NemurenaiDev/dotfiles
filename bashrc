@@ -23,12 +23,12 @@ alias l='lsd'
 alias ll='lsd -lh'
 alias lll='lsd -lAh'
 
+alias c='clear'
+
 alias lf='lfcd'
-alias brc='nano ~/.bashrc'
+alias brc='nano ~/Hyprland/bashrc'
 alias ncdu='ncdu --exclude ".sshfs"'
 
-alias git-push='git add * && git commit -m update && git push origin master'
-alias git-pull='git pull origin master'
 
 alias dots-push='git -C "$DOTFILES_PATH" add . && git -C "$DOTFILES_PATH" commit -m update && git -C "$DOTFILES_PATH" push origin master'
 alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
