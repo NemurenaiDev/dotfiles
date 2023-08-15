@@ -15,6 +15,9 @@ lfcd() {
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip -color=auto'
+
 
 alias vim='nvim'
 alias vi='nvim'
