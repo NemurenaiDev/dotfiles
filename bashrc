@@ -33,8 +33,14 @@ alias brc='nano ~/Hyprland/bashrc'
 alias ncdu='ncdu --exclude ".sshfs"'
 
 
-alias dots-push='git -C "$DOTFILES_PATH" add . && git -C "$DOTFILES_PATH" commit -m update && git -C "$DOTFILES_PATH" push origin master'
-alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
-
 alias dc='docker-compose'
 
+
+alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
+#alias dots-push='git -C "$DOTFILES_PATH" add . && git -C "$DOTFILES_PATH" commit -m update && git -C "$DOTFILES_PATH" push origin master'
+dots-push() {
+    local commit_message="${1:-minor}"
+    git -C "$DOTFILES_PATH" add .
+    git -C "$DOTFILES_PATH" commit -m "$commit_message"
+    git -C "$DOTFILES_PATH" push origin master
+}
