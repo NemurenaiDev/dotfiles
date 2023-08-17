@@ -34,6 +34,7 @@ alias ncdu='ncdu --exclude ".sshfs"'
 
 
 alias dc='docker-compose'
+alias ld='lazydocker'
 
 
 alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
