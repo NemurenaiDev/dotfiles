@@ -1,6 +1,6 @@
 {
 	"layer": "top",
-	"position": "top",
+	"position": "bottom",
 	"exclusive": true,
 	"passthrough": false,
 	"fixed-center": true,
@@ -55,11 +55,11 @@
 	},
 	"custom/playerlabel": {
 		"format": "<span>{}</span>",
-		"tooltip-format": "<span>{}</span>",
 		"return-type": "json",
 		"max-length": 36,
-		"exec": "playerctl -s -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}'",
-		"interval": 1
+		"exec": "playerctl -s -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}'",
+		"interval": 1,
+		"tooltip": false
 	},
 	"hyprland/window": {
 		"format": "{}",
@@ -67,7 +67,7 @@
 			"(.+)": "$1",
 			"(.*) - Google Chrome": "Google Chrome"
 		},
-		"max-length": 24,
+		"max-length": 36,
 		"separate-outputs": true
 	},
 	"custom/wireguard-manager": {

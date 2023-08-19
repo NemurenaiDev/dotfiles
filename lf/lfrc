@@ -1,5 +1,5 @@
 set icons true
-set drawbox true
+set drawbox false
 set preview true
 set ignorecase true
 
