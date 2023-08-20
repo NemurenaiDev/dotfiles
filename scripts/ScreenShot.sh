@@ -1,6 +1,6 @@
 #!/bin/bash
 
-iDIR="$HOME/.config/hypr/mako/icons"
+iDIR="$HOME/.config/hypr/icons"
 
 time=$(date +%Y-%m-%d-%H-%M-%S)
 dir="$(xdg-user-dir)/Pictures/Screenshots"

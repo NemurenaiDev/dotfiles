@@ -15,7 +15,7 @@ font=Fantasque Sans Mono 14
 width=400
 height=100
 margin=10
-padding=15
+padding=10
 border-size=2
 border-radius=10
 icons=1
@@ -35,6 +35,7 @@ border-color=#313244
 progress-color=over #89b4fa
 
 
+
 [urgency=low]
 border-color=#313244
 default-timeout=5000
@@ -52,21 +53,32 @@ default-timeout=0
 anchor=bottom-left
 
 
+
 [category=mpd]
 border-color=#f9e2af
 default-timeout=0
 group-by=category
 anchor=bottom-left
 
-[category=adjustments]
-padding=10
-border-color=#313244
-default-timeout=2000
-group-by=category
-anchor=bottom-center
-text-alignment=center
-width=275
-
 [category=im.received]
 border-color=#e0a0d6
 default-timeout=16000
+
+
+[category=adjustments.volume]
+default-timeout=2000
+anchor=bottom-center
+text-alignment=center
+width=200
+
+[category=adjustments.microphone]
+default-timeout=2000
+anchor=bottom-center
+text-alignment=center
+width=225
+
+[category=adjustments.brightness]
+default-timeout=2000
+anchor=bottom-center
+text-alignment=center
+width=250
