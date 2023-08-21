@@ -25,17 +25,17 @@ $python\
 $rust\
 $env_var\
 $custom\
-$fill\
-$nodejs $jobs $time\
+$nodejs\
 $line_break\
+$time\
 $status\
 $container\
 $character"""
 
 
 [character]
-success_symbol = '[❯](bold green)'
-error_symbol = '[✖](bold red)'
+success_symbol = "[](bold cyan)[](bold green)"
+error_symbol = "[](bold red)[](bold red)"
 
 [directory]
 format = 'in [$path]($style)[$read_only]($read_only_style) '
@@ -57,17 +57,11 @@ disabled = false
 
 
 [nodejs]
-format = "[$symbol($version)]($style)"
+format = "via [$symbol($version)]($style)"
 style = "green"
 
 [fill]
 symbol = " "
-
-[jobs]
-symbol = ""
-style = "bold red"
-number_threshold = 1
-format = "[$symbol]($style)"
 
 [git_branch]
 symbol = " "
@@ -92,5 +86,5 @@ symbol = " "
 
 [time]
 disabled = false
-style = 'bold cyan'
-format = '[\[ $time \]]($style)'
+style = 'cyan'
+format = '[\[$time\]]($style) '
