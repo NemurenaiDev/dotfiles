@@ -25,7 +25,7 @@ while true; do
     :
   else
     if ! $NOTIFICATION_SENT; then
-      send_notification -u critical "Dotfiles Local Changes" "Dotfiles changed locally"
+      send_notification -u critical "Dotfiles Auto-Pull" "Dotfiles changed locally"
       NOTIFICATION_SENT=true
     fi
   fi
