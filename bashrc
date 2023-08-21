@@ -2,7 +2,6 @@ DOTFILES_PATH=~/Hyprland
 
 eval "$(starship init bash)"
 eval "$(thefuck --alias)"
-clear
 
 lfcd() {
 	rm "/tmp/lf-shellcd-lastdir" "/tmp/lf-shellcd-changecwd" 2>/dev/null
