@@ -19,13 +19,8 @@ $git_status\
 $hg_branch\
 $pijul_channel\
 $docker_context\
-$c\
-$cmake\
-$python\
-$rust\
 $env_var\
 $custom\
-$nodejs\
 $line_break\
 $time\
 $status\
@@ -56,10 +51,6 @@ ssh_only = false
 disabled = false
 
 
-[nodejs]
-format = "via [$symbol($version)]($style)"
-style = "green"
-
 [fill]
 symbol = " "
 
@@ -80,9 +71,6 @@ style = "bright-black"
 disabled = true
 added_style = 'bold blue'
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
-
-[rust]
-symbol = " "
 
 [time]
 disabled = false
