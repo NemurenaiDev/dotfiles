@@ -27,10 +27,6 @@ map gc cd ~/.config
 map gd cd ~/Downloads
 map gp cd ~/Projects
 
-map gss cd ~/.sshfs
-map gsm cd ~/.sshfs/main
-map gsk cd ~/.sshfs/keitaro
-
 
 map bg setwallpaper
 
