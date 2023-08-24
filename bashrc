@@ -1,6 +1,6 @@
 DOTFILES_PATH=~/Hyprland
 
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
 eval "$(thefuck --alias)"
 
 lfcd() {
