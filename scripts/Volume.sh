@@ -8,35 +8,35 @@ get_volume() {
 }
 inc_volume() {
 	pamixer --allow-boost -i 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments.volume -i "$iDIR/volume.png" "$(get_volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments -i "$iDIR/volume.png" "$(get_volume)%"
 }
 dec_volume() {
 	pamixer --allow-boost -d 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments.volume -i "$iDIR/volume.png" "$(get_volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments -i "$iDIR/volume.png" "$(get_volume)%"
 }
 toggle_mute() {
 	if [ "$(pamixer --get-mute)" == "false" ]; then
-		pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments.volume -i "$iDIR/volume-mute.png" "OFF"
+		pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments -i "$iDIR/volume-mute.png" "OFF"
 	elif [ "$(pamixer --get-mute)" == "true" ]; then
-		pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments.volume -i "$iDIR/volume.png" "ON"
+		pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments -i "$iDIR/volume.png" "ON"
 	fi
 }
 
 
 toggle_mic() {
 	if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
-		pamixer --default-source -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments.microphone -i "$iDIR/microphone.png" "OFF"
+		pamixer --default-source -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone.png" "OFF"
 	elif [ "$(pamixer --default-source --get-mute)" == "true" ]; then
-		pamixer -u --default-source u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments.microphone -i "$iDIR/microphone.png" "ON"
+		pamixer -u --default-source u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone.png" "ON"
 	fi
 }
 inc_mic_volume() {
 	pamixer --default-source -i 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments.microphone -i "$iDIR/microphone.png" "$(pamixer --default-source --get-volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone.png" "$(pamixer --default-source --get-volume)%"
 }
 dec_mic_volume() {
 	pamixer --default-source -d 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments.microphone -i "$iDIR/microphone.png" "$(pamixer --default-source --get-volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone.png" "$(pamixer --default-source --get-volume)%"
 }
 
 if [[ "$1" == "--get" ]]; then

@@ -31,9 +31,8 @@ max-visible=3
 layer=overlay
 background-color=#181425
 text-color=#F06292
-border-color=#262b44
-
-progress-color=over #b55088
+border-color=#F06292
+progress-color=#b55088
 
 
 
@@ -42,7 +41,6 @@ default-timeout=5000
 anchor=bottom-left
 
 [urgency=normal]
-border-color=#F06292
 default-timeout=8000
 anchor=bottom-left
 
@@ -67,35 +65,11 @@ default-timeout=16000
 border-color=#63c74d
 
 
-[category=adjustments.volume]
-border-color=#F06292
+[category=adjustments]
 text-color=#f7f7f7
 text-alignment=right
 default-timeout=2000
 anchor=bottom-center
-padding=5
+padding=2,4
 max-icon-size=24
-width=200
-height=36
-
-[category=adjustments.microphone]
-border-color=#F06292
-text-color=#f7f7f7
-text-alignment=right
-default-timeout=2000
-anchor=bottom-center
-padding=5
-max-icon-size=24
-width=200
-height=36
-
-[category=adjustments.brightness]
-border-color=#F06292
-text-color=#f7f7f7
-text-alignment=right
-default-timeout=2000
-anchor=bottom-center
-padding=5
-max-icon-size=24
-width=200
-height=36
+width=175

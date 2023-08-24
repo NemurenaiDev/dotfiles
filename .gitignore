@@ -2,3 +2,4 @@
 *.log
 scripts/variables/*
 !scripts/variables/.gitkeep
+hyprland/local.conf
