@@ -8,6 +8,7 @@ set ignorecase true
 
 set info size
 set ratios '1:100:100'
+set cursorpreviewfmt ""
 
 set previewer ~/.config/lf/lf-kitty-preview
 set cleaner ~/.config/lf/lf-kitty-clean
@@ -118,10 +119,10 @@ cmd unarchive ${{
   esac
 }}
 
-cmd zip %zip -r "$f" "$f"
-cmd tar %tar cvf "$f.tar" "$f"
-cmd targz %tar cvzf "$f.tar.gz" "$f"
-cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+cmd zip %zip -r "$f.zip" "$(dirname "$f")"
+cmd tar %tar cvf "$(basename "$f").tar" -C "$(dirname "$f")" "$(basename "$f")"
+cmd targz %tar cvzf "$(basename "$f").tar.gz" -C "$(dirname "$f")" "$(basename "$f")"
+cmd tarbz2 %tar cjvf "$(basename "$f").tar.bz2" -C "$(dirname "$f")" "$(basename "$f")"
 
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
