@@ -11,21 +11,15 @@ get_backlight() {
 get_icon() {
 	current=$(get_backlight | sed 's/%//')
 	if   [ "$current" -le "20" ]; then
-		icon="$iDIR/brightness-20.png"
-	elif [ "$current" -le "40" ]; then
-		icon="$iDIR/brightness-40.png"
-	elif [ "$current" -le "60" ]; then
-		icon="$iDIR/brightness-60.png"
-	elif [ "$current" -le "80" ]; then
-		icon="$iDIR/brightness-80.png"
+		icon="$iDIR/brightness-min.png"
 	else
-		icon="$iDIR/brightness-100.png"
+		icon="$iDIR/brightness-max.png"
 	fi
 }
 
 # Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.brightness -i "$icon" "Brightness: $current%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$current" -c adjustments.brightness -i "$icon" "$current%"
 }
 
 # Change brightness
@@ -39,10 +33,10 @@ case "$1" in
 		get_backlight
 		;;
 	"--inc")
-		change_backlight "+10%"
+		change_backlight "+5%"
 		;;
 	"--dec")
-		change_backlight "10%-"
+		change_backlight "5%-"
 		;;
 	*)
 		get_backlight

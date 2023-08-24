@@ -11,12 +11,12 @@ on-touch=dismiss
 
 # STYLE OPTIONS
 anchor=bottom-right
-font=Fantasque Sans Mono 14
+font=Iosevka Nerd Font 12
 width=400
 height=100
 margin=10
 padding=10
-border-size=2
+border-size=1
 border-radius=10
 icons=1
 max-icon-size=64
@@ -29,56 +29,73 @@ default-timeout=5000
 ignore-timeout=0
 max-visible=3
 layer=overlay
-background-color=#1e1e2e
-text-color=#d9e0ee
-border-color=#313244
-progress-color=over #89b4fa
+background-color=#181425
+text-color=#F06292
+border-color=#262b44
+
+progress-color=over #b55088
 
 
 
 [urgency=low]
-border-color=#313244
 default-timeout=5000
 anchor=bottom-left
 
 [urgency=normal]
-border-color=#313244
+border-color=#F06292
 default-timeout=8000
 anchor=bottom-left
 
 [urgency=high]
-border-color=#f38ba8
-text-color=#f38ba8
+border-color=#ff0044
 default-timeout=0
 anchor=bottom-left
 
 
 
 [category=mpd]
-border-color=#f9e2af
+border-color=#ff0044
 default-timeout=0
 group-by=category
 anchor=bottom-left
 
 [category=im.received]
-border-color=#e0a0d6
+border-color=#0099db
 default-timeout=16000
+
+[app-name=Spotify]
+border-color=#63c74d
 
 
 [category=adjustments.volume]
+border-color=#F06292
+text-color=#f7f7f7
+text-alignment=right
 default-timeout=2000
 anchor=bottom-center
-text-alignment=center
+padding=5
+max-icon-size=24
 width=200
+height=36
 
 [category=adjustments.microphone]
+border-color=#F06292
+text-color=#f7f7f7
+text-alignment=right
 default-timeout=2000
 anchor=bottom-center
-text-alignment=center
-width=225
+padding=5
+max-icon-size=24
+width=200
+height=36
 
 [category=adjustments.brightness]
+border-color=#F06292
+text-color=#f7f7f7
+text-alignment=right
 default-timeout=2000
 anchor=bottom-center
-text-alignment=center
-width=250
+padding=5
+max-icon-size=24
+width=200
+height=36

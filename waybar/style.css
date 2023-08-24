@@ -1,3 +1,37 @@
+@define-color background #181425;
+@define-color foreground #F06292;
+@define-color cursor #feae34;
+@define-color selection_background #F06292;
+
+@define-color color0 #181425;
+@define-color color8 #262b44;
+
+@define-color color1 #e43b44;
+@define-color color9 #ff0044;
+
+@define-color color2 #3e8948;
+@define-color color10 #63c74d;
+
+@define-color color3 #feae34;
+@define-color color11 #fee761;
+
+@define-color color4 #124e89;
+@define-color color12 #0099db;
+
+@define-color color5 #b55088;
+@define-color color13 #F06292;
+
+@define-color color6 #008080;
+@define-color color14 #66b2b2;
+
+@define-color color7 #c0cbdc;
+@define-color color15 #ffffff;
+
+@define-color selection_foreground #f7f7f7;
+
+
+
+
 * {
     font-family: "JetBrainsMono Nerd Font";
     font-weight: normal;
@@ -9,38 +43,38 @@
 }
 
 window#waybar {
-    background: #282a36;
-    border-top: 1px solid #44475a;
+    background: @background;
+    border-top: 1px solid @color8;
     border-radius: 0;
 }
 
-.modules-center {
-    background-color: #44475a;
-    border-radius: 10px;
-    margin: 5px;
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 5px 0;
 }
 
 tooltip {
-    background: #282a36;
+    background: @background;
     border-radius: 10px;
 }
 
 tooltip label {
-    color: #bd93f9;
+    color: @foreground;
     padding: 5px 10px;
 }
 
 #workspaces button {
-    color: #6272a4;
+    color: @foreground;
     padding: 2px;
 }
 
 #workspaces button.active {
-    color: #8be9fd;
+    color: @cursor;
 }
 
 #workspaces button:hover {
-    color: #50fa7b;
+    color: @cursor;
 }
 
 #clock,
@@ -63,7 +97,7 @@ tooltip label {
 #custom-wireguard-manager,
 #language,
 #custom-language {
-    color: #bd93f9;
+    color: @foreground;
     padding: 0 8px;
 }
 
@@ -74,25 +108,18 @@ tooltip label {
 #custom-playerlabel,
 #window {
     padding: 0 5px;
-    color: #bd93f9;
+    color: @foreground;
 }
 #clock,
 #custom-language {
-    color: #ff79c6;
+    color: @color3;
 }
 
-#battery {
-    color: #8be9fd;
-}
-
-#backlight {
-    color: #f1fa8c;
-}
-
+#battery,
+#backlight,
 #pulseaudio {
-    color: #8be9fd;
+    color: @color11;
 }
-
 
 #window {
     font-weight: normal;
@@ -105,7 +132,6 @@ tooltip label {
 }
 
 #custom-playerlabel {
-    /*color: #ff79c6;*/
     font-weight: normal;
     font-style: normal;
 }
@@ -125,21 +151,21 @@ tooltip label {
 }
 
 #temperature.critical {
-    background-color: #ff5555;
+    background-color: @color1;
 }
 
 @keyframes blink {
     to {
-        color: #000000;
+        color: @color0;
     }
 }
 
-#taskbar button.active {
-    background-color: #44475a;
-}
+/*#taskbar button.active {*/
+/*    background-color: #262b44;*/
+/*}*/
 
 #battery.critical:not(.charging) {
-    color: #ff5555;
+    color: @color9;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

@@ -2,82 +2,43 @@
 
 iDIR="$HOME/.config/hypr/icons"
 
-# Get Volume
 get_volume() {
 	volume=$(pamixer --get-volume)
 	echo "$volume"
 }
-
-# Get icons
-get_icon() {
-	current=$(get_volume)
-	if [[ "$current" -eq "0" ]]; then
-		echo "$iDIR/volume-mute.png"
-	elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
-		echo "$iDIR/volume-low.png"
-	elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
-		echo "$iDIR/volume-mid.png"
-	else
-		echo "$iDIR/volume-high.png"
-	fi
-}
-
-# Increase Volume
 inc_volume() {
 	pamixer --allow-boost -i 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.volume -i "$(get_icon)" "Volume: $(get_volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments.volume -i "$iDIR/volume.png" "$(get_volume)%"
 }
-
-# Decrease Volume
 dec_volume() {
 	pamixer --allow-boost -d 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.volume -i "$(get_icon)" "Volume: $(get_volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments.volume -i "$iDIR/volume.png" "$(get_volume)%"
 }
-
-# Toggle Mute
 toggle_mute() {
 	if [ "$(pamixer --get-mute)" == "false" ]; then
-		pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.volume -i "$iDIR/volume-mute.png" "Volume OFF"
+		pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments.volume -i "$iDIR/volume-mute.png" "OFF"
 	elif [ "$(pamixer --get-mute)" == "true" ]; then
-		pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.volume -i "$(get_icon)" "Volume ON"
+		pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(get_volume) -c adjustments.volume -i "$iDIR/volume.png" "ON"
 	fi
 }
 
-# Toggle Mic
+
 toggle_mic() {
 	if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
-		pamixer --default-source -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.microphone -i "$iDIR/microphone-mute.png" "Microphone OFF"
+		pamixer --default-source -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments.microphone -i "$iDIR/microphone.png" "OFF"
 	elif [ "$(pamixer --default-source --get-mute)" == "true" ]; then
-		pamixer -u --default-source u && notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.microphone -i "$iDIR/microphone.png" "Microphone ON"
+		pamixer -u --default-source u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments.microphone -i "$iDIR/microphone.png" "ON"
 	fi
 }
-# Get icons
-get_mic_icon() {
-	current=$(pamixer --default-source --get-volume)
-	if [[ "$current" -eq "0" ]]; then
-		echo "$iDIR/microphone.png"
-	elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
-		echo "$iDIR/microphone.png"
-	elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
-		echo "$iDIR/microphone.png"
-	elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
-		echo "$iDIR/microphone.png"
-	fi
-}
-
-# Increase MIC Volume
 inc_mic_volume() {
 	pamixer --default-source -i 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.microphone -i "$(get_mic_icon)" "Mic-Level: $(pamixer --default-source --get-volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments.microphone -i "$iDIR/microphone.png" "$(pamixer --default-source --get-volume)%"
 }
-
-# Decrease MIC Volume
 dec_mic_volume() {
 	pamixer --default-source -d 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments.microphone -i "$(get_mic_icon)" "Mic-Level: $(pamixer --default-source --get-volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments.microphone -i "$iDIR/microphone.png" "$(pamixer --default-source --get-volume)%"
 }
 
-# Execute accordingly
 if [[ "$1" == "--get" ]]; then
 	get_volume
 elif [[ "$1" == "--inc" ]]; then
