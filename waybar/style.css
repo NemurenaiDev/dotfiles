@@ -1,34 +1,51 @@
-@define-color background #181425;
-@define-color foreground #F06292;
-@define-color cursor #feae34;
-@define-color selection_background #F06292;
+@define-color foreground #CDD6F4;
+@define-color background #1E1E2E;
+@define-color selection_foreground #1E1E2E;
+@define-color selection_background #F5E0DC;
 
-@define-color color0 #181425;
-@define-color color8 #262b44;
+@define-color cursor #F5E0DC;
+@define-color cursor_text_color #1E1E2E;
+@define-color url_color #F5E0DC;
+@define-color active_border_color #B4BEFE;
+@define-color inactive_border_color #6C7086;
+@define-color bell_border_color #F9E2AF;
 
-@define-color color1 #e43b44;
-@define-color color9 #ff0044;
+@define-color active_tab_foreground #11111B;
+@define-color active_tab_background #CBA6F7;
+@define-color inactive_tab_foreground #CDD6F4;
+@define-color inactive_tab_background #181825;
+@define-color tab_bar_background #11111B;
 
-@define-color color2 #3e8948;
-@define-color color10 #63c74d;
+@define-color mark1_foreground #1E1E2E;
+@define-color mark1_background #B4BEFE;
+@define-color mark2_foreground #1E1E2E;
+@define-color mark2_background #CBA6F7;
+@define-color mark3_foreground #1E1E2E;
+@define-color mark3_background #74C7EC;
 
-@define-color color3 #feae34;
-@define-color color11 #fee761;
+@define-color color0 #45475A;
+@define-color color8 #585B70;
 
-@define-color color4 #124e89;
-@define-color color12 #0099db;
+@define-color color1 #F38BA8;
+@define-color color9 #F38BA8;
 
-@define-color color5 #b55088;
-@define-color color13 #F06292;
+@define-color color2 #A6E3A1;
+@define-color color10 #A6E3A1;
 
-@define-color color6 #008080;
-@define-color color14 #66b2b2;
+@define-color color3 #F9E2AF;
+@define-color color11 #F9E2AF;
 
-@define-color color7 #c0cbdc;
-@define-color color15 #ffffff;
+@define-color color4 #89B4FA;
+@define-color color12 #89B4FA;
 
-@define-color selection_foreground #f7f7f7;
+@define-color color5 #F5C2E7;
+@define-color color13 #F5C2E7;
 
+@define-color color6 #94E2D5;
+@define-color color14 #94E2D5;
+
+@define-color color7 #BAC2DE;
+@define-color color15 #A6ADC8;
 
 
 
@@ -44,7 +61,7 @@
 
 window#waybar {
     background: @background;
-    border-top: 1px solid @color8;
+    border-top: 1px solid @inactive_border_color;
     border-radius: 0;
 }
 
@@ -65,12 +82,12 @@ tooltip label {
 }
 
 #workspaces button {
-    color: @foreground;
+    color: @color8;
     padding: 2px;
 }
 
 #workspaces button.active {
-    color: @cursor;
+    color: @color4;
 }
 
 #workspaces button:hover {
@@ -102,23 +119,23 @@ tooltip label {
 }
 
 #custom-wireguard-manager {
-    padding: 0 5px;
+    padding: 0 4px;
 }
 
 #custom-playerlabel,
 #window {
-    padding: 0 5px;
     color: @foreground;
 }
 #clock,
 #custom-language {
-    color: @color3;
+    color: @color5;
 }
 
 #battery,
 #backlight,
-#pulseaudio {
-    color: @color11;
+#pulseaudio,
+#custom-updater {
+    color: @color4;
 }
 
 #window {
@@ -159,10 +176,6 @@ tooltip label {
         color: @color0;
     }
 }
-
-/*#taskbar button.active {*/
-/*    background-color: #262b44;*/
-/*}*/
 
 #battery.critical:not(.charging) {
     color: @color9;

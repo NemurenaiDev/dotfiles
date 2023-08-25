@@ -1,3 +1,4 @@
+# starship.toml
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
@@ -20,7 +21,6 @@ $hg_branch\
 $pijul_channel\
 $docker_context\
 $env_var\
-$custom\
 $line_break\
 $time\
 $status\
@@ -34,25 +34,21 @@ error_symbol = "[](bold red)[](bold red)"
 
 [directory]
 format = 'in [$path]($style)[$read_only]($read_only_style) '
-style = "cyan"
+style = "bright-magenta bold"
 read_only = " "
 truncate_to_repo = false
 
 [username]
-style_root = 'red bold'
-style_user = 'purple bold'
-format = '[$user]($style)[@](purple bold)'
+style_root = 'bold red'
+style_user = 'bright-blue bold'
+format = '[$user]($style)[@](bright-blue bold)'
 show_always = true
 disabled = false
 
 [hostname]
-format = '[$hostname](purple bold) '
+format = '[$hostname](bright-blue bold) '
 ssh_only = false
 disabled = false
-
-
-[fill]
-symbol = " "
 
 [git_branch]
 symbol = " "
@@ -61,7 +57,7 @@ style = "bright-black"
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "cyan"
+style = "bright-cyan"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
@@ -69,10 +65,20 @@ style = "bright-black"
 
 [git_metrics]
 disabled = true
-added_style = 'bold blue'
+added_style = 'bold bright-blue'
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [time]
 disabled = false
-style = 'cyan'
+style = 'bright-cyan'
 format = '[\[$time\]]($style) '
+
+[status]
+format = '[$symbol$status]($style) '
+style = 'bold green'
+symbol = '🚀 '
+
+[container]
+symbol = "🐳 "
+format = "[$symbol$name]($style) "
+style = "bright-yellow bold"

@@ -1,7 +1,7 @@
 window {
     font-family: CaskaydiaCove Nerd Font, monospace;
     font-size: 12pt;
-    color: #F06292;
+    color: #CDD6F4;
     background-color: rgba(24, 20, 37, 0.8);
 }
 
@@ -10,7 +10,7 @@ button {
     background-position: center;
     background-size: 20%;
     border: none;
-    color: #F06292;
+    color: #CDD6F4;
     text-shadow: none;
     background-color: rgba(24, 20, 37, 0);
     margin: 5px;
@@ -23,7 +23,7 @@ button:hover {
 
 button:focus {
     background-color: #262b44;
-    color: #F06292;
+    color: #CDD6F4;
     text-shadow: none;
 }
 

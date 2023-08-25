@@ -8,15 +8,15 @@ file="Screenshot_${time}_${RANDOM}.png"
 
 # notify and view screenshot
 notify_cmd_shot="notify-send -h string:x-canonical-private-synchronous:shot-notify -u low -i ${iDIR}/picture.png"
-notify_view() {
-	${notify_cmd_shot} "Copied to clipboard."
-##	viewnior ${dir}/"$file"
-	if [[ -e "$dir/$file" ]]; then
-		${notify_cmd_shot} "Screenshot Saved."
-	else
-		${notify_cmd_shot} "Screenshot Deleted."
-	fi
-}
+#notify_view() {
+#	${notify_cmd_shot} "Copied to clipboard."
+###	viewnior ${dir}/"$file"
+#	if [[ -e "$dir/$file" ]]; then
+#		${notify_cmd_shot} "Screenshot Saved."
+#	else
+#		${notify_cmd_shot} "Screenshot Deleted."
+#	fi
+#}
 
 # countdown
 countdown() {
@@ -30,33 +30,33 @@ countdown() {
 shotnow() {
 	cd ${dir} && grim - | tee "$file" | wl-copy
 	sleep 2
-	notify_view
+#	notify_view
 }
 
 shot5() {
 	countdown '5'
 	sleep 1 && cd ${dir} && grim - | tee "$file" | wl-copy
 	sleep 1
-	notify_view
+#	notify_view
 	
 }
 
 shot10() {
 	countdown '10'
 	sleep 1 && cd ${dir} && grim - | tee "$file" | wl-copy
-	notify_view
+#	notify_view
 }
 
 shotwin() {
 	w_pos=$(hyprctl activewindow | grep 'at:' | cut -d':' -f2 | tr -d ' ' | tail -n1)
 	w_size=$(hyprctl activewindow | grep 'size:' | cut -d':' -f2 | tr -d ' ' | tail -n1 | sed s/,/x/g)
 	cd ${dir} && grim -g "$w_pos $w_size" - | tee "$file" | wl-copy
-	notify_view
+#	notify_view
 }
 
 shotarea() {
 	cd ${dir} && grim -g "$(slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | tee "$file" | wl-copy
-	notify_view
+#	notify_view
 }
 
 if [[ ! -d "$dir" ]]; then

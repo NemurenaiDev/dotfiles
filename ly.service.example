@@ -5,7 +5,7 @@ After=getty@tty2.service
 
 [Service]
 Type=idle
-ExecStartPre=/usr/bin/printf '%%b' '\e]P0181425\e]P7F06292\ec'
+ExecStartPre=/usr/bin/printf '%%b' '\e]P01E1E2E\e]P7CDD6F4\ec'
 ExecStart=/usr/bin/ly-dm
 StandardInput=tty
 TTYPath=/dev/tty2

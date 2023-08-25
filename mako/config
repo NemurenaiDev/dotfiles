@@ -29,10 +29,10 @@ default-timeout=5000
 ignore-timeout=0
 max-visible=3
 layer=overlay
-background-color=#181425
-text-color=#F06292
-border-color=#F06292
-progress-color=#b55088
+background-color=#1E1E2E
+text-color=#CDD6F4
+border-color=#B4BEFE
+progress-color=#89B4FA
 
 
 
@@ -45,24 +45,24 @@ default-timeout=8000
 anchor=bottom-left
 
 [urgency=high]
-border-color=#ff0044
+border-color=#F38BA8
 default-timeout=0
 anchor=bottom-left
 
 
 
 [category=mpd]
-border-color=#ff0044
+border-color=#F38BA8
 default-timeout=0
 group-by=category
 anchor=bottom-left
 
 [category=im.received]
-border-color=#0099db
+border-color=#89B4FA
 default-timeout=16000
 
 [app-name=Spotify]
-border-color=#63c74d
+border-color=#A6E3A1
 
 
 [category=adjustments]
