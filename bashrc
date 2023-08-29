@@ -1,7 +1,6 @@
 DOTFILES_PATH=~/Hyprland
 
 eval "$(starship init bash)"
-eval "$(thefuck --alias)"
 
 lfcd() {
 	rm "/tmp/lf-shellcd-lastdir" "/tmp/lf-shellcd-changecwd" 2>/dev/null
@@ -19,7 +18,6 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 
-
 alias vim='nvim'
 alias vi='nvim'
 
@@ -32,10 +30,7 @@ alias c='clear'
 alias brc='vim ~/Hyprland/bashrc'
 alias ncdu='ncdu --exclude ".sshfs"'
 
-
 alias dc='docker-compose'
-alias ld='lazydocker'
-
 
 alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
 #alias dots-push='git -C "$DOTFILES_PATH" add . && git -C "$DOTFILES_PATH" commit -m update && git -C "$DOTFILES_PATH" push origin master'
