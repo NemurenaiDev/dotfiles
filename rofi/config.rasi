@@ -30,4 +30,4 @@ configuration {
 		fallback-icon: "application-x-addon";
 	}
 }
-@theme "~/.config/rofi/catppuccin-mocha.rasi"
+@theme "~/.config/rofi/rose-pine.rasi"
