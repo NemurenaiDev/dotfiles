@@ -13,7 +13,7 @@
 	"modules-left": [
 		"clock",
 		"battery",
-		"custom/weather",
+//		"custom/weather",
 		"custom/updater",
 		"hyprland/window"
 	],
