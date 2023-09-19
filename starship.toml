@@ -69,7 +69,7 @@ added_style = 'bold bright-blue'
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [time]
-disabled = false
+disabled = true
 style = 'bright-cyan'
 format = '[\[$time\]]($style) '
 
