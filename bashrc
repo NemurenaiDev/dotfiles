@@ -27,9 +27,6 @@ alias lll='lsd -lAh'
 
 alias c='clear'
 
-alias brc='vim ~/Hyprland/bashrc'
-alias ncdu='ncdu --exclude ".sshfs"'
-
 alias dc='docker-compose'
 
 alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
