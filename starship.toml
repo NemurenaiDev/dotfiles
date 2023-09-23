@@ -40,13 +40,13 @@ truncate_to_repo = false
 
 [username]
 style_root = 'bold red'
-style_user = 'bright-blue bold'
-format = '[$user]($style)[@](bright-blue bold)'
+style_user = 'bright-purple bold'
+format = '[$user]($style)[@](white bold)'
 show_always = true
 disabled = false
 
 [hostname]
-format = '[$hostname](bright-blue bold) '
+format = '[$hostname](bright-purple bold) '
 ssh_only = false
 disabled = false
 
