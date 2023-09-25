@@ -5,7 +5,6 @@ if status is-interactive
     starship init fish | source
 
 
-
     alias lf='cd $(~/.config/hypr/scripts/lfcd.sh)'
 
     alias ls 'ls --color=auto'
@@ -23,6 +22,8 @@ if status is-interactive
     alias c 'clear'
 
     alias dc 'docker-compose'
+    alias dc-start 'dc down && dc build && dc up -d && clear && dc up'
+
 
     function dots-pull
         git -C "$DOTFILES_PATH" pull origin master

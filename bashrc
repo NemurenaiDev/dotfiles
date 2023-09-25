@@ -21,9 +21,9 @@ alias lll='lsd -lAh'
 alias c='clear'
 
 alias dc='docker-compose'
+alias dc-start='dc down && dc build && dc up -d && clear && dc up'
 
 alias dots-pull='git -C "$DOTFILES_PATH" pull origin master'
-#alias dots-push='git -C "$DOTFILES_PATH" add . && git -C "$DOTFILES_PATH" commit -m update && git -C "$DOTFILES_PATH" push origin master'
 dots-push() {
     local commit_message="${1:-minor}"
     git -C "$DOTFILES_PATH" add .
