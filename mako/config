@@ -29,10 +29,10 @@ default-timeout=5000
 ignore-timeout=0
 max-visible=3
 layer=overlay
-background-color=#232136
-text-color=#ea9a97
-border-color=#ea9a97
-progress-color=#ea9a97
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#b4befe
+progress-color=#89b4fa
 
 
 
@@ -58,11 +58,11 @@ group-by=category
 anchor=bottom-left
 
 [category=im.received]
-border-color=#9ccfd8
+border-color=#89b4fa
 default-timeout=16000
 
 [app-name=Spotify]
-border-color=#3e8fb0
+border-color=#a6e3a1
 
 
 [category=adjustments]

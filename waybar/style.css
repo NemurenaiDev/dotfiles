@@ -1,5 +1,5 @@
 @define-color foreground #e0def4;
-@define-color background #232136;
+@define-color background rgba(35, 33, 54, 0.6);
 
 @define-color selection_foreground #e0def4;
 @define-color selection_background #44415a;

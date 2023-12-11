@@ -1,6 +1,13 @@
 if status is-interactive
-
     set -xg DOTFILES_PATH ~/Hyprland
+    source "$DOTFILES_PATH/fish/setenv.fish"
+
+    if test (tty) = "/dev/tty1"
+        if not pgrep -x "Hyprland" >/dev/null
+            Hyprland &
+        end
+    end
+
 
     starship init fish | source
 

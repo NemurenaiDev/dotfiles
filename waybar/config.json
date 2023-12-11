@@ -13,7 +13,7 @@
 	"modules-left": [
 		"clock",
 		"battery",
-//		"custom/weather",
+		"custom/weather",
 		"custom/updater",
 		"hyprland/window"
 	],
@@ -23,7 +23,7 @@
 	"modules-right": [
 		"custom/playerlabel",
 		"tray",
-		"custom/wireguard-manager",
+//		"custom/wireguard-manager",
 		"backlight",
 		"pulseaudio#microphone",
 		"pulseaudio",
@@ -39,14 +39,14 @@
 		"sort-by-number": true,
 		"format-icons": {
 			"11": "󰭵",
-			
+
 			"21": "\uDB80\uDEAF",
 			"22": "󰗹",
 			"23": "󱜅",
-			
+
 			"29": "",
 			"30": "",
-			
+
 			"31": "",
 			"32": ""
 		},
@@ -219,7 +219,7 @@
 	},
 	"custom/updater": {
 		"format": " {}",
-		"interval": 15,
+		"interval": 30,
 		"exec": "checkupdates | wc -l",
 		"exec-if": "[[ $(checkupdates | wc -l) -gt 0 ]]",
 		"on-click": "kitty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
