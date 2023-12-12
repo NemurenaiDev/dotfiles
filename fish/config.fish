@@ -4,7 +4,7 @@ if status is-interactive
 
     if test (tty) = "/dev/tty1"
         if not pgrep -x "Hyprland" >/dev/null
-            Hyprland &
+            Hyprland >/dev/null 2>&1 &
         end
     end
 
