@@ -1,5 +1,5 @@
 @define-color foreground #CDD6F4;
-@define-color background #1E1E2E;
+@define-color background rgba(30, 30, 46, 0.75);
 @define-color selection_foreground #1E1E2E;
 @define-color selection_background #F5E0DC;
 
@@ -62,7 +62,7 @@
 
 window#waybar {
     background: @background;
-    border-top: 1px solid @inactive_tab_background;
+    border-top: 1px solid @color8;
     border-radius: 0;
 }
 
