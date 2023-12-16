@@ -37,11 +37,12 @@ if status is-interactive
     end
 
     function dots-push
-        set commit_message (count $argv > 0; and echo $argv[1]; or echo "minor")
+        set -q commit_message $argv[1]; or set commit_message "minor"
         git -C "$DOTFILES_PATH" add .
         git -C "$DOTFILES_PATH" commit -m "$commit_message"
         git -C "$DOTFILES_PATH" push origin master
     end
+
 
 
     set -xg VISUAL nvim
