@@ -7,3 +7,6 @@ hyprland/local.conf
 .env
 .env.*
 !.env.example
+
+.logs/*
+!.logs/.gitkeep

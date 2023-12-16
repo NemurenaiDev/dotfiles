@@ -4,16 +4,16 @@ if status is-interactive
 
     if test (tty) = "/dev/tty1"
         if not pgrep -x "Hyprland" >/dev/null
-            Hyprland >/dev/null 2>&1 &
+            Hyprland
         end
     end
 
 
     starship init fish | source
 
-
     alias lf='cd $(~/.config/hypr/scripts/lfcd.sh)'
 
+    alias ssh 'kitten ssh'
     alias ls 'ls --color=auto'
     alias grep 'grep --color=auto'
     alias diff 'diff --color=auto'

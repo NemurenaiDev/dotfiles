@@ -1,6 +1,6 @@
 # GLOBAL
 max-history=100
-sort=-time
+sort=+time
 
 # BINDING OPTIONS
 on-button-left=dismiss
