@@ -18,7 +18,7 @@
 		"hyprland/window"
 	],
 	"modules-center": [
-		"wlr/workspaces"
+		"hyprland/workspaces"
 	],
 	"modules-right": [
 		"custom/playerlabel",
@@ -32,12 +32,25 @@
 
 
 
-	"wlr/workspaces": {
+	"hyprland/workspaces": {
 		"format": "{icon}",
 		"on-click": "activate",
 		"all-outputs": true,
 		"sort-by-number": true,
 		"format-icons": {
+			"default": "?",
+			
+			"1": "1",
+			"2": "2",
+			"3": "3",
+			"4": "4",
+			"5": "5",
+			"6": "6",
+			"7": "7",
+			"8": "8",
+			"9": "9",
+			"10": "10",
+
 			"11": "󰭵",
 
 			"21": "\uDB80\uDEAF",
@@ -150,7 +163,7 @@
 	"custom/language": {
 		"format": "<span>[{}]</span>",
 		"return-type": "json",
-		"exec": "~/.config/hypr/scripts/hooks/KeyboardLayoutHook.sh",
+		"exec": "~/.config/hypr/scripts/hooks/keyboard-layout",
 		"tooltip": false
 	},
 	"pulseaudio": {
@@ -229,7 +242,7 @@
 		"format": "{}",
 		"interval": 60,
 		"return-type": "json",
-		"exec": "~/.config/hypr/scripts/Weather.py",
+		"exec": "~/.config/hypr/scripts/weather.py",
 		"exec-if": "ping wttr.in -c1",
 		"tooltip": true
 	}

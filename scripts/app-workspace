@@ -1,3 +1,5 @@
+#!/bin/bash
+
 workspace_id="$1"
 command="$2"
 silent="$3"

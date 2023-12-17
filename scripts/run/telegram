@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/.config/hypr/scripts/AppWorkspace.sh "31" "telegram-desktop" "$1"

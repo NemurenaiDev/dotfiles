@@ -2,6 +2,9 @@
 
 LOCK_FILE="$HOME/.cache/rclone/bisync/GoogleDrive_..home_yabai_GoogleDrive.lck"
 
+rm "$LOCK_FILE"
+
+
 sync_drive() {
     output=$(rclone bisync -v GoogleDrive:/ ~/GoogleDrive 2>&1)
     echo "$output"

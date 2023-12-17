@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/.config/hypr/scripts/AppWorkspace.sh "21" "google-chrome-stable --profile-directory='Default'" "$1"
