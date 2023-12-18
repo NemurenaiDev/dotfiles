@@ -1,3 +1,3 @@
 #!/bin/bash
 
-~/.config/hypr/scripts/AppWorkspace.sh "32" "telegram-desktop -workdir \"$HOME/.local/share/TelegramDesktop/tdata-work\"" "$1"
+~/.config/hypr/scripts/app-workspace "32" "telegram-desktop -workdir \"$HOME/.local/share/TelegramDesktop/tdata-work\"" "$1"
