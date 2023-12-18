@@ -90,8 +90,8 @@
 			"connected": "<span color=\"#80A673\">󰤪 </span>",
 			"disconnected": "<span color=\"#5C6773\">󱛏 </span>"
 		},
-		"on-click": "exec ~/.config/hypr/scripts/WireguardManager.sh -t",
-		"exec": "exec ~/.config/hypr/scripts/WireguardManager.sh -s",
+		"on-click": "exec ~/.config/hypr/scripts/wireguard-manager -t",
+		"exec": "exec ~/.config/hypr/scripts/wireguard-manager -s",
 		"format": "{icon}"
 	},
 	"backlight": {
@@ -105,8 +105,8 @@
 		"on-click-middle": "",
 		"on-click-right": "",
 		"on-update": "",
-		"on-scroll-up": "~/.config/hypr/scripts/Brightness.sh --inc",
-		"on-scroll-down": "~/.config/hypr/scripts/Brightness.sh --dec",
+		"on-scroll-up": "~/.config/hypr/scripts/brightness --inc",
+		"on-scroll-down": "~/.config/hypr/scripts/brightness --dec",
 		"smooth-scrolling-threshold": 1
 	},
 	"battery": {
@@ -128,7 +128,6 @@
 		"format-icons": [" ", " ", " ", " ", " "],
 		"format-time": "{H}h {M}min",
 		"tooltip": true,
-		"on-click-middle": "~/.config/hypr/scripts/ChangeBlur.sh",
 		"on-click-right": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown"
 	},
 	"bluetooth": {
@@ -181,20 +180,20 @@
 			"ignored-sinks": ["Easy Effects Sink"]
 		},
 		"scroll-step": 5.0,
-		"on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+		"on-click": "~/.config/hypr/scripts/volume --toggle",
 		"on-click-right": "pavucontrol",
-		"on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-		"on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+		"on-scroll-up": "~/.config/hypr/scripts/volume --inc",
+		"on-scroll-down": "~/.config/hypr/scripts/volume --dec",
 		"smooth-scrolling-threshold": 1
 	},
 	"pulseaudio#microphone": {
 		"format": "{format_source}",
 		"format-source": " {volume}%",
 		"format-source-muted": " Mute",
-		"on-click": "~/.config/hypr/scripts/Volume.sh --toggle-mic",
+		"on-click": "~/.config/hypr/scripts/volume --toggle-mic",
 		"on-click-right": "pavucontrol",
-		"on-scroll-up": "~/.config/hypr/scripts/Volume.sh --mic-inc",
-		"on-scroll-down": "~/.config/hypr/scripts/Volume.sh --mic-dec",
+		"on-scroll-up": "~/.config/hypr/scripts/volume --mic-inc",
+		"on-scroll-down": "~/.config/hypr/scripts/volume --mic-dec",
 		"scroll-step": 5
 	},
 	"temperature": {
@@ -215,10 +214,10 @@
 	"wireplumber": {
 		"format": "{icon} {volume}%",
 		"format-muted": " Mute",
-		"on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+		"on-click": "~/.config/hypr/scripts/volume --toggle",
 		"on-click-right": "pavucontrol",
-		"on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-		"on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+		"on-scroll-up": "~/.config/hypr/scripts/volume --inc",
+		"on-scroll-down": "~/.config/hypr/scripts/volume --dec",
 		"format-icons": ["", "", ""]
 	},
 	"wlr/taskbar": {
@@ -242,7 +241,7 @@
 		"format": "{}",
 		"interval": 60,
 		"return-type": "json",
-		"exec": "~/.config/hypr/scripts/weather.py",
+		"exec": "~/.config/hypr/scripts/weather",
 		"exec-if": "ping wttr.in -c1",
 		"tooltip": true
 	}
