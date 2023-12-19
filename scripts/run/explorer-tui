@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kitty bash -ic 'lf; exec fish'
