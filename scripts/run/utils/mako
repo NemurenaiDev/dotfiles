@@ -1,0 +1,18 @@
+#!/bin/bash
+
+CONFIG=$(realpath "$HOME/.config/hypr/mako/config")
+
+start() {
+    mako --config ${CONFIG} &
+    ProcessId=$!
+}
+stop() {
+    kill "$ProcessId"
+}
+
+start
+while true; do
+    inotifywait -e modify "$CONFIG"
+    stop
+    start
+done

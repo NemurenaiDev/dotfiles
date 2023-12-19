@@ -1,0 +1,19 @@
+#!/bin/bash
+
+CONFIG=$(realpath "$HOME/.config/waybar/config.json")
+STYLE=$(realpath "$HOME/.config/waybar/style.css")
+
+start() {
+    waybar --bar main-bar --log-level error --config "${CONFIG}" --style "${STYLE}" &
+    WAYBAR_PID=$!
+}
+stop() {
+    kill "$WAYBAR_PID"
+}
+
+start
+while true; do
+    inotifywait -e modify "$CONFIG" "$STYLE"
+    stop
+    start
+done
