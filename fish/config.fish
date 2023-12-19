@@ -11,7 +11,7 @@ if status is-interactive
 
     starship init fish | source
 
-    alias lf='cd $(~/.config/hypr/scripts/lfcd.sh)'
+    alias lf='cd $(~/.config/hypr/scripts/lfcd)'
 
     alias ssh 'kitten ssh'
     alias ls 'ls --color=auto'

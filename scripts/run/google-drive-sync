@@ -13,7 +13,7 @@ sync_drive() {
     if echo "$output" | grep -qE "ERROR|Failed"; then
         error_line=$(echo "$output" | grep -E "ERROR|Failed";)
         notify-send -u critical "Google Drive Sync" "$error_line"
-        sleep 60
+        sleep 3600
     fi
 }
 
@@ -32,5 +32,5 @@ trap "shutdown_process" EXIT
 while :
 do
     sync_drive
-    sleep 5
+    sleep 60
 done
