@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/.config/hypr/scripts/app-workspace "31" "obsidian" "$1"
