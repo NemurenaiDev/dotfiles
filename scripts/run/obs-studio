@@ -1,3 +1,3 @@
 #!/bin/bash
 
-~/.config/hypr/scripts/app-workspace "30" "obs" "$1"
+~/.config/hypr/scripts/app-workspace "39" "obs" "$1"

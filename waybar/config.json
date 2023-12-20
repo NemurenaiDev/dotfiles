@@ -55,13 +55,14 @@
 
 			"21": "\uDB80\uDEAF",
 			"22": "󰗹",
-			"23": "󱜅",
 
-			"29": "",
-			"30": "",
+			"25": "",
+			"26": "",
 
-			"31": "",
-			"32": ""
+			"31": "󱜅",
+			"32": "",
+
+			"39": ""
 		},
 		"on-scroll-up": "hyprctl dispatch workspace e+1",
 		"on-scroll-down": "hyprctl dispatch workspace e-1"
