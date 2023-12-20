@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/.config/hypr/scripts/app-workspace "36" "spotify" "$1"

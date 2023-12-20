@@ -62,7 +62,12 @@ border-color=#89b4fa
 default-timeout=16000
 
 [app-name=Spotify]
+default-timeout=5000
 border-color=#a6e3a1
+
+[app-name=Rhythmbox]
+default-timeout=5000
+anchor=bottom-left
 
 
 [category=adjustments]
