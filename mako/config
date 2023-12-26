@@ -78,3 +78,8 @@ anchor=bottom-center
 padding=2,4
 max-icon-size=24
 width=175
+
+[category=error]
+border-color=#eb6f92
+default-timeout=10000
+anchor=bottom-right

@@ -11,9 +11,12 @@ sync_drive() {
     echo "$output" >> "$HOME/.config/hypr/.logs/GoogleDriveSync.log"
 
     if echo "$output" | grep -qE "ERROR|Failed"; then
-        error_line=$(echo "$output" | grep -E "ERROR|Failed";)
-        notify-send -u critical "Google Drive Sync" "$error_line"
-        sleep 3600
+    	if echo "$output" | grep -qE "Reason"; then
+        	notify-send -c error "Google Drive Sync" "$(echo "$output" | grep -E "Reason")"
+    	else
+        	notify-send -c error "Google Drive Sync" "$(echo "$output" | grep -E "ERROR|Failed")"
+    	fi
+    	sleep 360
     fi
 }
 

@@ -35,8 +35,8 @@ if status is-interactive
     alias dc-start 'dc down && dc build && dc up -d && clear && dc up'
 
 
-    alias f "wl-copy (find -L . -type f -not -path '*/.*' -print | fzf)"
-    alias g "cd (find -L . -type d -not -path '*/.*' -print | fzf)"
+    alias f "wl-copy (fd --type f --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)"
+    alias g "cd (fd --type d --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)"
 
     alias gr 'cd /'
     alias gm 'cd /mnt'
@@ -49,8 +49,6 @@ if status is-interactive
     alias gd 'cd ~/Downloads'
     alias gp 'cd ~/Projects'
 
-#     function fish_greeting
-#         echo "$(pfetch)"
-#     end
+
     functions --erase fish_greeting
 end
