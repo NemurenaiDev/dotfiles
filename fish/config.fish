@@ -44,7 +44,7 @@ if status is-interactive
     alias gc 'cd ~/.config'
     alias gd 'cd ~/Downloads'
     alias gp 'cd ~/Projects'
-    
+
 
     alias ff 'wl-copy (fd --type f --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)'
     alias gg 'cd (fd --type d --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)'

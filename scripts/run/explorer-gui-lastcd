@@ -1,3 +1,3 @@
 #!/bin/bash
 
-nautilus -w "$(cat ~/Hyprland/scripts/variables/lastcd)"
+nemo "$(cat ~/Hyprland/scripts/variables/lastcd)"
