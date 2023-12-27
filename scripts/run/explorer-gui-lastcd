@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nautilus -w "$(cat ~/Hyprland/scripts/variables/lastcd)"
