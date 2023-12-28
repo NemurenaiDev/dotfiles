@@ -15,6 +15,7 @@ if status is-interactive
 
     starship init fish | source
 
+
     alias ssh 'kitten ssh'
     alias ls 'ls --color=auto'
     alias grep 'grep --color=auto'
@@ -48,7 +49,7 @@ if status is-interactive
 
     alias ff 'wl-copy (fd --type f --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)'
     alias gg 'cd (fd --type d --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)'
-    alias ggg 'cd (cat $VARIABLES_PATH/histcd | fzf -e)'
+    alias ggg 'cd (cat $VARIABLES_PATH/histcd | sort | uniq | fzf -e)'
     alias g "cdoriginal '$(cat $VARIABLES_PATH/lastcd)'"
 
     functions -c cd cdoriginal
@@ -56,6 +57,27 @@ if status is-interactive
         cdoriginal $argv
         echo "$(pwd)" > "$VARIABLES_PATH/lastcd"
         echo "$(pwd)" >> "$VARIABLES_PATH/histcd"
+    end
+
+    function pc
+        switch $argv[1]
+            case "install"
+                pikaur -S $argv[2..-1]
+            case "remove"
+                pikaur -Rns $argv[2..-1]
+            case "update"
+                sudo pikaur -Syu
+            case "search"
+                pikaur -Ss $argv[2..-1]
+            case "list"
+                pikaur -Q
+            case "info"
+                pikaur -Qi $argv[2..-1]
+            case "clear"
+                pikaur -Scc
+            case "*"
+                echo "Usage: mypacman [install | remove | update | search | list | info | clear] [packages...]"
+        end
     end
 
     functions --erase fish_greeting
