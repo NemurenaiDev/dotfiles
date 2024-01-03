@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES_PATH=~/.config/hypr
+DOTFILES_PATH=~/dotfiles
 RETRY_INTERVAL=60
 NOTIFICATION_SENT=false
 

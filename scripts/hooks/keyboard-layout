@@ -3,7 +3,7 @@
 layoutStatusFile="/tmp/keyboard-layout-status"
 
 printLayout() {
-    echo "{\"text\":\"$(python -u  ~/.config/hypr/scripts/keyboard-layout get)\"}"
+    echo "{\"text\":\"$(python -u  ~/dotfiles/scripts/keyboard-layout get)\"}"
 }
 
 printLayout

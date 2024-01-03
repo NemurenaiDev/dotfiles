@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-iDIR="$HOME/.config/hypr/icons"
+iDIR="$HOME/dotfiles/scripts/assets/icons"
 
 # Get keyboard brightness
 get_kbd_backlight() {

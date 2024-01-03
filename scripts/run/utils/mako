@@ -1,14 +1,18 @@
 #!/bin/bash
 
-CONFIG=$(realpath "$HOME/.config/hypr/mako/config")
+CONFIG="$(realpath "$HOME/dotfiles/mako/config")"
 
 start() {
     mako --config ${CONFIG} &
     ProcessId=$!
 }
+
 stop() {
-    kill "$ProcessId"
+    if [[ -n "$ProcessId" ]]; then
+        kill "$ProcessId"
+    fi
 }
+
 
 start
 while true; do

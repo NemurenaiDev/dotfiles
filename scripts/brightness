@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-iDIR="$HOME/.config/hypr/icons"
+iDIR="$HOME/dotfiles/scripts/assets/icons"
 
 # Get brightness
 get_backlight() {

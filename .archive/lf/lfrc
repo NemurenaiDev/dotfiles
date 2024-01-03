@@ -72,7 +72,7 @@ map m
 
 
 cmd setwallpaper ${{
-	~/.config/hypr/scripts/wallpaper-selector "$f"
+	~/dotfiles/scripts/wallpaper-selector "$f"
 }}
 
 cmd quitcd ${{

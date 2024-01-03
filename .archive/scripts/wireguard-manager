@@ -2,7 +2,7 @@
 
 STATUS_CONNECTED_STR='{"text":"Connected","class":"connected","alt":"connected"}'
 STATUS_DISCONNECTED_STR='{"text":"Disconnected","class":"disconnected","alt":"disconnected"}'
-STATUS_FILE=~/.config/hypr/scripts/variables/wireguard-manager-status
+STATUS_FILE=~/dotfiles/.variables/wireguard-manager-status
 
 function status_wireguard() {
   nmcli connection show | grep -q "wireguard  Silvan-PC"

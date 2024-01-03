@@ -1,6 +1,6 @@
 #!/bin/bash
 
-iDIR="$HOME/.config/hypr/icons"
+iDIR="$HOME/dotfiles/scripts/assets/icons"
 
 time=$(date +%Y-%m-%d-%H-%M-%S)
 dir="$(xdg-user-dir)/Pictures/Screenshots"

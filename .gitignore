@@ -1,7 +1,9 @@
 .idea
 *.log
-scripts/variables/*
-!scripts/variables/.gitkeep
+
+.variables/*
+!.variables/.gitkeep
+
 hyprland/local.conf
 
 .env
@@ -10,3 +12,5 @@ hyprland/local.conf
 
 .logs/*
 !.logs/.gitkeep
+
+\!*

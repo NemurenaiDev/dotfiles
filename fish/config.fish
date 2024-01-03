@@ -1,14 +1,14 @@
 if status is-interactive
-    set -xg DOTFILES_PATH ~/Hyprland
-    set -xg VARIABLES_PATH ~/Hyprland/scripts/variables
-    set -xg VISUAL nvim
-    set -xg EDITOR nvim
+    set -xg DOTFILES_PATH ~/dotfiles
+    set -xg VARIABLES_PATH ~/dotfiles/.variables
 
     source "$DOTFILES_PATH/fish/setenv.fish"
 
-    if test (tty) = '/dev/tty1'
-        if not pgrep -x 'Hyprland' >/dev/null
-            Hyprland
+    if test "$AUTORUN_HYPRLAND" = "true"
+        if test (tty) = '/dev/tty1'
+            if not pgrep -x 'Hyprland' >/dev/null
+                Hyprland
+            end
         end
     end
 
@@ -29,11 +29,6 @@ if status is-interactive
     alias ll 'lsd -lh'
     alias lll 'lsd -lAh'
 
-    alias c 'clear'
-
-    alias dc 'docker-compose'
-    alias dc-start 'dc down && dc build && dc up -d && clear && dc up'
-
 
     alias gr 'cd /'
     alias gm 'cd /mnt'
@@ -50,33 +45,35 @@ if status is-interactive
     alias ff 'wl-copy (fd --type f --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)'
     alias gg 'cd (fd --type d --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)'
     alias ggg 'cd (cat $VARIABLES_PATH/histcd | sort | uniq | fzf -e)'
-    alias g "cdoriginal '$(cat $VARIABLES_PATH/lastcd)'"
+    alias g "cd-original '$(cat $VARIABLES_PATH/lastcd)'"
 
-    functions -c cd cdoriginal
+    functions -c cd cd-original
     function cd
-        cdoriginal $argv
+        cd-original $argv
         echo "$(pwd)" > "$VARIABLES_PATH/lastcd"
         echo "$(pwd)" >> "$VARIABLES_PATH/histcd"
     end
 
     function pc
         switch $argv[1]
+            case "i"
+                pikaur -S --nodiff --noedit $argv[2..-1]
             case "install"
-                pikaur -S $argv[2..-1]
+                pikaur -S --nodiff --noedit $argv[2..-1]
             case "remove"
                 pikaur -Rns $argv[2..-1]
             case "update"
-                sudo pikaur -Syu
+                sudo pikaur -Syu --nodiff --noedit
             case "search"
                 pikaur -Ss $argv[2..-1]
             case "list"
-                pikaur -Q
+                pikaur -Q | grep "$(string join '\|' $argv[2..-1])"
             case "info"
                 pikaur -Qi $argv[2..-1]
             case "clear"
                 pikaur -Scc
             case "*"
-                echo "Usage: mypacman [install | remove | update | search | list | info | clear] [packages...]"
+                echo "Usage: pc [ i | install | remove | update | search | list | info | clear] [packages...]"
         end
     end
 

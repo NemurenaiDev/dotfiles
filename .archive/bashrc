@@ -1,9 +1,9 @@
-DOTFILES_PATH=~/Hyprland
+DOTFILES_PATH=~/dotfiles
 
 eval "$(starship init bash)"
 
 
-alias lf='cd $(~/.config/hypr/scripts/lfcd)'
+alias lf='cd $(~/dotfiles/scripts/lfcd)'
 
 
 alias ls='ls --color=auto'
