@@ -2,7 +2,7 @@ if status is-interactive
     set -xg DOTFILES_PATH ~/dotfiles
     set -xg VARIABLES_PATH ~/dotfiles/.variables
 
-    source "$DOTFILES_PATH/fish/setenv.fish"
+    source "$DOTFILES_PATH/[terminal]/fish/setenv.fish"
 
     if test "$AUTORUN_HYPRLAND" = "true"
         if test (tty) = '/dev/tty1'
@@ -45,7 +45,7 @@ if status is-interactive
     alias ff 'wl-copy (fd --type f --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)'
     alias gg 'cd (fd --type d --follow -E node_modules -E vendor -E /proc -E /run -E /srv -E /sys -E /lib -E /lib64 -E /sbin -E /bin -E /mnt | fzf -e)'
     alias ggg 'cd (cat $VARIABLES_PATH/histcd | sort | uniq | fzf -e)'
-    alias g "cd-original '$(cat $VARIABLES_PATH/lastcd)'"
+    alias g 'cd-original "$(cat $VARIABLES_PATH/lastcd)"'
 
     functions -c cd cd-original
     function cd
