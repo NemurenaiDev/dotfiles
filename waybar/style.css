@@ -112,11 +112,16 @@ tooltip label {
 #custom-playerlabel,
 #custom-updater,
 #custom-wallpapers,
+#custom-notification,
 #custom-wireguard-manager,
 #language,
 #custom-language {
     color: @foreground;
     padding: 0 8px;
+}
+
+#custom-notification {
+    padding: 0 14px;
 }
 
 #custom-wireguard-manager {

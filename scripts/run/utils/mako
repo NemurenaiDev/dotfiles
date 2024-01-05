@@ -2,21 +2,8 @@
 
 CONFIG="$(realpath "$HOME/dotfiles/mako/config")"
 
-start() {
-    mako --config ${CONFIG} &
-    ProcessId=$!
-}
-
-stop() {
-    if [[ -n "$ProcessId" ]]; then
-        kill "$ProcessId"
-    fi
-}
-
-
-start
+mako &
 while true; do
     inotifywait -e modify "$CONFIG"
-    stop
-    start
+    makoctl reload
 done

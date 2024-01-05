@@ -48,6 +48,7 @@ default-timeout=8000
 anchor=bottom-left
 
 [urgency=high]
+invisible=0
 border-color=#eb6f92
 default-timeout=0
 anchor=bottom-left
@@ -55,6 +56,7 @@ anchor=bottom-left
 
 
 [category=mpd]
+invisible=0
 border-color=#eb6f92
 default-timeout=0
 group-by=category
@@ -74,6 +76,7 @@ anchor=bottom-left
 
 
 [category=adjustments]
+invisible=0
 text-color=#f7f7f7
 text-alignment=right
 default-timeout=2000
@@ -83,6 +86,7 @@ max-icon-size=24
 width=175
 
 [category=error]
+invisible=0
 border-color=#eb6f92
 default-timeout=10000
 anchor=bottom-right
