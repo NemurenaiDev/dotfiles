@@ -14,7 +14,6 @@
     "custom/notification",
     "clock",
     "battery",
-    "custom/weather",
     "custom/updater",
     "hyprland/window"
   ],
@@ -158,10 +157,9 @@
     "interval": 1,
     "format": " {:%H:%M:%S}",
     "format-alt": " {:%e.%m.%y}",
-    //		"tooltip-format": "<big>{:%e %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
-      "mode": "year",
+      "mode": "month",
       "mode-mon-col": 3,
       "weeks-pos": "none",
       "on-scroll": 1,
@@ -173,6 +171,10 @@
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
         "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
     }
   },
   "custom/language": {
@@ -267,12 +269,4 @@
     "on-click": "kitty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
     "tooltip": false
   },
-  "custom/weather": {
-    "format": "{}",
-    "interval": 60,
-    "return-type": "json",
-    "exec": "~/dotfiles/scripts/weather",
-    "exec-if": "ping wttr.in -c1",
-    "tooltip": true
-  }
 }

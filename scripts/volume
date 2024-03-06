@@ -25,18 +25,18 @@ toggle_mute() {
 
 toggle_mic() {
 	if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
-		pamixer --default-source -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone.png" "OFF"
+		pamixer --default-source -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone-off.png" "OFF"
 	elif [ "$(pamixer --default-source --get-mute)" == "true" ]; then
-		pamixer -u --default-source u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone.png" "ON"
+		pamixer -u --default-source u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone-on.png" "ON"
 	fi
 }
 inc_mic_volume() {
 	pamixer --default-source -i 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone.png" "$(pamixer --default-source --get-volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone-on.png" "$(pamixer --default-source --get-volume)%"
 }
 dec_mic_volume() {
 	pamixer --default-source -d 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone.png" "$(pamixer --default-source --get-volume)%"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:$(pamixer --default-source --get-volume) -c adjustments -i "$iDIR/microphone-on.png" "$(pamixer --default-source --get-volume)%"
 }
 
 if [[ "$1" == "--get" ]]; then

@@ -78,6 +78,8 @@ tooltip {
 }
 
 tooltip label {
+    border: #F38BA8 1px solid;
+    border-radius: 5px;
     color: @foreground;
     padding: 5px 10px;
 }
@@ -157,20 +159,6 @@ tooltip label {
 #custom-playerlabel {
     font-weight: normal;
     font-style: normal;
-}
-
-#custom-weather,
-#custom-weather.severe,
-#custom-weather.sunnyDay,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.default {
-    padding: 0 8px;
 }
 
 #temperature.critical {
