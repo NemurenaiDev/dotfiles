@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WALLPAPERS_DIR=$HOME/Pictures/wallpapers
-CURRENT_WALLPAPER=$WALLPAPERS_DIR/current-wallpaper.jpg
+CURRENT_WALLPAPER=$WALLPAPERS_DIR/current-wallpaper.png
 
 FPS=60
 TYPE="simple"
@@ -11,7 +11,8 @@ set_wallpaper() {
     local wallpaper_path="$1"
 
     if [ -f "$wallpaper_path" ]; then
-        cp "$wallpaper_path" "$CURRENT_WALLPAPER"
+    	echo "Converting $wallpaper_path to $CURRENT_WALLPAPER"
+    	convert "$wallpaper_path" "$CURRENT_WALLPAPER"
         swww img "$CURRENT_WALLPAPER" --transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION
     else
         echo "File not found: $wallpaper_path"

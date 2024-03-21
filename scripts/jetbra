@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+ln -sf /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/intellij-idea-ultimate-edition/bin/jetbrains_client64.vmoptions
+ln -sf /opt/jetbra/vmoptions/webstorm.vmoptions /opt/intellij-idea-ultimate-edition/bin/idea64.vmoptions
+
+ln -sf /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/webstorm/bin/jetbrains_client64.vmoptions
+ln -sf /opt/jetbra/vmoptions/webstorm.vmoptions /opt/webstorm/bin/webstorm64.vmoptions
+
+ln -sf /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/phpstorm/bin/jetbrains_client64.vmoptions
+ln -sf /opt/jetbra/vmoptions/webstorm.vmoptions /opt/phpstorm/bin/phpstorm64.vmoptions
+
+ln -sf /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/datagrip/bin/jetbrains_client64.vmoptions
+ln -sf /opt/jetbra/vmoptions/webstorm.vmoptions /opt/datagrip/bin/datagrip64.vmoptions
+
+ln -sf /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/pycharm-professional/bin/jetbrains_client64.vmoptions
+ln -sf /opt/jetbra/vmoptions/webstorm.vmoptions /opt/pycharm-professional/bin/pycharm64.vmoptions
+
