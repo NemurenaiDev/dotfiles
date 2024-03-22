@@ -1,0 +1,92 @@
+* {
+    transition: 0.2s;
+}
+
+window {
+    font-family: "FiraCode Nerd Font Mono", sans-serif;
+    font-size: 13px;
+    margin: 0;
+    border: 1px solid #eba0ac;
+    background-color: rgba(22, 25, 37, 0.8);
+    border-radius: 16px;
+}
+
+#input {
+    padding: 4px 20px;
+    margin: 20px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    background: linear-gradient(90deg, rgba(203, 166, 247, 0.2) 0%, rgba(148, 226, 213, 0.2) 100%);
+    outline: none;
+    border-radius: 16px;
+}
+
+#input image {
+    color: #fff;
+}
+
+#input:focus {
+    border: none;
+    outline: none;
+}
+
+#inner-box {
+    margin: 0 20px 20px;
+    border: none;
+    color: #cba6f7;
+    border-radius: 16px;
+}
+
+#inner-box * {
+    transition: none;
+
+}
+
+#outer-box {
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+}
+
+#scroll {
+    margin-top: 5px;
+    border: none;
+    border-radius: 16px;
+    margin-bottom: 5px;
+}
+
+#text:selected {
+    color: #fff;
+    font-weight: bold;
+}
+
+#img {
+    margin-left: 3px;
+    background: transparent;
+}
+
+#text {
+    margin: 0;
+    padding: 0 0 0 10px;
+    border: none;
+    background: transparent;
+}
+
+#entry {
+    margin: 0;
+    border: none;
+    border-radius: 16px;
+    background-color: transparent;
+    min-height: 32px;
+    font-weight: bold;
+}
+
+#entry:selected {
+    margin: 0;
+    outline: none;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(90deg, rgba(203, 166, 247, 0.2) 0%, rgba(148, 226, 213, 0.2) 100%);
+}
