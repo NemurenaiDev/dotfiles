@@ -1,29 +1,33 @@
 #!/bin/bash
 
-WALLPAPERS_DIR=$HOME/Pictures/wallpapers
-CURRENT_WALLPAPER=$WALLPAPERS_DIR/current-wallpaper.png
+CURRENT_WALLPAPER=$HOME/.config/dotfiles/wallpaper.png
+CURRENT_WALLPAPER_0=$HOME/.config/dotfiles/wallpaper-0.png
+CURRENT_WALLPAPER_1=$HOME/.config/dotfiles/wallpaper-1.png
 
 FPS=60
 TYPE="simple"
 DURATION=2
 
 set_wallpaper() {
-    local wallpaper_path="$1"
+	local wallpaper_path="$1"
 
-    if [ -f "$wallpaper_path" ]; then
-    	echo "Converting $wallpaper_path to $CURRENT_WALLPAPER"
-    	convert "$wallpaper_path" "$CURRENT_WALLPAPER"
-        swww img "$CURRENT_WALLPAPER" --transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION
-    else
-        echo "File not found: $wallpaper_path"
-        exit 1
-    fi
+	if [ -f "$wallpaper_path" ]; then
+		echo "Converting $wallpaper_path"
+		convert "$wallpaper_path" "$CURRENT_WALLPAPER"
+
+		convert -crop 50%x100% "$CURRENT_WALLPAPER" "$CURRENT_WALLPAPER"
+		swww img "$CURRENT_WALLPAPER_0" -o "DP-2" --transition-fps $FPS --transition-duration $DURATION --transition-type $TYPE
+		swww img "$CURRENT_WALLPAPER_1" -o "DP-1" --transition-fps $FPS --transition-duration $DURATION --transition-type $TYPE
+#		swww img "$CURRENT_WALLPAPER" --transition-fps $FPS --transition-duration $DURATION --transition-type $TYPE
+	else
+		echo "File not found: $wallpaper_path"
+		exit 1
+	fi
 }
 
-
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 <wallpaper_file_path>"
-    exit 1
+	echo "Usage: $0 <wallpaper_file_path>"
+	exit 1
 fi
 
 set_wallpaper "$1"

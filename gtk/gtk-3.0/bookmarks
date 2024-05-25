@@ -1,15 +1,13 @@
 file:///mnt /mnt
-file:///home/yabai/Pictures Pictures
-file:///home/yabai/Downloads Downloads
 file:///home/yabai/.config .config
 file:///home/yabai/Projects Projects
+file:///home/yabai/Downloads Downloads
 file:///home/yabai/Projects/PhpstormProjects PhpstormProjects
 file:///home/yabai/Projects/WebstormProjects WebstormProjects
 file:///home/yabai/Projects/PhpstormProjects/KeitaroCrypto KeitaroCrypto
 file:///home/yabai/Remote/GoogleDrive GoogleDrive
 file:///home/yabai/Remote/Virtual/GooglePhotos GooglePhotos
-sftp://keitaro/usr/share/php SSH | Keitaro/php
-sftp://keitaro/var/www/keitaro SSH | Keitaro/www
+sftp://keitaro/usr/share/php SSH | keitaro/php
+sftp://keitaro/var/www/keitaro SSH | keitaro/www
 sftp://cpa/var/www SSH | cpa/www
-sftp://reverseproxy/ SSH | reverseproxy
-sftp://yabai@laptop:1111/home/yabai SSH | yabai
+sftp://bodya/root SSH | bodya

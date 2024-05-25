@@ -74,6 +74,9 @@ border-color=#a6e3a1
 default-timeout=5000
 anchor=bottom-left
 
+[app-name=waybar-updates]
+invisible=true
+
 
 [category=adjustments]
 invisible=0

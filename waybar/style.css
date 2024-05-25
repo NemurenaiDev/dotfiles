@@ -27,10 +27,11 @@ tooltip {
 }
 
 tooltip label {
+    padding: 5px 10px;
     border: #9D8C98 1px solid;
     border-radius: 5px;
     color: #C7AEBB;
-    padding: 5px 10px;
+    font-size: 16px;
 }
 
 #workspaces button {
@@ -39,7 +40,7 @@ tooltip label {
 }
 
 #workspaces button.active {
-    color: #D9A8C6;
+    color: #cdd6f4;
 }
 
 #workspaces button:hover {
@@ -47,6 +48,7 @@ tooltip label {
 }
 
 #clock,
+#upower,
 #battery,
 #temperature,
 #pulseaudio,
@@ -60,12 +62,19 @@ tooltip label {
 #taskbar button,
 #workspaces,
 #window,
-#custom-playerlabel,
-#custom-notification,
 #language,
-#custom-language {
+#custom-notification,
+#custom-cloudflare-warp,
+#custom-playerlabel,
+#custom-pacman,
+#custom-language,
+#custom-weather {
     color: #C7AEBB;
     padding: 0 8px;
+}
+
+#custom-cloudflare-warp {
+    padding: 2px 4px 0 0;
 }
 
 #custom-notification {
@@ -81,6 +90,7 @@ tooltip label {
     color: #F3D1A2;
 }
 
+#upower,
 #battery,
 #backlight,
 #pulseaudio {

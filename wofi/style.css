@@ -4,7 +4,7 @@
 
 window {
     font-family: "FiraCode Nerd Font Mono", sans-serif;
-    font-size: 13px;
+    font-size: 16px;
     margin: 0;
     border: 1px solid #eba0ac;
     background-color: rgba(22, 25, 37, 0.8);
@@ -59,7 +59,6 @@ window {
 
 #text:selected {
     color: #fff;
-    font-weight: bold;
 }
 
 #img {
@@ -80,7 +79,6 @@ window {
     border-radius: 16px;
     background-color: transparent;
     min-height: 32px;
-    font-weight: bold;
 }
 
 #entry:selected {

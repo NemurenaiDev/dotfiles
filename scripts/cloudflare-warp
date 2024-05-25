@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+rawstatus="$(timeout 1s warp-cli status | grep "Status update: " | head -n 1 )"
+
+if echo $rawstatus | grep -q "Status update: Connected"; then
+	status="connected"
+elif echo $rawstatus | grep -q "Status update: Connecting"; then
+	status="connecting"
+else
+	status="disconnected"
+fi
+
+description="$(echo $rawstatus | sed 's/Status update: //g')"
+
+case $1 in
+-s | --status)
+	echo "{\"class\":\"$status\",\"text\":\"$status\",\"alt\":\"$status\",\"tooltip\":\"$description\"}"
+	;;
+-t | --toggle)
+	if echo $rawstatus | grep -q "Status update: Connected"; then
+		timeout 1s warp-cli disconnect >/dev/null 2>&1
+	else
+		timeout 1s warp-cli connect >/dev/null 2>&1
+	fi
+	;;
+*)
+	echo "Invalid option. Usage: $0 [-s|--status] [-t|--toggle]"
+	exit 1
+	;;
+esac

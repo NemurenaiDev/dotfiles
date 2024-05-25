@@ -1,6 +1,8 @@
 .idea
 *.log
 
+copyq_tab*.dat
+
 .variables/*
 !.variables/.gitkeep
 
