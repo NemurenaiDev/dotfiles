@@ -1,4 +1,5 @@
 .idea
+.code
 *.log
 
 copyq_tab*.dat
@@ -6,7 +7,9 @@ copyq_tab*.dat
 .variables/*
 !.variables/.gitkeep
 
-hyprland/local.conf
+./vscode/History
+./vscode/globalStorage
+./vscode/workspaceStorage
 
 .env
 .env.*
