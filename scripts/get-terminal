@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))"

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/dotfiles/scripts/app-workspace "15" "kitty bash -ic 'btop'" "$1"

@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-rawstatus="$(timeout 1s warp-cli status | grep "Status update: " | head -n 1 )"
+rawstatus="$(timeout 1s warp-cli status | grep "Status update: " | head -n 1)"
 
 if echo $rawstatus | grep -q "Status update: Connected"; then
 	status="connected"

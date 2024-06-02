@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [[ "$1" == "--just-run" ]]; then
-	nemo
-else
-	~/dotfiles/scripts/app-workspace "13" "nemo" "$1"
-fi
-

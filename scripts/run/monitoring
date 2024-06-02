@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ "$1" == "--setup" ]]; then
+	tmux new-session -d -s monitoring
+
+    tmux split-window -v -t monitoring
+
+    tmux send-keys -t monitoring:1.1 "nvtop" C-m
+    tmux send-keys -t monitoring:1.2 "btop" C-m
+
+    tmux resize-pane -t monitoring:1.2 -y 20
+
+    ~/dotfiles/scripts/app-workspace "15" "kitty bash -ic 'tmux attach'" "--silent"
+else
+	~/dotfiles/scripts/app-workspace "15" "kitty bash -ic 'tmux atach'" "$1"
+fi

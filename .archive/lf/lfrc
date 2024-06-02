@@ -72,7 +72,7 @@ map m
 
 
 cmd setwallpaper ${{
-	~/dotfiles/scripts/wallpaper-selector "$f"
+	~/dotfiles/scripts/ "$f"
 }}
 
 cmd quitcd ${{

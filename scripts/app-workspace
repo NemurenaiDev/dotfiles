@@ -4,24 +4,22 @@ workspace_id="$1"
 command="$2"
 arg="$3"
 
-
 if [[ $arg == "--run-anyway" ]]; then
 	ActiveWorkspace=$(hyprctl -j activeworkspace | jq '.id')
-    if [ "$ActiveWorkspace" == "$workspace_id" ]; then
-        hyprctl dispatch exec [workspace "$workspace_id" silent] "$command"
-    else
-    	hyprctl dispatch workspace "$workspace_id"
-    fi
+	if [ "$ActiveWorkspace" == "$workspace_id" ]; then
+		hyprctl dispatch exec [workspace "$workspace_id" silent] "$command"
+	else
+		hyprctl dispatch workspace "$workspace_id"
+	fi
 else
 	if [[ -z $arg ]]; then
-    	hyprctl dispatch workspace "$workspace_id"
+		hyprctl dispatch workspace "$workspace_id"
 	fi
 
 	WorkspaceLastWindow=$(hyprctl -j workspaces | jq --arg id "$workspace_id" '.[] | select(.id == ($id|tonumber)) | .lastwindowtitle')
-	WorkspaceLastWindow="${WorkspaceLastWindow//\"}"
+	WorkspaceLastWindow="${WorkspaceLastWindow//\"/}"
 
 	if [[ -z $WorkspaceLastWindow ]]; then
-	    hyprctl dispatch exec [workspace "$workspace_id" silent] "$command"
+		hyprctl dispatch exec [workspace "$workspace_id" silent] "$command"
 	fi
 fi
-

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ "$1" == "--just-run" ]]; then
+	thunar
+else
+	~/dotfiles/scripts/app-workspace "13" "thunar" "$1"
+fi
+

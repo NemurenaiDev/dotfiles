@@ -1,0 +1,3 @@
+#!/bin/bash
+
+thunar "$(cat ~/dotfiles/.variables/lastcd)"

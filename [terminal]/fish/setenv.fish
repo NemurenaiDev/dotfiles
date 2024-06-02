@@ -1,9 +1,13 @@
 #!/usr/bin/env fish
 
-set envFile "$DOTFILES_PATH/.env"
+set -Ux FZF_DEFAULT_OPTS "\
+    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+"
 
-if test -f $envFile
-    set lines (cat $envFile | grep -v "^#")
+
+if test -f "$DOTFILES_PATH/.env"
+    set lines (cat "$DOTFILES_PATH/.env" | grep -v "^#")
 
     for line in $lines
         set parts (string split -m1 "=" -- $line)
@@ -15,5 +19,5 @@ if test -f $envFile
         end
     end
 else
-    echo "File $envFile not found"
+    echo "File $DOTFILES_PATH/.env not found"
 end

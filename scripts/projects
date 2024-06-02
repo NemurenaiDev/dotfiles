@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+
+import os
+import sys
+
+projects_directory = "~/Projects"
+projects_file = os.path.expanduser("~/.config/dotfiles/.variables/projects")
+
+
+def resolve(path: str):
+    return os.path.abspath(os.path.expanduser(path.strip().rstrip('/')))
+
+
+def prepare(path: str):
+    if os.path.isdir(resolve(path)):
+        return resolve(path).replace(os.path.expanduser("~"), "~")
+    else:
+        return None
+
+
+def get():
+    with open(projects_file, "r") as file:
+        projects = list(set(file.readlines()))
+    
+    with os.scandir(resolve(projects_directory)) as entries:
+        directories = [entry.name for entry in entries if entry.is_dir()]
+        for directory in directories:
+            print(prepare(os.path.join(projects_directory, directory)))
+
+    with open(projects_file, "w") as file:
+        for project in projects:
+            path = prepare(project)
+            if path is not None:
+                file.write(path + "\n")
+                print(path)
+
+
+def add(project):
+    path = prepare(project)
+    if path is not None:
+        with open(projects_file, "a") as file:
+            file.write(f"{path}\n")
+        print(f"Added project: {path}")
+    else:
+        print(f"Invalid path: {path}. The path must exist and be a directory.")
+
+
+def rem(project):
+    path = prepare(project)
+
+    with open(projects_file, "r") as file:
+        stored_projects = list(set(file.readlines()))
+    
+    with open(projects_file, "w") as file:
+        for stored_project in stored_projects:
+            if stored_project != path:
+                file.write(path)
+    
+    print(f"Removed project: {path}")
+
+
+if __name__ == "__main__":
+    open(projects_file, "a").close()
+
+    if len(sys.argv) < 2:
+        print("Usage: script.py [get|add|rem] [project_path]")
+        exit(1)
+
+    action = sys.argv[1]
+    if action == "get":
+        get()
+    elif action == "add":
+        if len(sys.argv) != 3:
+            print("Usage: script.py add [project_path]")
+            exit(1)
+        add(sys.argv[2])
+    elif action == "rem":
+        if len(sys.argv) != 3:
+            print("Usage: script.py rem [project_path]")
+            exit(1)
+        rem(sys.argv[2])
+    else:
+        print("Unknown action")
+        exit(1)

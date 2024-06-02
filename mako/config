@@ -49,34 +49,14 @@ anchor=bottom-left
 
 [urgency=high]
 invisible=0
-border-color=#eb6f92
 default-timeout=0
 anchor=bottom-left
-
-
-
-[category=mpd]
-invisible=0
 border-color=#eb6f92
-default-timeout=0
-group-by=category
-anchor=bottom-left
+
 
 [category=im.received]
 border-color=#89b4fa
 default-timeout=16000
-
-[app-name=Spotify]
-default-timeout=5000
-border-color=#a6e3a1
-
-[app-name=Rhythmbox]
-default-timeout=5000
-anchor=bottom-left
-
-[app-name=waybar-updates]
-invisible=true
-
 
 [category=adjustments]
 invisible=0
@@ -93,3 +73,11 @@ invisible=0
 border-color=#eb6f92
 default-timeout=10000
 anchor=bottom-right
+
+
+[app-name=waybar-updates]
+invisible=true
+
+[app-name=Spotify]
+default-timeout=5000
+border-color=#a6e3a1

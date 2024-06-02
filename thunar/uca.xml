@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>configure-shortcuts</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1716974053674257-1</unique-id>
+	<command>kitty %f</command>
+	<description></description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>configure-shortcuts</icon>
+	<name>Open Terminal Instead</name>
+	<submenu></submenu>
+	<unique-id>1717010945242085-6</unique-id>
+	<command>hyprctl dispatch killactive &amp; kitty %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>visual-studio-code</icon>
+	<name>Open  VSCode Here</name>
+	<submenu></submenu>
+	<unique-id>1716974214288656-3</unique-id>
+	<command>code --new-window --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>cm_extractfiles</icon>
+	<name>Extract Here</name>
+	<submenu></submenu>
+	<unique-id>1716976127782967-5</unique-id>
+	<command>file-roller --extract-here %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+</actions>

@@ -3,13 +3,15 @@
 *.log
 
 copyq_tab*.dat
+copyq.lock
+copyq.pub
 
 .variables/*
 !.variables/.gitkeep
 
-./vscode/History
-./vscode/globalStorage
-./vscode/workspaceStorage
+vscode/History
+vscode/globalStorage
+vscode/workspaceStorage
 
 .env
 .env.*

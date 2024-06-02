@@ -1,9 +1,0 @@
-#!/bin/bash
-
-~/dotfiles/scripts/app-workspace "13" "nemo"
-~/dotfiles/scripts/app-workspace "13" "nemo" --run-anyway
-
-sleep 3
-
-hyprctl dispatch workspace 5
-hyprctl dispatch focusmonitor HDMI-A-1
