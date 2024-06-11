@@ -1,0 +1,107 @@
+#!/usr/bin/zsh
+
+export Dotfiles="$HOME/.config/dotfiles"
+export MonitorLeft="DP-1"
+export MonitorCenter="DP-4"
+
+export ZSH_PLUGINS="/usr/share/zsh/plugins"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export ZINIT_HOME="$HOME/.local/share/zinit"
+export VISUAL="nano"
+export EDITOR="nano"
+
+
+source "$Dotfiles/[terminal]/zsh/functions"
+source "$Dotfiles/[terminal]/zsh/startup"
+source "$ZINIT_HOME/zinit.zsh"
+
+
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::command-not-found
+
+
+bindkey "^f" autosuggest-accept
+bindkey "^[s" toggle-sudo
+
+bindkey '[[A' history-search-backward
+bindkey '[[B' history-search-forward
+
+bindkey '^[[3;5~' kill-word
+bindkey '^H' backward-kill-word
+bindkey '^[[3~' delete-char
+
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+bindkey "^Z" undo
+bindkey "^Y" redo
+
+
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ip="ip --color=auto"
+
+alias vi="nano"
+alias vim="nano"
+alias nvim="nano"
+
+alias l="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T"
+alias ls="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T"
+alias ll="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T -lh"
+alias lll="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T -lAh"
+
+alias cd="lastcd"
+alias rm="trash -v"
+alias ff="fastfetch"
+alias ssh="kitten ssh"
+alias wlcp="wl-copy"
+alias hypr="hyprctl dispatch"
+alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /mnt --exclude /run"
+alias hist="history | fzf | tr -d "\n" | wl-copy"
+
+alias projadd="$Dotfiles/scripts/projects add"
+alias projrem="$Dotfiles/scripts/projects rem"
+
+alias thunar="exec thunar . &"
+alias code="code-reuse-or-new"
+
+
+autoload -U compinit && compinit
+autoload -U select-word-style
+select-word-style bash
+zinit cdreplay -q
+zle -N toggle-sudo
+
+HISTSIZE=5000
+HISTFILE=$Dotfiles/.variables/zsh-hist
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_save_no_dups
+setopt hist_find_no_dups
+
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
+zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
+zstyle ":completion:*" menu no
+zstyle ":fzf-tab:complete:cd:*" fzf-preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$realpath"
+
+
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(oh-my-posh init zsh --config $Dotfiles/\[terminal\]/ohmyposh.toml)"

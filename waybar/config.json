@@ -106,7 +106,7 @@
     "format": "<span>{}</span>",
     "return-type": "json",
     "max-length": 36,
-    "exec": "playerctl -s -p spotify metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}'",
+    "exec": "playerctl -s metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}'",
     "interval": 1,
     "tooltip": false
   },

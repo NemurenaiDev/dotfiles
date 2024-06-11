@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# hyprctl dispatch exec "thunar --daemon"
+hyprctl dispatch workspace 13
 
-# ~/dotfiles/scripts/app-workspace "13" "thunar"
-# ~/dotfiles/scripts/app-workspace "13" "thunar" --run-anyway
+hyprctl dispatch exec "thunar --daemon"
 
-# sleep 3
+~/dotfiles/scripts/app-workspace "13" "thunar"
+~/dotfiles/scripts/app-workspace "13" "thunar" --run-anyway
 
-# hyprctl dispatch workspace 5
-# hyprctl dispatch focusmonitor DP-1
+sleep 3
+
+hyprctl dispatch workspace 5

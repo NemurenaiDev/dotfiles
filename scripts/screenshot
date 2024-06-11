@@ -16,7 +16,11 @@ shotwin() {
 }
 
 shotarea() {
-	cd ${dir} && grim -g "$(slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 1)" - | tee "$file" | wl-copy
+	cd ${dir} && grim -g "$(slurp -b 1B1F28CC -w 0)" - | tee "$file" | wl-copy
+}
+
+shotscreen() {
+	cd ${dir} && grim -g "$(slurp -B 1B1F28CC -w 0 -o)" - | tee "$file" | wl-copy
 }
 
 if [[ ! -d "$dir" ]]; then
@@ -29,6 +33,8 @@ elif [[ "$1" == "--win" ]]; then
 	shotwin
 elif [[ "$1" == "--area" ]]; then
 	shotarea
+elif [[ "$1" == "--screen" ]]; then
+	shotscreen
 else
 	echo -e "Available Options : --now --win --area"
 fi

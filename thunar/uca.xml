@@ -13,22 +13,6 @@
 	<directories/>
 </action>
 <action>
-	<icon>configure-shortcuts</icon>
-	<name>Open Terminal Instead</name>
-	<submenu></submenu>
-	<unique-id>1717010945242085-6</unique-id>
-	<command>hyprctl dispatch killactive &amp; kitty %f</command>
-	<description></description>
-	<range>*</range>
-	<patterns>*</patterns>
-	<directories/>
-	<audio-files/>
-	<image-files/>
-	<other-files/>
-	<text-files/>
-	<video-files/>
-</action>
-<action>
 	<icon>visual-studio-code</icon>
 	<name>Open  VSCode Here</name>
 	<submenu></submenu>
@@ -40,14 +24,46 @@
 	<directories/>
 </action>
 <action>
-	<icon>cm_extractfiles</icon>
+	<icon></icon>
 	<name>Extract Here</name>
 	<submenu></submenu>
 	<unique-id>1716976127782967-5</unique-id>
-	<command>file-roller --extract-here %f</command>
+	<command>file-roller --extract-here %F</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
 	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>Create Archive</name>
+	<submenu></submenu>
+	<unique-id>1717421513568788-1</unique-id>
+	<command>cd %d &amp;&amp; file-roller --add %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>media-track-queue-amarok</icon>
+	<name>Set as Wallpaper</name>
+	<submenu></submenu>
+	<unique-id>1717427340726112-1</unique-id>
+	<command>~/.config/dotfiles/scripts/wallpaper %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
 </action>
 </actions>

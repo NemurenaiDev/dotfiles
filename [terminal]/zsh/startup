@@ -1,0 +1,34 @@
+#!/usr/bin/zsh
+
+
+if [[ "$(tty)" == "/dev/tty1" ]]; then
+    if ! pgrep -x "Hyprland" > /dev/null; then
+        clear && Hyprland > /dev/null 2>&1
+    fi
+fi
+
+
+if [[ "$(get-terminal-name)" == "code" ]]; then
+    if [[ "$(pwd)" == "$HOME" ]]; then
+        cd "$HOME/Projects"
+        project=$($Dotfiles/scripts/projects get | fzf --ansi --border --margin=30% --preview-window border-left --preview "lsd $LsdDefaultArgs \$(eval echo {})")
+        if [[ -n "$project" ]]; then
+            project=$(eval echo "$project")
+            cd "$project"
+            code-reuse-or-new . &> /dev/null
+            sleep 1.5
+            echo "Something went wrong if you see this message. This project may already be opened in another instance"
+            echo
+        fi
+    else
+        if [[ $- == *i* ]]; then
+            cbonsai --live --life=54 --time=0,001 --message="$(hyprctl splash)"
+        fi
+    fi
+fi
+
+
+if [ ! -d "$ZINIT_HOME" ]; then
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi

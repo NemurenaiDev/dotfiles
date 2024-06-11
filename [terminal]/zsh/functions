@@ -1,0 +1,57 @@
+#!/usr/bin/zsh
+
+pc() {
+    case $1 in
+        "i" | "install")
+            pikaur -S --nodiff --noedit "${@:2}"
+        ;;
+        "r" | "remove")
+            pikaur -Rns "${@:2}"
+        ;;
+        "u" | "update")
+            sudo pikaur -Syu --nodiff --noedit && notify-send 'Jetbra command ran' && sudo ~/.config/dotfiles/scripts/jetbra
+        ;;
+        "s" | "search")
+            pikaur -Ss "${@:2}"
+        ;;
+        "ls" | "list")
+            pikaur -Q | grep "$(printf '|%s' "${@:2}" | cut -c 2-)"
+        ;;
+        "info")
+            pikaur -Qi "${@:2}"
+        ;;
+        "clear")
+            pikaur -Scc
+        ;;
+        *)
+            echo "Usage: pc [(i|install) | (r|remove) | (u|update) | (s|search) | (ls|list) | info | clear] [packages...]"
+        ;;
+    esac
+}
+
+toggle-sudo() {
+    if [[ $BUFFER == sudo\ * ]]; then
+        BUFFER="${BUFFER#sudo }"
+    else
+        BUFFER="sudo $BUFFER"
+    fi
+    zle end-of-line
+}
+
+get-terminal-name() {
+    ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))"
+}
+
+code-reuse-or-new() {
+    if [[ "$(get-terminal-name)" == "code" ]]; then
+        /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --reuse-window "$@"
+    else
+        /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --new-window "$@"
+    fi
+}
+
+lastcd() {
+    cd "$@"
+    lsd --literal --icon always --color always --group-dirs first
+    echo "$(pwd)" > $Dotfiles/.variables/lastcd
+}

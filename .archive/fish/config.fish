@@ -1,8 +1,9 @@
 set -xg DOTFILES_PATH ~/.config/dotfiles
 set -xg VARIABLES_PATH ~/.config/dotfiles/.variables
+set -xg PNPM_HOME /home/yabai/.local/share/pnpm
+set -xg VISUAL nano
+set -xg EDITOR nano
 
-
-source "$DOTFILES_PATH/[terminal]/fish/setenv.fish"
 source "$DOTFILES_PATH/[terminal]/fish/functions.fish"
 
 
@@ -30,22 +31,22 @@ alias hist "history | fzf | tr -d \"\n\" | wl-copy"
 alias projadd "$DOTFILES_PATH/scripts/projects add"
 alias projrem "$DOTFILES_PATH/scripts/projects rem"
 
-alias thunar "exec thunar &"
+alias thunar "exec thunar . &"
 alias codeapi "/usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland"
-alias code "exec /usr/bin/code --new-window --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland"
+alias code "/usr/bin/code --new-window --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland"
 
 
-if test "$AUTORUN_HYPRLAND" = "true"
+# if test "$AUTORUN_HYPRLAND" = "true"
     if test (tty) = "/dev/tty1"
         if not pgrep -x "Hyprland" >/dev/null
             clear && Hyprland >/dev/null 2>&1
         end
     end
-end
+# end
 
 
 if status is-interactive
-    starship init fish | source
+    # starship init fish | source
 
     alias g "oldcd \"$(cat $VARIABLES_PATH/lastcd)\""
     function gg

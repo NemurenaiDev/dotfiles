@@ -1,0 +1,19 @@
+#!/bin/bash
+ 
+DATE=$(date +"%m/%d/%Y %R:%S :")
+ 
+echo "$DATE Unbinding vfio dGPU driver..."
+
+echo 1 > /sys/bus/pci/devices/0000:12:00.0/remove
+echo 1 > /sys/bus/pci/devices/0000:12:00.1/remove
+echo 1 > /sys/bus/pci/rescan
+ 
+modprobe -r vfio_pci
+modprobe -r vfio_iommu_type1
+modprobe -r vfio
+
+systemctl suspend
+echo 1 > /sys/bus/pci/rescan
+ 
+echo "$DATE Done"
+
