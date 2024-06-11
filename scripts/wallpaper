@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$1" == "--daemon" ]]; then
-    wallpaper=$(find "$HOME/.config/dotfiles/" -type f -name "current.wallpaper.*" -print -quit)
+    wallpaper=$(find "$Dotfiles/" -type f -name "current.wallpaper.*" -print -quit)
 
     if [[ -z "$wallpaper" ]]; then
         echo "No current wallpaper found."
@@ -11,13 +11,13 @@ if [[ "$1" == "--daemon" ]]; then
     rwpspread --daemon --palette --backend hyprpaper --locker hyprlock --image "$wallpaper"
 
 else
-    rm -f "$HOME/.config/dotfiles/current.wallpaper.*"
+    rm -f $Dotfiles/current.wallpaper.*
 
     filename="$1"
     extension="${filename##*.}"
 
-    cp "$filename" "$HOME/.config/dotfiles/current.wallpaper.$extension"
+    cp "$filename" "$Dotfiles/current.wallpaper.$extension"
 
     killall "rwpspread --daemon"
-    hyprctl dispatch exec "rwpspread --daemon --palette --backend hyprpaper --locker hyprlock --image \"$HOME/.config/dotfiles/current.wallpaper.$extension\""
+    hyprctl dispatch exec "rwpspread --daemon --palette --backend hyprpaper --locker hyprlock --image \"$Dotfiles/current.wallpaper.$extension\""
 fi

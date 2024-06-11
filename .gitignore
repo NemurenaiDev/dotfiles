@@ -9,10 +9,6 @@ copyq.pub
 .variables/*
 !.variables/.gitkeep
 
-vscode/History
-vscode/globalStorage
-vscode/workspaceStorage
-
 .env
 .env.*
 !.env.example
@@ -24,3 +20,4 @@ vscode/workspaceStorage
 
 config.ts
 !config.ts.example
+

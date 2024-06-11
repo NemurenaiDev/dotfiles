@@ -76,6 +76,12 @@ alias projrem="$Dotfiles/scripts/projects rem"
 alias thunar="exec thunar . &"
 alias code="code-reuse-or-new"
 
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git push"
+alias gpom="git push origin master"
+
 
 autoload -U compinit && compinit
 autoload -U select-word-style
