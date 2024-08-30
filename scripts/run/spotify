@@ -1,3 +1,3 @@
 #!/bin/bash
 
-~/dotfiles/scripts/app-workspace "36" "spotify" "$1"
+~/dotfiles/scripts/app-workspace "36" "spotify --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto" "$1"

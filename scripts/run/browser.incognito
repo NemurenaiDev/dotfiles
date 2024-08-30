@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/dotfiles/scripts/app-workspace "22" "vivaldi --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --incognito" "$1"

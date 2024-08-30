@@ -9,8 +9,8 @@
 # ln -sfv /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/phpstorm/bin/jetbrains_client64.vmoptions
 # ln -sfv /opt/jetbra/vmoptions/webstorm.vmoptions /opt/phpstorm/bin/phpstorm64.vmoptions
 
-ln -sfv /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/datagrip/bin/jetbrains_client64.vmoptions
-ln -sfv /opt/jetbra/vmoptions/webstorm.vmoptions /opt/datagrip/bin/datagrip64.vmoptions
+# ln -sfv /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/datagrip/bin/jetbrains_client64.vmoptions
+# ln -sfv /opt/jetbra/vmoptions/webstorm.vmoptions /opt/datagrip/bin/datagrip64.vmoptions
 
 # ln -sfv /opt/jetbra/vmoptions/jetbrainsclient.vmoptions /opt/pycharm-professional/bin/jetbrains_client64.vmoptions
 # ln -sfv /opt/jetbra/vmoptions/webstorm.vmoptions /opt/pycharm-professional/bin/pycharm64.vmoptions

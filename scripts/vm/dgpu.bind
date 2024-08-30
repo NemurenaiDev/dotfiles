@@ -17,5 +17,8 @@ echo "1002 ab28" > /sys/bus/pci/drivers/vfio-pci/new_id
 echo "0000:12:00.1" > /sys/bus/pci/devices/0000:12:00.1/driver/unbind
 echo "0000:12:00.1" > /sys/bus/pci/drivers/vfio-pci/bind
 echo "1002 ab28" > /sys/bus/pci/drivers/vfio-pci/remove_id
+
+systemctl suspend
+echo 1 > /sys/bus/pci/rescan
  
 echo "[$DATE] Done"

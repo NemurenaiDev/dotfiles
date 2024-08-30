@@ -11,7 +11,7 @@ fi
 if [[ "$(get-terminal-name)" == "code" ]]; then
     if [[ "$(pwd)" == "$HOME" ]]; then
         cd "$HOME/Projects"
-        project=$($Dotfiles/scripts/projects get | fzf --ansi --border --margin=30% --preview-window border-left --preview "lsd $LsdDefaultArgs \$(eval echo {})")
+        project=$($Dotfiles/scripts/projects get | fzf --ansi --border --margin=30% --preview-window border-left --preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$(eval echo {})")
         if [[ -n "$project" ]]; then
             project=$(eval echo "$project")
             cd "$project"
@@ -21,8 +21,10 @@ if [[ "$(get-terminal-name)" == "code" ]]; then
             echo
         fi
     else
-        if [[ $- == *i* ]]; then
-            cbonsai --live --life=54 --time=0,001 --message="$(hyprctl splash)"
+        if [[ $LINES > 40 ]]; then
+            if [[ $- == *i* ]]; then
+                cbonsai --live --life=54 --time=0,001 --message="$(hyprctl splash)"
+            fi
         fi
     fi
 fi

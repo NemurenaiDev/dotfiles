@@ -1,10 +1,11 @@
 {
+  "ipc": true,
   "layer": "top",
   "position": "top",
+  "output": "HDMI-A-2",
   "exclusive": true,
   "passthrough": false,
   "fixed-center": true,
-  "ipc": true,
   "spacing": 0,
   "margin-top": 5,
   "margin-bottom": 0,
@@ -26,9 +27,8 @@
     "tray",
     "custom/cloudflare-warp",
     "backlight",
-    "pulseaudio#microphone",
     "pulseaudio",
-    "custom/language"
+    "hyprland/language"
   ],
   "custom/weather": {
     "format": "{}°",
@@ -142,11 +142,12 @@
       "on-scroll-down": "shift_down"
     }
   },
-  "custom/language": {
-    "format": "<span>[{}]</span>",
-    "return-type": "json",
-    "exec": "~/dotfiles/scripts/hooks/keyboard-layout",
-    "tooltip": false
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "[US]",
+    "format-uk": "[UK]",
+    "format-ru": "[RU]",
+    "keyboard-name": "juchen-usb-keyboard"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -165,7 +166,7 @@
         "\uDB81\uDD7E"
       ],
       "ignored-sinks": [
-        "Easy Effects Sink"
+        "easyeffects_sink"
       ]
     },
     "scroll-step": 5.0,
@@ -173,17 +174,8 @@
     "on-click-right": "pavucontrol",
     "on-scroll-up": "~/dotfiles/scripts/volume --inc",
     "on-scroll-down": "~/dotfiles/scripts/volume --dec",
-    "smooth-scrolling-threshold": 1
-  },
-  "pulseaudio#microphone": {
-    "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": " Mute",
-    "on-click": "~/dotfiles/scripts/volume --toggle-mic",
-    "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/dotfiles/scripts/volume --mic-inc",
-    "on-scroll-down": "~/dotfiles/scripts/volume --mic-dec",
-    "scroll-step": 5
+    "smooth-scrolling-threshold": 1,
+    "interval": 1
   },
   "tray": {
     "icon-size": 16,

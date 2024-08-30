@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+kitty --class "kitty-powermenu" bash -ic "$Dotfiles/scripts/powermenu"

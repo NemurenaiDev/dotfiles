@@ -11,10 +11,10 @@ on-touch=dismiss
 
 # STYLE OPTIONS
 anchor=bottom-right
-font=Iosevka Nerd Font 12
+font=JetBrainsMono Nerd Font Mono
 width=400
 height=100
-margin=10
+margin=5
 padding=10
 border-size=1
 border-radius=10

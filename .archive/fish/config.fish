@@ -4,7 +4,7 @@ set -xg PNPM_HOME /home/yabai/.local/share/pnpm
 set -xg VISUAL nano
 set -xg EDITOR nano
 
-source "$DOTFILES_PATH/[terminal]/fish/functions.fish"
+source "$DOTFILES_PATH/terminal/fish/functions.fish"
 
 
 alias grep "grep --color=auto"

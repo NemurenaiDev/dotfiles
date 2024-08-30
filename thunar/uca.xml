@@ -43,7 +43,7 @@
 	<icon></icon>
 	<name>Create Archive</name>
 	<submenu></submenu>
-	<unique-id>1717421513568788-1</unique-id>
+	<unique-id>1723106985606337-1</unique-id>
 	<command>cd %d &amp;&amp; file-roller --add %F</command>
 	<description></description>
 	<range>*</range>

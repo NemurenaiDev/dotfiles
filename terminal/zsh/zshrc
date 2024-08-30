@@ -1,18 +1,25 @@
 #!/usr/bin/zsh
 
-export Dotfiles="$HOME/.config/dotfiles"
-export MonitorLeft="DP-1"
-export MonitorCenter="DP-4"
+if hyprctl monitors | grep -q "DP-1" && hyprctl monitors | grep -q "HDMI-A-1"; then
+    export MonitorLeft="HDMI-A-1"
+    export MonitorCenter="DP-1"
+else
+    export Projector="HDMI-A-1"
+    export MonitorLeft="HDMI-A-2"
+    export MonitorCenter="DP-4"
+fi
 
+export Dotfiles="$HOME/.config/dotfiles"
 export ZSH_PLUGINS="/usr/share/zsh/plugins"
-export PNPM_HOME="$HOME/.local/share/pnpm"
 export ZINIT_HOME="$HOME/.local/share/zinit"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export NODE_PATH="/usr/lib/node_modules"
 export VISUAL="nano"
 export EDITOR="nano"
 
 
-source "$Dotfiles/[terminal]/zsh/functions"
-source "$Dotfiles/[terminal]/zsh/startup"
+source "$Dotfiles/terminal/zsh/functions"
+source "$Dotfiles/terminal/zsh/startup"
 source "$ZINIT_HOME/zinit.zsh"
 
 
@@ -32,8 +39,8 @@ zinit snippet OMZP::command-not-found
 bindkey "^f" autosuggest-accept
 bindkey "^[s" toggle-sudo
 
-bindkey '[[A' history-search-backward
-bindkey '[[B' history-search-forward
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
 bindkey '^[[3;5~' kill-word
 bindkey '^H' backward-kill-word
@@ -47,6 +54,10 @@ bindkey "^[[F" end-of-line
 bindkey "^Z" undo
 bindkey "^Y" redo
 
+
+alias shutdown="$Dotfiles/scripts/system shutdown"
+alias reboot="$Dotfiles/scripts/system reboot"
+alias suspend="$Dotfiles/scripts/system suspend"
 
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
@@ -67,8 +78,8 @@ alias ff="fastfetch"
 alias ssh="kitten ssh"
 alias wlcp="wl-copy"
 alias hypr="hyprctl dispatch"
-alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /mnt --exclude /run"
-alias hist="history | fzf | tr -d "\n" | wl-copy"
+alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /run --exclude /mnt --exclude /home/yabai/Library"
+alias hist="history 0 | fzf | tr -d "\n" | wl-copy"
 
 alias projadd="$Dotfiles/scripts/projects add"
 alias projrem="$Dotfiles/scripts/projects rem"
@@ -76,11 +87,13 @@ alias projrem="$Dotfiles/scripts/projects rem"
 alias thunar="exec thunar . &"
 alias code="code-reuse-or-new"
 
+alias g="git"
 alias gs="git status"
+alias gst="git status"
 alias ga="git add"
+alias gaa="git add ."
 alias gc="git commit -m"
 alias gp="git push"
-alias gpom="git push origin master"
 
 
 autoload -U compinit && compinit
@@ -110,4 +123,4 @@ zstyle ":fzf-tab:complete:cd:*" fzf-preview "lsd --literal --icon always --color
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(oh-my-posh init zsh --config $Dotfiles/\[terminal\]/ohmyposh.toml)"
+eval "$(oh-my-posh init zsh --config $Dotfiles/terminal/ohmyposh.toml)"

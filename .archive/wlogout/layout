@@ -1,0 +1,20 @@
+{
+    "label" : "shutdown",
+    "action" : "hyprctl dispatch exec '$Dotfiles/scripts/system shutdown'",
+    "text" : "Shutdown"
+}
+{
+    "label" : "reboot",
+    "action" : "hyprctl dispatch exec '$Dotfiles/scripts/system reboot'",
+    "text" : "Reboot"
+}
+{
+    "label" : "suspend",
+    "action" : "hyprctl dispatch exec '$Dotfiles/scripts/system suspend'",
+    "text" : "Suspend",
+}
+{
+    "label" : "suspend",
+    "action" : "hyprctl dispatch exec '$Dotfiles/scripts/system suspend'",
+    "text" : "Suspend",
+}
