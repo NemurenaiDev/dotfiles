@@ -556,7 +556,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : docker
-Version         : 1:27.1.2-1
+Version         : 1:27.2.0-1
 Description     : Pack, ship and run any application as a lightweight container
 Architecture    : x86_64
 URL             : https://www.docker.com/
@@ -572,10 +572,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 108,03 MiB
-Packager        : Morten Linderud <foxboron@archlinux.org>
-Build Date      : нд, 18-сер-2024 17:43:14 +0300
-Install Date    : пн, 19-сер-2024 10:17:33 +0300
+Installed Size  : 108,33 MiB
+Packager        : Lukas Fleischer <lfleischer@archlinux.org>
+Build Date      : чт, 29-сер-2024 19:44:26 +0300
+Install Date    : сб, 31-сер-2024 11:36:34 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -869,7 +869,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : freerdp
-Version         : 2:3.7.0-1
+Version         : 2:3.8.0-1
 Description     : Free implementation of the Remote Desktop Protocol (RDP)
 Architecture    : x86_64
 URL             : https://www.freerdp.com/
@@ -882,10 +882,10 @@ Required By     : None
 Optional For    : remmina
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 8,55 MiB
-Packager        : Sergej Pupykin <spupykin@archlinux.org>
-Build Date      : чт, 08-сер-2024 22:53:15 +0300
-Install Date    : пт, 09-сер-2024 10:44:31 +0300
+Installed Size  : 8,56 MiB
+Packager        : David Runge <dvzrv@archlinux.org>
+Build Date      : пт, 30-сер-2024 19:38:32 +0300
+Install Date    : сб, 31-сер-2024 11:36:34 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1650,7 +1650,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-mesa-vdpau
-Version         : 1:24.1.6-1
+Version         : 1:24.2.1-1
 Description     : Open-source VDPAU drivers - 32-bit
 Architecture    : x86_64
 URL             : https://www.mesa3d.org/
@@ -1663,10 +1663,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 14,93 MiB
+Installed Size  : 17,97 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 15-сер-2024 03:32:37 +0300
-Install Date    : чт, 15-сер-2024 10:53:28 +0300
+Build Date      : чт, 29-сер-2024 05:10:33 +0300
+Install Date    : пт, 30-сер-2024 11:02:45 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1717,7 +1717,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-vulkan-radeon
-Version         : 1:24.1.6-1
+Version         : 1:24.2.1-1
 Description     : Open-source Vulkan driver for AMD GPUs - 32-bit
 Architecture    : x86_64
 URL             : https://www.mesa3d.org/
@@ -1730,10 +1730,10 @@ Required By     : steam
 Optional For    : lib32-vulkan-icd-loader
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 10,90 MiB
+Installed Size  : 11,79 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 15-сер-2024 03:32:37 +0300
-Install Date    : чт, 15-сер-2024 10:53:28 +0300
+Build Date      : чт, 29-сер-2024 05:10:33 +0300
+Install Date    : пт, 30-сер-2024 11:02:45 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1922,7 +1922,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : libva-mesa-driver
-Version         : 1:24.1.6-1
+Version         : 1:24.2.1-1
 Description     : Open-source VA-API drivers
 Architecture    : x86_64
 URL             : https://www.mesa3d.org/
@@ -1935,10 +1935,10 @@ Required By     : None
 Optional For    : libva  obs-studio
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 15,62 MiB
+Installed Size  : 18,55 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 15-сер-2024 03:31:13 +0300
-Install Date    : чт, 15-сер-2024 10:53:28 +0300
+Build Date      : чт, 29-сер-2024 05:09:48 +0300
+Install Date    : пт, 30-сер-2024 11:02:45 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1988,7 +1988,7 @@ Install Script  : Yes
 Validated By    : Signature
 
 Name            : linux
-Version         : 6.10.6.arch1-1
+Version         : 6.10.7.arch1-1
 Description     : The Linux kernel and modules
 Architecture    : x86_64
 URL             : https://github.com/archlinux/linux
@@ -2002,10 +2002,10 @@ Required By     : None
 Optional For    : base  mkinitcpio-firmware
 Conflicts With  : None
 Replaces        : virtualbox-guest-modules-arch  wireguard-arch
-Installed Size  : 135,74 MiB
+Installed Size  : 135,68 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пн, 19-сер-2024 20:02:39 +0300
-Install Date    : ср, 21-сер-2024 10:24:41 +0300
+Build Date      : чт, 29-сер-2024 19:48:57 +0300
+Install Date    : сб, 31-сер-2024 11:36:35 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2033,7 +2033,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : linux-headers
-Version         : 6.10.6.arch1-1
+Version         : 6.10.7.arch1-1
 Description     : Headers and scripts for building modules for the Linux kernel
 Architecture    : x86_64
 URL             : https://github.com/archlinux/linux
@@ -2048,8 +2048,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 131,47 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пн, 19-сер-2024 20:02:39 +0300
-Install Date    : ср, 21-сер-2024 10:24:43 +0300
+Build Date      : чт, 29-сер-2024 19:48:57 +0300
+Install Date    : сб, 31-сер-2024 11:36:37 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2156,7 +2156,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : man-db
-Version         : 2.12.1-1
+Version         : 2.13.0-1
 Description     : A utility for reading man pages
 Architecture    : x86_64
 URL             : https://gitlab.com/man-db/man-db
@@ -2169,10 +2169,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : man
 Replaces        : man
-Installed Size  : 2,31 MiB
+Installed Size  : 2,35 MiB
 Packager        : Andreas Radke <andyrtr@archlinux.org>
-Build Date      : пт, 05-кві-2024 17:47:02 +0300
-Install Date    : нд, 21-лип-2024 14:06:33 +0300
+Build Date      : чт, 29-сер-2024 21:56:47 +0300
+Install Date    : сб, 31-сер-2024 11:36:37 +0300
 Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : Signature
@@ -2933,7 +2933,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : pikaur
-Version         : 1.26-1
+Version         : 1.26.1-1
 Description     : AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay.
 Architecture    : any
 URL             : https://github.com/actionless/pikaur
@@ -2949,10 +2949,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : pikaur-git
 Replaces        : None
-Installed Size  : 1868,07 KiB
+Installed Size  : 1869,37 KiB
 Packager        : Unknown Packager
-Build Date      : чт, 29-сер-2024 10:40:37 +0300
-Install Date    : чт, 29-сер-2024 10:40:42 +0300
+Build Date      : пт, 30-сер-2024 11:02:48 +0300
+Install Date    : пт, 30-сер-2024 11:03:40 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -4212,7 +4212,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : vulkan-radeon
-Version         : 1:24.1.6-1
+Version         : 1:24.2.1-1
 Description     : Open-source Vulkan driver for AMD GPUs
 Architecture    : x86_64
 URL             : https://www.mesa3d.org/
@@ -4225,10 +4225,10 @@ Required By     : lib32-vulkan-radeon  steam
 Optional For    : vulkan-icd-loader
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 10,91 MiB
+Installed Size  : 11,67 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 15-сер-2024 03:31:13 +0300
-Install Date    : чт, 15-сер-2024 10:53:28 +0300
+Build Date      : чт, 29-сер-2024 05:09:48 +0300
+Install Date    : пт, 30-сер-2024 11:02:45 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature

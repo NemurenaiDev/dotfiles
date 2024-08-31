@@ -1,0 +1,44 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <interface> [pseudonym]"
+    exit 1
+fi
+
+
+INTERFACE="$1"
+PSEUDONYM="${2:-$INTERFACE}"
+
+was_connected=true
+
+
+function is_interface_up() {
+    ip link show "$INTERFACE" | grep -q "state UP"
+}
+
+function is_internet_accessible() {
+    ping -c 1 -W 1 -I "$INTERFACE" "1.1.1.1" &> /dev/null
+    return $?
+}
+
+
+while true; do
+    if is_interface_up; then
+        if is_internet_accessible; then
+            if [ "$was_connected" = false ]; then
+                notify-send -u "critical" "Connection through \"$PSEUDONYM\" is UP"
+                was_connected=true
+            fi
+        else
+            if [ "$was_connected" = true ]; then
+                notify-send -u "critical" "Connection through \"$PSEUDONYM\" is DOWN"
+                was_connected=false
+            fi
+        fi
+    else
+        notify-send -u "critical" "Interface \"$PSEUDONYM\" ($INTERFACE) is DOWN"
+        was_connected=false
+    fi
+    
+    sleep 1
+done
