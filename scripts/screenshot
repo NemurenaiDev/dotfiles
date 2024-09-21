@@ -2,7 +2,7 @@
 
 time=$(date +%Y-%m-%d-%H-%M-%S)
 dir="$HOME/Pictures/Screenshots"
-file="$((999999999999 - $(date +%s)))--${time}--${RANDOM}.png"
+file="$((999999999999 - $(date +%s)))--${time}.png"
 
 
 shotnow() {

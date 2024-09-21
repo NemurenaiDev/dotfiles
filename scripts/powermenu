@@ -2,22 +2,22 @@
 
 options="Shutdown\nReboot\nWindows\nSuspend"
 
-choice=$(echo -e "$options" | fzf --ansi --highlight-line --margin=35%)
+choice=$(echo -e "$options" | fzf --ansi --highlight-line --margin=0%)
 
 case $choice in
     "Shutdown")
-        $Dotfiles/scripts/vm/shutdown.all && shutdown now
+        shutdown now
     ;;
     "Reboot")
-        $Dotfiles/scripts/vm/shutdown.all && shutdown -r now
+        shutdown -r now
     ;;
     "Suspend")
-        $Dotfiles/scripts/vm/shutdown.all && systemctl suspend
+        systemctl suspend
     ;;
     "Windows")
         windows_entry=$(efibootmgr | grep -i "windows" | awk '{print $1}' | sed 's/Boot\([0-9A-F]*\).*/\1/')
         if [ -n "$windows_entry" ]; then
-			$Dotfiles/scripts/vm/shutdown.all && sudo efibootmgr --bootnext "$windows_entry" && systemctl reboot
+			sudo efibootmgr --bootnext "$windows_entry" && systemctl reboot
         else
             echo "ERROR: Windows boot entry not found in efibootmgr"
         fi

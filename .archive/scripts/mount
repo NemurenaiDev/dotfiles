@@ -1,4 +1,0 @@
-#!/bin/bash
-
-nohup rclone -v mount GoogleDrive: ~/Remote/GoogleDrive/ >> ~/dotfiles/.logs/GoogleDrive.log 2>&1 &
-nohup rclone -v mount GooglePhotos: ~/Remote/GooglePhotos/ >> ~/dotfiles/.logs/GooglePhotos.log 2>&1 &

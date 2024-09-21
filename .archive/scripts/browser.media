@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/dotfiles/scripts/app-workspace "34" "google-chrome-stable --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --profile-directory='Profile 1'" "$1"

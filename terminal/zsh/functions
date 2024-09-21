@@ -1,15 +1,46 @@
 #!/usr/bin/zsh
 
+remove-desktop-entries() {
+    sudo rm --force /usr/share/applications/*openjdk.desktop
+    sudo rm --force /usr/share/applications/electron*.desktop
+    sudo rm --force /usr/share/applications/blueman-adapters.desktop
+    sudo rm --force /usr/share/applications/blueman-manager.desktop
+    sudo rm --force /usr/share/applications/cmake-gui.desktop
+    sudo rm --force /usr/share/applications/code-url-handler.desktop
+    sudo rm --force /usr/share/applications/code.desktop
+    sudo rm --force /usr/share/applications/kitty.desktop
+    sudo rm --force /usr/share/applications/qemu.desktop
+    sudo rm --force /usr/share/applications/qv4l2.desktop
+    sudo rm --force /usr/share/applications/assistant.desktop
+    sudo rm --force /usr/share/applications/designer.desktop
+    sudo rm --force /usr/share/applications/linguist.desktop
+    sudo rm --force /usr/share/applications/qdbusviewer.desktop
+    sudo rm --force /usr/share/applications/qvidcap.desktop
+    sudo rm --force /usr/share/applications/steam.desktop
+    sudo rm --force /usr/share/applications/thunar-bulk-rename.desktop
+    sudo rm --force /usr/share/applications/thunar-settings.desktop
+    sudo rm --force /usr/share/applications/thunar-volman-settings.desktop
+    sudo rm --force /usr/share/applications/vim.desktop
+    sudo rm --force /usr/share/applications/waydroid.app.install.desktop
+    sudo rm --force /usr/share/applications/waydroid.market.desktop
+    sudo rm --force /usr/share/applications/com.github.wwmm.easyeffects.desktop
+    sudo rm --force /usr/share/applications/org.pulseaudio.pavucontrol.desktop
+    sudo rm --force /usr/share/applications/com.cloudflare.WarpTaskbar.desktop
+    sudo rm --force /usr/share/applications/thunar.desktop
+    
+    sudo update-desktop-database
+}
+
 pc() {
     case $1 in
         "i" | "install")
-            sudo pikaur -S --nodiff --noedit "${@:2}"
+            sudo pikaur -S --nodiff --noedit "${@:2}" && remove-desktop-entries
         ;;
         "r" | "remove")
-            sudo pikaur -Rns "${@:2}"
+            sudo pikaur -Rns "${@:2}" && remove-desktop-entries
         ;;
         "u" | "update")
-            sudo pikaur -Syu --nodiff --noedit
+            sudo pikaur -Syu --nodiff --noedit && remove-desktop-entries
         ;;
         "s" | "search")
             pikaur -Ss "${@:2}"

@@ -1,21 +1,19 @@
 #!/usr/bin/zsh
 
-if hyprctl monitors | grep -q "DP-1" && hyprctl monitors | grep -q "HDMI-A-1"; then
-    export MonitorLeft="HDMI-A-1"
-    export MonitorCenter="DP-1"
-else
-    export Projector="HDMI-A-1"
-    export MonitorLeft="HDMI-A-2"
-    export MonitorCenter="DP-4"
-fi
-
 export Dotfiles="$HOME/.config/dotfiles"
+
+export VISUAL="nano"
+export EDITOR="nano"
+
+export KEYBOARD="juchen-usb-keyboard"
+export Projector="HDMI-A-1"
+export MonitorLeft="HDMI-A-2"
+export MonitorCenter="DP-4"
+
 export ZSH_PLUGINS="/usr/share/zsh/plugins"
 export ZINIT_HOME="$HOME/.local/share/zinit"
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export NODE_PATH="/usr/lib/node_modules"
-export VISUAL="nano"
-export EDITOR="nano"
 
 
 source "$Dotfiles/terminal/zsh/functions"
@@ -54,10 +52,6 @@ bindkey "^[[F" end-of-line
 bindkey "^Z" undo
 bindkey "^Y" redo
 
-
-alias shutdown="$Dotfiles/scripts/system shutdown"
-alias reboot="$Dotfiles/scripts/system reboot"
-alias suspend="$Dotfiles/scripts/system suspend"
 
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"

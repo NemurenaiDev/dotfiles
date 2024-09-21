@@ -9,7 +9,7 @@ fi
 
 
 if [[ "$(get-terminal-name)" == "code" ]]; then
-    if [[ "$(pwd)" == "$HOME" ]]; then
+    project() {
         cd "$HOME/Projects"
         project=$($Dotfiles/scripts/projects get | fzf --ansi --border --margin=30% --preview-window border-left --preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$(eval echo {})")
         if [[ -n "$project" ]]; then
@@ -20,6 +20,10 @@ if [[ "$(get-terminal-name)" == "code" ]]; then
             echo "Something went wrong if you see this message. This project may already be opened in another instance"
             echo
         fi
+    }
+    
+    if [[ "$(pwd)" == "$HOME" ]]; then
+        project
     else
         if [[ $LINES > 40 ]]; then
             if [[ $- == *i* ]]; then

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/dotfiles/scripts/app-workspace "26" "telegram-desktop -workdir \"$HOME/.local/share/TelegramDesktop/tdata-work\"" "$1"

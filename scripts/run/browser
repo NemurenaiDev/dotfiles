@@ -1,3 +1,4 @@
 #!/bin/bash
 
-~/dotfiles/scripts/app-workspace "21" "vivaldi --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto" "$1"
+~/dotfiles/scripts/app-workspace "21" "vivaldi --enable-feature=UseOzonePlatform --ozone-platform=wayland" "$1"
+

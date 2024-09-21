@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/opt/urserver/urserver-start --no-manager --no-notify

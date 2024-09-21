@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/dotfiles/scripts/app-workspace "35" "rhythmbox" "$1"

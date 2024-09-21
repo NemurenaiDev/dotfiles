@@ -3,11 +3,11 @@ max-history=100
 sort=+time
 
 # BINDING OPTIONS
+on-touch=dismiss
 on-button-left=dismiss
 on-button-middle=none
 on-button-right=dismiss-all
-on-touch=dismiss
-#on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
+# on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 
 # STYLE OPTIONS
 output=DP-4
@@ -15,7 +15,7 @@ anchor=bottom-right
 font=JetBrainsMono Nerd Font Mono
 width=400
 height=100
-margin=5
+margin=0
 padding=10
 border-size=1
 border-radius=10
@@ -28,7 +28,7 @@ history=1
 text-alignment=left
 default-timeout=5000
 ignore-timeout=0
-max-visible=3
+max-visible=5
 layer=overlay
 background-color=#1e1e2e
 text-color=#cdd6f4
@@ -41,11 +41,11 @@ invisible=1
 
 
 [urgency=low]
-default-timeout=5000
+default-timeout=3000
 anchor=bottom-left
 
 [urgency=normal]
-default-timeout=8000
+default-timeout=5000
 anchor=bottom-left
 
 [urgency=high]

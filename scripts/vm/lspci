@@ -1,3 +1,0 @@
-#!/bin/bash
-
-lspci -nnk | grep -A 3 "VGA"
