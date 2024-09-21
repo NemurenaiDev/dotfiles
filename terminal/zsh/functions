@@ -83,5 +83,5 @@ code-reuse-or-new() {
 
 lastcd() {
     cd "$@" && lsd --literal --icon always --color always --group-dirs first
-    echo "$(pwd)" > $Dotfiles/.variables/lastcd
+    echo "$(pwd)" > $HOME/.cache/lastcd
 }

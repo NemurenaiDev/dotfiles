@@ -4,7 +4,7 @@ import os
 import sys
 
 projects_directory = "~/Projects"
-projects_file = os.path.expanduser("~/.config/dotfiles/.variables/projects")
+projects_file = os.path.expanduser("~/.cache/projects")
 
 
 def resolve(path: str):

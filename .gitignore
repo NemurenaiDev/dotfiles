@@ -6,9 +6,6 @@ copyq_tab*.dat
 copyq.lock
 copyq.pub
 
-.variables/*
-!.variables/.gitkeep
-
 .env
 .env.*
 !.env.example

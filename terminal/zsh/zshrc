@@ -97,7 +97,7 @@ zinit cdreplay -q
 zle -N toggle-sudo
 
 HISTSIZE=5000
-HISTFILE=$Dotfiles/.variables/zsh-hist
+HISTFILE=$HOME/.cache/zsh-hist
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 
