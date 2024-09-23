@@ -131,28 +131,6 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
-Name            : android-tools
-Version         : 35.0.2-4
-Description     : Android platform tools
-Architecture    : x86_64
-URL             : http://tools.android.com/
-Licenses        : Apache  MIT
-Groups          : None
-Provides        : None
-Depends On      : fmt  protobuf  brotli  zstd  android-udev  pcre2
-Optional Deps   : python: {mk,unpack_,repack_}bootimg and mkdtboimg support [installed]
-Required By     : None
-Optional For    : None
-Conflicts With  : None
-Replaces        : None
-Installed Size  : 6,27 MiB
-Packager        : Christian Heusel <gromit@archlinux.org>
-Build Date      : чт, 12-вер-2024 20:30:50 +0300
-Install Date    : пт, 20-вер-2024 10:31:40 +0300
-Install Reason  : Explicitly installed
-Install Script  : No
-Validated By    : Signature
-
 Name            : base
 Version         : 3-2
 Description     : Minimal package set to define a basic Arch Linux installation
@@ -519,8 +497,8 @@ Groups          : None
 Provides        : None
 Depends On      : glibc  gmp  libidn2  libidn2.so=0-64  libdbus  libdbus-1.so=3-64  nftables  libnetfilter_conntrack  nettle  libnettle.so=8-64  libhogweed.so=6-64
 Optional Deps   : None
-Required By     : waydroid
-Optional For    : blueman  libvirt  lxc  networkmanager
+Required By     : None
+Optional For    : blueman  libvirt  networkmanager
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 952,38 KiB
@@ -557,7 +535,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : docker-compose
-Version         : 2.29.5-1
+Version         : 2.29.7-1
 Description     : Fast, isolated development environments using Docker
 Architecture    : x86_64
 URL             : https://www.docker.com/
@@ -572,8 +550,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 53,95 MiB
 Packager        : Andrew Crerar <crerar@archlinux.org>
-Build Date      : вт, 17-вер-2024 18:33:06 +0300
-Install Date    : пт, 20-вер-2024 10:31:42 +0300
+Build Date      : пт, 20-вер-2024 15:50:26 +0300
+Install Date    : сб, 21-вер-2024 23:39:50 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -797,23 +775,23 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : ffmpegthumbnailer
-Version         : 2.2.3-1
+Version         : 2.2.3-2
 Description     : Lightweight video thumbnailer that can be used by file managers
 Architecture    : x86_64
 URL             : https://github.com/dirkvdb/ffmpegthumbnailer
-Licenses        : GPL2
+Licenses        : GPL-2.0-or-later
 Groups          : None
 Provides        : None
-Depends On      : ffmpeg  libjpeg  libpng
+Depends On      : ffmpeg  libjpeg-turbo  libpng
 Optional Deps   : gvfs: support for gio uris [installed]
 Required By     : None
 Optional For    : tumbler
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 276,93 KiB
-Packager        : Antonio Rojas <arojas@archlinux.org>
-Build Date      : сб, 14-вер-2024 01:14:48 +0300
-Install Date    : пт, 20-вер-2024 10:31:44 +0300
+Packager        : Campbell Jones <serebit@archlinux.org>
+Build Date      : пн, 23-вер-2024 00:44:59 +0300
+Install Date    : пн, 23-вер-2024 14:42:01 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -953,7 +931,7 @@ Optional Deps   : tk: gitk and git gui [installed]
                   perl-cgi: gitweb (web interface) support
                   python: git svn & git p4 [installed]
                   subversion: git svn
-                  org.freedesktop.secrets: keyring credential helper
+                  org.freedesktop.secrets: keyring credential helper [installed]
                   libsecret: libsecret credential helper [installed]
 Required By     : paru  pikaur  vcpkg  yay
 Optional For    : gettext  github-cli  npm
@@ -977,7 +955,7 @@ Groups          : None
 Provides        : None
 Depends On      : glibc  mailcap
 Optional Deps   : git: To interact with repositories [installed]
-                  org.freedesktop.secrets: Store credentials in system keyring
+                  org.freedesktop.secrets: Store credentials in system keyring [installed]
 Required By     : None
 Optional For    : None
 Conflicts With  : None
@@ -988,6 +966,28 @@ Build Date      : пн, 16-вер-2024 18:38:59 +0300
 Install Date    : пт, 20-вер-2024 10:31:44 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
+Validated By    : Signature
+
+Name            : gnome-keyring
+Version         : 1:46.2-1
+Description     : Stores passwords and encryption keys
+Architecture    : x86_64
+URL             : https://gitlab.gnome.org/GNOME/gnome-keyring
+Licenses        : GPL-2.0-or-later  LGPL-2.1-or-later
+Groups          : gnome
+Provides        : org.freedesktop.secrets
+Depends On      : dconf  gcr  gcr-4  glib2  glibc  libgcrypt  pam  systemd-libs
+Optional Deps   : None
+Required By     : seahorse
+Optional For    : git  github-cli  libsecret  minecraft-launcher  visual-studio-code-bin  vivaldi
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 3,31 MiB
+Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+Build Date      : сб, 13-лип-2024 08:03:10 +0300
+Install Date    : нд, 22-вер-2024 15:44:56 +0300
+Install Reason  : Explicitly installed
+Install Script  : Yes
 Validated By    : Signature
 
 Name            : gnome-themes-extra
@@ -1670,7 +1670,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-mesa-vdpau
-Version         : 1:24.2.2-1
+Version         : 1:24.2.3-1
 Description     : Open-source VDPAU drivers - 32-bit
 Architecture    : x86_64
 URL             : https://www.mesa3d.org/
@@ -1683,10 +1683,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 17,97 MiB
+Installed Size  : 3,93 KiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пт, 06-вер-2024 08:34:53 +0300
-Install Date    : сб, 07-вер-2024 11:07:50 +0300
+Build Date      : чт, 19-вер-2024 00:52:53 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1714,14 +1714,14 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-pipewire
-Version         : 1:1.2.3-1
+Version         : 1:1.2.4-1
 Description     : Low-latency audio/video router and processor - 32-bit
 Architecture    : x86_64
 URL             : https://pipewire.org
 Licenses        : MIT
 Groups          : None
 Provides        : None
-Depends On      : lib32-libpipewire=1:1.2.3-1  libpipewire-0.3.so=0-32  lib32-gcc-libs  lib32-glibc  libasound.so=2-32  libdbus-1.so=3-32  libglib-2.0.so=0-32  libsystemd.so=0-32  pipewire
+Depends On      : lib32-libpipewire=1:1.2.4-1  libpipewire-0.3.so=0-32  lib32-gcc-libs  lib32-glibc  libasound.so=2-32  libdbus-1.so=3-32  libglib-2.0.so=0-32  libsystemd.so=0-32  pipewire
 Optional Deps   : lib32-pipewire-jack: JACK support
                   lib32-pipewire-v4l2: V4L2 interceptor
 Required By     : None
@@ -1730,14 +1730,14 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 3,92 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 22-сер-2024 16:27:37 +0300
-Install Date    : нд, 25-сер-2024 15:43:54 +0300
+Build Date      : чт, 19-вер-2024 15:53:15 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-vulkan-radeon
-Version         : 1:24.2.2-1
+Version         : 1:24.2.3-1
 Description     : Open-source Vulkan driver for AMD GPUs - 32-bit
 Architecture    : x86_64
 URL             : https://www.mesa3d.org/
@@ -1752,8 +1752,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 11,79 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пт, 06-вер-2024 08:34:53 +0300
-Install Date    : сб, 07-вер-2024 11:07:51 +0300
+Build Date      : чт, 19-вер-2024 00:52:53 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1942,7 +1942,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : libva-mesa-driver
-Version         : 1:24.2.2-1
+Version         : 1:24.2.3-1
 Description     : Open-source VA-API drivers
 Architecture    : x86_64
 URL             : https://www.mesa3d.org/
@@ -1955,10 +1955,10 @@ Required By     : None
 Optional For    : libva  obs-studio
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 18,55 MiB
+Installed Size  : 3,93 KiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пт, 06-вер-2024 08:34:51 +0300
-Install Date    : сб, 07-вер-2024 11:07:51 +0300
+Build Date      : чт, 19-вер-2024 00:52:57 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2196,6 +2196,29 @@ Install Date    : сб, 31-сер-2024 11:36:37 +0300
 Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : Signature
+
+Name            : minecraft-launcher
+Version         : 1:1.0.1221-3
+Description     : Official Minecraft Launcher
+Architecture    : x86_64
+URL             : https://mojang.com/
+Licenses        : custom
+Groups          : None
+Provides        : minecraft-launcher-beta
+Depends On      : gtk3  gcc-libs  zlib  libgpg-error
+Optional Deps   : flite: narrator support
+                  org.freedesktop.secrets: persistent login support [installed]
+Required By     : None
+Optional For    : None
+Conflicts With  : minecraft-launcher-beta
+Replaces        : None
+Installed Size  : 1646,13 KiB
+Packager        : Unknown Packager
+Build Date      : нд, 22-вер-2024 15:32:29 +0300
+Install Date    : нд, 22-вер-2024 15:32:33 +0300
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : None
 
 Name            : mission-center
 Version         : 0.5.2-1
@@ -2681,28 +2704,6 @@ Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : None
 
-Name            : osu-lazer-bin
-Version         : 2024.906.2-1
-Description     : The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew.
-Architecture    : x86_64
-URL             : https://osu.ppy.sh
-Licenses        : MIT  custom:CC-BY-NC 4.0
-Groups          : None
-Provides        : osu-lazer
-Depends On      : zlib  libgl  fuse2  osu-mime
-Optional Deps   : None
-Required By     : None
-Optional For    : None
-Conflicts With  : osu-lazer
-Replaces        : None
-Installed Size  : 142,43 MiB
-Packager        : Unknown Packager
-Build Date      : пн, 09-вер-2024 00:24:40 +0300
-Install Date    : пн, 09-вер-2024 00:25:29 +0300
-Install Reason  : Explicitly installed
-Install Script  : No
-Validated By    : None
-
 Name            : otf-font-awesome
 Version         : 6.6.0-1
 Description     : Iconic font designed for Bootstrap
@@ -2820,27 +2821,27 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : paru
-Version         : 2.0.3-1
+Version         : 2.0.4-1
 Description     : Feature packed AUR helper
 Architecture    : x86_64
 URL             : https://github.com/morganamilo/paru
 Licenses        : GPL-3.0-or-later
 Groups          : None
 Provides        : None
-Depends On      : git  pacman  libalpm.so>=14-64
+Depends On      : git  pacman  libalpm.so>=14
 Optional Deps   : bat: colored pkgbuild printing
                   devtools: build in chroot and downloading pkgbuilds
 Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 8,61 MiB
-Packager        : Noodle <noodle at cock dot li>
-Build Date      : ср, 20-бер-2024 18:14:58 +0200
-Install Date    : чт, 21-бер-2024 17:04:35 +0200
+Installed Size  : 8,25 MiB
+Packager        : Noodle <silentnoodle@cock.li>
+Build Date      : пт, 20-вер-2024 10:20:33 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
-Validated By    : Signature
+Validated By    : SHA-256 Sum  Signature
 
 Name            : pavucontrol
 Version         : 1:6.1-1
@@ -3000,7 +3001,7 @@ Install Script  : No
 Validated By    : None
 
 Name            : pipewire-alsa
-Version         : 1:1.2.3-1
+Version         : 1:1.2.4-1
 Description     : Low-latency audio/video router and processor - ALSA configuration
 Architecture    : x86_64
 URL             : https://pipewire.org
@@ -3015,14 +3016,14 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 1218,00 B
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 22-сер-2024 16:27:36 +0300
-Install Date    : нд, 25-сер-2024 15:43:54 +0300
+Build Date      : чт, 19-вер-2024 15:53:07 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : pipewire-pulse
-Version         : 1:1.2.3-1
+Version         : 1:1.2.4-1
 Description     : Low-latency audio/video router and processor - PulseAudio replacement
 Architecture    : x86_64
 URL             : https://pipewire.org
@@ -3037,14 +3038,14 @@ Conflicts With  : pulseaudio
 Replaces        : None
 Installed Size  : 492,88 KiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 22-сер-2024 16:27:36 +0300
-Install Date    : нд, 25-сер-2024 15:43:54 +0300
+Build Date      : чт, 19-вер-2024 15:53:07 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : Signature
 
 Name            : pipewire-zeroconf
-Version         : 1:1.2.3-1
+Version         : 1:1.2.4-1
 Description     : Low-latency audio/video router and processor - Zeroconf support
 Architecture    : x86_64
 URL             : https://pipewire.org
@@ -3059,8 +3060,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 351,53 KiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 22-сер-2024 16:27:36 +0300
-Install Date    : нд, 25-сер-2024 15:43:54 +0300
+Build Date      : чт, 19-вер-2024 15:53:07 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3205,7 +3206,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : python-numpy
-Version         : 2.0.1-1
+Version         : 2.1.1-1
 Description     : Scientific tools for Python
 Architecture    : x86_64
 URL             : https://www.numpy.org/
@@ -3218,10 +3219,10 @@ Required By     : pitivi  python-contourpy  python-matplotlib  python-scipy
 Optional For    : python-rapidfuzz  python-sounddevice
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 47,29 MiB
-Packager        : Daniel M. Capella <polyzen@archlinux.org>
-Build Date      : нд, 28-лип-2024 04:41:11 +0300
-Install Date    : пн, 29-лип-2024 11:56:26 +0300
+Installed Size  : 47,55 MiB
+Packager        : Antonio Rojas <arojas@archlinux.org>
+Build Date      : ср, 18-вер-2024 21:25:56 +0300
+Install Date    : сб, 21-вер-2024 23:39:53 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3285,7 +3286,7 @@ Depends On      : python>=3.12.2
 Optional Deps   : xclip: Support for X11
                   wl-clipboard: Support for Wayland [installed]
 Required By     : None
-Optional For    : waydroid
+Optional For    : None
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 118,80 KiB
@@ -3590,7 +3591,7 @@ Groups          : None
 Provides        : None
 Depends On      : acl  libacl.so=1-64  lz4  openssl  popt  xxhash  libxxhash.so=0-64  zlib  zstd
 Optional Deps   : python: for rrsync [installed]
-Required By     : libguestfs  lxc
+Required By     : libguestfs
 Optional For    : reflector
 Conflicts With  : None
 Replaces        : None
@@ -3644,6 +3645,28 @@ Installed Size  : 743,41 KiB
 Packager        : Caleb Maclennan <alerque@archlinux.org>
 Build Date      : пт, 01-бер-2024 20:34:55 +0200
 Install Date    : пн, 04-бер-2024 10:24:02 +0200
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
+Name            : seahorse
+Version         : 1:47.0.1-2
+Description     : GNOME application for managing PGP keys.
+Architecture    : x86_64
+URL             : https://wiki.gnome.org/Apps/Seahorse
+Licenses        : GPL-2.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-3.0
+Groups          : gnome-extra
+Provides        : x11-ssh-askpass
+Depends On      : dconf  gcc-libs  gcr  gdk-pixbuf2  glib2  glibc  gpgme  gtk3  hicolor-icon-theme  libhandy  libldap  libpwquality  libsecret  libsoup3  org.freedesktop.secrets
+Optional Deps   : None
+Required By     : None
+Optional For    : openssh  virt-install  virt-manager
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 7,10 MiB
+Packager        : Balló György <bgyorgy@archlinux.org>
+Build Date      : пт, 20-вер-2024 22:21:54 +0300
+Install Date    : нд, 22-вер-2024 15:48:41 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3740,11 +3763,11 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : thunar
-Version         : 4.18.11-1
+Version         : 4.18.11-2
 Description     : Modern, fast and easy-to-use file manager for Xfce
 Architecture    : x86_64
 URL             : https://docs.xfce.org/xfce/thunar/start
-Licenses        : GPL2  LGPL2.1
+Licenses        : GPL-2.0-or-later  LGPL-2.1-only
 Groups          : xfce4
 Provides        : None
 Depends On      : desktop-file-utils  libexif  hicolor-icon-theme  libnotify  pcre2  libgudev  exo  libxfce4util  libxfce4ui  libpng
@@ -3758,20 +3781,20 @@ Required By     : thunar-archive-plugin  thunar-media-tags-plugin  thunar-volman
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 8,67 MiB
-Packager        : Evangelos Foutras <foutrelis@archlinux.org>
-Build Date      : вт, 30-лип-2024 19:04:21 +0300
-Install Date    : ср, 31-лип-2024 14:44:14 +0300
+Installed Size  : 8,80 MiB
+Packager        : Robin Candau <antiz@archlinux.org>
+Build Date      : ср, 18-вер-2024 10:33:15 +0300
+Install Date    : сб, 21-вер-2024 23:39:53 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : thunar-archive-plugin
-Version         : 0.5.2-1
+Version         : 0.5.2-2
 Description     : Adds archive operations to the Thunar file context menus
 Architecture    : x86_64
 URL             : https://docs.xfce.org/xfce/thunar/archive
-Licenses        : GPL2
+Licenses        : GPL-2.0-only
 Groups          : xfce4-goodies
 Provides        : None
 Depends On      : thunar  hicolor-icon-theme
@@ -3783,20 +3806,20 @@ Required By     : None
 Optional For    : thunar
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 174,27 KiB
-Packager        : Evangelos Foutras <foutrelis@archlinux.org>
-Build Date      : пн, 30-жов-2023 16:08:12 +0200
-Install Date    : чт, 30-тра-2024 12:34:31 +0300
+Installed Size  : 175,26 KiB
+Packager        : Robin Candau <antiz@archlinux.org>
+Build Date      : ср, 18-вер-2024 10:39:11 +0300
+Install Date    : сб, 21-вер-2024 23:39:53 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : thunar-media-tags-plugin
-Version         : 0.4.0-2
+Version         : 0.4.0-3
 Description     : Adds special features for media files to the Thunar File Manager
 Architecture    : x86_64
 URL             : https://docs.xfce.org/xfce/thunar/media-tags
-Licenses        : GPL
+Licenses        : GPL-2.0-or-later
 Groups          : xfce4-goodies
 Provides        : None
 Depends On      : taglib  thunar
@@ -3805,20 +3828,20 @@ Required By     : None
 Optional For    : thunar
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 311,75 KiB
-Packager        : Antonio Rojas <arojas@archlinux.org>
-Build Date      : пт, 26-січ-2024 18:09:13 +0200
-Install Date    : чт, 30-тра-2024 12:34:31 +0300
+Installed Size  : 317,32 KiB
+Packager        : Robin Candau <antiz@archlinux.org>
+Build Date      : ср, 18-вер-2024 10:47:08 +0300
+Install Date    : сб, 21-вер-2024 23:39:53 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : thunar-volman
-Version         : 4.18.0-2
+Version         : 4.18.0-3
 Description     : Automatic management of removable drives and media for Thunar
 Architecture    : x86_64
 URL             : https://docs.xfce.org/xfce/thunar/thunar-volman
-Licenses        : GPL2
+Licenses        : GPL-2.0-or-later
 Groups          : xfce4
 Provides        : None
 Depends On      : thunar  libxfce4ui  hicolor-icon-theme
@@ -3827,10 +3850,10 @@ Required By     : None
 Optional For    : thunar
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 669,17 KiB
-Packager        : T.J. Townsend <blakkheim@archlinux.org>
-Build Date      : нд, 14-лип-2024 03:20:16 +0300
-Install Date    : нд, 14-лип-2024 14:32:46 +0300
+Installed Size  : 683,49 KiB
+Packager        : Robin Candau <antiz@archlinux.org>
+Build Date      : ср, 18-вер-2024 11:03:00 +0300
+Install Date    : сб, 21-вер-2024 23:39:53 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3992,28 +4015,6 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
 
-Name            : ttf-jetbrains-mono
-Version         : 2.304-2
-Description     : Typeface for developers, by JetBrains
-Architecture    : any
-URL             : https://jetbrains.com/lp/mono
-Licenses        : custom:OFL
-Groups          : None
-Provides        : None
-Depends On      : None
-Optional Deps   : None
-Required By     : None
-Optional For    : None
-Conflicts With  : None
-Replaces        : None
-Installed Size  : 7,44 MiB
-Packager        : T.J. Townsend <blakkheim@archlinux.org>
-Build Date      : нд, 14-лип-2024 03:48:53 +0300
-Install Date    : ср, 07-сер-2024 15:47:34 +0300
-Install Reason  : Explicitly installed
-Install Script  : No
-Validated By    : Signature
-
 Name            : ttf-jetbrains-mono-nerd
 Version         : 3.2.1-2
 Description     : Patched font JetBrains Mono from nerd fonts library
@@ -4031,7 +4032,7 @@ Replaces        : nerd-fonts-jetbrains-mono
 Installed Size  : 204,25 MiB
 Packager        : T.J. Townsend <blakkheim@archlinux.org>
 Build Date      : чт, 09-тра-2024 23:30:57 +0300
-Install Date    : пт, 10-тра-2024 13:15:45 +0300
+Install Date    : вт, 24-вер-2024 01:04:57 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -4059,11 +4060,11 @@ Install Script  : No
 Validated By    : None
 
 Name            : tumbler
-Version         : 4.18.2-1
+Version         : 4.18.2-2
 Description     : Thumbnail service implementing the thumbnail management D-Bus specification
 Architecture    : x86_64
 URL             : https://docs.xfce.org/xfce/tumbler/start
-Licenses        : GPL2  LGPL
+Licenses        : GPL-2.0-or-later
 Groups          : xfce4
 Provides        : None
 Depends On      : libxfce4util  gdk-pixbuf2
@@ -4077,10 +4078,10 @@ Required By     : None
 Optional For    : thunar
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 893,07 KiB
-Packager        : Evangelos Foutras <foutrelis@archlinux.org>
-Build Date      : сб, 02-гру-2023 14:02:47 +0200
-Install Date    : чт, 07-гру-2023 21:56:15 +0200
+Installed Size  : 916,68 KiB
+Packager        : Robin Candau <antiz@archlinux.org>
+Build Date      : ср, 18-вер-2024 13:40:59 +0300
+Install Date    : сб, 21-вер-2024 23:39:53 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -4154,14 +4155,14 @@ Install Script  : Yes
 Validated By    : None
 
 Name            : vim
-Version         : 9.1.0707-1
+Version         : 9.1.0740-1
 Description     : Vi Improved, a highly configurable, improved version of the vi text editor
 Architecture    : x86_64
 URL             : https://www.vim.org
 Licenses        : custom:vim
 Groups          : None
 Provides        : xxd  vim-minimal  vim-plugin-runtime
-Depends On      : vim-runtime=9.1.0707-1  gpm  acl  glibc  libgcrypt  zlib
+Depends On      : vim-runtime=9.1.0740-1  gpm  acl  glibc  libgcrypt  zlib
 Optional Deps   : python: Python language support [installed]
                   ruby: Ruby language support
                   lua: Lua language support [installed]
@@ -4173,8 +4174,8 @@ Conflicts With  : gvim  vim-minimal
 Replaces        : vim-minimal
 Installed Size  : 4,88 MiB
 Packager        : T.J. Townsend <blakkheim@archlinux.org>
-Build Date      : нд, 01-вер-2024 00:12:10 +0300
-Install Date    : нд, 01-вер-2024 12:52:35 +0300
+Build Date      : нд, 22-вер-2024 21:40:20 +0300
+Install Date    : пн, 23-вер-2024 14:42:01 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -4188,7 +4189,7 @@ Licenses        : GPL
 Groups          : None
 Provides        : None
 Depends On      : virt-install=4.1.0  gtk-vnc  libvirt-glib  spice-gtk  vte3  python-cairo  gtksourceview4
-Optional Deps   : x11-ssh-askpass: provide password for remote machines connected via ssh tunnel
+Optional Deps   : x11-ssh-askpass: provide password for remote machines connected via ssh tunnel [installed]
 Required By     : None
 Optional For    : None
 Conflicts With  : None
@@ -4212,7 +4213,7 @@ Provides        : code  vscode
 Depends On      : libxkbfile  gnupg  gtk3  libsecret  nss  gcc-libs  libnotify  libxss  glibc  lsof  shared-mime-info  xdg-utils  alsa-lib
 Optional Deps   : glib2: Needed for move to trash functionality [installed]
                   libdbusmenu-glib: Needed for KDE global menu [installed]
-                  org.freedesktop.secrets: Needed for settings sync
+                  org.freedesktop.secrets: Needed for settings sync [installed]
                   icu69: Needed for live share
 Required By     : None
 Optional For    : None
@@ -4235,7 +4236,7 @@ Licenses        : custom
 Groups          : None
 Provides        : None
 Depends On      : libcups  nss  alsa-lib  libxss  ttf-font  desktop-file-utils  shared-mime-info  hicolor-icon-theme
-Optional Deps   : org.freedesktop.secrets: better secret storage in gnome-keyring or kwallet
+Optional Deps   : org.freedesktop.secrets: better secret storage in gnome-keyring or kwallet [installed]
                   libnotify: native notifications [installed]
                   vivaldi-ffmpeg-codecs: playback of proprietary video/audio
                   gtk3: gtk3 integration [installed]
@@ -4254,7 +4255,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : vulkan-radeon
-Version         : 1:24.2.2-1
+Version         : 1:24.2.3-1
 Description     : Open-source Vulkan driver for AMD GPUs
 Architecture    : x86_64
 URL             : https://www.mesa3d.org/
@@ -4269,8 +4270,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 11,67 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пт, 06-вер-2024 08:34:51 +0300
-Install Date    : сб, 07-вер-2024 11:07:51 +0300
+Build Date      : чт, 19-вер-2024 00:52:57 +0300
+Install Date    : сб, 21-вер-2024 23:39:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -4315,28 +4316,6 @@ Installed Size  : 13,08 KiB
 Packager        : Unknown Packager
 Build Date      : чт, 08-сер-2024 11:08:43 +0300
 Install Date    : сб, 17-сер-2024 22:52:43 +0300
-Install Reason  : Explicitly installed
-Install Script  : No
-Validated By    : None
-
-Name            : waydroid
-Version         : 1.4.3-1
-Description     : A container-based approach to boot a full Android system on a regular Linux system
-Architecture    : any
-URL             : https://waydro.id/
-Licenses        : GPL
-Groups          : None
-Provides        : None
-Depends On      : lxc  python-gbinder  python-gobject  nftables  dnsmasq  gtk3  dbus-python
-Optional Deps   : python-pyclip: share clipboard with container [installed]
-Required By     : None
-Optional For    : None
-Conflicts With  : None
-Replaces        : None
-Installed Size  : 349,21 KiB
-Packager        : Unknown Packager
-Build Date      : пн, 12-сер-2024 17:13:22 +0300
-Install Date    : пн, 12-сер-2024 17:13:25 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -4395,7 +4374,7 @@ Groups          : None
 Provides        : None
 Depends On      : glibc  zlib  gnutls  libidn2  libidn2.so=0-64  util-linux-libs  libuuid.so=1-64  libpsl  libpsl.so=5-64  pcre2  nettle  libnettle.so=8-64
 Optional Deps   : ca-certificates: HTTPS downloads [installed]
-Required By     : debootstrap  lxc
+Required By     : debootstrap
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
@@ -4475,30 +4454,30 @@ Install Script  : No
 Validated By    : None
 
 Name            : xdg-desktop-portal-hyprland
-Version         : 1.3.3-2
+Version         : 1.3.5-1
 Description     : xdg-desktop-portal backend for hyprland
 Architecture    : x86_64
 URL             : https://github.com/hyprwm/xdg-desktop-portal-hyprland
 Licenses        : MIT
 Groups          : None
 Provides        : xdg-desktop-portal-impl
-Depends On      : gcc-libs  glibc  hyprlang  libhyprlang.so=2-64  libinih  pipewire  qt6-base  qt6-wayland  sdbus-cpp  libsdbus-c++.so=1-64  util-linux-libs  libuuid.so  xdg-desktop-portal
+Depends On      : gcc-libs  glibc  hyprlang  libhyprlang.so=2-64  hyprutils  libhyprutils.so  hyprwayland-scanner  libinih  pipewire  qt6-base  qt6-wayland  sdbus-cpp  libsdbus-c++.so=1-64  util-linux-libs  libuuid.so  xdg-desktop-portal
 Optional Deps   : grim: required for the screenshot portal to function [installed]
                   slurp: support for interactive mode for the screenshot portal [installed]
 Required By     : lutris
 Optional For    : xdg-desktop-portal
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 532,41 KiB
+Installed Size  : 597,64 KiB
 Packager        : Caleb Maclennan <alerque@archlinux.org>
-Build Date      : вт, 23-лип-2024 16:33:36 +0300
-Install Date    : пт, 26-лип-2024 10:27:42 +0300
+Build Date      : сб, 21-вер-2024 19:41:08 +0300
+Install Date    : нд, 22-вер-2024 21:11:55 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : yay
-Version         : 12.3.5-1
+Version         : 12.4.2-1
 Description     : Yet another yogurt. Pacman wrapper and AUR helper written in go.
 Architecture    : x86_64
 URL             : https://github.com/Jguer/yay
@@ -4512,10 +4491,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 9,32 MiB
+Installed Size  : 9,75 MiB
 Packager        : Noodle <noodle at cock dot li>
-Build Date      : ср, 10-кві-2024 20:42:36 +0300
-Install Date    : чт, 11-кві-2024 10:21:52 +0300
+Build Date      : пт, 20-вер-2024 09:55:37 +0300
+Install Date    : сб, 21-вер-2024 23:39:53 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : SHA-256 Sum  Signature

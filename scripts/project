@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+cd "$HOME/Projects"
+project=$($Dotfiles/scripts/projects get | fzf --ansi --preview-window border-left --preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$(eval echo {})")
+if [[ -n "$project" ]]; then
+    echo "$(eval echo "$project")"
+fi

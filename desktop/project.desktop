@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Project
+Comment=Select and open project in VSCode
+GenericName=Text Editor
+Exec=kitty --class "kitty-project" bash -ic 'exec /usr/bin/code --new-window --enable-features=UseOzonePlatform --ozone-platform-hint=auto "$($Dotfiles/scripts/project)" &>/dev/null'
+Icon=/opt/visual-studio-code/resources/app/resources/linux/code.png
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Keywords=vscode;

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=VSCode
+Comment=Code Editing. Refined.
+GenericName=Text Editor
+Exec=/usr/bin/code --new-window --enable-features=UseOzonePlatform --ozone-platform-hint=auto
+Icon=/opt/visual-studio-code/resources/app/resources/linux/code.png
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Keywords=vscode;

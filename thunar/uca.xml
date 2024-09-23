@@ -17,7 +17,7 @@
 	<name>Open  VSCode Here</name>
 	<submenu></submenu>
 	<unique-id>1716974214288656-3</unique-id>
-	<command>code --new-window --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %f</command>
+	<command>code --new-window --enable-features=UseOzonePlatform --ozone-platform=wayland %f</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>

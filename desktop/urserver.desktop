@@ -1,0 +1,26 @@
+[Desktop Entry]
+Name=Unified Remote
+Comment=Start Unified Remote Server
+Terminal=false
+Type=Application
+Categories=Network;
+
+Icon=urserver
+Exec=/opt/urserver/urserver-start
+
+Actions=Start;Stop;Manage;
+
+[Desktop Action Start]
+Name=Start
+Exec=/opt/urserver/urserver-start
+OnlyShowIn=Unity;
+
+[Desktop Action Stop]
+Name=Stop
+Exec=/opt/urserver/urserver-stop
+OnlyShowIn=Unity;
+
+[Desktop Action Manage]
+Name=Manage
+Exec=xdg-open http://localhost:9510/web
+OnlyShowIn=Unity;

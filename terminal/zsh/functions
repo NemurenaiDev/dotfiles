@@ -1,32 +1,35 @@
 #!/usr/bin/zsh
 
 remove-desktop-entries() {
-    sudo rm --force /usr/share/applications/*openjdk.desktop
-    sudo rm --force /usr/share/applications/electron*.desktop
-    sudo rm --force /usr/share/applications/blueman-adapters.desktop
-    sudo rm --force /usr/share/applications/blueman-manager.desktop
-    sudo rm --force /usr/share/applications/cmake-gui.desktop
-    sudo rm --force /usr/share/applications/code-url-handler.desktop
-    sudo rm --force /usr/share/applications/code.desktop
-    sudo rm --force /usr/share/applications/kitty.desktop
-    sudo rm --force /usr/share/applications/qemu.desktop
-    sudo rm --force /usr/share/applications/qv4l2.desktop
-    sudo rm --force /usr/share/applications/assistant.desktop
-    sudo rm --force /usr/share/applications/designer.desktop
-    sudo rm --force /usr/share/applications/linguist.desktop
-    sudo rm --force /usr/share/applications/qdbusviewer.desktop
-    sudo rm --force /usr/share/applications/qvidcap.desktop
-    sudo rm --force /usr/share/applications/steam.desktop
-    sudo rm --force /usr/share/applications/thunar-bulk-rename.desktop
-    sudo rm --force /usr/share/applications/thunar-settings.desktop
-    sudo rm --force /usr/share/applications/thunar-volman-settings.desktop
-    sudo rm --force /usr/share/applications/vim.desktop
-    sudo rm --force /usr/share/applications/waydroid.app.install.desktop
-    sudo rm --force /usr/share/applications/waydroid.market.desktop
-    sudo rm --force /usr/share/applications/com.github.wwmm.easyeffects.desktop
-    sudo rm --force /usr/share/applications/org.pulseaudio.pavucontrol.desktop
-    sudo rm --force /usr/share/applications/com.cloudflare.WarpTaskbar.desktop
-    sudo rm --force /usr/share/applications/thunar.desktop
+    sudo bash -c "rm ~/.local/share/applications/userapp*.desktop 2>/dev/null"
+    
+    sudo bash -c "rm /usr/share/applications/*openjdk.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/electron*.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/blueman-adapters.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/blueman-manager.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/cmake-gui.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/code-url-handler.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/code.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/kitty.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/qemu.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/qv4l2.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/assistant.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/designer.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/linguist.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/qdbusviewer.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/qvidcap.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/steam.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/thunar-bulk-rename.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/thunar-settings.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/thunar-volman-settings.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/vim.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/waydroid.app.install.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/waydroid.market.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/com.github.wwmm.easyeffects.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/org.pulseaudio.pavucontrol.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/com.cloudflare.WarpTaskbar.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/thunar.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/xfce4-about.desktop 2>/dev/null"
     
     sudo update-desktop-database
 }
@@ -75,9 +78,9 @@ get-terminal-name() {
 
 code-reuse-or-new() {
     if [[ "$(get-terminal-name)" == "code" ]]; then
-        /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --reuse-window "$@"
+        /usr/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland --reuse-window "$@"
     else
-        /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --new-window "$@"
+        /usr/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland --new-window "$@"
     fi
 }
 
