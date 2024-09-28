@@ -355,6 +355,33 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
 
+Name            : chromium
+Version         : 129.0.6668.70-1
+Description     : A web browser built for speed, simplicity, and security
+Architecture    : x86_64
+URL             : https://www.chromium.org/Home
+Licenses        : BSD-3-Clause
+Groups          : None
+Provides        : None
+Depends On      : gtk3  nss  alsa-lib  xdg-utils  libxss  libcups  libgcrypt  ttf-liberation  systemd  dbus  libpulse  pciutils  libva  libffi  desktop-file-utils  hicolor-icon-theme  fontconfig  brotli  libjpeg-turbo  icu  flac  libxml2  libwebp  minizip  opus  harfbuzz  libxslt  libpng  freetype2
+Optional Deps   : pipewire: WebRTC desktop sharing under Wayland [installed]
+                  kdialog: support for native dialogs in Plasma
+                  gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland) [installed]
+                  org.freedesktop.secrets: password storage backend on GNOME / Xfce [installed]
+                  kwallet: support for storing passwords in KWallet on Plasma
+                  upower: Battery Status API support [installed]
+Required By     : None
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 330,77 MiB
+Packager        : Evangelos Foutras <foutrelis@archlinux.org>
+Build Date      : ср, 25-вер-2024 00:42:59 +0300
+Install Date    : ср, 25-вер-2024 19:15:09 +0300
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
 Name            : cliphist
 Version         : 1:0.5.0-1
 Description     : wayland clipboard manager
@@ -510,7 +537,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : docker
-Version         : 1:27.2.1-1
+Version         : 1:27.3.1-1
 Description     : Pack, ship and run any application as a lightweight container
 Architecture    : x86_64
 URL             : https://www.docker.com/
@@ -526,10 +553,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 108,34 MiB
-Packager        : Morten Linderud <foxboron@archlinux.org>
-Build Date      : сб, 14-вер-2024 00:18:02 +0300
-Install Date    : пт, 20-вер-2024 10:31:42 +0300
+Installed Size  : 108,35 MiB
+Packager        : Lukas Fleischer <lfleischer@archlinux.org>
+Build Date      : ср, 25-вер-2024 17:43:43 +0300
+Install Date    : чт, 26-вер-2024 10:08:07 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -911,7 +938,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : git
-Version         : 2.46.1-1
+Version         : 2.46.2-1
 Description     : the fast distributed version control system
 Architecture    : x86_64
 URL             : https://git-scm.com/
@@ -939,8 +966,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 28,04 MiB
 Packager        : Christian Hesse <eworm@archlinux.org>
-Build Date      : сб, 14-вер-2024 22:13:04 +0300
-Install Date    : пт, 20-вер-2024 10:31:44 +0300
+Build Date      : вт, 24-вер-2024 08:47:05 +0300
+Install Date    : вт, 24-вер-2024 17:56:07 +0300
 Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : Signature
@@ -979,7 +1006,7 @@ Provides        : org.freedesktop.secrets
 Depends On      : dconf  gcr  gcr-4  glib2  glibc  libgcrypt  pam  systemd-libs
 Optional Deps   : None
 Required By     : seahorse
-Optional For    : git  github-cli  libsecret  minecraft-launcher  visual-studio-code-bin  vivaldi
+Optional For    : chromium  git  github-cli  libsecret  minecraft-launcher  visual-studio-code-bin  vivaldi
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 3,31 MiB
@@ -1008,28 +1035,6 @@ Installed Size  : 4,44 MiB
 Packager        : T.J. Townsend <blakkheim@archlinux.org>
 Build Date      : пт, 12-лип-2024 19:17:46 +0300
 Install Date    : вт, 24-вер-2024 11:51:30 +0300
-Install Reason  : Explicitly installed
-Install Script  : No
-Validated By    : Signature
-
-Name            : gnome-tweaks
-Version         : 46.1-1
-Description     : Graphical interface for advanced GNOME 3 settings (Tweak Tool)
-Architecture    : any
-URL             : https://wiki.gnome.org/Apps/Tweaks
-Licenses        : GPL-3.0-or-later
-Groups          : gnome-extra
-Provides        : None
-Depends On      : dconf  glib2  gnome-desktop-4  gsettings-desktop-schemas  gtk4  hicolor-icon-theme  libadwaita  libgudev  libnotify  pango  python  python-gobject
-Optional Deps   : None
-Required By     : None
-Optional For    : None
-Conflicts With  : None
-Replaces        : None
-Installed Size  : 1492,68 KiB
-Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : ср, 01-тра-2024 07:59:48 +0300
-Install Date    : вт, 28-тра-2024 20:37:17 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1241,6 +1246,28 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
+Name            : helvum
+Version         : 0.5.1-1
+Description     : GTK patchbay for PipeWire
+Architecture    : x86_64
+URL             : https://gitlab.freedesktop.org/pipewire/helvum
+Licenses        : GPL-3.0-only
+Groups          : None
+Provides        : None
+Depends On      : cairo  gcc-libs  gdk-pixbuf2  glib2  glibc  graphene  gtk4  hicolor-icon-theme  libadwaita  libpipewire  pango  pipewire
+Optional Deps   : None
+Required By     : None
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 1045,28 KiB
+Packager        : David Runge <dvzrv@archlinux.org>
+Build Date      : сб, 30-вер-2023 18:13:00 +0300
+Install Date    : сб, 28-вер-2024 13:53:42 +0300
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
 Name            : hyprland
 Version         : 0.43.0-1
 Description     : a highly customizable dynamic tiling Wayland compositor
@@ -1438,7 +1465,7 @@ Replaces        : None
 Installed Size  : 45,63 MiB
 Packager        : Lukas Fleischer <lfleischer@archlinux.org>
 Build Date      : пт, 06-вер-2024 18:54:57 +0300
-Install Date    : сб, 07-вер-2024 11:07:50 +0300
+Install Date    : пт, 27-вер-2024 09:19:38 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1736,14 +1763,14 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-pipewire
-Version         : 1:1.2.4-1
+Version         : 1:1.2.5-1
 Description     : Low-latency audio/video router and processor - 32-bit
 Architecture    : x86_64
 URL             : https://pipewire.org
 Licenses        : MIT
 Groups          : None
 Provides        : None
-Depends On      : lib32-libpipewire=1:1.2.4-1  libpipewire-0.3.so=0-32  lib32-gcc-libs  lib32-glibc  libasound.so=2-32  libdbus-1.so=3-32  libglib-2.0.so=0-32  libsystemd.so=0-32  pipewire
+Depends On      : lib32-libpipewire=1:1.2.5-1  libpipewire-0.3.so=0-32  lib32-gcc-libs  lib32-glibc  libasound.so=2-32  libdbus-1.so=3-32  libglib-2.0.so=0-32  libsystemd.so=0-32  pipewire
 Optional Deps   : lib32-pipewire-jack: JACK support
                   lib32-pipewire-v4l2: V4L2 interceptor
 Required By     : None
@@ -1752,8 +1779,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 3,92 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 19-вер-2024 15:53:15 +0300
-Install Date    : сб, 21-вер-2024 23:39:52 +0300
+Build Date      : пт, 27-вер-2024 22:22:53 +0300
+Install Date    : сб, 28-вер-2024 10:09:06 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1951,7 +1978,7 @@ Depends On      : libdrm  libgl  libx11  libxext  libxfixes  wayland
 Optional Deps   : intel-media-driver: backend for Intel GPUs (>= Broadwell)
                   libva-intel-driver: backend for Intel GPUs (<= Haswell)
                   libva-mesa-driver: backend for AMD and NVIDIA GPUs [installed]
-Required By     : ffmpeg  gst-plugins-bad-libs  gstreamer-vaapi  libva-utils  mpv  virglrenderer
+Required By     : chromium  ffmpeg  gst-plugins-bad-libs  gstreamer-vaapi  libva-utils  mpv  virglrenderer
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
@@ -2660,7 +2687,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : oh-my-posh
-Version         : 23.13.3-1
+Version         : 23.14.1-1
 Description     : A prompt theme engine for any shell.
 Architecture    : x86_64
 URL             : https://github.com/JanDeDobbeleer/oh-my-posh
@@ -2675,8 +2702,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 17,40 MiB
 Packager        : Unknown Packager
-Build Date      : пт, 20-вер-2024 10:32:15 +0300
-Install Date    : пт, 20-вер-2024 10:33:46 +0300
+Build Date      : вт, 24-вер-2024 17:56:11 +0300
+Install Date    : вт, 24-вер-2024 17:56:37 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -2724,6 +2751,28 @@ Build Date      : вт, 20-сер-2024 18:17:39 +0300
 Install Date    : сб, 24-сер-2024 10:17:42 +0300
 Install Reason  : Explicitly installed
 Install Script  : Yes
+Validated By    : None
+
+Name            : osu-lazer-bin
+Version         : 2024.906.2-1
+Description     : The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew.
+Architecture    : x86_64
+URL             : https://osu.ppy.sh
+Licenses        : MIT  custom:CC-BY-NC 4.0
+Groups          : None
+Provides        : osu-lazer
+Depends On      : zlib  libgl  fuse2  osu-mime
+Optional Deps   : None
+Required By     : None
+Optional For    : None
+Conflicts With  : osu-lazer
+Replaces        : None
+Installed Size  : 142,43 MiB
+Packager        : Unknown Packager
+Build Date      : пн, 09-вер-2024 00:24:40 +0300
+Install Date    : вт, 24-вер-2024 18:34:12 +0300
+Install Reason  : Explicitly installed
+Install Script  : No
 Validated By    : None
 
 Name            : otf-font-awesome
@@ -2910,13 +2959,13 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : php
-Version         : 8.3.11-1
+Version         : 8.3.12-1
 Description     : A general-purpose scripting language that is especially suited to web development
 Architecture    : x86_64
 URL             : https://www.php.net/
 Licenses        : PHP-3.01
 Groups          : None
-Provides        : php-interpreter=8.3  php-intl=8.3.11
+Provides        : php-interpreter=8.3  php-intl=8.3.12
 Depends On      : libxml2  curl  libzip  pcre2  argon2  oniguruma
 Optional Deps   : None
 Required By     : php-gd  php-pgsql  php-sqlite
@@ -2925,14 +2974,14 @@ Conflicts With  : php-intl
 Replaces        : php-intl
 Installed Size  : 28,74 MiB
 Packager        : Pierre Schmitz <pierre@archlinux.org>
-Build Date      : ср, 28-сер-2024 21:04:39 +0300
-Install Date    : чт, 29-сер-2024 10:40:36 +0300
+Build Date      : ср, 25-вер-2024 18:39:18 +0300
+Install Date    : чт, 26-вер-2024 10:08:07 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : php-gd
-Version         : 8.3.11-1
+Version         : 8.3.12-1
 Description     : gd module for PHP
 Architecture    : x86_64
 URL             : https://www.php.net/
@@ -2947,14 +2996,14 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 90,12 KiB
 Packager        : Pierre Schmitz <pierre@archlinux.org>
-Build Date      : ср, 28-сер-2024 21:04:39 +0300
-Install Date    : чт, 29-сер-2024 10:40:36 +0300
+Build Date      : ср, 25-вер-2024 18:39:18 +0300
+Install Date    : чт, 26-вер-2024 10:08:07 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : php-pgsql
-Version         : 8.3.11-1
+Version         : 8.3.12-1
 Description     : PostgreSQL modules for PHP
 Architecture    : x86_64
 URL             : https://www.php.net/
@@ -2969,14 +3018,14 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 172,25 KiB
 Packager        : Pierre Schmitz <pierre@archlinux.org>
-Build Date      : ср, 28-сер-2024 21:04:39 +0300
-Install Date    : чт, 29-сер-2024 10:40:36 +0300
+Build Date      : ср, 25-вер-2024 18:39:18 +0300
+Install Date    : чт, 26-вер-2024 10:08:07 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : php-sqlite
-Version         : 8.3.11-1
+Version         : 8.3.12-1
 Description     : sqlite module for PHP
 Architecture    : x86_64
 URL             : https://www.php.net/
@@ -2991,8 +3040,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 100,25 KiB
 Packager        : Pierre Schmitz <pierre@archlinux.org>
-Build Date      : ср, 28-сер-2024 21:04:39 +0300
-Install Date    : чт, 29-сер-2024 10:40:36 +0300
+Build Date      : ср, 25-вер-2024 18:39:18 +0300
+Install Date    : чт, 26-вер-2024 10:08:07 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3023,7 +3072,7 @@ Install Script  : No
 Validated By    : None
 
 Name            : pipewire-alsa
-Version         : 1:1.2.4-1
+Version         : 1:1.2.5-1
 Description     : Low-latency audio/video router and processor - ALSA configuration
 Architecture    : x86_64
 URL             : https://pipewire.org
@@ -3038,14 +3087,14 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 1218,00 B
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 19-вер-2024 15:53:07 +0300
-Install Date    : сб, 21-вер-2024 23:39:52 +0300
+Build Date      : пт, 27-вер-2024 21:45:12 +0300
+Install Date    : сб, 28-вер-2024 10:09:06 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : pipewire-pulse
-Version         : 1:1.2.4-1
+Version         : 1:1.2.5-1
 Description     : Low-latency audio/video router and processor - PulseAudio replacement
 Architecture    : x86_64
 URL             : https://pipewire.org
@@ -3054,20 +3103,20 @@ Groups          : None
 Provides        : pulse-native-provider
 Depends On      : dbus  dconf  gcc-libs  glibc  libpipewire-0.3.so=0-64  libavahi-client.so=3-64  libavahi-common.so=3-64  libglib-2.0.so=0-64  libpulse.so=0-64  pipewire  pipewire-audio  pipewire-session-manager  systemd-libs
 Optional Deps   : None
-Required By     : None
+Required By     : pulsemixer
 Optional For    : libpulse  pipewire
 Conflicts With  : pulseaudio
 Replaces        : None
 Installed Size  : 492,88 KiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 19-вер-2024 15:53:07 +0300
-Install Date    : сб, 21-вер-2024 23:39:52 +0300
+Build Date      : пт, 27-вер-2024 21:45:12 +0300
+Install Date    : сб, 28-вер-2024 10:09:06 +0300
 Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : Signature
 
 Name            : pipewire-zeroconf
-Version         : 1:1.2.4-1
+Version         : 1:1.2.5-1
 Description     : Low-latency audio/video router and processor - Zeroconf support
 Architecture    : x86_64
 URL             : https://pipewire.org
@@ -3082,8 +3131,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 351,53 KiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 19-вер-2024 15:53:07 +0300
-Install Date    : сб, 21-вер-2024 23:39:52 +0300
+Build Date      : пт, 27-вер-2024 21:45:12 +0300
+Install Date    : сб, 28-вер-2024 10:09:06 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3184,7 +3233,7 @@ Install Script  : Yes
 Validated By    : Signature
 
 Name            : postman-bin
-Version         : 11.10.0-1
+Version         : 11.14.0-1
 Description     : Build, test, and document your APIs faster
 Architecture    : x86_64
 URL             : https://www.getpostman.com
@@ -3197,10 +3246,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : postman
 Replaces        : None
-Installed Size  : 407,96 MiB
+Installed Size  : 410,39 MiB
 Packager        : Unknown Packager
-Build Date      : чт, 29-сер-2024 16:45:41 +0300
-Install Date    : чт, 29-сер-2024 16:47:50 +0300
+Build Date      : сб, 28-вер-2024 10:09:09 +0300
+Install Date    : сб, 28-вер-2024 10:10:20 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -3223,6 +3272,28 @@ Installed Size  : 79,89 KiB
 Packager        : T.J. Townsend <blakkheim@archlinux.org>
 Build Date      : ср, 03-кві-2024 00:38:35 +0300
 Install Date    : пт, 02-сер-2024 12:51:33 +0300
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
+Name            : pulsemixer
+Version         : 1.5.1-6
+Description     : CLI and curses mixer for pulseaudio
+Architecture    : any
+URL             : https://github.com/GeorgeFilipkin/pulsemixer
+Licenses        : MIT
+Groups          : None
+Provides        : None
+Depends On      : python  pulse-native-provider
+Optional Deps   : None
+Required By     : None
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 101,65 KiB
+Packager        : Jelle van der Waa <jelle@archlinux.org>
+Build Date      : чт, 04-кві-2024 18:18:34 +0300
+Install Date    : пт, 27-вер-2024 21:56:40 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3762,7 +3833,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : telegram-desktop
-Version         : 5.5.5-1
+Version         : 5.5.5-2
 Description     : Official Telegram Desktop client
 Architecture    : x86_64
 URL             : https://desktop.telegram.org/
@@ -3777,9 +3848,9 @@ Optional For    : None
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 101,72 MiB
-Packager        : Sven-Hendrik Haase <svenstaro@archlinux.org>
-Build Date      : пн, 16-вер-2024 01:33:15 +0300
-Install Date    : пт, 20-вер-2024 10:31:48 +0300
+Packager        : Christian Heusel <gromit@archlinux.org>
+Build Date      : ср, 25-вер-2024 11:38:01 +0300
+Install Date    : чт, 26-вер-2024 10:08:07 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3928,7 +3999,7 @@ Install Script  : Yes
 Validated By    : Signature
 
 Name            : tmux
-Version         : 3.4-10
+Version         : 3.5-1
 Description     : Terminal multiplexer
 Architecture    : x86_64
 URL             : https://github.com/tmux/tmux/wiki
@@ -3941,10 +4012,10 @@ Required By     : None
 Optional For    : fzf
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 1044,85 KiB
-Packager        : T.J. Townsend <blakkheim@archlinux.org>
-Build Date      : нд, 28-лип-2024 03:32:22 +0300
-Install Date    : пн, 29-лип-2024 11:56:26 +0300
+Installed Size  : 1058,33 KiB
+Packager        : Christian Hesse <eworm@archlinux.org>
+Build Date      : пт, 27-вер-2024 12:42:01 +0300
+Install Date    : сб, 28-вер-2024 10:09:06 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -4250,7 +4321,7 @@ Install Script  : Yes
 Validated By    : None
 
 Name            : vivaldi
-Version         : 6.9.3447.46-1
+Version         : 6.9.3447.48-1
 Description     : An advanced browser made with the power user in mind.
 Architecture    : x86_64
 URL             : https://vivaldi.com
@@ -4268,10 +4339,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 378,83 MiB
+Installed Size  : 378,89 MiB
 Packager        : Ike Devolder <ike.devolder@archlinux.org>
-Build Date      : ср, 18-вер-2024 15:53:26 +0300
-Install Date    : пт, 20-вер-2024 10:31:49 +0300
+Build Date      : ср, 25-вер-2024 21:53:53 +0300
+Install Date    : чт, 26-вер-2024 10:08:08 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -4431,27 +4502,27 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
-Name            : wpa_supplicant-git
-Version         : 2.10.r2215.gc9db4925f-1
-Description     : A daemon program controlling the wireless connection
+Name            : wpa_supplicant
+Version         : 2:2.11-2
+Description     : A utility providing key negotiation for WPA wireless networks
 Architecture    : x86_64
 URL             : https://w1.fi/wpa_supplicant/
-Licenses        : BSD
+Licenses        : BSD-3-Clause
 Groups          : None
-Provides        : wpa_supplicant=2.10.r2215.gc9db4925f
-Depends On      : glibc  openssl  libdbus  libnl  readline
-Optional Deps   : wpa_supplicant_gui: GUI frontend
+Provides        : None
+Depends On      : glibc  libdbus  libnl  openssl  pcsclite  readline
+Optional Deps   : None
 Required By     : networkmanager
 Optional For    : None
-Conflicts With  : wpa_supplicant
+Conflicts With  : None
 Replaces        : None
-Installed Size  : 6,55 MiB
-Packager        : Unknown Packager
-Build Date      : пн, 24-чер-2024 10:54:38 +0300
-Install Date    : пн, 24-чер-2024 10:56:29 +0300
+Installed Size  : 6,60 MiB
+Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+Build Date      : ср, 24-лип-2024 23:52:33 +0300
+Install Date    : вт, 24-вер-2024 23:52:17 +0300
 Install Reason  : Explicitly installed
-Install Script  : No
-Validated By    : None
+Install Script  : Yes
+Validated By    : Signature
 
 Name            : wttrbar
 Version         : 0.10.5-1
@@ -4474,28 +4545,6 @@ Install Date    : ср, 17-лип-2024 19:56:50 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
-
-Name            : xdg-desktop-portal-gtk
-Version         : 1.15.1-2
-Description     : A backend implementation for xdg-desktop-portal using GTK
-Architecture    : x86_64
-URL             : https://github.com/flatpak/xdg-desktop-portal-gtk
-Licenses        : LGPL-2.0-or-later
-Groups          : None
-Provides        : xdg-desktop-portal-impl
-Depends On      : fontconfig  gcc-libs  gdk-pixbuf2  glib2  glibc  gsettings-desktop-schemas  gtk3  xdg-desktop-portal
-Optional Deps   : evince: Print preview
-Required By     : lutris
-Optional For    : xdg-desktop-portal
-Conflicts With  : None
-Replaces        : None
-Installed Size  : 433,31 KiB
-Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пн, 22-кві-2024 01:54:25 +0300
-Install Date    : вт, 24-вер-2024 12:32:30 +0300
-Install Reason  : Explicitly installed
-Install Script  : No
-Validated By    : Signature
 
 Name            : xdg-desktop-portal-hyprland
 Version         : 1.3.5-1

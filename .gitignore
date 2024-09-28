@@ -1,20 +1,12 @@
 .idea
 .code
-*.log
 
-copyq_tab*.dat
-copyq.lock
-copyq.pub
+copyq/**
+!copyq/**/*.ini
 
 .env
 .env.*
 !.env.example
 
-.logs/*
-!.logs/.gitkeep
-
-\!*
-
-config.ts
-!config.ts.example
+*.log
 

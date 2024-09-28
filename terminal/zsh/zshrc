@@ -105,7 +105,9 @@ alias gp="git push"
 
 autoload -U compinit && compinit
 autoload -U select-word-style
+
 select-word-style bash
+
 zinit cdreplay -q
 zle -N toggle-sudo
 
