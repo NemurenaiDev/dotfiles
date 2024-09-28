@@ -17,6 +17,13 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 export NODE_PATH="/usr/lib/node_modules"
 
 
+autoload -U "$Dotfiles/terminal/zsh/functions"
+autoload -U select-word-style
+autoload -U compinit
+
+source "$ZINIT_HOME/zinit.zsh"
+
+
 if [[ "$(tty)" == "/dev/tty1" ]]; then
     if ! pgrep -x "Hyprland" > /dev/null; then
         clear && Hyprland > /dev/null 2>&1
@@ -28,22 +35,45 @@ if [ ! -d "$ZINIT_HOME" ]; then
     git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
+if [ ! -s "${ZSH_COMPDUMP}" ]; then
+    compinit -C
+else
+    compinit
+fi
 
-source "$Dotfiles/terminal/zsh/functions"
-source "$ZINIT_HOME/zinit.zsh"
+
+select-word-style bash
+
+HISTSIZE=2500
+HISTFILE=$HOME/.cache/zsh-hist
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+
+
+zinit cdreplay -q
+zle -N toggle-sudo
+
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_save_no_dups
+setopt hist_find_no_dups
+
+
+zstyle ":completion:*" use-cache on
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
+zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
+zstyle ":completion:*" menu no
+zstyle ":fzf-tab:complete:cd:*" fzf-preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$realpath"
 
 
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-
-zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
 
 
 bindkey "^f" autosuggest-accept
@@ -52,12 +82,12 @@ bindkey "^[s" toggle-sudo
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
-bindkey '^[[3;5~' kill-word
-bindkey '^H' backward-kill-word
-bindkey '^[[3~' delete-char
+bindkey "^[[3;5~" kill-word
+bindkey "^H" backward-kill-word
+bindkey "^[[3~" delete-char
 
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
@@ -69,9 +99,7 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ip="ip --color=auto"
 
-alias vi="nano"
-alias vim="nano"
-alias nvim="nano"
+alias vi="nano" vim="nano" nvim="nano"
 
 alias l="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T"
 alias ls="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T"
@@ -101,33 +129,6 @@ alias ga="git add"
 alias gaa="git add ."
 alias gc="git commit -m"
 alias gp="git push"
-
-
-autoload -U compinit && compinit
-autoload -U select-word-style
-
-select-word-style bash
-
-zinit cdreplay -q
-zle -N toggle-sudo
-
-HISTSIZE=5000
-HISTFILE=$HOME/.cache/zsh-hist
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-setopt hist_save_no_dups
-setopt hist_find_no_dups
-
-zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
-zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
-zstyle ":completion:*" menu no
-zstyle ":fzf-tab:complete:cd:*" fzf-preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$realpath"
 
 
 eval "$(fzf --zsh)"
