@@ -356,7 +356,7 @@ Install Script  : No
 Validated By    : None
 
 Name            : chromium
-Version         : 129.0.6668.70-1
+Version         : 129.0.6668.89-1
 Description     : A web browser built for speed, simplicity, and security
 Architecture    : x86_64
 URL             : https://www.chromium.org/Home
@@ -376,8 +376,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 330,77 MiB
 Packager        : Evangelos Foutras <foutrelis@archlinux.org>
-Build Date      : ср, 25-вер-2024 00:42:59 +0300
-Install Date    : ср, 25-вер-2024 19:15:09 +0300
+Build Date      : ср, 02-жов-2024 19:57:18 +0300
+Install Date    : чт, 03-жов-2024 15:29:52 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -487,7 +487,7 @@ Replaces        : None
 Installed Size  : 3,09 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 Build Date      : ср, 04-жов-2023 01:35:53 +0300
-Install Date    : вт, 26-гру-2023 10:52:42 +0200
+Install Date    : вт, 01-жов-2024 18:09:57 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -626,7 +626,7 @@ Replaces        : pulseeffects
 Installed Size  : 7,82 MiB
 Packager        : Carl Smedstad <carsme@archlinux.org>
 Build Date      : сб, 07-вер-2024 17:33:23 +0300
-Install Date    : пт, 13-вер-2024 10:30:19 +0300
+Install Date    : чт, 03-жов-2024 16:07:30 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -742,7 +742,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : fastfetch
-Version         : 2.25.0-1
+Version         : 2.26.1-2
 Description     : An actively maintained, feature-rich and performance oriented, neofetch like system information tool
 Architecture    : x86_64
 URL             : https://github.com/fastfetch-cli/fastfetch
@@ -756,25 +756,26 @@ Optional Deps   : chafa: Image output as ascii art
                   ddcutil: Brightness detection of external displays
                   directx-headers: GPU detection in WSL
                   glib2: Output for values that are only stored in GSettings [installed]
+                  hwdata: GPU output [installed]
                   imagemagick: Image output using sixel or kitty graphics protocol [installed]
+                  libdrm: Displays detection [installed]
                   libelf: st term font detection and fast path of systemd version detection [installed]
                   libpulse: Sound detection [installed]
-                  mesa: Needed by the OpenGL module for gl context creation. [installed]
                   libxrandr: Multi monitor support [installed]
+                  mesa: Needed by the OpenGL module for gl context creation. [installed]
                   ocl-icd: OpenCL module [installed]
-                  hwdata: GPU output [installed]
+                  python: Needed for zsh and fish completions [installed]
                   vulkan-icd-loader: Vulkan module & fallback for GPU output [installed]
                   xfconf: Needed for XFWM theme and XFCE Terminal font [installed]
                   zlib: Faster image output when using kitty graphics protocol [installed]
-                  libdrm: Displays detection [installed]
 Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 2,64 MiB
+Installed Size  : 2,66 MiB
 Packager        : Robin Candau <antiz@archlinux.org>
-Build Date      : чт, 19-вер-2024 10:29:05 +0300
-Install Date    : пт, 20-вер-2024 10:31:43 +0300
+Build Date      : ср, 02-жов-2024 11:28:10 +0300
+Install Date    : ср, 02-жов-2024 17:49:46 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -973,7 +974,7 @@ Install Script  : Yes
 Validated By    : Signature
 
 Name            : github-cli
-Version         : 2.57.0-1
+Version         : 2.58.0-1
 Description     : The GitHub CLI
 Architecture    : x86_64
 URL             : https://github.com/cli/cli
@@ -987,10 +988,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 40,76 MiB
+Installed Size  : 40,77 MiB
 Packager        : Caleb Maclennan <alerque@archlinux.org>
-Build Date      : пн, 16-вер-2024 18:38:59 +0300
-Install Date    : пт, 20-вер-2024 10:31:44 +0300
+Build Date      : ср, 02-жов-2024 01:51:24 +0300
+Install Date    : ср, 02-жов-2024 10:36:40 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1359,26 +1360,26 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : hyprpicker
-Version         : 0.3.0-1
-Description     : A wlroots-compatible Wayland color picker that does not suck.
+Version         : 0.4.1-1
+Description     : A wlroots-compatible Wayland color picker that does not suck
 Architecture    : x86_64
 URL             : https://github.com/hyprwm/hyprpicker
 Licenses        : BSD-3-Clause
 Groups          : None
 Provides        : None
-Depends On      : cairo  gcc-libs  glibc  libxkbcommon  wayland
-Optional Deps   : wl-clipboard: Allows --autocopy to automatically copy the output to the clipboard. [installed]
+Depends On      : cairo  gcc-libs  glibc  hyprutils  hyprwayland-scanner  libxkbcommon  wayland
+Optional Deps   : wl-clipboard: Allows --autocopy to automatically copy the output to the clipboard [installed]
 Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 58,73 KiB
-Packager        : Unknown Packager
-Build Date      : нд, 09-чер-2024 11:02:25 +0300
-Install Date    : нд, 09-чер-2024 11:02:39 +0300
+Installed Size  : 122,64 KiB
+Packager        : Carl Smedstad <carsme@archlinux.org>
+Build Date      : ср, 02-жов-2024 08:05:33 +0300
+Install Date    : ср, 02-жов-2024 17:49:46 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
-Validated By    : None
+Validated By    : Signature
 
 Name            : inotify-tools
 Version         : 4.23.9.0-2
@@ -1424,6 +1425,28 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
+Name            : iriunwebcam-bin
+Version         : 2.8.3-1
+Description     : Use your phone's camera as a wireless webcam in your PC
+Architecture    : x86_64
+URL             : https://iriun.com/
+Licenses        : LicenseRef-Iriun
+Groups          : None
+Provides        : None
+Depends On      : alsa-lib  avahi  qt5-base  v4l2loopback-dkms
+Optional Deps   : None
+Required By     : None
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 2,81 MiB
+Packager        : Unknown Packager
+Build Date      : ср, 02-жов-2024 10:59:31 +0300
+Install Date    : ср, 02-жов-2024 10:59:35 +0300
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : None
+
 Name            : jq
 Version         : 1.7.1-2
 Description     : Command-line JSON processor
@@ -1447,7 +1470,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : kitty
-Version         : 0.36.2-1
+Version         : 0.36.4-1
 Description     : A modern, hackable, featureful, OpenGL-based terminal emulator
 Architecture    : x86_64
 URL             : https://github.com/kovidgoyal/kitty
@@ -1462,10 +1485,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 45,63 MiB
+Installed Size  : 45,67 MiB
 Packager        : Lukas Fleischer <lfleischer@archlinux.org>
-Build Date      : пт, 06-вер-2024 18:54:57 +0300
-Install Date    : пт, 27-вер-2024 09:19:38 +0300
+Build Date      : нд, 29-вер-2024 04:55:26 +0300
+Install Date    : ср, 02-жов-2024 21:17:58 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1630,14 +1653,14 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-gst-plugins-base
-Version         : 1.24.8-1
+Version         : 1.24.8-2
 Description     : Multimedia graph framework (32-bit) - base plugins
 Architecture    : x86_64
 URL             : https://gstreamer.freedesktop.org/
 Licenses        : LGPL-2.1-or-later
 Groups          : None
 Provides        : None
-Depends On      : lib32-gst-plugins-base-libs=1.24.8-1  lib32-gstreamer=1.24.8-1  gst-plugins-base  lib32-alsa-lib  lib32-cairo  lib32-cdparanoia  lib32-glib2  lib32-glibc  lib32-libjpeg  lib32-libogg  lib32-libpng  lib32-libtheora  lib32-libvorbis  lib32-libx11  lib32-opus  lib32-pango
+Depends On      : lib32-gst-plugins-base-libs=1.24.8-2  lib32-gstreamer=1.24.8-2  gst-plugins-base  lib32-alsa-lib  lib32-cairo  lib32-cdparanoia  lib32-glib2  lib32-glibc  lib32-libjpeg-turbo  lib32-libogg  lib32-libpng  lib32-libtheora  lib32-libvorbis  lib32-libx11  lib32-opus  lib32-pango
 Optional Deps   : None
 Required By     : None
 Optional For    : None
@@ -1645,21 +1668,21 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 918,45 KiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пт, 20-вер-2024 02:10:40 +0300
-Install Date    : пт, 20-вер-2024 10:31:45 +0300
+Build Date      : сб, 05-жов-2024 06:56:01 +0300
+Install Date    : сб, 05-жов-2024 16:36:01 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-gst-plugins-base-libs
-Version         : 1.24.8-1
+Version         : 1.24.8-2
 Description     : Multimedia graph framework (32-bit) - base
 Architecture    : x86_64
 URL             : https://gstreamer.freedesktop.org/
 Licenses        : LGPL-2.1-or-later
 Groups          : None
 Provides        : None
-Depends On      : lib32-gstreamer=1.24.8-1  gst-plugins-base-libs  lib32-gcc-libs  lib32-glib2  lib32-glibc  lib32-libdrm  lib32-libglvnd  lib32-libgudev  lib32-libx11  lib32-libxcb  lib32-libxext  lib32-libxi  lib32-libxv  lib32-mesa  lib32-orc  lib32-wayland  lib32-zlib
+Depends On      : lib32-gstreamer=1.24.8-2  gst-plugins-base-libs  lib32-gcc-libs  lib32-glib2  lib32-glibc  lib32-libdrm  lib32-libglvnd  lib32-libgudev  lib32-libx11  lib32-libxcb  lib32-libxext  lib32-libxi  lib32-libxv  lib32-mesa  lib32-orc  lib32-wayland  lib32-zlib
 Optional Deps   : None
 Required By     : lib32-gst-plugins-base  lib32-gst-plugins-good
 Optional For    : None
@@ -1667,21 +1690,21 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 4,83 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пт, 20-вер-2024 02:10:40 +0300
-Install Date    : пт, 20-вер-2024 10:31:45 +0300
+Build Date      : сб, 05-жов-2024 06:56:01 +0300
+Install Date    : сб, 05-жов-2024 16:36:01 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : lib32-gst-plugins-good
-Version         : 1.24.8-1
+Version         : 1.24.8-2
 Description     : Multimedia graph framework (32-bit) - good plugins
 Architecture    : x86_64
 URL             : https://gstreamer.freedesktop.org/
 Licenses        : LGPL-2.1-or-later
 Groups          : None
 Provides        : None
-Depends On      : lib32-gst-plugins-base-libs=1.24.8-1  lib32-gstreamer=1.24.8-1  gst-plugins-good  lib32-aalib  lib32-bzip2  lib32-cairo  lib32-flac  lib32-gcc-libs  lib32-gdk-pixbuf2  lib32-glib2  lib32-glibc  lib32-libavc1394  lib32-libcaca  lib32-libdv  lib32-libgudev  lib32-libiec61883  lib32-libjpeg  lib32-libpng  lib32-libpulse  lib32-libraw1394  lib32-libshout  lib32-libsoup3  lib32-libvpx  lib32-libx11  lib32-libxdamage  lib32-libxext  lib32-libxfixes  lib32-libxml2  lib32-libxtst  lib32-mpg123  lib32-nettle  lib32-orc  lib32-speex  lib32-taglib  lib32-twolame  lib32-v4l-utils  lib32-wavpack  lib32-zlib
+Depends On      : lib32-gst-plugins-base-libs=1.24.8-2  lib32-gstreamer=1.24.8-2  gst-plugins-good  lib32-aalib  lib32-bzip2  lib32-cairo  lib32-flac  lib32-gcc-libs  lib32-gdk-pixbuf2  lib32-glib2  lib32-glibc  lib32-libavc1394  lib32-libcaca  lib32-libdv  lib32-libgudev  lib32-libiec61883  lib32-libjpeg-turbo  lib32-libpng  lib32-libpulse  lib32-libraw1394  lib32-libshout  lib32-libsoup3  lib32-libvpx  lib32-libx11  lib32-libxdamage  lib32-libxext  lib32-libxfixes  lib32-libxml2  lib32-libxtst  lib32-mpg123  lib32-nettle  lib32-orc  lib32-speex  lib32-taglib  lib32-twolame  lib32-v4l-utils  lib32-wavpack  lib32-zlib
 Optional Deps   : lib32-jack: JACK backend [installed]
 Required By     : None
 Optional For    : None
@@ -1689,8 +1712,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 6,60 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пт, 20-вер-2024 02:10:40 +0300
-Install Date    : пт, 20-вер-2024 10:31:45 +0300
+Build Date      : сб, 05-жов-2024 06:56:01 +0300
+Install Date    : сб, 05-жов-2024 16:36:01 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -1852,45 +1875,45 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : libgphoto2
-Version         : 2.5.31-2
+Version         : 2.5.31-3
 Description     : Digital camera access library
 Architecture    : x86_64
 URL             : http://www.gphoto.org/
-Licenses        : LGPL
+Licenses        : LGPL-2.1-or-later
 Groups          : None
 Provides        : libgphoto2.so=6-64  libgphoto2_port.so=12-64
-Depends On      : curl  gd  libexif  libjpeg  libltdl  libusb  libxml2
+Depends On      : bash  curl  gd  glibc  libexif  libjpeg-turbo  libltdl  libusb  libxml2
 Optional Deps   : None
 Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 6,30 MiB
-Packager        : T.J. Townsend <blakkheim@archlinux.org>
-Build Date      : пт, 12-лип-2024 23:22:19 +0300
-Install Date    : нд, 14-лип-2024 14:32:44 +0300
+Installed Size  : 6,10 MiB
+Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+Build Date      : сб, 05-жов-2024 04:53:51 +0300
+Install Date    : сб, 05-жов-2024 16:36:01 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : libgsf
-Version         : 1.14.52-1
+Version         : 1.14.53-1
 Description     : Extensible I/O abstraction library for dealing with structured file formats
 Architecture    : x86_64
 URL             : https://gitlab.gnome.org/GNOME/libgsf
 Licenses        : LGPL-2.1-only
 Groups          : None
 Provides        : libgsf-1.so=114-64
-Depends On      : bzip2  gdk-pixbuf2  libxml2
+Depends On      : bzip2  gdk-pixbuf2  glib2  glibc  libxml2  zlib
 Optional Deps   : None
 Required By     : None
 Optional For    : tumbler
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 2,21 MiB
+Installed Size  : 1491,61 KiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : пн, 05-лют-2024 04:54:40 +0200
-Install Date    : вт, 28-тра-2024 20:20:03 +0300
+Build Date      : вт, 01-жов-2024 19:21:34 +0300
+Install Date    : ср, 02-жов-2024 10:36:40 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2057,7 +2080,7 @@ Install Script  : Yes
 Validated By    : Signature
 
 Name            : linux
-Version         : 6.10.10.arch1-1
+Version         : 6.11.1.arch1-1
 Description     : The Linux kernel and modules
 Architecture    : x86_64
 URL             : https://github.com/archlinux/linux
@@ -2071,10 +2094,10 @@ Required By     : None
 Optional For    : base  mkinitcpio-firmware
 Conflicts With  : None
 Replaces        : virtualbox-guest-modules-arch  wireguard-arch
-Installed Size  : 135,69 MiB
+Installed Size  : 137,20 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 12-вер-2024 20:21:02 +0300
-Install Date    : пт, 20-вер-2024 10:31:46 +0300
+Build Date      : вт, 01-жов-2024 02:49:50 +0300
+Install Date    : ср, 02-жов-2024 10:36:40 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2102,7 +2125,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : linux-headers
-Version         : 6.10.10.arch1-1
+Version         : 6.11.1.arch1-1
 Description     : Headers and scripts for building modules for the Linux kernel
 Architecture    : x86_64
 URL             : https://github.com/archlinux/linux
@@ -2115,10 +2138,10 @@ Required By     : None
 Optional For    : dkms
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 131,48 MiB
+Installed Size  : 132,13 MiB
 Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-Build Date      : чт, 12-вер-2024 20:21:02 +0300
-Install Date    : пт, 20-вер-2024 10:31:48 +0300
+Build Date      : вт, 01-жов-2024 02:49:50 +0300
+Install Date    : ср, 02-жов-2024 10:36:42 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2270,7 +2293,7 @@ Install Script  : No
 Validated By    : None
 
 Name            : mission-center
-Version         : 0.5.2-1
+Version         : 0.6.0-1
 Description     : Monitor your CPU, Memory, Disk, Network and GPU usage
 Architecture    : x86_64
 URL             : https://gitlab.com/mission-center-devs/mission-center
@@ -2283,10 +2306,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 18,58 MiB
+Installed Size  : 19,64 MiB
 Packager        : Unknown Packager
-Build Date      : пн, 17-чер-2024 12:26:03 +0300
-Install Date    : пн, 17-чер-2024 12:29:04 +0300
+Build Date      : сб, 28-вер-2024 23:11:14 +0300
+Install Date    : вт, 01-жов-2024 18:09:30 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -2425,23 +2448,23 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : ncdu
-Version         : 2.5-1
+Version         : 2.6-1
 Description     : Disk usage analyzer with an ncurses interface
 Architecture    : x86_64
 URL             : https://dev.yorhel.nl/ncdu
 Licenses        : MIT
 Groups          : None
 Provides        : None
-Depends On      : ncurses
+Depends On      : ncurses  glibc  zstd  libncursesw.so=6-64  libzstd.so=1-64
 Optional Deps   : None
 Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 505,57 KiB
-Packager        : Daurnimator <daurnimator@archlinux.org>
-Build Date      : ср, 07-сер-2024 03:53:12 +0300
-Install Date    : ср, 07-сер-2024 11:05:26 +0300
+Installed Size  : 518,32 KiB
+Packager        : kpcyrd <kpcyrd@archlinux.org>
+Build Date      : ср, 02-жов-2024 14:32:21 +0300
+Install Date    : ср, 02-жов-2024 17:49:46 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2525,23 +2548,23 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : nodejs-lts-iron
-Version         : 20.17.0-1
+Version         : 20.18.0-1
 Description     : Evented I/O for V8 javascript (LTS release: Iron)
 Architecture    : x86_64
 URL             : https://nodejs.org/
 Licenses        : MIT
 Groups          : None
-Provides        : nodejs=20.17.0
+Provides        : nodejs=20.18.0
 Depends On      : openssl  zlib  icu  libuv  c-ares  brotli  libnghttp2
 Optional Deps   : npm: nodejs package manager [installed]
 Required By     : node-gyp  nodejs-nativefier  nodejs-nopt  npm  semver  typescript  yarn
 Optional For    : None
 Conflicts With  : nodejs
 Replaces        : None
-Installed Size  : 44,35 MiB
+Installed Size  : 44,43 MiB
 Packager        : Jelle van der Waa <jelle@archlinux.org>
-Build Date      : сб, 24-сер-2024 12:22:38 +0300
-Install Date    : ср, 04-вер-2024 23:57:02 +0300
+Build Date      : сб, 05-жов-2024 12:18:08 +0300
+Install Date    : сб, 05-жов-2024 16:36:01 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2571,7 +2594,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : noto-fonts-emoji
-Version         : 1:2.042-1
+Version         : 1:2.047-1
 Description     : Google Noto emoji fonts
 Architecture    : any
 URL             : https://www.google.com/get/noto/
@@ -2584,10 +2607,10 @@ Required By     : None
 Optional For    : noto-fonts
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 10,11 MiB
+Installed Size  : 10,15 MiB
 Packager        : Antonio Rojas <arojas@archlinux.org>
-Build Date      : чт, 30-лис-2023 10:35:16 +0200
-Install Date    : ср, 07-сер-2024 15:10:52 +0300
+Build Date      : чт, 03-жов-2024 20:47:38 +0300
+Install Date    : пт, 04-жов-2024 12:24:18 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2673,7 +2696,7 @@ Optional Deps   : libfdk-aac: FDK AAC codec support [installed]
                   luajit: scripting support [installed]
                   python: scripting support [installed]
                   sndio: Sndio input client [installed]
-                  v4l2loopback-dkms: virtual camera support
+                  v4l2loopback-dkms: virtual camera support [installed]
 Required By     : obs-plugin-looking-glass
 Optional For    : None
 Conflicts With  : None
@@ -2687,7 +2710,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : oh-my-posh
-Version         : 23.14.1-1
+Version         : 23.15.3-1
 Description     : A prompt theme engine for any shell.
 Architecture    : x86_64
 URL             : https://github.com/JanDeDobbeleer/oh-my-posh
@@ -2702,8 +2725,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 17,40 MiB
 Packager        : Unknown Packager
-Build Date      : вт, 24-вер-2024 17:56:11 +0300
-Install Date    : вт, 24-вер-2024 17:56:37 +0300
+Build Date      : чт, 03-жов-2024 15:29:55 +0300
+Install Date    : чт, 03-жов-2024 15:30:22 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -2959,7 +2982,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : php
-Version         : 8.3.12-1
+Version         : 8.3.12-2
 Description     : A general-purpose scripting language that is especially suited to web development
 Architecture    : x86_64
 URL             : https://www.php.net/
@@ -2972,16 +2995,16 @@ Required By     : php-gd  php-pgsql  php-sqlite
 Optional For    : libguestfs
 Conflicts With  : php-intl
 Replaces        : php-intl
-Installed Size  : 28,74 MiB
+Installed Size  : 28,73 MiB
 Packager        : Pierre Schmitz <pierre@archlinux.org>
-Build Date      : ср, 25-вер-2024 18:39:18 +0300
-Install Date    : чт, 26-вер-2024 10:08:07 +0300
+Build Date      : нд, 29-вер-2024 12:30:18 +0300
+Install Date    : нд, 29-вер-2024 23:00:47 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : php-gd
-Version         : 8.3.12-1
+Version         : 8.3.12-2
 Description     : gd module for PHP
 Architecture    : x86_64
 URL             : https://www.php.net/
@@ -2996,14 +3019,14 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 90,12 KiB
 Packager        : Pierre Schmitz <pierre@archlinux.org>
-Build Date      : ср, 25-вер-2024 18:39:18 +0300
-Install Date    : чт, 26-вер-2024 10:08:07 +0300
+Build Date      : нд, 29-вер-2024 12:30:18 +0300
+Install Date    : нд, 29-вер-2024 23:00:47 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : php-pgsql
-Version         : 8.3.12-1
+Version         : 8.3.12-2
 Description     : PostgreSQL modules for PHP
 Architecture    : x86_64
 URL             : https://www.php.net/
@@ -3018,14 +3041,14 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 172,25 KiB
 Packager        : Pierre Schmitz <pierre@archlinux.org>
-Build Date      : ср, 25-вер-2024 18:39:18 +0300
-Install Date    : чт, 26-вер-2024 10:08:07 +0300
+Build Date      : нд, 29-вер-2024 12:30:18 +0300
+Install Date    : нд, 29-вер-2024 23:00:47 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : php-sqlite
-Version         : 8.3.12-1
+Version         : 8.3.12-2
 Description     : sqlite module for PHP
 Architecture    : x86_64
 URL             : https://www.php.net/
@@ -3040,14 +3063,14 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 100,25 KiB
 Packager        : Pierre Schmitz <pierre@archlinux.org>
-Build Date      : ср, 25-вер-2024 18:39:18 +0300
-Install Date    : чт, 26-вер-2024 10:08:07 +0300
+Build Date      : нд, 29-вер-2024 12:30:18 +0300
+Install Date    : нд, 29-вер-2024 23:00:47 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
 Name            : pikaur
-Version         : 1.29.1-1
+Version         : 1.30.2-1
 Description     : AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay.
 Architecture    : any
 URL             : https://github.com/actionless/pikaur
@@ -3063,10 +3086,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : pikaur-git
 Replaces        : None
-Installed Size  : 1932,61 KiB
+Installed Size  : 1946,13 KiB
 Packager        : Unknown Packager
-Build Date      : пт, 20-вер-2024 10:32:07 +0300
-Install Date    : пт, 20-вер-2024 10:33:46 +0300
+Build Date      : ср, 02-жов-2024 21:16:41 +0300
+Install Date    : ср, 02-жов-2024 21:16:51 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -3558,7 +3581,7 @@ Install Script  : No
 Validated By    : None
 
 Name            : qt6-webview
-Version         : 6.7.2-1
+Version         : 6.7.3-1
 Description     : Provides a way to display web content in a QML application
 Architecture    : x86_64
 URL             : https://www.qt.io
@@ -3571,10 +3594,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 396,39 KiB
+Installed Size  : 397,01 KiB
 Packager        : Antonio Rojas <arojas@archlinux.org>
-Build Date      : вт, 18-чер-2024 19:15:02 +0300
-Install Date    : пн, 24-чер-2024 19:49:28 +0300
+Build Date      : пт, 27-вер-2024 17:18:29 +0300
+Install Date    : сб, 28-вер-2024 17:31:29 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3833,7 +3856,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : telegram-desktop
-Version         : 5.5.5-2
+Version         : 5.5.5-3
 Description     : Official Telegram Desktop client
 Architecture    : x86_64
 URL             : https://desktop.telegram.org/
@@ -3847,10 +3870,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 101,72 MiB
-Packager        : Christian Heusel <gromit@archlinux.org>
-Build Date      : ср, 25-вер-2024 11:38:01 +0300
-Install Date    : чт, 26-вер-2024 10:08:07 +0300
+Installed Size  : 101,71 MiB
+Packager        : Antonio Rojas <arojas@archlinux.org>
+Build Date      : пт, 27-вер-2024 17:30:55 +0300
+Install Date    : сб, 28-вер-2024 17:31:29 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -3974,7 +3997,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : tlp
-Version         : 1.6.1-1
+Version         : 1.7.0-1
 Description     : Linux Advanced Power Management
 Architecture    : any
 URL             : https://linrunner.de/en/tlp/tlp.html
@@ -3990,10 +4013,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : laptop-mode-tools  pm-utils  power-profiles-daemon
 Replaces        : None
-Installed Size  : 527,21 KiB
-Packager        : Maxime Gauduin <alucryd@archlinux.org>
-Build Date      : вт, 19-вер-2023 01:02:58 +0300
-Install Date    : чт, 18-січ-2024 11:52:02 +0200
+Installed Size  : 586,48 KiB
+Packager        : Lukas Fleischer <lfleischer@archlinux.org>
+Build Date      : нд, 29-вер-2024 04:58:43 +0300
+Install Date    : нд, 29-вер-2024 23:00:47 +0300
 Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : Signature
@@ -4031,7 +4054,7 @@ Provides        : None
 Depends On      : python  python-psutil  python-six
 Optional Deps   : None
 Required By     : None
-Optional For    : electron32
+Optional For    : electron31  electron32
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 779,00 KiB
@@ -4131,7 +4154,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : ttf-ms-win11-auto
-Version         : 10.0.22631.2428-2
+Version         : 10.0.26100.1742-1
 Description     : Microsoft Windows 11 TrueType fonts
 Architecture    : any
 URL             : https://www.microsoft.com/typography/fonts/product.aspx?PID=164
@@ -4144,10 +4167,10 @@ Required By     : qt5-webengine  qt6-webengine  steam  vivaldi
 Optional For    : None
 Conflicts With  : ttf-vista-fonts  ttf-tahoma  ttf-ms-fonts  ttf-ms-win8-auto  ttf-ms-win10-auto  ttf-win7-fonts-auto
 Replaces        : None
-Installed Size  : 67,61 MiB
+Installed Size  : 68,45 MiB
 Packager        : Unknown Packager
-Build Date      : вт, 07-тра-2024 11:30:30 +0300
-Install Date    : вт, 07-тра-2024 11:35:53 +0300
+Build Date      : пт, 04-жов-2024 12:24:25 +0300
+Install Date    : пт, 04-жов-2024 12:33:20 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -4247,6 +4270,28 @@ Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : None
 
+Name            : vesktop-bin
+Version         : 1.5.3-1
+Description     : A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed
+Architecture    : x86_64
+URL             : https://github.com/Vencord/Vesktop
+Licenses        : GPL-3.0-only
+Groups          : None
+Provides        : vesktop=1.5.3  vencord-desktop=1.5.3
+Depends On      : electron31
+Optional Deps   : None
+Required By     : None
+Optional For    : None
+Conflicts With  : vesktop  vencord-desktop
+Replaces        : None
+Installed Size  : 9,00 MiB
+Packager        : Unknown Packager
+Build Date      : ср, 04-вер-2024 21:40:49 +0300
+Install Date    : чт, 03-жов-2024 22:56:48 +0300
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : None
+
 Name            : vim
 Version         : 9.1.0740-1
 Description     : Vi Improved, a highly configurable, improved version of the vi text editor
@@ -4296,7 +4341,7 @@ Install Script  : No
 Validated By    : Signature
 
 Name            : visual-studio-code-bin
-Version         : 1.93.1-1
+Version         : 1.94.0-1
 Description     : Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
 Architecture    : x86_64
 URL             : https://code.visualstudio.com/
@@ -4312,16 +4357,16 @@ Required By     : None
 Optional For    : None
 Conflicts With  : code
 Replaces        : None
-Installed Size  : 368,86 MiB
+Installed Size  : 364,81 MiB
 Packager        : Unknown Packager
-Build Date      : пт, 13-вер-2024 10:31:03 +0300
-Install Date    : пт, 13-вер-2024 10:32:28 +0300
+Build Date      : пт, 04-жов-2024 12:32:45 +0300
+Install Date    : пт, 04-жов-2024 12:33:21 +0300
 Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : None
 
 Name            : vivaldi
-Version         : 6.9.3447.48-1
+Version         : 6.9.3447.51-1
 Description     : An advanced browser made with the power user in mind.
 Architecture    : x86_64
 URL             : https://vivaldi.com
@@ -4339,10 +4384,10 @@ Required By     : None
 Optional For    : None
 Conflicts With  : None
 Replaces        : None
-Installed Size  : 378,89 MiB
+Installed Size  : 379,00 MiB
 Packager        : Ike Devolder <ike.devolder@archlinux.org>
-Build Date      : ср, 25-вер-2024 21:53:53 +0300
-Install Date    : чт, 26-вер-2024 10:08:08 +0300
+Build Date      : ср, 02-жов-2024 10:07:21 +0300
+Install Date    : ср, 02-жов-2024 17:49:46 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -4409,28 +4454,6 @@ Installed Size  : 13,08 KiB
 Packager        : Unknown Packager
 Build Date      : чт, 08-сер-2024 11:08:43 +0300
 Install Date    : сб, 17-сер-2024 22:52:43 +0300
-Install Reason  : Explicitly installed
-Install Script  : No
-Validated By    : None
-
-Name            : webcord
-Version         : 4.10.1-1
-Description     : A Discord and SpaceBar Electron-based client implemented without Discord API
-Architecture    : any
-URL             : https://github.com/SpacingBat3/WebCord
-Licenses        : MIT
-Groups          : None
-Provides        : None
-Depends On      : electron32
-Optional Deps   : None
-Required By     : None
-Optional For    : None
-Conflicts With  : None
-Replaces        : None
-Installed Size  : 9,07 MiB
-Packager        : Unknown Packager
-Build Date      : пн, 09-вер-2024 12:53:29 +0300
-Install Date    : пн, 09-вер-2024 12:53:41 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : None
@@ -4547,7 +4570,7 @@ Install Script  : No
 Validated By    : None
 
 Name            : xdg-desktop-portal-hyprland
-Version         : 1.3.5-1
+Version         : 1.3.6-1
 Description     : xdg-desktop-portal backend for hyprland
 Architecture    : x86_64
 URL             : https://github.com/hyprwm/xdg-desktop-portal-hyprland
@@ -4563,8 +4586,8 @@ Conflicts With  : None
 Replaces        : None
 Installed Size  : 597,64 KiB
 Packager        : Caleb Maclennan <alerque@archlinux.org>
-Build Date      : сб, 21-вер-2024 19:41:08 +0300
-Install Date    : вт, 24-вер-2024 12:32:30 +0300
+Build Date      : сб, 28-вер-2024 15:54:59 +0300
+Install Date    : сб, 28-вер-2024 17:31:29 +0300
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature

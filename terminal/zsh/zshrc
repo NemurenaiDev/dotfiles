@@ -63,17 +63,15 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 
 
+zstyle ":completion:*" menu select
 zstyle ":completion:*" use-cache on
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
-zstyle ":completion:*" menu no
-zstyle ":fzf-tab:complete:cd:*" fzf-preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$realpath"
 
 
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
 
 
 bindkey "^f" autosuggest-accept
@@ -129,6 +127,7 @@ alias ga="git add"
 alias gaa="git add ."
 alias gc="git commit -m"
 alias gp="git push"
+alias gpo="git push origin"
 
 
 eval "$(fzf --zsh)"

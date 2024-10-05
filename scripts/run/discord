@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/dotfiles/scripts/app-workspace "37" "vesktop" "$1"

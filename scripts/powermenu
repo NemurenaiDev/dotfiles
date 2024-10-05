@@ -14,14 +14,6 @@ case $choice in
     "Suspend")
         systemctl suspend
     ;;
-    "Windows")
-        windows_entry=$(efibootmgr | grep -i "windows" | awk '{print $1}' | sed 's/Boot\([0-9A-F]*\).*/\1/')
-        if [ -n "$windows_entry" ]; then
-			sudo efibootmgr --bootnext "$windows_entry" && systemctl reboot
-        else
-            echo "ERROR: Windows boot entry not found in efibootmgr"
-        fi
-    ;;
     *)
         exit
     ;;

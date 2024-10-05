@@ -25,11 +25,11 @@ remove-desktop-entries() {
     sudo bash -c "rm /usr/share/applications/vim.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/waydroid.app.install.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/waydroid.market.desktop 2>/dev/null"
-    sudo bash -c "rm /usr/share/applications/com.github.wwmm.easyeffects.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/org.pulseaudio.pavucontrol.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/com.cloudflare.WarpTaskbar.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/thunar.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/xfce4-about.desktop 2>/dev/null"
+    sudo bash -c "rm /usr/share/applications/lstopo.desktop 2>/dev/null"
     
     sudo update-desktop-database
 }
@@ -43,7 +43,7 @@ pc() {
             sudo pikaur -Rns "${@:2}" && remove-desktop-entries; $Dotfiles/scripts/pacdump
         ;;
         "u" | "update")
-            sudo pikaur -Syu --nodiff --noedit && remove-desktop-entries; $Dotfiles/scripts/pacdump && zinit self-update && zinit update --all
+            sudo pikaur -Syu --nodiff --noedit && remove-desktop-entries; $Dotfiles/scripts/pacdump && echo && zinit self-update && zinit update --all
         ;;
         "d" | "downgrade")
             sudo downgrade "${@:2}" && remove-desktop-entries; $Dotfiles/scripts/pacdump

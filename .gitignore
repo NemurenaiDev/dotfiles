@@ -6,4 +6,3 @@ copyq/**
 !.env.example
 
 *.log
-
