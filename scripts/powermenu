@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-options="Shutdown\nReboot\nWindows\nSuspend"
+options="Shutdown\nReboot\nSuspend"
 
 choice=$(echo -e "$options" | fzf --ansi --highlight-line --margin=0%)
 
