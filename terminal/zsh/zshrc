@@ -121,6 +121,7 @@ alias thunar="exec thunar . &"
 alias code="code-reuse-or-new"
 
 alias g="git"
+alias gcl="git clone"
 alias gs="git status"
 alias gst="git status"
 alias ga="git add"
