@@ -1,21 +1,18 @@
-# GLOBAL
 max-history=100
 sort=+time
 
-# BINDING OPTIONS
 on-touch=dismiss
 on-button-left=dismiss
 on-button-middle=none
 on-button-right=dismiss-all
 # on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 
-# STYLE OPTIONS
 output=DP-4
 anchor=bottom-right
 font=JetBrainsMono Nerd Font Mono
 width=400
 height=100
-margin=0
+margin=5
 padding=10
 border-size=1
 border-radius=10
@@ -71,7 +68,8 @@ width=175
 
 [category=error]
 invisible=0
-border-color=#eb6f92
+border-size=2
+border-color=#e64553
 default-timeout=10000
 anchor=bottom-right
 
@@ -82,3 +80,7 @@ invisible=true
 [app-name=Spotify]
 default-timeout=5000
 border-color=#a6e3a1
+
+[app-name=Vivaldi]
+default-timeout=5000
+border-color=#eb6f92

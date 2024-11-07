@@ -91,3 +91,11 @@ lastcd() {
     cd "$@" && lsd --literal --icon always --color always --group-dirs first
     echo "$(pwd)" > $HOME/.cache/lastcd
 }
+
+ssh() {
+    if [[ "$(get-terminal-name)" == "kitty" ]]; then
+        kitten ssh "$@"
+    else
+        /bin/ssh "$@"
+    fi
+}

@@ -11,10 +11,11 @@ export Projector="HDMI-A-1"
 export MonitorLeft="HDMI-A-2"
 export MonitorCenter="DP-4"
 
-export ZSH_PLUGINS="/usr/share/zsh/plugins"
-export ZINIT_HOME="$HOME/.local/share/zinit"
-export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PATH:$(yarn global bin)"
 export NODE_PATH="/usr/lib/node_modules"
+export ZINIT_HOME="$HOME/.local/share/zinit"
+export ZSH_PLUGINS="/usr/share/zsh/plugins"
+export DISABLE_AUTO_UPDATE="true"
 
 
 autoload -U "$Dotfiles/terminal/zsh/functions"
@@ -107,7 +108,6 @@ alias lll="lsd --literal --icon always --color always --group-dirs first --date 
 alias cd="lastcd"
 alias rm="trash -v"
 alias ff="fastfetch"
-alias ssh="kitten ssh"
 alias wlcp="wl-copy"
 alias hypr="hyprctl dispatch"
 alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /run --exclude /mnt --exclude /home/yabai/Library"
@@ -117,8 +117,9 @@ alias proj="$Dotfiles/scripts/project"
 alias projadd="$Dotfiles/scripts/projects add"
 alias projrem="$Dotfiles/scripts/projects rem"
 
-alias thunar="exec thunar . &"
 alias code="code-reuse-or-new"
+
+alias dc="docker-compose"
 
 alias g="git"
 alias gcl="git clone"

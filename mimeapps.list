@@ -1,0 +1,36 @@
+[Default Applications]
+application/octet-stream = yabai-desktop-code.app.desktop
+application/x-bat = vscode.desktop
+application/x-extension-htm = vivaldi-stable.desktop
+application/x-extension-html = vivaldi-stable.desktop
+application/x-extension-shtml = vivaldi-stable.desktop
+application/x-extension-xht = vivaldi-stable.desktop
+application/x-extension-xhtml = vivaldi-stable.desktop
+application/xhtml+xml = vivaldi-stable.desktop
+application/x-php = code.app.desktop
+application/x-shellscript = code.desktop
+image/avif = org.gnome.eog.desktop
+image/gif = org.gnome.eog.desktop
+image/jpeg = org.gnome.eog.desktop
+image/png = org.gnome.eog.desktop
+image/webp = org.gnome.eog.desktop
+text/html = vivaldi-stable.desktop
+text/javascript = vscode.desktop
+text/plain = vscode.desktop
+x-scheme-handler/about = vivaldi-stable.desktop
+x-scheme-handler/chrome = vivaldi-stable.desktop
+x-scheme-handler/http = vivaldi-stable.desktop
+x-scheme-handler/https = vivaldi-stable.desktop
+x-scheme-handler/mailto = vivaldi-stable.desktop
+x-scheme-handler/postman = Postman.desktop
+x-scheme-handler/tg = org.telegram.desktop.desktop
+x-scheme-handler/tonsite = org.telegram.desktop.desktop
+x-scheme-handler/unknown = vivaldi-stable.desktop
+text/html=vivaldi-stable.desktop
+x-scheme-handler/http=vivaldi-stable.desktop
+x-scheme-handler/https=vivaldi-stable.desktop
+x-scheme-handler/about=vivaldi-stable.desktop
+x-scheme-handler/unknown=vivaldi-stable.desktop
+x-scheme-handler/postman=Postman.desktop
+
+[Added Associations]

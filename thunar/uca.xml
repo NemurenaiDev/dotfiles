@@ -57,10 +57,21 @@
 </action>
 <action>
 	<icon>media-track-queue-amarok</icon>
-	<name>Set as Wallpaper</name>
+	<name>Set as Wallpaper (Split)</name>
 	<submenu></submenu>
 	<unique-id>1717427340726112-1</unique-id>
 	<command>~/.config/dotfiles/scripts/wallpaper %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>media-track-queue-amarok</icon>
+	<name>Set as Wallpaper (Duplicate)</name>
+	<submenu></submenu>
+	<unique-id>1717427340726112-1</unique-id>
+	<command>~/.config/dotfiles/scripts/wallpaper --duplicate %f</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>
