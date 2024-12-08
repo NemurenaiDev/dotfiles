@@ -15,27 +15,27 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-    background: rgba(24, 25, 38, .8);
+    background: rgba(24, 25, 38, 0.6);
     border-radius: 16px;
     padding: 3px 2.5px;
     border: 1px solid rgba(245, 194, 231, 0.25);
 }
 
 tooltip {
-    background: rgba(24, 25, 38, .8);
+    background: rgba(24, 25, 38, 0.8);
     border-radius: 10px;
 }
 
 tooltip label {
     padding: 5px 10px;
-    border: #9D8C98 1px solid;
+    border: #9d8c98 1px solid;
     border-radius: 5px;
-    color: #C7AEBB;
-    font-size: 16px;
+    color: #c7aebb;
+    font-size: 14px;
 }
 
 #workspaces button {
-    color: #D4B6CC;
+    color: #d4b6cc;
     padding: 2px;
 }
 
@@ -44,7 +44,7 @@ tooltip label {
 }
 
 #workspaces button:hover {
-    color: #D9A8C6;
+    color: #d9a8c6;
 }
 
 #clock,
@@ -68,13 +68,14 @@ tooltip label {
 #custom-playerlabel,
 #custom-pacman,
 #custom-language,
+#custom-wireguard,
 #custom-weather {
-    color: #C7AEBB;
+    color: #c7aebb;
     padding: 0 8px;
 }
 
-#custom-cloudflare-warp {
-    padding: 2px 4px 0 0;
+#custom-wireguard {
+    padding: 0 0 0 2px;
 }
 
 #custom-notification {
@@ -83,18 +84,18 @@ tooltip label {
 
 #custom-playerlabel,
 #window {
-    color: #C7AEBB;
+    color: #c7aebb;
 }
 #clock,
 #custom-language {
-    color: #F3D1A2;
+    color: #f3d1a2;
 }
 
 #upower,
 #battery,
 #backlight,
 #pulseaudio {
-    color: #EFC4BC;
+    color: #efc4bc;
 }
 
 #window {
@@ -113,17 +114,17 @@ tooltip label {
 }
 
 #temperature.critical {
-    background-color: #F38BA8;
+    background-color: #f38ba8;
 }
 
 @keyframes blink {
     to {
-        color: #45475A;
+        color: #45475a;
     }
 }
 
 #battery.critical:not(.charging) {
-    color: #F38BA8;
+    color: #f38ba8;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

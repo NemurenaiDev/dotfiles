@@ -135,3 +135,5 @@ alias gpo="git push origin"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config $Dotfiles/terminal/ohmyposh.toml)"
+# Created by `pipx` on 2024-11-07 12:18:04
+export PATH="$PATH:/home/yabai/.local/bin"

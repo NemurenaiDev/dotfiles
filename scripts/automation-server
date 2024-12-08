@@ -1,0 +1,74 @@
+#!/bin/node
+
+const http = require("http")
+const fs = require("fs")
+const { exec, spawn } = require("child_process")
+
+const PORT = 8523
+
+const routes = {
+    "/health": `echo "Im fine, thanks"`,
+    "/player/play-pause": "playerctl play-pause",
+    "/player/stop": "playerctl stop",
+    "/player/prev": "playerctl previous",
+    "/player/next": "playerctl next",
+    "/player/forw": "playerctl position 5+",
+    "/player/back": "playerctl position 5-",
+    "/volume/inc": "$Dotfiles/scripts/volume --inc",
+    "/volume/dec": "$Dotfiles/scripts/volume --dec",
+}
+
+const server = http.createServer((req, res) => {
+    const url = req.url.replaceAll("//", "/")
+    const method = req.method?.toUpperCase()
+
+    if (method === "POST" && routes[url]) {
+        exec(routes[url], (error, stdout, stderr) => {
+            let result = ""
+            if (error) {
+                result += `=> Error: ${error.message}`
+                res.writeHead(500, { "Content-Type": "text/plain" })
+                return res.end(error.message)
+            }
+            if (stderr) {
+                result += `=> Stderr: ${stderr}`
+                res.writeHead(500, { "Content-Type": "text/plain" })
+                return res.end(stderr)
+            }
+            result += !!stdout.trim() ? `=> Stdout: ${stdout}` : ""
+            res.writeHead(200, { "Content-Type": "text/plain" })
+            res.end(stdout)
+
+            console.log(`[${method}][${url}] ${routes[url]} ${result}`)
+        })
+    } else {
+        res.writeHead(404, { "Content-Type": "text/plain" })
+        res.end(`Cannot ${method} ${url}`)
+
+        console.log(`[${method}][${url}] Unknown route`)
+    }
+})
+
+//
+fs.watch(__filename, (eventType, filename) => {
+    if (eventType === "change") {
+        console.log("\n\n")
+        console.log("============================================")
+        console.log("Restarting the script due to file changes...")
+
+        spawn(process.argv[0], process.argv.slice(1), {
+            stdio: "inherit",
+        }).unref()
+        process.exit()
+    }
+})
+console.log("Watching for file changes...")
+
+//
+server.listen(PORT, () => {
+    console.log(`Listening on http://localhost:${PORT}`)
+    console.log()
+    Object.keys(routes).forEach((key) => console.log(`[POST] ${key} => ${routes[key]}`))
+    console.log()
+    console.log("--------------------------------------------")
+})

@@ -13,7 +13,18 @@
     "margin-right": 5,
     "modules-left": ["custom/notification", "clock", "battery", "custom/pacman", "custom/weather"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["custom/playerlabel", "tray", "backlight", "pulseaudio", "hyprland/language"],
+    "modules-right": ["custom/playerlabel", "tray", "custom/wireguard", "backlight", "pulseaudio", "hyprland/language"],
+    "custom/wireguard": {
+        "interval": 1,
+        "return-type": "json",
+        "format-icons": {
+            "connected": "<span color=\"#80A673\">󰤪 </span>",
+            "disconnected": "<span color=\"#5C6773\">󱛏 </span>"
+        },
+        "on-click": "exec ~/dotfiles/scripts/wireguard -t",
+        "exec": "exec ~/dotfiles/scripts/wireguard -s",
+        "format": "{icon}"
+    },
     "custom/weather": {
         "format": "{}°",
         "tooltip": true,
@@ -124,6 +135,7 @@
             "default": ["\uDB81\uDD7F", "\uDB81\uDD80", "\uDB81\uDD7E"],
             "ignored-sinks": ["easyeffects_sink"]
         },
+        "ignored-sinks": ["Easy Effects Sink"],
         "scroll-step": 5.0,
         "on-click": "~/dotfiles/scripts/volume --toggle",
         "on-click-right": "pavucontrol",

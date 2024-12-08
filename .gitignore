@@ -1,6 +1,8 @@
 copyq/**
 !copyq/**/*.ini
 
+.venv
+
 .env
 .env.*
 !.env.example
