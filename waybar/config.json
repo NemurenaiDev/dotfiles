@@ -2,7 +2,7 @@
     "ipc": true,
     "layer": "top",
     "position": "top",
-    "output": "HDMI-A-2",
+    "output": "DP-2",
     "exclusive": true,
     "passthrough": false,
     "fixed-center": true,
