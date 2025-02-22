@@ -2,7 +2,7 @@
 
 remove-desktop-entries() {
     sudo bash -c "rm ~/.local/share/applications/userapp*.desktop 2>/dev/null"
-    
+
     sudo bash -c "rm /usr/share/applications/*openjdk.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/electron*.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/blueman-adapters.desktop 2>/dev/null"
@@ -19,6 +19,7 @@ remove-desktop-entries() {
     sudo bash -c "rm /usr/share/applications/qdbusviewer.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/qvidcap.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/steam.desktop 2>/dev/null"
+    # sudo bash -c "rm /usr/share/applications/thunar.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/thunar-bulk-rename.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/thunar-settings.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/thunar-volman-settings.desktop 2>/dev/null"
@@ -27,41 +28,44 @@ remove-desktop-entries() {
     sudo bash -c "rm /usr/share/applications/waydroid.market.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/org.pulseaudio.pavucontrol.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/com.cloudflare.WarpTaskbar.desktop 2>/dev/null"
-    sudo bash -c "rm /usr/share/applications/thunar.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/xfce4-about.desktop 2>/dev/null"
     sudo bash -c "rm /usr/share/applications/lstopo.desktop 2>/dev/null"
-    
+
     sudo update-desktop-database
 }
 
 pc() {
     case $1 in
-        "i" | "install")
-            sudo pikaur -S --nodiff --noedit "${@:2}" && remove-desktop-entries; $Dotfiles/scripts/pacdump
+    "i" | "install")
+        sudo pikaur -S --nodiff --noedit "${@:2}" && remove-desktop-entries
+        $Dotfiles/scripts/pacdump
         ;;
-        "r" | "remove")
-            sudo pikaur -Rns "${@:2}" && remove-desktop-entries; $Dotfiles/scripts/pacdump
+    "r" | "remove")
+        sudo pikaur -Rns "${@:2}" && remove-desktop-entries
+        $Dotfiles/scripts/pacdump
         ;;
-        "u" | "update")
-            sudo pikaur -Syu --nodiff --noedit && remove-desktop-entries; $Dotfiles/scripts/pacdump && echo && zinit self-update && zinit update --all
+    "u" | "update")
+        sudo pikaur -Syu --nodiff --noedit && remove-desktop-entries
+        $Dotfiles/scripts/pacdump && echo && zinit self-update && zinit update --all
         ;;
-        "d" | "downgrade")
-            sudo downgrade "${@:2}" && remove-desktop-entries; $Dotfiles/scripts/pacdump
+    "d" | "downgrade")
+        sudo downgrade "${@:2}" && remove-desktop-entries
+        $Dotfiles/scripts/pacdump
         ;;
-        "s" | "search")
-            pikaur -Ss "${@:2}"
+    "s" | "search")
+        pikaur -Ss "${@:2}"
         ;;
-        "ls" | "list")
-            pikaur -Q | grep "$(printf '|%s' "${@:2}" | cut -c 2-)"
+    "ls" | "list")
+        pikaur -Q | grep "$(printf '|%s' "${@:2}" | cut -c 2-)"
         ;;
-        "info")
-            pikaur -Qi "${@:2}"
+    "info")
+        pikaur -Qi "${@:2}"
         ;;
-        "clear")
-            pikaur -Scc
+    "clear")
+        pikaur -Scc
         ;;
-        *)
-            pikaur "$@"
+    *)
+        pikaur "$@"
         ;;
     esac
 }
@@ -89,7 +93,7 @@ code-reuse-or-new() {
 
 lastcd() {
     cd "$@" && lsd --literal --icon always --color always --group-dirs first
-    echo "$(pwd)" > $HOME/.cache/lastcd
+    echo "$(pwd)" >$HOME/.cache/lastcd
 }
 
 ssh() {

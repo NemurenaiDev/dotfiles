@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/dotfiles/scripts/app-workspace "special:chatgpt" "electron 'https://chatgpt.com/' --enable-features=UseOzonePlatform --ozone-platform-hint=wayland" "$1"
