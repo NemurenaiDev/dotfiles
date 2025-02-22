@@ -1,7 +1,8 @@
 file:///home/yabai/.config .config
 file:///home/yabai/Downloads Downloads
 file:///home/yabai/Pictures
+file:///home/yabai/Library
 file:///home/yabai/Pictures/Screenshots
 file:///home/yabai/Projects
-sftp://host/root/fastaffnet sftp://host
-sftp://kt1/var/www/keitaro sftp://kt1
+sftp://kt/home/keitaro/integration sftp/kt/home
+sftp://kt/var/www/keitaro sftp/kt/var

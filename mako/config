@@ -74,6 +74,11 @@ default-timeout=10000
 anchor=bottom-right
 
 
+[app-name=Zen]
+default-timeout=16000
+anchor=bottom-left
+border-color=#FF7456
+
 [app-name=waybar-updates]
 invisible=true
 
