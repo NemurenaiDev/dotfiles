@@ -5,7 +5,6 @@ on-touch=dismiss
 on-button-left=dismiss
 on-button-middle=none
 on-button-right=dismiss-all
-# on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 
 output=DP-1
 anchor=bottom-right

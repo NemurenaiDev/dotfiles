@@ -1,5 +1,6 @@
 copyq/**
 !copyq/**/*.ini
+!copyq/**/*.conf
 
 .venv
 
