@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>configure-shortcuts</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1716974053674257-1</unique-id>
+	<command>kitty %f</command>
+	<description></description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>visual-studio-code</icon>
+	<name>Open  VSCode Here</name>
+	<submenu></submenu>
+	<unique-id>1716974214288656-3</unique-id>
+	<command>code --new-window --enable-features=UseOzonePlatform --ozone-platform=wayland %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon></icon>
+	<name>Extract Here</name>
+	<submenu></submenu>
+	<unique-id>1716976127782967-5</unique-id>
+	<command>file-roller --extract-here %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>Create Archive</name>
+	<submenu></submenu>
+	<unique-id>1723106985606337-1</unique-id>
+	<command>cd %d &amp;&amp; file-roller --add %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>media-track-queue-amarok</icon>
+	<name>Set as Wallpaper (Split)</name>
+	<submenu></submenu>
+	<unique-id>1717427340726112-1</unique-id>
+	<command>~/.config/dotfiles/scripts/wallpaper %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>media-track-queue-amarok</icon>
+	<name>Set as Wallpaper (Duplicate)</name>
+	<submenu></submenu>
+	<unique-id>1717427340726112-1</unique-id>
+	<command>~/.config/dotfiles/scripts/wallpaper --duplicate %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+</actions>
