@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+get_backlight() {
+    echo $(brightnessctl -m | cut -d, -f4)
+}
+
+get_icon() {
+    current=$(get_backlight | sed 's/%//')
+    if [ "$current" -le "20" ]; then
+        icon="$HOME/.local/share/icons/brightness-min.png"
+    else
+        icon="$HOME/.local/share/icons/brightness-max.png"
+    fi
+}
+
+notify_user() {
+    notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$current" -c adjustments -i "$icon" "$current%"
+}
+
+change_backlight() {
+    brightnessctl set "$1" && get_icon && notify_user
+}
+
+case "$1" in
+"--get")
+    get_backlight
+    ;;
+"--inc")
+    change_backlight "+5%"
+    ;;
+"--dec")
+    change_backlight "5%-"
+    ;;
+*)
+    get_backlight
+    ;;
+esac

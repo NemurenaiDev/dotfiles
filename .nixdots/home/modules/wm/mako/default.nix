@@ -1,35 +1,34 @@
 {
-  services.mako.enable = true;
-  services.mako.extraConfig = ''
-    maxHistory=100
+  home.file.".config/mako/config".text = ''
+    max-history=100
     sort=+time
-    onTouch=dismiss
-    onButtonLeft=dismiss
-    onButtonMiddle=none
-    onButtonRight=dismiss-all
+    on-touch=dismiss
+    on-button-left=dismiss
+    on-button-middle=none
+    on-button-right=dismiss-all
     anchor=bottom-right
     font=JetBrainsMono Nerd Font Mono
     width=400
     height=100
     margin=5
     padding=10
-    borderSize=1
-    borderRadius=10
+    border-size=1
+    border-radius=10
     icons=1
-    maxIconSize=64
-    iconLocation=left
+    max-icon-size=64
+    icon-location=left
     markup=1
     actions=1
     history=1
-    textAlignment=left
-    defaultTimeout=5000
-    ignoreTimeout=0
-    maxVisible=5
+    text-alignment=left
+    default-timeout=5000
+    ignore-timeout=0
+    max-visible=5
     layer=overlay
-    backgroundColor=#1e1e2e
-    textColor=#cdd6f4
-    borderColor=#b4befe
-    progressColor=#89b4fa
+    background-color=#1e1e2e
+    text-color=#cdd6f4
+    border-color=#b4befe
+    progress-color=#89b4fa
 
     [mode=do-not-disturb]
     invisible=1
@@ -73,6 +72,7 @@
 
 
     [app-name=Zen]
+    invisible=true
     default-timeout=16000
     anchor=bottom-left
     border-color=#FF7456

@@ -1638,6 +1638,28 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
+Name            : input-remapper-bin
+Version         : 2.1.1-1
+Description     : A tool to change and program the mapping of your input device buttons.(Prebuilt version)
+Architecture    : x86_64
+URL             : https://github.com/sezanzeb/input-remapper/
+Licenses        : GPL-3.0-only
+Groups          : None
+Provides        : input-remapper=2.1.1
+Depends On      : python-gobject  python-pydbus  python-evdev  gtk3  python-setuptools  gtksourceview4  python-pydantic  python-cairo  python-packaging  python-psutil
+Optional Deps   : xorg-xmodmap: symbol names matching the keyboard layout
+Required By     : None
+Optional For    : None
+Conflicts With  : input-remapper  key-mapper
+Replaces        : None
+Installed Size  : 1594,04 KiB
+Packager        : Unknown Packager
+Build Date      : пн, 31-бер-2025 14:01:10 +0300
+Install Date    : пн, 31-бер-2025 14:01:16 +0300
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : None
+
 Name            : iptables
 Version         : 1:1.8.11-1
 Description     : Linux kernel packet control tool (using legacy interface)
@@ -3779,7 +3801,7 @@ Groups          : python-build-backend
 Provides        : python-distribute
 Depends On      : python  python-jaraco.collections  python-jaraco.functools  python-jaraco.text  python-more-itertools  python-packaging  python-platformdirs  python-wheel
 Optional Deps   : None
-Required By     : None
+Required By     : input-remapper-bin
 Optional For    : python  python-cffi  python-wheel
 Conflicts With  : None
 Replaces        : python-distribute

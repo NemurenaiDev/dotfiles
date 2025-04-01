@@ -13,22 +13,22 @@
       "SUPER SHIFT, up, resizeactive,0 -50"
       "SUPER SHIFT, down, resizeactive,0 50"
 
-      ", xf86KbdBrightnessDown, exec, $Dotfiles/scripts/brightness --dec"
-      ", xf86KbdBrightnessUp, exec, $Dotfiles/scripts/brightness --inc"
-      ", xf86MonBrightnessDown, exec, $Dotfiles/scripts/brightness --dec"
-      ", xf86MonBrightnessUp, exec, $Dotfiles/scripts/brightness --inc"
+      ", xf86KbdBrightnessDown, exec, ${config.home.homeDirectory}/.config/scripts/brightness --dec"
+      ", xf86KbdBrightnessUp, exec, ${config.home.homeDirectory}/.config/scripts/brightness --inc"
+      ", xf86MonBrightnessDown, exec, ${config.home.homeDirectory}/.config/scripts/brightness --dec"
+      ", xf86MonBrightnessUp, exec, ${config.home.homeDirectory}/.config/scripts/brightness --inc"
 
-      ", xf86audioraisevolume, exec, $Dotfiles/scripts/volume --inc"
-      ", xf86audiolowervolume, exec, $Dotfiles/scripts/volume --dec"
-      ", XF86Calculator, exec, $Dotfiles/scripts/volume --inc"
-      ", XF86HomePage, exec, $Dotfiles/scripts/volume --dec"
+      ", xf86audioraisevolume, exec, ${config.home.homeDirectory}/.config/scripts/volume --inc"
+      ", xf86audiolowervolume, exec, ${config.home.homeDirectory}/.config/scripts/volume --dec"
+      ", XF86Calculator, exec, ${config.home.homeDirectory}/.config/scripts/volume --inc"
+      ", XF86HomePage, exec, ${config.home.homeDirectory}/.config/scripts/volume --dec"
     ];
 
     bind = [
-      ", xf86audiomute, exec, $Dotfiles/scripts/volume --toggle"
-      ", xf86AudioMicMute, exec, $Dotfiles/scripts/volume --toggle-mic"
-      ", XF86Mail, exec, $Dotfiles/scripts/volume --toggle-mic"
-      ", XF86Tools, exec, $Dotfiles/scripts/volume --toggle-mic"
+      ", xf86audiomute, exec, ${config.home.homeDirectory}/.config/scripts/volume --toggle"
+      ", xf86AudioMicMute, exec, ${config.home.homeDirectory}/.config/scripts/volume --toggle-mic"
+      ", XF86Mail, exec, ${config.home.homeDirectory}/.config/scripts/volume --toggle-mic"
+      ", XF86Tools, exec, ${config.home.homeDirectory}/.config/scripts/volume --toggle-mic"
 
       ", xf86audioplay, exec, playerctl play-pause"
       ", XF86audiopause, exec, playerctl play-pause"
@@ -43,11 +43,11 @@
 
       "SUPER, F11, fullscreen, 2"
 
-      "SUPER SHIFT, F10, exec, $Dotfiles/scripts/notifications --toggle"
+      "SUPER SHIFT, F10, exec, ${config.home.homeDirectory}/.config/scripts/notifications --toggle"
       "SUPER SHIFT, F11, exec, hyprctl reload config-only"
       "SUPER SHIFT, F12, exec, killall inotifywait"
 
-      "SUPER SHIFT, L, exec, $Dotfiles/scripts/run/powermenu"
+      "SUPER SHIFT, L, exec, ${config.home.homeDirectory}/.config/scripts/run/powermenu"
       "SUPER, L, exec, hyprctl switchxkblayout $KEYBOARD 0 && hyprlock"
 
       "ALT SHIFT, 1, exec, hyprctl switchxkblayout $KEYBOARD 0"
@@ -56,11 +56,11 @@
 
       "SUPER, V, exec, copyq show"
 
-      ", Print, exec, $Dotfiles/scripts/screenshot --now"
-      "SHIFT, Print, exec, $Dotfiles/scripts/screenshot --now"
-      "SUPER ALT, S, exec, $Dotfiles/scripts/screenshot --win"
-      "SUPER CTRL, S, exec, $Dotfiles/scripts/screenshot --screen"
-      "SUPER SHIFT, S, exec, $Dotfiles/scripts/screenshot --area"
+      ", Print, exec, ${config.home.homeDirectory}/.config/scripts/screenshot --now"
+      "SHIFT, Print, exec, ${config.home.homeDirectory}/.config/scripts/screenshot --now"
+      "SUPER ALT, S, exec, ${config.home.homeDirectory}/.config/scripts/screenshot --win"
+      "SUPER CTRL, S, exec, ${config.home.homeDirectory}/.config/scripts/screenshot --screen"
+      "SUPER SHIFT, S, exec, ${config.home.homeDirectory}/.config/scripts/screenshot --area"
 
       "SUPER SHIFT, C, exec, hyprpicker --autocopy --no-fancy --render-inactive"
 
@@ -68,25 +68,25 @@
 
       "SUPER, S, exec, ps -e | grep -q fuzzel && killall fuzzel || fuzzel &"
 
-      "CTRL SHIFT, escape, exec, $Dotfiles/scripts/run/task-manager"
+      "CTRL SHIFT, escape, exec, ${config.home.homeDirectory}/.config/scripts/run/task-manager"
 
-      "SUPER, E, exec, $Dotfiles/scripts/run/explorer --run-anyway"
-      "SUPER SHIFT, E, exec, $Dotfiles/scripts/run/explorer --just-run"
+      "SUPER, E, exec, ${config.home.homeDirectory}/.config/scripts/run/explorer --run-anyway"
+      "SUPER SHIFT, E, exec, ${config.home.homeDirectory}/.config/scripts/run/explorer --just-run"
 
       "SUPER, G, exec, kitty --class \"kitty-pulsemixer\" pulsemixer"
       "SUPER SHIFT, G, exec, pavucontrol"
       "SUPER CTRL, G, exec, easyeffects"
       "SUPER ALT, G, exec, blueman-manager"
 
-      "SUPER, W, exec, $Dotfiles/scripts/run/browser"
-      "SUPER, A, exec, $Dotfiles/scripts/run/browser-incognito"
-      "SUPER, X, exec, $Dotfiles/scripts/run/telegram"
-      "SUPER, C, exec, $Dotfiles/scripts/run/discord"
+      "SUPER, W, exec, ${config.home.homeDirectory}/.config/scripts/run/browser"
+      "SUPER, A, exec, ${config.home.homeDirectory}/.config/scripts/run/browser-incognito"
+      "SUPER, X, exec, ${config.home.homeDirectory}/.config/scripts/run/telegram"
+      "SUPER, C, exec, ${config.home.homeDirectory}/.config/scripts/run/discord"
 
-      "SUPER, F3, exec, $Dotfiles/scripts/run/spotify"
-      "SUPER, F4, exec, $Dotfiles/scripts/run/obs-studio"
+      "SUPER, F3, exec, ${config.home.homeDirectory}/.config/scripts/run/spotify"
+      "SUPER, F4, exec, ${config.home.homeDirectory}/.config/scripts/run/obs-studio"
 
-      "SUPER, TAB, exec, $Dotfiles/scripts/run/aichat"
+      "SUPER, TAB, exec, ${config.home.homeDirectory}/.config/scripts/run/aichat"
 
       "SUPER, Q, killactive"
       "SUPER SHIFT, Q, exec, kill \"$(hyprctl -j activewindow | jq -r '.pid')\""

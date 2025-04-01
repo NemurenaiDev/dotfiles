@@ -1,16 +1,14 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 
 {
   imports = [
-    ./wm/hyprland
-    ./wm/waybar
-    ./wm/mako
-
     ./terminal
-    
     ./telegram
     ./fuzzel
     ./thunar
+    ./wm
+
+
 
     inputs.catppuccin.homeManagerModules.catppuccin
   ];

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+hyprctl dispatch workspace 13
+
+hyprctl dispatch exec "thunar --daemon"
+
+~/dotfiles/scripts/app-workspace "13" "thunar"
+~/dotfiles/scripts/app-workspace "13" "thunar" --run-anyway
+
+sleep 3
+
+hyprctl dispatch workspace 5
