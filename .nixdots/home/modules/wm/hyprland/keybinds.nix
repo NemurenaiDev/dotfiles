@@ -64,7 +64,7 @@
 
       "SUPER SHIFT, C, exec, hyprpicker --autocopy --no-fancy --render-inactive"
 
-      "SUPER, code:49, exec, kitty"
+      "SUPER, code:49, exec, kitty --single-instance"
 
       "SUPER, S, exec, ps -e | grep -q fuzzel && killall fuzzel || fuzzel &"
 
@@ -73,7 +73,7 @@
       "SUPER, E, exec, ${config.home.homeDirectory}/.config/scripts/run/explorer --run-anyway"
       "SUPER SHIFT, E, exec, ${config.home.homeDirectory}/.config/scripts/run/explorer --just-run"
 
-      "SUPER, G, exec, kitty --class \"kitty-pulsemixer\" pulsemixer"
+      "SUPER, G, exec, kitty --single-instance --class \"kitty-pulsemixer\" pulsemixer"
       "SUPER SHIFT, G, exec, pavucontrol"
       "SUPER CTRL, G, exec, easyeffects"
       "SUPER ALT, G, exec, blueman-manager"
