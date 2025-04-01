@@ -6,6 +6,9 @@ let
     IconTheme = "Papirus-Dark";
     CursorTheme = "catppuccin-mocha-dark-cursors";
     CursorSize = 18;
+
+    MonitorPrimary = "eDP-1";
+    KEYBOARD = "at-translated-set-2-keyboard";
   };
 in
 {

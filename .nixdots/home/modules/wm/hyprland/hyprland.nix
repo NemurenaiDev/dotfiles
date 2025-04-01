@@ -38,7 +38,7 @@
       "sensitivity" = 0;
 
       "kb_layout" = "us,ua,ru";
-      "kb_options" = "caps:none";
+      "kb_options" = "fkeys:basic_13-24";
 
       touchpad = {
         "disable_while_typing" = false;

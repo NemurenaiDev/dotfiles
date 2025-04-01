@@ -74,6 +74,7 @@ anchor=bottom-right
 
 
 [app-name=Zen]
+invisible=true
 default-timeout=16000
 anchor=bottom-left
 border-color=#FF7456

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pacman -Qeq | tr '\n' ' ' > $Dotfiles/pacman.inline
+pacman -Qei > $Dotfiles/pacman.detailed

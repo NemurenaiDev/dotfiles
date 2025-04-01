@@ -1,6 +1,7 @@
 #!/usr/bin/zsh
 
 export Dotfiles="$HOME/.config/dotfiles"
+export HyprlandInstanceSignaturePath="/tmp/HyprlandInstanceSignature"
 
 export VISUAL="nano"
 export EDITOR="nano"
@@ -29,6 +30,10 @@ if [[ "$(tty)" == "/dev/tty1" ]]; then
     if ! pgrep -x "Hyprland" > /dev/null; then
         clear && Hyprland > /dev/null 2>&1
     fi
+fi
+
+if [ -f $HyprlandInstanceSignaturePath ]; then
+    export HYPRLAND_INSTANCE_SIGNATURE="$(cat $HyprlandInstanceSignaturePath)"
 fi
 
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -75,7 +80,6 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
 
-bindkey "^f" autosuggest-accept
 bindkey "^[s" toggle-sudo
 
 bindkey "^[[A" history-search-backward
@@ -135,5 +139,6 @@ alias gpo="git push origin"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config $Dotfiles/terminal/ohmyposh.toml)"
+
 # Created by `pipx` on 2024-11-07 12:18:04
 export PATH="$PATH:/home/yabai/.local/bin"

@@ -1,0 +1,20 @@
+#!/usr/bin/env bun
+
+import { exec } from "node:child_process";
+import { argv } from "node:process";
+import { promisify } from "node:util";
+
+const execAsync = promisify(exec);
+
+const layoutId = argv[2];
+
+const devicesCmd = await execAsync("hyprctl -j devices");
+const devices = JSON.parse(devicesCmd.stdout);
+
+for (const kb of devices.keyboards) {
+	execAsync(`hyprctl switchxkblayout ${kb.name} ${layoutId}`)
+		.then(() => console.log(`OK  [${layoutId}] [${kb.name}]`))
+		.catch((error) =>
+			console.log(`ERR [${layoutId}] [${kb.name}]: ${error.message}`),
+		);
+}

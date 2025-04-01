@@ -1,10 +1,4 @@
-{
-  config,
-  inputs,
-  host,
-  pkgs,
-  ...
-}:
+{ config, inputs, host, pkgs, ... }:
 
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
@@ -12,15 +6,9 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
-  boot.kernelModules = [
-    "v4l2loopback"
-    "snd-aloop"
-  ];
+  boot.kernelModules = [ "v4l2loopback" "snd-aloop" ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc = {
     automatic = true;
     dates = "daily";
@@ -55,14 +43,11 @@
   users.users.${host.username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  
+
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${system}.beta
     home-manager
@@ -75,10 +60,15 @@
     biome
     nodejs_23
 
+    zsh
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-completions
+    btop
+
     firefoxpwa
 
     prismlauncher
-
 
     jq
     plocate
@@ -193,7 +183,6 @@
     zenity
     zoxide
     zram-generator
-    zsh
     fzf
     lsd
     zoxide

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+workspace_id="$1"
+command="$2"
+arg="$3"
+
+if [[ $arg == "--run-anyway" ]]; then
+    ActiveWorkspace=$(hyprctl -j activeworkspace | jq '.id')
+    if [ "$ActiveWorkspace" == "$workspace_id" ]; then
+        hyprctl dispatch exec [workspace "$workspace_id" silent] "$command"
+    else
+        if [[ "$workspace_id" == "special"* ]]; then
+            IFS=":" read -r workspace special_workspace_name <<<"$workspace_id"
+            hyprctl dispatch togglespecialworkspace "$special_workspace_name"
+        else
+            hyprctl dispatch workspace "$workspace_id"
+        fi
+    fi
+else
+    if [[ -z $arg ]]; then
+        if [[ "$workspace_id" == "special"* ]]; then
+            IFS=":" read -r workspace special_workspace_name <<<"$workspace_id"
+            hyprctl dispatch togglespecialworkspace "$special_workspace_name"
+        else
+            hyprctl dispatch workspace "$workspace_id"
+        fi
+    fi
+
+    WorkspaceLastWindow=$(hyprctl -j workspaces | jq --arg name "$workspace_id" '.[] | select(.name == ($name|tostring)) | .lastwindowtitle')
+    WorkspaceLastWindow="''${WorkspaceLastWindow//\"/}"
+
+    if [[ -z $WorkspaceLastWindow ]]; then
+        hyprctl dispatch exec [workspace "$workspace_id" silent] "$command"
+    fi
+fi

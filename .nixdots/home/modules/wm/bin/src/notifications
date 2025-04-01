@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+iDIR="$HOME/dotfiles/scripts/assets/icons"
+
+
+if [[ "$1" == "--toggle" ]]; then
+	if [[ "$(makoctl mode)" = "default" ]]; then
+		makoctl set-mode do-not-disturb
+		notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments -i "$iDIR/notifications-off.png" "OFF"
+	else
+		makoctl set-mode default
+		notify-send -h string:x-canonical-private-synchronous:sys-notify -c adjustments -i "$iDIR/notifications-on.png" "ON"
+	fi
+else
+	echo "{\"alt\":\"$(makoctl mode)\"}"
+fi
