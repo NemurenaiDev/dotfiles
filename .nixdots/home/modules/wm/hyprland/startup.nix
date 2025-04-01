@@ -7,13 +7,13 @@
 
       "mkdir \"/tmp/Telegram Desktop\" && ln -s \"/tmp/Telegram Desktop\" \"$HOME/Downloads/Telegram Desktop\" && rm -rf \"$HOME/Downloads/Telegram \"Desktop/Telegram Desktop"
 
-      "easyeffects --gapplication-service"
-      "copyq --start-server"
-      "blueman-applet"
-      "nm-applet"
+      "uwsm app -- easyeffects --gapplication-service"
+      "uwsm app -- copyq --start-server"
+      "uwsm app -- blueman-applet"
+      "uwsm app -- nm-applet"
 
-      "waybar"
-      "mako"
+      "uwsm app -- waybar"
+      "uwsm app -- mako"
 
       "${config.home.homeDirectory}/.config/scripts/wireguard -i"
 

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-~/dotfiles/scripts/app-workspace "22" "zen-twilight --private-window" "$1"
+~/dotfiles/scripts/app-workspace "22" "zen --private-window" "$1"

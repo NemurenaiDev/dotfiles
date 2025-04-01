@@ -27,8 +27,8 @@
       nixosConfigurations.x14p = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs system host; };
         modules = [
-          ./hosts/default.configuration.nix
-          ./hosts/x14p/configuration.nix
+          ./nixos/default.configuration.nix
+          ./nixos/hosts/x14p/configuration.nix
 
           inputs.home-manager.nixosModules.home-manager
           inputs.catppuccin.nixosModules.catppuccin

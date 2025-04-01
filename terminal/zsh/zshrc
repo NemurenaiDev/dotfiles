@@ -122,6 +122,7 @@ alias projadd="$Dotfiles/scripts/projects add"
 alias projrem="$Dotfiles/scripts/projects rem"
 
 alias code="code-reuse-or-new"
+alias kitty="kitty --single-instance"
 
 alias dc="docker-compose"
 

@@ -12,9 +12,7 @@
       export PATH="$PATH:$(yarn global bin)"
       export NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules"
 
-      # if uwsm check may-start; then
-      #     uwsm start hyprland.desktop
-      # fi
+      who am i | grep tty1 && uwsm check may-start && uwsm start default
 
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
@@ -83,6 +81,8 @@
 
 
       alias vi="nano" vim="nano" nvim="nano"
+
+      alias kitty="kitty --single-instance"
 
       alias l="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T"
       alias ls="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T"

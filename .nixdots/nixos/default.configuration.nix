@@ -15,9 +15,18 @@
     options = "--delete-older-than 14d";
   };
 
+  users.users.${host.username} = {
+    shell = pkgs.zsh;
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
+
   networking.networkmanager.enable = true;
   networking.networkmanager.settings.WiFi.powerSave = false;
 
+  #   services.displayManager.ly.enable = true;
+  services.getty.autologinOnce = true;
+  services.getty.autologinUser = host.username;
   services.libinput.enable = true;
   services.openssh.enable = true;
   services.locate.enable = true;
@@ -39,16 +48,22 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-
-  users.users.${host.username} = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-  };
+  #   programs.uwsm.waylandCompositors = {
+  #     hyprland-lydm-uwsm = {
+  #       prettyName = "Hyprland (LyDM UWSM)";
+  #       comment = "Hyprland compositor managed by UWSM with fix for LyDM";
+  #       binPath = "/run/current-system/sw/bin/hyprland-lydm-uwsm";
+  #     };
+  #   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
+    # (pkgs.writeShellScriptBin "hyprland-lydm-uwsm" ''
+    #   systemctl --user stop nixos-fake-graphical-session.target
+    #   exec /run/current-system/sw/bin/Hyprland "$@"
+    # '')
+
     inputs.zen-browser.packages.${system}.beta
     home-manager
 
