@@ -1,4 +1,10 @@
-{ config, inputs, host, pkgs, ... }:
+{
+  config,
+  inputs,
+  host,
+  pkgs,
+  ...
+}:
 
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
@@ -6,9 +12,18 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
-  boot.kernelModules = [ "v4l2loopback" "snd-aloop" ];
+  boot.loader.timeout = 0;
+  boot.kernelModules = [
+    "v4l2loopback"
+    "snd-aloop"
+  ];
+  boot.kernelParams = [ "--quiet" ];
+  boot.tmp.cleanOnBoot = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.gc = {
     automatic = true;
     dates = "daily";
@@ -18,7 +33,10 @@
   users.users.${host.username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
   };
 
   networking.networkmanager.enable = true;
@@ -56,6 +74,10 @@
   #     };
   #   };
 
+  systemd.tmpfiles.rules = [
+    "d /tmp/TelegramDownloads 1700 ${host.username} users -"
+  ];
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
@@ -64,7 +86,9 @@
     #   exec /run/current-system/sw/bin/Hyprland "$@"
     # '')
 
-    inputs.zen-browser.packages.${system}.beta
+    inputs.zen-browser.packages.${system}.twilight
+    # inputs.qshell.packages.${system}.qshell
+
     home-manager
 
     papirus-icon-theme
@@ -75,24 +99,31 @@
     biome
     nodejs_23
 
+    node2nix
+    binutils
+    python3
+    gnumake
+    cmake
+    gcc
+
     zsh
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-completions
+    lsof
     btop
-
-    firefoxpwa
+    dtach
+    jq
 
     prismlauncher
 
-    jq
     plocate
     brightnessctl
     libnotify
     nixfmt-rfc-style
     alsa-utils
     aml
-    beekeeper-studio
+    # beekeeper-studio insecure package beekeeper-studio-5.1.5
     bind
     blueman
     bluez

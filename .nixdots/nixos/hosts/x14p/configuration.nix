@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./../../default.configuration.nix
     ./hardware.nix
     ./power.nix
   ];

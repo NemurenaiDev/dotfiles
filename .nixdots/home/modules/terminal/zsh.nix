@@ -6,24 +6,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
-      export VISUAL="nano"
-      export EDITOR="nano"
-      export PATH="$PATH:$(yarn global bin)"
-      export NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules"
-
-      who am i | grep tty1 && uwsm check may-start && uwsm start default
-
-
-      if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
-          if [ "$(ps -a | grep -e Hyprland)" ]; then
-              if [ -f /tmp/HyprlandInstanceSignature ]; then
-                export HYPRLAND_INSTANCE_SIGNATURE="$(cat /tmp/HyprlandInstanceSignature)"
-              fi
-          fi
-      fi
-
-
+    initExtraFirst = ''
       toggle-sudo() {
           if [[ $BUFFER == sudo\ * ]]; then
               BUFFER="''${BUFFER#sudo }"
@@ -43,13 +26,31 @@
           echo "$(pwd)" > ${config.home.homeDirectory}/.cache/lastcd
       }
 
-      ssh() {
-          if [[ "$(get-terminal-name)" == "kitty" ]]; then
-              kitten ssh "$@"
-          else
-              /bin/ssh "$@"
+      # ssh() {
+      #     if [[ "$(get-terminal-name)" == "kitty" ]]; then
+      #         kitten ssh "$@"
+      #     else
+      #         command ssh "$@"
+      #     fi
+      # }
+    '';
+
+    initExtra = ''
+      export VISUAL="nano"
+      export EDITOR="nano"
+      export PATH="$PATH:$(yarn global bin)"
+      export NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules"
+
+      who am i | grep tty1 && uwsm check may-start && uwsm start default
+
+
+      if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
+          if [ "$(ps -a | grep -e Hyprland)" ]; then
+              if [ -f /tmp/HyprlandInstanceSignature ]; then
+                export HYPRLAND_INSTANCE_SIGNATURE="$(cat /tmp/HyprlandInstanceSignature)"
+              fi
           fi
-      }
+      fi
 
 
       autoload -U select-word-style

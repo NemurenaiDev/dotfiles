@@ -1,5 +1,6 @@
 {
-  home.file.".local/share/TelegramDesktop/tdata/shortcuts-custom.json" = {
+  home.file.".local/share/telegram/tdata/shortcuts-custom.json" = {
+    force = true;
     text = ''
       [
           {
