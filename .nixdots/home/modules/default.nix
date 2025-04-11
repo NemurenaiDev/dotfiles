@@ -3,12 +3,12 @@
 {
   imports = [
     ./terminal
+    ./bin
+    ./wm
+
     ./telegram
     ./fuzzel
     ./thunar
-    ./wm
-
-
 
     inputs.catppuccin.homeManagerModules.catppuccin
   ];

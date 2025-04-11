@@ -50,8 +50,8 @@
             "default" = "<span color=\"#F7F7F7\">\uF49A</span>";
             "do-not-disturb" = "<span color=\"#F7F7F7\">\uF478</span>";
           };
-          "on-click" = "exec ${config.home.homeDirectory}/.config/scripts/notifications --toggle";
-          "exec" = "exec ${config.home.homeDirectory}/.config/scripts/notifications";
+          "on-click" = "exec ${config.home.homeDirectory}/.bin/notifications --toggle";
+          "exec" = "exec ${config.home.homeDirectory}/.bin/notifications";
         };
         "hyprland/workspaces" = {
           "format" = "{icon}";
@@ -140,10 +140,10 @@
           };
           "ignored-sinks" = [ "Easy Effects Sink" ];
           "scroll-step" = 5.0;
-          "on-click" = "${config.home.homeDirectory}/.config/scripts/volume --toggle";
+          "on-click" = "${config.home.homeDirectory}/.bin/volume --toggle";
           "on-click-right" = "pavucontrol";
-          "on-scroll-up" = "${config.home.homeDirectory}/.config/scripts/volume --inc";
-          "on-scroll-down" = "${config.home.homeDirectory}/.config/scripts/volume --dec";
+          "on-scroll-up" = "${config.home.homeDirectory}/.bin/volume --inc";
+          "on-scroll-down" = "${config.home.homeDirectory}/.bin/volume --dec";
           "smooth-scrolling-threshold" = 1;
           "interval" = 1;
         };

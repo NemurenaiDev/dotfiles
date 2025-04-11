@@ -1,0 +1,41 @@
+#!/bin/sh
+
+SHELL=zsh
+POOL_SIZE=3
+SHELLPOOL=/tmp/ShellPool
+
+MakeSocketName() {
+    echo "$SHELLPOOL/shell-$(date +%s-%N)"
+}
+Init() {
+    dtach -n "$(MakeSocketName)" -zE "$SHELL"
+    dtach -n "$(MakeSocketName)" -zE "$SHELL"
+    dtach -n "$(MakeSocketName)" -zE "$SHELL"
+}
+Cleanup() {
+    for socket in $(\ls -1 "$SHELLPOOL" | head -n -3); do
+        CleanupSocket() {
+            if [ ! "$(lsof $SHELLPOOL/$socket | grep CONNECTED)" ]; then
+                if [ "$(lsof -t $SHELLPOOL/$socket)" ]; then
+                    kill "$(lsof -t $SHELLPOOL/$socket)"
+                else
+                    rm -f $SHELLPOOL/$socket
+                fi
+            fi
+        }
+        CleanupSocket &
+    done
+}
+
+if [[ "$1" == "init" ]]; then
+    Init
+    Cleanup
+else
+    socketToAttach="$(\ls -1 /tmp/ShellPool | tail -n $POOL_SIZE | head -n 1)"
+    
+    if [ ! -n "$socketToAttach" ]; then
+        exec dtach -A "$(MakeSocketName)" -zE "$SHELL"
+    fi
+    dtach -n "$(MakeSocketName)" -zE "$SHELL" &
+    exec dtach -a "$SHELLPOOL/$socketToAttach" -zE
+fi

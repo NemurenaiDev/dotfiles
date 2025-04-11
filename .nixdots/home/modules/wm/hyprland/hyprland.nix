@@ -8,7 +8,9 @@
     settings = {
       env = [
         "HYPRCURSOR_THEME,${config.home.sessionVariables.CursorTheme}"
-        "HYPRCURSOR_SIZE,${builtins.toString config.home.sessionVariables.CursorSize}"
+        "HYPRCURSOR_SIZE,${
+          builtins.toString config.home.sessionVariables.CursorSize
+        }"
         "QT_QPA_PLATFORMTHEME,gtk3"
         "QT_QPA_PLATFORM,wayland;xcb"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
@@ -66,6 +68,7 @@
       };
 
       cursor = {
+        "sync_gsettings_theme" = true;
         "default_monitor" = "$MonitorCenter";
       };
 
@@ -112,11 +115,16 @@
         "focus_on_activate" = false;
         "enable_swallow" = true;
         "vfr" = true;
+        "new_window_takes_over_fullscreen" = 2;
+        "initial_workspace_tracking" = 2;
       };
 
-      binds = {
-        "workspace_back_and_forth" = false;
+      ecosystem = {
+        "no_update_news" = true;
+        "no_donation_nag" = true;
       };
+
+      binds = { "workspace_back_and_forth" = false; };
 
       dwindle = {
         "pseudotile" = true;
