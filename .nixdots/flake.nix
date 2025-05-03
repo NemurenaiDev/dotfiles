@@ -27,6 +27,16 @@
         ];
       };
 
+      nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs system host; };
+        modules = [
+          ./nixos/hosts/vm/configuration.nix
+
+          inputs.home-manager.nixosModules.home-manager
+          inputs.catppuccin.nixosModules.catppuccin
+        ];
+      };
+
       homeConfigurations."${host.username}" =
         inputs.home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = { inherit inputs system host; };
