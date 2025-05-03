@@ -20,7 +20,10 @@ shotarea() {
 }
 
 shotscreen() {
-	cd ${dir} && grim -g "$(slurp -B 1B1F28CC -w 0 -o)" - | tee "$file" | wl-copy
+    # let user select the output
+    # cd ${dir} && grim -g "$(slurp -B 1B1F28CC -w 0 -o)" - | tee "$file" | wl-copy
+    # just make a screenshot of output that active workspace are on
+    grim -o "$(hyprctl -j activeworkspace | jq .monitor | tr -d "\"")" - | wl-copy
 }
 
 if [[ ! -d "$dir" ]]; then
@@ -36,7 +39,7 @@ elif [[ "$1" == "--area" ]]; then
 elif [[ "$1" == "--screen" ]]; then
 	shotscreen
 else
-	echo -e "Available Options : --now --win --area"
+    echo -e "Available Options : --now --win --area --screen"
 fi
 
 exit 0

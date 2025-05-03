@@ -1,14 +1,23 @@
-{ config, pkgs, host, ... }:
+{
+  config,
+  pkgs,
+  host,
+  ...
+}:
 
 let
   sessionVariables = {
-    # GTKTheme = "Catppuccin-GTK-Dark";
-    IconTheme = "Papirus-Dark";
-    CursorTheme = "catppuccin-mocha-dark-cursors";
-    CursorSize = 18;
-
     MonitorPrimary = "eDP-1";
     KEYBOARD = "at-translated-set-2-keyboard";
+
+    HYPRCURSOR_THEME = "catppuccin-mocha-dark-cursors";
+    HYPRCURSOR_SIZE = "18";
+    QT_QPA_PLATFORMTHEME = "gtk3";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_DRM_NO_ATOMIC = "1";
   };
 in
 {
@@ -19,20 +28,23 @@ in
 
   imports = [ ./modules ];
 
+  gtk.enable = true;
+
   catppuccin = {
     enable = true;
     flavor = "mocha";
     accent = "maroon";
     gtk.enable = true;
-    gtk.flavor = "mocha";
-    gtk.accent = "maroon";
   };
 
-  gtk = {
-    enable = true;
-    # theme.name = config.home.sessionVariables.GTKTheme;
-    iconTheme.name = config.home.sessionVariables.IconTheme;
-    cursorTheme.name = config.home.sessionVariables.CursorTheme;
-    cursorTheme.size = config.home.sessionVariables.CursorSize;
-  };
+  #   xdg.configFile = {
+  #     "Kvantum/kvantum.kvconfig".text = ''
+  #       [General]
+  #       theme=catppuccin-mocha-maroon
+  #     '';
+
+  #     # "Kvantum/Catppuccin-Mocha-Maroon".source =
+  #     #   "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Maroon";
+  #   };
+
 }
