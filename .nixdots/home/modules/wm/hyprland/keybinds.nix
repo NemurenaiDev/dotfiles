@@ -64,8 +64,8 @@
 
       "SUPER SHIFT, C, exec, hyprpicker --autocopy --no-fancy --render-inactive"
 
-    #   "SUPER, code:49, exec, kitty --single-instance ~/.bin/use-shell-pool"
-      "SUPER, code:49, exec, kitty"
+      "SUPER, code:49, exec, kitty --single-instance qshell --attach"
+      "SUPER SHIFT, code:49, exec, kitty --single-instance"
 
       "SUPER, S, exec, ps -e | grep -q fuzzel && killall fuzzel || fuzzel &"
 

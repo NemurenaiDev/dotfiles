@@ -7,6 +7,8 @@
 
       "ln -s '/tmp/TelegramDesktop' '$HOME/Downloads/Telegram Desktop'"
 
+      "uwsm app -- qshell --daemon"
+
       "uwsm app -- easyeffects --gapplication-service"
       "uwsm app -- copyq --start-server"
       "uwsm app -- blueman-applet"

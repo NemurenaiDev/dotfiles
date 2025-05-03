@@ -1,29 +1,19 @@
-{
-  config,
-  inputs,
-  host,
-  pkgs,
-  ...
-}:
+{ config, inputs, host, pkgs, ... }:
 
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
+  boot.kernelModules = [ "v4l2loopback" "snd-aloop" ];
+  boot.kernelParams = [ "--quiet" ];
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.timeout = 0;
-  boot.kernelModules = [
-    "v4l2loopback"
-    "snd-aloop"
-  ];
-  boot.kernelParams = [ "--quiet" ];
+
   boot.tmp.cleanOnBoot = true;
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc = {
     automatic = true;
     dates = "daily";
@@ -33,18 +23,19 @@
   users.users.${host.username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 
   networking.networkmanager.enable = true;
   networking.networkmanager.settings.WiFi.powerSave = false;
+  # spotify
+  networking.firewall.allowedTCPPorts = [ 57621 ];
+  networking.firewall.allowedUDPPorts = [ 5353 ];
 
   #   services.displayManager.ly.enable = true;
   services.getty.autologinOnce = true;
   services.getty.autologinUser = host.username;
+
   services.libinput.enable = true;
   services.openssh.enable = true;
   services.locate.enable = true;
@@ -74,9 +65,14 @@
   #     };
   #   };
 
-  systemd.tmpfiles.rules = [
-    "d /tmp/TelegramDownloads 1700 ${host.username} users -"
-  ];
+  qt = {
+    enable = true;
+    style = "kvantum";
+    platformTheme = "qt5ct";
+  };
+
+  systemd.tmpfiles.rules =
+    [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -87,12 +83,9 @@
     # '')
 
     inputs.zen-browser.packages.${system}.twilight
-    # inputs.qshell.packages.${system}.qshell
+    inputs.qshell.packages.${system}.default
 
     home-manager
-
-    papirus-icon-theme
-    catppuccin-cursors.mochaDark
 
     bun
     yarn
@@ -116,6 +109,27 @@
     jq
 
     prismlauncher
+
+    papirus-icon-theme
+    # catppuccin-papirus-folders
+    catppuccin-cursors.mochaDark
+    # magnetic-catppuccin-gtk
+
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
+    qt6Packages.qt6ct
+    qt5.full
+    qt6.full
+    gtk-engine-murrine
+
+    pulsemixer
+    pulseaudio
+    pavucontrol
+    avahi
+    pamixer
+    nssmdns
+    pavucontrol
+    playerctl
 
     plocate
     brightnessctl
@@ -156,7 +170,6 @@
     gnome-keyring
     gnome-themes-extra
     grim
-    gtk-engine-murrine
     gvfs
     hyprland
     hyprlang
@@ -189,14 +202,10 @@
     obs-studio
     oh-my-posh
     opentabletdriver
-    pamixer
-    pavucontrol
     php
-    playerctl
     postgresql
     postman
     proxychains
-    pulsemixer
     qpwgraph
     rclone
     remmina

@@ -1,9 +1,10 @@
 {
   inputs = {
-    # qshell.url = "path:/home/nemurenai/Projects/qshell";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    catppuccin.url = "github:catppuccin/nix";
+
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    catppuccin.url = "github:catppuccin/nix";
+    qshell.url = "github:NemurenaiDev/qshell";
 
     home-manager = {
       url = "github:nix-community/home-manager";

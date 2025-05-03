@@ -2,7 +2,7 @@
 Name=Project
 Comment=Select and open project in VSCode
 GenericName=Text Editor
-Exec=kitty --class "kitty-project" bash -ic 'exec /usr/bin/code --new-window --enable-features=UseOzonePlatform --ozone-platform-hint=auto "$($Dotfiles/scripts/project)" &>/dev/null'
+Exec=kitty --single-instance --class "kitty-project" /home/yabai/Projects/qshell/build/qshell -a -c 'exec /usr/bin/code --new-window "$($Dotfiles/scripts/project)" &>/dev/null'
 Icon=/opt/visual-studio-code/resources/app/resources/linux/code.png
 Type=Application
 StartupNotify=false

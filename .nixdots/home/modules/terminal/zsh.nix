@@ -53,9 +53,17 @@
       fi
 
 
+      # WORDCHARS="*?-.[]~=/&;!#$%^(){}<>"
       autoload -U select-word-style
       select-word-style bash
-      setopt appendhistory sharehistory hist_ignore_space hist_ignore_all_dups hist_ignore_dups hist_save_no_dups
+
+      setopt appendhistory
+      setopt sharehistory
+      setopt hist_ignore_space
+      setopt hist_ignore_all_dups
+      setopt hist_ignore_dups
+      setopt hist_save_no_dups
+      setopt inc_append_history
 
       zstyle ":completion:*" menu select
       zstyle ":completion:*" use-cache on
@@ -94,8 +102,8 @@
       alias cd="lastcd"
       alias rm="trash -v"
       alias ff="fastfetch"
-      alias wlcp="wl-copy"
-      alias hist="history 0 | fzf | tr -d "\n" | wl-copy"
+      alias wlcp="wl-copy -n"
+      alias hist="history 0 | fzf | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | wl-copy -n"
       alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /run --exclude /mnt --exclude /home/yabai/Library"
 
       alias g="git"

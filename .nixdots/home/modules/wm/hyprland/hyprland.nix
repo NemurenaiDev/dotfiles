@@ -6,19 +6,6 @@
     systemd.enable = false;
 
     settings = {
-      env = [
-        "HYPRCURSOR_THEME,${config.home.sessionVariables.CursorTheme}"
-        "HYPRCURSOR_SIZE,${
-          builtins.toString config.home.sessionVariables.CursorSize
-        }"
-        "QT_QPA_PLATFORMTHEME,gtk3"
-        "QT_QPA_PLATFORM,wayland;xcb"
-        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-        "WLR_NO_HARDWARE_CURSORS,1"
-        "WLR_DRM_NO_ATOMIC,1"
-      ];
-
       monitor = "eDP-1, 2560x1600@60, 0x0, 1.6";
 
       general = {
@@ -46,7 +33,7 @@
         "kb_options" = "fkeys:basic_13-24";
 
         touchpad = {
-          "disable_while_typing" = false;
+          "disable_while_typing" = true;
           "natural_scroll" = true;
           "scroll_factor" = 0.25;
           "clickfinger_behavior" = true;
@@ -116,7 +103,6 @@
         "enable_swallow" = true;
         "vfr" = true;
         "new_window_takes_over_fullscreen" = 2;
-        "initial_workspace_tracking" = 2;
       };
 
       ecosystem = {
