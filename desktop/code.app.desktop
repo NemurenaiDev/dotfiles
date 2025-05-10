@@ -2,7 +2,7 @@
 Name=VSCode
 Comment=Code Editing. Refined.
 GenericName=Text Editor
-Exec=/usr/bin/code --new-window --enable-features=UseOzonePlatform --ozone-platform-hint=auto
+Exec=/usr/bin/code --new-window --enable-features=UseOzonePlatform --ozone-platform=wayland
 Icon=/opt/visual-studio-code/resources/app/resources/linux/code.png
 Type=Application
 StartupNotify=false

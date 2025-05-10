@@ -1,0 +1,9 @@
+FROM nixos/nix:latest
+
+RUN nix-channel --add https://nixos.org/channels/nixos-24.11 nixos && nix-channel --update
+
+RUN nix-env -iA nixos.snapcast nixos.iputils nixos.pulseaudio
+
+RUN nix-collect-garbage -d
+
+CMD [ "snapclient", "--player", "pulse", "--host", "192.168.1.111" ]
