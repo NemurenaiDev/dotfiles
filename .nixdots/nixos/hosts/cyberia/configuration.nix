@@ -1,7 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports = [ ./../../default.configuration.nix ./hardware.nix ./snapcast.nix ];
+  imports = [
+    ./../../default.configuration.nix
+    ./hardware.nix
+    ./snapcast.nix
+  ];
 
   networking.hostName = "cyberia";
   time.timeZone = "Europe/Kyiv";

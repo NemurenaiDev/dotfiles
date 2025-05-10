@@ -1,14 +1,26 @@
-{ config, inputs, host, pkgs, ... }:
+{
+  config,
+  inputs,
+  host,
+  pkgs,
+  ...
+}:
 
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
-  boot.kernelModules = [ "v4l2loopback" "snd-aloop" ];
+  boot.kernelModules = [
+    "v4l2loopback"
+    "snd-aloop"
+  ];
   boot.kernelParams = [ "--quiet" ];
   boot.tmp.cleanOnBoot = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.gc = {
     automatic = true;
     dates = "daily";
@@ -18,7 +30,10 @@
   users.users.${host.username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
   };
 
   networking.networkmanager.enable = true;
@@ -27,7 +42,6 @@
   networking.firewall.allowedTCPPorts = [ 57621 ];
   networking.firewall.allowedUDPPorts = [ 5353 ];
 
-  #   services.displayManager.ly.enable = true;
   services.getty.autologinOnce = true;
   services.getty.autologinUser = host.username;
 
@@ -52,13 +66,6 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-  #   programs.uwsm.waylandCompositors = {
-  #     hyprland-lydm-uwsm = {
-  #       prettyName = "Hyprland (LyDM UWSM)";
-  #       comment = "Hyprland compositor managed by UWSM with fix for LyDM";
-  #       binPath = "/run/current-system/sw/bin/hyprland-lydm-uwsm";
-  #     };
-  #   };
 
   qt = {
     enable = true;
@@ -66,17 +73,11 @@
     platformTheme = "qt5ct";
   };
 
-  systemd.tmpfiles.rules =
-    [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
+  systemd.tmpfiles.rules = [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
-    # (pkgs.writeShellScriptBin "hyprland-lydm-uwsm" ''
-    #   systemctl --user stop nixos-fake-graphical-session.target
-    #   exec /run/current-system/sw/bin/Hyprland "$@"
-    # '')
-
     inputs.zen-browser.packages.${system}.default
     inputs.qshell.packages.${system}.default
 

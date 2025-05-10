@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 iDIR="$HOME/dotfiles/scripts/assets/icons"
 

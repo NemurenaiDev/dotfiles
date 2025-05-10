@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 get_backlight() {
     echo $(brightnessctl -m | cut -d, -f4)
