@@ -27,10 +27,10 @@
         ];
       };
 
-      nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.cyberia = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs system host; };
         modules = [
-          ./nixos/hosts/vm/configuration.nix
+          ./nixos/hosts/cyberia/configuration.nix
 
           inputs.home-manager.nixosModules.home-manager
           inputs.catppuccin.nixosModules.catppuccin
