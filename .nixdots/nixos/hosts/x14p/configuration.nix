@@ -1,19 +1,21 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./../../default.configuration.nix ./hardware.nix ];
-
-  time.timeZone = "Europe/Kyiv";
+  imports = [ ./../../default.configuration.nix ./hardware.nix ./snapcast.nix ];
 
   networking.hostName = "x14p";
+  time.timeZone = "Europe/Kyiv";
+  system.stateVersion = "24.11";
 
   boot.initrd.kernelModules = [ "amdgpu" ];
-  #   boot.kernelParams = [ "amd_pstate=guided" "amdgpu" ];
   boot.kernelParams = [ "rtc_cmos.use_acpi_alarm=1" ];
-
   boot.extraModprobeConfig = ''
     options snd_hda_intel power_save=0
   '';
+
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = 0;
 
   hardware.cpu.amd.updateMicrocode = true;
 
@@ -46,9 +48,7 @@
     };
   };
 
-  environment.etc."pulse/client.conf".text = ''
-    default-server = tcp:192.168.1.110
-  '';
-
-  system.stateVersion = "24.11";
+  # environment.etc."pulse/client.conf".text = ''
+  #   default-server = tcp:192.168.1.110
+  # '';
 }

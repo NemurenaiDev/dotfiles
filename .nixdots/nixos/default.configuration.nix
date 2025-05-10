@@ -6,11 +6,6 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
   boot.kernelModules = [ "v4l2loopback" "snd-aloop" ];
   boot.kernelParams = [ "--quiet" ];
-
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.timeout = 0;
-
   boot.tmp.cleanOnBoot = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -82,7 +77,7 @@
     #   exec /run/current-system/sw/bin/Hyprland "$@"
     # '')
 
-    inputs.zen-browser.packages.${system}.twilight
+    inputs.zen-browser.packages.${system}.default
     inputs.qshell.packages.${system}.default
 
     home-manager
@@ -122,14 +117,13 @@
     qt6.full
     gtk-engine-murrine
 
-    pulsemixer
-    pulseaudio
+    snapcast
     pavucontrol
+    playerctl
+    pulseaudio
     avahi
     pamixer
     nssmdns
-    pavucontrol
-    playerctl
 
     plocate
     brightnessctl
