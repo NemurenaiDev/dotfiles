@@ -1,5 +1,0 @@
-#!/bin/sh
-
-LookingGlassCMD="looking-glass-client audio:micDefault=allow spice:audio=yes"
-
-$Dotfiles/scripts/app-workspace "special:windows" "kitty --class kitty-windows bash -ic 'virsh start Windows11; sleep 1 && $LookingGlassCMD; zsh'" "$1"

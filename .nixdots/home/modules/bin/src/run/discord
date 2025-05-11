@@ -1,3 +1,0 @@
-#!/bin/sh
-
-~/.bin/app-workspace "26" "vesktop" "$1"

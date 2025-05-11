@@ -12,36 +12,82 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     let
-      system = "x86_64-linux";
-      host = { username = "nemurenai"; };
-    in {
-      nixosConfigurations.x14p = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system host; };
-        modules = [
-          ./nixos/hosts/x14p/configuration.nix
+      inherit (nixpkgs.lib) listToAttrs;
 
-          inputs.home-manager.nixosModules.home-manager
-          inputs.catppuccin.nixosModules.catppuccin
-        ];
-      };
+      hosts = [
+        {
+          hostname = "cyberia";
+          username = "nemurenai";
+          timezone = "Europe/Kyiv";
+          system = "x86_64-linux";
+          stateVersion = "24.11";
+          monitors = {
+            central = "DP-1";
+            left = "HDMI-A-1";
+            config = [
+              ", highres@highrr, 0x0, 1"
+              "DP-1, 1920x1080@144, 0x0, 1"
+              "HDMI-A-1, 1920x1080@144, -1920x0, 1"
+            ];
+          };
+        }
+        {
+          hostname = "x14p";
+          username = "nemurenai";
+          timezone = "Europe/Kyiv";
+          system = "x86_64-linux";
+          stateVersion = "24.11";
+          monitors = {
+            central = "eDP-1";
+            config = [
+              ", highres@highrr, 0x0, 1"
+              "eDP-1, 2560x1600@60, 0x0, 1.6"
+            ];
+          };
+        }
+      ];
 
-      nixosConfigurations.cyberia = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system host; };
-        modules = [
-          ./nixos/hosts/cyberia/configuration.nix
+      nixosFor =
+        host:
+        nixpkgs.lib.nixosSystem {
+          system = host.system;
+          specialArgs = { inherit inputs host; };
+          modules = [
+            ./nixos/hosts/${host.hostname}/configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+            inputs.catppuccin.nixosModules.catppuccin
+          ];
+        };
 
-          inputs.home-manager.nixosModules.home-manager
-          inputs.catppuccin.nixosModules.catppuccin
-        ];
-      };
-
-      homeConfigurations."${host.username}" =
+      homeFor =
+        host:
         inputs.home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = { inherit inputs system host; };
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = nixpkgs.legacyPackages.${host.system};
+          extraSpecialArgs = { inherit inputs host; };
           modules = [ ./home/home.nix ];
         };
+    in
+    {
+      nixosConfigurations = listToAttrs (
+        map (host: {
+          name = host.hostname;
+          value = nixosFor host;
+        }) hosts
+      );
+
+      homeConfigurations = listToAttrs (
+        map (host: {
+          name = host.username;
+          value = homeFor host;
+        }) hosts
+      );
     };
 }

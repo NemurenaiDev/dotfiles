@@ -1,3 +1,0 @@
-#!/bin/sh
-
-~/.bin/app-workspace "15" "kitty --single-instance bash -ic btop" "$1"

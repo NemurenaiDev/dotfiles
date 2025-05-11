@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -47,12 +47,12 @@
       "SUPER SHIFT, F11, exec, hyprctl reload config-only"
       "SUPER SHIFT, F12, exec, killall inotifywait"
 
-      "SUPER SHIFT, L, exec, ${config.home.homeDirectory}/.bin/run/powermenu"
+      "SUPER SHIFT, L, exec, run-powermenu"
       "SUPER, L, exec, hyprctl switchxkblayout $KEYBOARD 0 && hyprlock"
 
-      "ALT SHIFT, 1, exec, hyprctl switchxkblayout $KEYBOARD 0"
-      "ALT SHIFT, 2, exec, hyprctl switchxkblayout $KEYBOARD 1"
-      "ALT SHIFT, 3, exec, hyprctl switchxkblayout $KEYBOARD 2"
+      "ALT SHIFT, 1, exec, ${config.home.homeDirectory}/.bin/switch-layout 0"
+      "ALT SHIFT, 2, exec, ${config.home.homeDirectory}/.bin/switch-layout 1"
+      "ALT SHIFT, 3, exec, ${config.home.homeDirectory}/.bin/switch-layout 2"
 
       "SUPER, V, exec, copyq show"
 
@@ -69,25 +69,25 @@
 
       "SUPER, S, exec, ps -e | grep -q fuzzel && killall fuzzel || fuzzel &"
 
-      "CTRL SHIFT, escape, exec, ${config.home.homeDirectory}/.bin/run/task-manager"
+      "CTRL SHIFT, escape, exec, run-task-manager"
 
-      "SUPER, E, exec, ${config.home.homeDirectory}/.bin/run/explorer --run-anyway"
-      "SUPER SHIFT, E, exec, ${config.home.homeDirectory}/.bin/run/explorer --just-run"
+      "SUPER, E, exec, run-explorer --run-anyway"
+      "SUPER SHIFT, E, exec, run-explorer --just-run"
 
       "SUPER, G, exec, kitty --single-instance --class \"kitty-pulsemixer\" pulsemixer"
       "SUPER SHIFT, G, exec, pavucontrol"
       "SUPER CTRL, G, exec, easyeffects"
       "SUPER ALT, G, exec, blueman-manager"
 
-      "SUPER, W, exec, ${config.home.homeDirectory}/.bin/run/browser"
-      "SUPER, A, exec, ${config.home.homeDirectory}/.bin/run/browser-incognito"
-      "SUPER, X, exec, ${config.home.homeDirectory}/.bin/run/telegram"
-      "SUPER, C, exec, ${config.home.homeDirectory}/.bin/run/discord"
+      "SUPER, W, exec, run-browser"
+      "SUPER, A, exec, run-browser-incognito"
+      "SUPER, X, exec, run-telegram"
+      "SUPER, C, exec, run-discord"
 
-      "SUPER, F3, exec, ${config.home.homeDirectory}/.bin/run/spotify"
-      "SUPER, F4, exec, ${config.home.homeDirectory}/.bin/run/obs-studio"
+      "SUPER, F3, exec, run-spotify"
+      "SUPER, F4, exec, run-obs-studio"
 
-      "SUPER, TAB, exec, ${config.home.homeDirectory}/.bin/run/aichat"
+      "SUPER, TAB, exec, run-aichat"
 
       "SUPER, Q, killactive"
       "SUPER SHIFT, Q, exec, kill \"$(hyprctl -j activewindow | jq -r '.pid')\""

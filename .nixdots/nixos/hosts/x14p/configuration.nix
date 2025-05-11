@@ -1,11 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports = [ ./../../default.configuration.nix ./hardware.nix ./snapcast.nix ];
-
-  networking.hostName = "x14p";
-  time.timeZone = "Europe/Kyiv";
-  system.stateVersion = "24.11";
+  imports = [
+    ./../../default.configuration.nix
+    ./hardware.nix
+    ./snapcast.nix
+  ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [ "rtc_cmos.use_acpi_alarm=1" ];
@@ -47,8 +52,4 @@
       };
     };
   };
-
-  # environment.etc."pulse/client.conf".text = ''
-  #   default-server = tcp:192.168.1.110
-  # '';
 }

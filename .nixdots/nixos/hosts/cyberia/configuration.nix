@@ -12,10 +12,6 @@
     ./snapcast.nix
   ];
 
-  networking.hostName = "cyberia";
-  time.timeZone = "Europe/Kyiv";
-  system.stateVersion = "24.11";
-
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [ "rtc_cmos.use_acpi_alarm=1" ];
   boot.extraModprobeConfig = ''
@@ -46,18 +42,10 @@
   services.auto-cpufreq = {
     enable = true;
     settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
       charger = {
         governor = "performance";
         turbo = "always";
       };
     };
   };
-
-  # environment.etc."pulse/client.conf".text = ''
-  #   default-server = tcp:192.168.1.110
-  # '';
 }

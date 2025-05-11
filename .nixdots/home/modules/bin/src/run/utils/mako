@@ -1,9 +1,0 @@
-#!/bin/sh
-
-CONFIG="$(realpath "$HOME/dotfiles/mako/config")"
-
-mako &
-while true; do
-    inotifywait -e modify "$CONFIG"
-    makoctl reload
-done

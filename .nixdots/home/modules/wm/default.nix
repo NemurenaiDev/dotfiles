@@ -1,1 +1,0 @@
-{ imports = [ ./hyprland ./waybar ./mako ]; }

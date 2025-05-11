@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, host, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -6,7 +6,7 @@
     systemd.enable = false;
 
     settings = {
-      monitor = "eDP-1, 2560x1600@60, 0x0, 1.6";
+      monitor = host.monitors.config;
 
       general = {
         "gaps_in" = 2.5;
@@ -110,7 +110,9 @@
         "no_donation_nag" = true;
       };
 
-      binds = { "workspace_back_and_forth" = false; };
+      binds = {
+        "workspace_back_and_forth" = false;
+      };
 
       dwindle = {
         "pseudotile" = true;

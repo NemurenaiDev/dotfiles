@@ -10,7 +10,7 @@
     buffer = 400;
     http = {
       enable = true;
-      listenAddress = "0.0.0.0";
+      listenAddress = "192.168.0.0";
       docRoot = "${pkgs.snapcast}/share/snapserver/snapweb/";
     };
     streams = {

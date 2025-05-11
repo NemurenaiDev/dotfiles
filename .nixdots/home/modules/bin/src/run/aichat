@@ -1,3 +1,0 @@
-#!/bin/sh
-
-~/.bin/app-workspace "special:aichat" "firefoxpwa site launch 01JK6A9KSSNTA917JS5BK0F2B9" "$1"
