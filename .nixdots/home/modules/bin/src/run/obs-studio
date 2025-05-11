@@ -1,3 +1,0 @@
-#!/bin/sh
-
-~/.bin/app-workspace "39" "obs" "$1"

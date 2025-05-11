@@ -1,3 +1,0 @@
-#!/bin/sh
-
-~/.bin/app-workspace "25" "telegram-desktop -workdir $HOME/.local/share/telegram" "$1"

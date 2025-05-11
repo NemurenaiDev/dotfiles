@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+    echo "Usage: $0 <layoutId>" >&2
+    exit 1
+fi
+layoutId="$1"
+
+devices_json=$(hyprctl -j devices) || {
+    echo "ERR Failed to fetch devices JSON" >&2
+    exit 1
+}
+
+echo "$devices_json" |
+    jq -r '.keyboards[].name' |
+    while IFS= read -r kb_name; do
+        {
+            if hyprctl switchxkblayout "$kb_name" "$layoutId" >&/dev/null; then
+                echo "OK  [$\{layoutId}] [$\{kb_name}]"
+            else
+                echo "ERR [$\{layoutId}] [$\{kb_name}]: switch failed"
+            fi
+        } &
+    done
+
+wait

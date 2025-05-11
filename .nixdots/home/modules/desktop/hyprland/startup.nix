@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -17,10 +17,10 @@
       "uwsm app -- waybar"
       "uwsm app -- mako"
 
-      "${config.home.homeDirectory}/.bin/run/task-manager --silent"
-      "${config.home.homeDirectory}/.bin/run/chatgpt --silent"
-      "${config.home.homeDirectory}/.bin/run/browser --silent"
-      "${config.home.homeDirectory}/.bin/run/telegram --silent"
+      "uwsm app -- run-task-manager --silent"
+      "uwsm app -- run-chatgpt --silent"
+      "uwsm app -- run-browser --silent"
+      "uwsm app -- run-telegram --silent"
     ];
   };
 }

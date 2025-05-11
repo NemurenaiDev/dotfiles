@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, host, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -8,54 +8,52 @@
     ];
 
     workspace = [
-      "1, monitor:$MonitorCenter, default:true, gapsout:0"
-      "2, monitor:$MonitorCenter, default:true, gapsout:0"
-      "3, monitor:$MonitorCenter, default:true, gapsout:0"
-      "4, monitor:$MonitorCenter, default:true, gapsout:0"
-      "5, monitor:$MonitorCenter, default:true, gapsout:0"
-      "6, monitor:$MonitorCenter, default:true, gapsout:0"
-      "7, monitor:$MonitorCenter, default:true, gapsout:0"
-      "8, monitor:$MonitorCenter, default:true, gapsout:0"
+      "1, monitor:${host.monitors.central}, default:true"
+      "2, monitor:${host.monitors.central}, default:true"
+      "3, monitor:${host.monitors.central}, default:true"
+      "4, monitor:${host.monitors.central}, default:true"
+      "5, monitor:${host.monitors.central}, default:true"
+      "6, monitor:${host.monitors.central}, default:true"
+      "7, monitor:${host.monitors.central}, default:true"
+      "8, monitor:${host.monitors.central}, default:true"
 
-      "9, monitor:$MonitorLeft, default:true"
-      "10, monitor:$MonitorLeft, default:true"
+      "9, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "10, monitor:${host.monitors.left or host.monitors.central}, default:true"
 
-      "11, monitor:$MonitorLeft, default:true"
-      "12, monitor:$MonitorLeft, default:true"
-      "13, monitor:$MonitorLeft, default:true"
-      "14, monitor:$MonitorLeft, default:true"
-      "15, monitor:$MonitorLeft, default:true"
-      "16, monitor:$MonitorLeft, default:true"
-      "17, monitor:$MonitorLeft, default:true"
-      "18, monitor:$MonitorLeft, default:true"
-      "19, monitor:$MonitorLeft, default:true"
-      "20, monitor:$MonitorLeft, default:true"
+      "11, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "12, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "13, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "14, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "15, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "16, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "17, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "18, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "19, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "20, monitor:${host.monitors.left or host.monitors.central}, default:true"
 
-      "21, monitor:$MonitorCenter, default:true, gapsout:0"
-      "22, monitor:$MonitorCenter, default:true, gapsout:0"
-      "23, monitor:$MonitorCenter, default:true, gapsout:0"
-      "24, monitor:$MonitorCenter, default:true, gapsout:0"
-      "25, monitor:$MonitorCenter, default:true, gapsout:80"
+      "21, monitor:${host.monitors.central}, default:true"
+      "22, monitor:${host.monitors.central}, default:true"
+      "23, monitor:${host.monitors.central}, default:true"
+      "24, monitor:${host.monitors.central}, default:true"
+      "25, monitor:${host.monitors.central}, default:true, gapsout:80"
 
-      "26, monitor:$MonitorLeft, default:true"
+      "26, monitor:${host.monitors.left or host.monitors.central}, default:true"
 
-      "27, monitor:$MonitorCenter, default:true, gapsout:0"
-      "28, monitor:$MonitorCenter, default:true, gapsout:0"
-      "29, monitor:$MonitorCenter, default:true, gapsout:0"
-      "30, monitor:$MonitorCenter, default:true, gapsout:0"
+      "27, monitor:${host.monitors.central}, default:true"
+      "28, monitor:${host.monitors.central}, default:true"
+      "29, monitor:${host.monitors.central}, default:true"
+      "30, monitor:${host.monitors.central}, default:true"
 
-      "31, monitor:$MonitorCenter, default:true, gapsout:0"
-      "32, monitor:$MonitorCenter, default:true, gapsout:0"
-      "33, monitor:$MonitorCenter, default:true, gapsout:0"
-      "34, monitor:$MonitorCenter, default:true, gapsout:0"
-      "35, monitor:$MonitorCenter, default:true, gapsout:0"
+      "31, monitor:${host.monitors.central}, default:true"
+      "32, monitor:${host.monitors.central}, default:true"
+      "33, monitor:${host.monitors.central}, default:true"
+      "34, monitor:${host.monitors.central}, default:true"
+      "35, monitor:${host.monitors.central}, default:true"
 
-      "36, monitor:$MonitorLeft, default:true"
-      "37, monitor:$MonitorLeft, default:true"
-      "38, monitor:$MonitorLeft, default:true"
-      "39, monitor:$MonitorLeft, default:true"
-
-      "m[$MonitorCenter], bordersize:0"
+      "36, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "37, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "38, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "39, monitor:${host.monitors.left or host.monitors.central}, default:true"
 
       "special:chatgpt, gapsout:50"
     ];
@@ -75,20 +73,24 @@
 
       "float, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
       "center, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
-      "monitor $MonitorLeft, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
+      "monitor ${
+        host.monitors.left or host.monitors.central
+      }, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
       "size 1600 900, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
 
       "pin, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
       "float, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
-      "monitor $MonitorLeft, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
+      "monitor ${
+        host.monitors.left or host.monitors.central
+      }, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
       "move 100%-w-6 41, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
       "size 380 580, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
 
-      "monitor $MonitorCenter, initialClass:(org.telegram.desktop), initialTitle:(Telegram|Vladyslav|Media viewer)"
+      "monitor ${host.monitors.central}, initialClass:(org.telegram.desktop), initialTitle:(Telegram|Vladyslav|Media viewer)"
       "float, initialClass:(org.telegram.desktop), initialTitle:(Media viewer)"
       "tile, initialClass:(org.telegram.desktop), initialTitle:(Telegram|Vladyslav)"
 
-      "monitor $MonitorCenter, initialClass:(polkit-gnome-authentication-agent-1)"
+      "monitor ${host.monitors.central}, initialClass:(polkit-gnome-authentication-agent-1)"
 
       "pin, initialClass:(nm-)"
       "pin, initialClass:(blueman)"
@@ -147,7 +149,7 @@
 
       "pin, initialTitle:(Picture.in..icture)"
       "float, initialTitle:(Picture.in..icture)"
-      "monitor $MonitorLeft, initialTitle:(Picture.in..icture)"
+      "monitor ${host.monitors.left or host.monitors.central}, initialTitle:(Picture.in..icture)"
       "noinitialfocus, initialTitle:(Picture.in..icture)"
       "size 500 300, initialTitle:(Picture.in..icture)"
       "move 100%-506 100%-301, initialTitle:(Picture.in..icture)"

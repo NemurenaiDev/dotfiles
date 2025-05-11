@@ -3,19 +3,17 @@
   inputs,
   host,
   pkgs,
+  lib,
   ...
 }:
 
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
-  boot.kernelModules = [
-    "v4l2loopback"
-    "snd-aloop"
-  ];
-  boot.kernelParams = [ "--quiet" ];
-  boot.tmp.cleanOnBoot = true;
+  nixpkgs.hostPlatform = lib.mkDefault host.system;
+  system.stateVersion = host.stateVersion;
+  networking.hostName = host.hostname;
+  time.timeZone = host.timezone;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -26,6 +24,7 @@
     dates = "daily";
     options = "--delete-older-than 14d";
   };
+  nixpkgs.config.allowUnfree = true;
 
   users.users.${host.username} = {
     shell = pkgs.zsh;
@@ -35,6 +34,14 @@
       "networkmanager"
     ];
   };
+
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
+  boot.kernelModules = [
+    "v4l2loopback"
+    "snd-aloop"
+  ];
+  boot.kernelParams = [ "--quiet" ];
+  boot.tmp.cleanOnBoot = true;
 
   networking.networkmanager.enable = true;
   networking.networkmanager.settings.WiFi.powerSave = false;
@@ -55,8 +62,6 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   programs.zsh.enable = true;
   programs.hyprland.enable = true;

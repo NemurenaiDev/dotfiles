@@ -2,9 +2,9 @@
 
 {
   imports = [
+    ./desktop
     ./terminal
     ./bin
-    ./wm
 
     ./telegram
     ./fuzzel

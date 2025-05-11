@@ -1,0 +1,60 @@
+{ pkgs, ... }:
+
+let
+  run-on-workspace = pkgs.writeShellScriptBin "run-on-workspace" ''
+    workspace_id="$1"
+    command="$2"
+    arg="$3"
+
+    if [[ $arg == "--run-anyway" ]]; then
+        ActiveWorkspace=$(hyprctl -j activeworkspace | jq '.id')
+        if [ "$ActiveWorkspace" == "$workspace_id" ]; then
+            hyprctl dispatch exec [workspace "$workspace_id" silent] "$command" > /dev/null
+        else
+            if [[ "$workspace_id" == "special"* ]]; then
+                IFS=":" read -r workspace special_workspace_name <<<"$workspace_id"
+                hyprctl dispatch togglespecialworkspace "$special_workspace_name" > /dev/null
+            else
+                hyprctl dispatch workspace "$workspace_id" > /dev/null
+            fi
+        fi
+    else
+        if [[ -z $arg ]]; then
+            if [[ "$workspace_id" == "special"* ]]; then
+                IFS=":" read -r workspace special_workspace_name <<<"$workspace_id"
+                hyprctl dispatch togglespecialworkspace "$special_workspace_name" > /dev/null
+            else
+                hyprctl dispatch workspace "$workspace_id" > /dev/null
+            fi
+        fi
+
+        WorkspaceLastWindow=$(hyprctl -j workspaces | jq --arg name "$workspace_id" '.[] | select(.name == ($name|tostring)) | .lastwindowtitle')
+        WorkspaceLastWindow="''${WorkspaceLastWindow//\"/}"
+
+        if [[ -z $WorkspaceLastWindow ]]; then
+            hyprctl dispatch exec [workspace "$workspace_id" silent] "$command" > /dev/null
+        fi
+    fi
+  '';
+  run = "${run-on-workspace}/bin/run-on-workspace";
+
+  scripts = {
+    run-powermenu = ''kitty --class "kitty-powermenu" bash -ic "~/.bin/powermenu"'';
+    
+    run-aichat = ''${run} "special:aichat" "msty" "$1"'';
+
+    run-explorer = ''[[ "$1" == "--just-run" ]] && thunar || ${run} "13" "thunar" "$1"'';
+    run-task-manager = ''${run} "15" "kitty --single-instance bash -ic btop" "$1"'';
+    run-browser = ''${run} "21" "zen" "$@"'';
+    run-browser-incognito = ''${run} "22" "zen --private-window" "$1"'';
+    run-telegram = ''${run} "25" "telegram-desktop" "$1"'';
+    run-discord = ''${run} "26" "vesktop" "$1"'';
+    run-spotify = ''${run} "36" "spotify --enable-features=UseOzonePlatform --ozone-platform-hint=wayland" "$1"'';
+    run-obs = ''${run} "39" "obs" "$1"'';
+  };
+in
+{
+  home.packages = builtins.attrValues (
+    builtins.mapAttrs (name: body: pkgs.writeShellScriptBin name body) scripts
+  );
+}

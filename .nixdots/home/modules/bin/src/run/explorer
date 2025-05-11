@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [[ "$1" == "--just-run" ]]; then
-	thunar
-else
-	~/.bin/app-workspace "13" "thunar" "$1"
-fi
-

@@ -7,7 +7,6 @@
 
 let
   sessionVariables = {
-    MonitorPrimary = "eDP-1";
     KEYBOARD = "at-translated-set-2-keyboard";
 
     HYPRCURSOR_THEME = "catppuccin-mocha-dark-cursors";
@@ -21,7 +20,7 @@ let
   };
 in
 {
-  home.stateVersion = "24.11";
+  home.stateVersion = host.stateVersion;
   home.sessionVariables = sessionVariables;
   home.username = host.username;
   home.homeDirectory = "/home/${host.username}";
