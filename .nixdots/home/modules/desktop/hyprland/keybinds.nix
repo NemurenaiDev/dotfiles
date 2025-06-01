@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -12,7 +12,9 @@
       "SUPER SHIFT, right, resizeactive,50 0"
       "SUPER SHIFT, up, resizeactive,0 -50"
       "SUPER SHIFT, down, resizeactive,0 50"
+    ];
 
+    bind = [
       ", xf86KbdBrightnessDown, exec, ${config.home.homeDirectory}/.bin/brightness --dec"
       ", xf86KbdBrightnessUp, exec, ${config.home.homeDirectory}/.bin/brightness --inc"
       ", xf86MonBrightnessDown, exec, ${config.home.homeDirectory}/.bin/brightness --dec"
@@ -22,9 +24,7 @@
       ", xf86audiolowervolume, exec, ${config.home.homeDirectory}/.bin/volume --dec"
       ", XF86Calculator, exec, ${config.home.homeDirectory}/.bin/volume --inc"
       ", XF86HomePage, exec, ${config.home.homeDirectory}/.bin/volume --dec"
-    ];
 
-    bind = [
       ", xf86audiomute, exec, ${config.home.homeDirectory}/.bin/volume --toggle"
       ", xf86AudioMicMute, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
       ", XF86Mail, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"

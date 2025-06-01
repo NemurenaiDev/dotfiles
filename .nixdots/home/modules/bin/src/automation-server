@@ -14,8 +14,8 @@ const routes = {
     "/player/next": "playerctl next",
     "/player/forw": "playerctl position 5+",
     "/player/back": "playerctl position 5-",
-    "/volume/inc": "$Dotfiles/scripts/volume --inc",
-    "/volume/dec": "$Dotfiles/scripts/volume --dec",
+    "/volume/inc": "$HOME/.bin/volume --inc",
+    "/volume/dec": "$HOME/.bin/volume --dec",
 }
 
 const server = http.createServer((req, res) => {

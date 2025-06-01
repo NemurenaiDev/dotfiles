@@ -1,6 +1,6 @@
 #!/bin/sh
 
-iDIR="$HOME/dotfiles/scripts/assets/icons"
+iDIR="$HOME/.assets/icons"
 
 
 if [[ "$1" == "--toggle" ]]; then

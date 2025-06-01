@@ -1,5 +1,8 @@
+{host, ...}:
+
 {
   home.file.".config/mako/config".text = ''
+    output=${host.monitors.central}
     max-history=100
     sort=+time
     on-touch=dismiss
@@ -30,8 +33,8 @@
     border-color=#b4befe
     progress-color=#89b4fa
 
-    [mode=do-not-disturb]
-    invisible=1
+    # [mode=do-not-disturb]
+    # invisible=true
 
 
     [urgency=low]
@@ -43,7 +46,7 @@
     anchor=bottom-left
 
     [urgency=high]
-    invisible=0
+    # invisible=false
     default-timeout=0
     anchor=bottom-left
     border-color=#eb6f92
@@ -54,7 +57,7 @@
     default-timeout=16000
 
     [category=adjustments]
-    invisible=0
+    # invisible=false
     text-color=#f7f7f7
     text-alignment=right
     default-timeout=2000
@@ -64,7 +67,7 @@
     width=175
 
     [category=error]
-    invisible=0
+    # invisible=false
     border-size=2
     border-color=#e64553
     default-timeout=10000
@@ -72,13 +75,13 @@
 
 
     [app-name=Zen]
-    invisible=true
+    # invisible=true
     default-timeout=16000
     anchor=bottom-left
     border-color=#FF7456
 
     [app-name=waybar-updates]
-    invisible=true
+    # invisible=true
 
     [app-name=Spotify]
     default-timeout=5000

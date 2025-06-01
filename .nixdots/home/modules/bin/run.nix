@@ -39,9 +39,20 @@ let
   run = "${run-on-workspace}/bin/run-on-workspace";
 
   scripts = {
+    run-code-project = ''
+      kitty --class "kitty-project" bash -ic \
+          'code -n $(\
+              find ~/Projects -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -print0 | \
+              while IFS= read -r -d "" p; do readlink -f "$p"; done | \
+              sed "s|$HOME|~|" | \
+              sort -r | \
+              fzf --ansi --preview-window border-left --preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$(eval echo {})" | \
+              sed "s|~|$HOME|g" \
+          )' 
+    '';
     run-powermenu = ''kitty --class "kitty-powermenu" bash -ic "~/.bin/powermenu"'';
-    
-    run-aichat = ''${run} "special:aichat" "msty" "$1"'';
+
+    run-aichat = ''${run} "special:aichat" "chromium --app=https://chatgpt.com/" "$1"'';
 
     run-explorer = ''[[ "$1" == "--just-run" ]] && thunar || ${run} "13" "thunar" "$1"'';
     run-task-manager = ''${run} "15" "kitty --single-instance bash -ic btop" "$1"'';

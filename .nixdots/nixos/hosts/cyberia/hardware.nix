@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -35,6 +34,25 @@
       "fmask=0077"
       "dmask=0077"
     ];
+  };
+
+  fileSystems."/mnt/archlinux" = {
+    device = "UUID=0d8e7100-8c32-4446-9404-ecf67d77288b";
+    fsType = "ext4";
+    options = [
+      "nofail"
+      "x-systemd.automount"
+    ];
+  };
+
+  fileSystems."/home/nemurenai/Library" = {
+    device = "UUID=c6bae1c8-fe05-4353-8267-e63053a7c8f6";
+    fsType = "ext4";
+    options = [
+      "nofail"
+      "x-systemd.automount"
+    ];
+
   };
 
   swapDevices = [ ];

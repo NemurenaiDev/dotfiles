@@ -1,4 +1,4 @@
-{ config, host, ... }:
+{ host, ... }:
 
 {
   wayland.windowManager.hyprland = {

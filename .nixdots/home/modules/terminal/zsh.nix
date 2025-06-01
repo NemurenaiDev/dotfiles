@@ -6,7 +6,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtraFirst = ''
+    initContent = ''
       toggle-sudo() {
           if [[ $BUFFER == sudo\ * ]]; then
               BUFFER="''${BUFFER#sudo }"
@@ -21,21 +21,24 @@
           ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))"
       }
 
-      lastcd() {
-          cd "$@" && lsd --literal --icon always --color always --group-dirs first
-          echo "$(pwd)" > ${config.home.homeDirectory}/.cache/lastcd
+      update-history() {
+        builtin fc -AI
       }
 
-      # ssh() {
-      #     if [[ "$(get-terminal-name)" == "kitty" ]]; then
-      #         kitten ssh "$@"
-      #     else
-      #         command ssh "$@"
-      #     fi
-      # }
-    '';
+      list-dir() {
+        lsd --literal --icon always --color always --group-dirs first --date "+%x %T" "$@"
+      }
 
-    initExtra = ''
+      use() {
+        if [ -z "$1" ]; then
+          echo "Usage: use <package>"
+          return 1
+        fi
+
+        nix shell "nixpkgs#$1"
+      }
+
+
       export VISUAL="nano"
       export EDITOR="nano"
       export PATH="$PATH:$(yarn global bin)"
@@ -51,21 +54,30 @@
               fi
           fi
       fi
+      
 
-
-      # WORDCHARS="*?-.[]~=/&;!#$%^(){}<>"
       autoload -U select-word-style
+      autoload -U add-zsh-hook
+
+      WORDCHARS="*?_[]~=&;!#$%^(){}"
       select-word-style bash
 
-      setopt appendhistory
-      setopt sharehistory
-      setopt hist_ignore_space
-      setopt hist_ignore_all_dups
-      setopt hist_ignore_dups
-      setopt hist_save_no_dups
-      setopt inc_append_history
+      add-zsh-hook chpwd list-dir
+      add-zsh-hook precmd update-history
 
+      setopt INC_APPEND_HISTORY
+      setopt SHARE_HISTORY
+      setopt HIST_EXPIRE_DUPS_FIRST
+      setopt HIST_IGNORE_DUPS
+      setopt HIST_IGNORE_ALL_DUPS
+      setopt HIST_REDUCE_BLANKS
+      setopt HIST_VERIFY
+
+      zstyle ":completion:*" completer _extensions _complete _approximate
       zstyle ":completion:*" menu select
+      zstyle ":completion:*:*:*:*:descriptions" format "%F{green}-- %d --%f"
+      zstyle ":completion:*" group-name ""
+      zstyle ":completion:*:*:-command-:*:*" group-order alias builtins functions commands
       zstyle ":completion:*" use-cache on
       zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
       zstyle ":completion:*" list-colors "''${(s.:.)LS_COLORS}"
@@ -89,22 +101,31 @@
       bindkey "^Y" redo
 
 
+      alias reload="source ~/.zshrc"
+
       alias vi="nano" vim="nano" nvim="nano"
 
       alias kitty="kitty --single-instance"
 
-      alias l="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T"
-      alias ls="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T"
-      alias ll="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T -lh"
-      alias lll="lsd --literal --icon always --color always --group-dirs first --date +%x\ %T -lAh"
+      alias l="list-dir"
+      alias ls="list-dir"
+      alias ll="list-dir -lh"
+      alias lll="list-dir -lAh"
       alias watch="CLICOLOR_FORCE=1 watch -c"
 
-      alias cd="lastcd"
       alias rm="trash -v"
-      alias ff="fastfetch"
-      alias wlcp="wl-copy -n"
       alias hist="history 0 | fzf | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | wl-copy -n"
       alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /run --exclude /mnt --exclude /home/yabai/Library"
+
+      alias os="nh os"
+      alias oss="sudo -v && nh os switch"
+      alias hm="nh home"
+      alias hms="nh home switch"
+      alias sw="sudo -v && nh os switch && nh home switch"
+      alias swu="sudo -v && nh os switch -u && nh home switch"
+
+      alias ff="fastfetch"
+      alias wlcp="wl-copy -n"
 
       alias g="git"
       alias gst="git status"
