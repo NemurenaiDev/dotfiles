@@ -1,13 +1,12 @@
-{ config, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
+    ./bin
     ./desktop
     ./terminal
-    ./bin
 
     ./telegram
-    ./fuzzel
     ./thunar
 
     inputs.catppuccin.homeManagerModules.catppuccin

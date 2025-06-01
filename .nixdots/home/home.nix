@@ -1,13 +1,8 @@
-{
-  config,
-  pkgs,
-  host,
-  ...
-}:
+{ host, pkgs, ... }:
 
 let
   sessionVariables = {
-    KEYBOARD = "at-translated-set-2-keyboard";
+    NH_FLAKE = "/home/${host.username}/nixdots";
 
     HYPRCURSOR_THEME = "catppuccin-mocha-dark-cursors";
     HYPRCURSOR_SIZE = "18";
@@ -17,6 +12,7 @@ let
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
     WLR_DRM_NO_ATOMIC = "1";
+    NIXOS_OZONE_WL = "1";
   };
 in
 {
@@ -27,13 +23,42 @@ in
 
   imports = [ ./modules ];
 
-  gtk.enable = true;
+  services.spotifyd = {
+    enable = true;
+    settings = {
+      global = {
+        bitrate = 320;
+        initial_volume = 100;
+        volume_normalisation = false;
+        device_type = "computer";
+        device_name = "${host.username}@${host.hostname}";
+      };
+    };
+  };
 
   catppuccin = {
     enable = true;
     flavor = "mocha";
     accent = "maroon";
     gtk.enable = true;
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
   };
 
   #   xdg.configFile = {

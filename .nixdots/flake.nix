@@ -10,6 +10,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs =
@@ -36,6 +37,7 @@
               ", highres@highrr, 0x0, 1"
               "DP-1, 1920x1080@144, 0x0, 1"
               "HDMI-A-1, 1920x1080@144, -1920x0, 1"
+              # "HDMI-A-1, 1920x1080@144, 0x0, 1, mirror, DP-1"
             ];
           };
         }
@@ -62,7 +64,6 @@
           specialArgs = { inherit inputs host; };
           modules = [
             ./nixos/hosts/${host.hostname}/configuration.nix
-            inputs.home-manager.nixosModules.home-manager
             inputs.catppuccin.nixosModules.catppuccin
           ];
         };
@@ -72,7 +73,9 @@
         inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${host.system};
           extraSpecialArgs = { inherit inputs host; };
-          modules = [ ./home/home.nix ];
+          modules = [
+            ./home/home.nix
+          ];
         };
     in
     {

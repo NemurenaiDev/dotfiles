@@ -1,4 +1,4 @@
-{ config, host, ... }:
+{ host, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -55,7 +55,7 @@
       "38, monitor:${host.monitors.left or host.monitors.central}, default:true"
       "39, monitor:${host.monitors.left or host.monitors.central}, default:true"
 
-      "special:chatgpt, gapsout:50"
+      "special:aichat, gapsout:50"
     ];
 
     windowrulev2 = [

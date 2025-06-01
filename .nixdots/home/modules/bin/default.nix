@@ -6,4 +6,10 @@
     executable = true;
     source = ./src;
   };
+
+  home.file.".assets" = {
+    recursive = true;
+    executable = true;
+    source = ./assets;
+  };
 }

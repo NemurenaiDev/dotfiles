@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -8,6 +8,7 @@
       "ln -s '/tmp/TelegramDesktop' '$HOME/Downloads/Telegram Desktop'"
 
       "uwsm app -- qshell --daemon"
+      "uwsm app -- ${config.home.homeDirectory}/.bin/automation-server"
 
       "uwsm app -- easyeffects --gapplication-service"
       "uwsm app -- copyq --start-server"
@@ -18,7 +19,7 @@
       "uwsm app -- mako"
 
       "uwsm app -- run-task-manager --silent"
-      "uwsm app -- run-chatgpt --silent"
+      "uwsm app -- run-aichat --silent"
       "uwsm app -- run-browser --silent"
       "uwsm app -- run-telegram --silent"
     ];
