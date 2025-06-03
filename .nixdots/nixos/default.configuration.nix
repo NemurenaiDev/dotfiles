@@ -43,6 +43,7 @@
     isNormalUser = true;
     extraGroups = [
       "wheel"
+      "audio"
       "networkmanager"
     ];
   };
@@ -83,6 +84,4 @@
     style = "kvantum";
     platformTheme = "qt5ct";
   };
-
-  systemd.tmpfiles.rules = [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
 }

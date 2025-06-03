@@ -118,6 +118,10 @@
         "pseudotile" = true;
         "preserve_split" = true;
       };
+
+      debug = {
+        "full_cm_proto" = true;
+      };
     };
   };
 }
