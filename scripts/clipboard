@@ -1,7 +1,0 @@
-#!/bin/bash
-
-selected=$(cliphist list | wofi -dmenu -W 1080 -H 560)
-
-if [ -n "$selected" ]; then
-    echo "$selected" | cliphist decode | wl-copy
-fi
