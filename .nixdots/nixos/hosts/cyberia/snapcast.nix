@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  security.rtkit.enable = true;
-
   services.snapserver = {
     enable = true;
     openFirewall = true;
@@ -21,5 +19,6 @@
     };
   };
 
-  #  pactl load-module module-pipe-sink file=/run/snapserver/pipewire sink_name=Snapcast format=s16le rate=48000
+  # pactl load-module module-pipe-sink file=/run/snapserver/pipewire sink_name=Snapcast format=s16le rate=48000
+  # pactl unload-module "$(pactl list sinks | grep "Snapcast" -A 3 | grep pulse.module.id | grep -oP "\d+")"; pactl load-module module-pipe-sink file=/run/snapserver/pipewire sink_name=Snapcast format=s16le rate=48000
 }

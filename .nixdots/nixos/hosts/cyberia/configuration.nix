@@ -16,6 +16,7 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.timeout = 0;
 
   hardware.cpu.amd.updateMicrocode = true;
@@ -40,17 +41,13 @@
     vulkan-tools
   ];
 
-  powerManagement.enable = true;
-
-  services.system76-scheduler.settings.cfsProfiles.enable = true;
-
-  services.auto-cpufreq = {
+  services.system76-scheduler = {
     enable = true;
-    settings = {
-      charger = {
-        governor = "performance";
-        turbo = "always";
-      };
-    };
+    settings.cfsProfiles.enable = true;
+  };
+  
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "schedutil";
   };
 }
