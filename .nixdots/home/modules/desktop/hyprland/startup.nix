@@ -7,7 +7,7 @@
 
       "ln -s '/tmp/TelegramDesktop' '$HOME/Downloads/Telegram Desktop'"
 
-      "uwsm app -- qshell --daemon"
+      "uwsm app -- qshell --daemon --force"
       "uwsm app -- ${config.home.homeDirectory}/.bin/automation-server"
 
       "uwsm app -- easyeffects --gapplication-service"

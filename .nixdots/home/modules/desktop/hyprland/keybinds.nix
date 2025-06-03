@@ -67,7 +67,7 @@
       "SUPER, code:49, exec, kitty --single-instance qshell --attach"
       "SUPER SHIFT, code:49, exec, kitty --single-instance"
 
-      "SUPER, S, exec, ps -e | grep -q fuzzel && killall fuzzel || fuzzel &"
+      "SUPER, S, exec, fuzzel"
 
       "CTRL SHIFT, escape, exec, run-task-manager"
 

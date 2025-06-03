@@ -1,12 +1,17 @@
 { config, ... }:
 
 {
-  imports = [ ./project.nix ];
+  imports = [
+    ./browser.nix
+    ./project.nix
+  ];
 
-  home.activation.linkDesktopToApplications = ''
+  home.activation."link-desktop-to-applications" = ''
     mkdir -p ${config.home.homeDirectory}/Desktop
     mkdir -p ${config.home.homeDirectory}/.local/share/applications
 
-    ln -s ${config.home.homeDirectory}/Desktop ${config.home.homeDirectory}/.local/share/applications/Desktop
+    rm -f ${config.home.homeDirectory}/.local/share/applications/Desktop
+
+    ln -sf ${config.home.homeDirectory}/Desktop ${config.home.homeDirectory}/.local/share/applications/Desktop
   '';
 }

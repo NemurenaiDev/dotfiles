@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   run-on-workspace = pkgs.writeShellScriptBin "run-on-workspace" ''
@@ -56,8 +56,8 @@ let
 
     run-explorer = ''[[ "$1" == "--just-run" ]] && thunar || ${run} "13" "thunar" "$1"'';
     run-task-manager = ''${run} "15" "kitty --single-instance bash -ic btop" "$1"'';
-    run-browser = ''${run} "21" "zen" "$@"'';
-    run-browser-incognito = ''${run} "22" "zen --private-window" "$1"'';
+    run-browser = ''${run} "21" "zen --profile ${config.home.homeDirectory}/.zen/x6xuobo4.nemurenai" "$@"'';
+    run-browser-incognito = ''${run} "22" "zen --profile ${config.home.homeDirectory}/.zen/x6xuobo4.nemurenai --private-window" "$1"'';
     run-telegram = ''${run} "25" "telegram-desktop" "$1"'';
     run-discord = ''${run} "26" "vesktop" "$1"'';
     run-spotify = ''${run} "36" "spotify --enable-features=UseOzonePlatform --ozone-platform-hint=wayland" "$1"'';

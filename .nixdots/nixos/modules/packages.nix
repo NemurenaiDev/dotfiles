@@ -2,14 +2,14 @@
 
 {
   environment.systemPackages = with pkgs; [
+    # inputs.nixpkgs-stable.legacyPackages.${host.system}.fuzzel
+
     inputs.zen-browser.packages.${system}.default
     inputs.qshell.packages.${system}.default
 
-    firefox
     chromium
-    qutebrowser
 
-    home-manager
+    mullvad-vpn
 
     bun
     yarn
@@ -36,12 +36,12 @@
     catppuccin-cursors.mochaDark
     # magnetic-catppuccin-gtk
 
+    gtk-engine-murrine
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     qt6Packages.qt6ct
     qt5.full
     qt6.full
-    gtk-engine-murrine
 
     snapcast
     pavucontrol
@@ -57,6 +57,7 @@
     nixd
     nixfmt-rfc-style
 
+    fuzzel
     plocate
     brightnessctl
     libnotify
@@ -76,7 +77,6 @@
     docker
     docker-compose
     droidcam
-    easyeffects
     electron
     eog
     espeak-ng
@@ -87,7 +87,6 @@
     file-roller
     freerdp
     fuse-overlayfs
-    fuzzel
     gamemode
     git
     github-cli
@@ -163,18 +162,7 @@
     zoxide
     zram-generator
     fzf
-    lsd
-    zoxide
-    copyq
-    oh-my-posh
     vscode
-    kitty
-    fuzzel
-    trash-cli
-    telegram-desktop
-
-    git
-    wget
     curl
   ];
 
