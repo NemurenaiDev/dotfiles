@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# ~/dotfiles/scripts/app-workspace "special:aichat" "firefoxpwa site launch 01JQSH7VX81R58B1PQHG8P9YST" "$1"
-
-~/dotfiles/scripts/app-workspace "special:aichat" "msty --enable-features=UseOzonePlatform --ozone-platform=wayland" "$1"

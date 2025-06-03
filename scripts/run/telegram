@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/dotfiles/scripts/app-workspace "25" "telegram-desktop" "$1"
