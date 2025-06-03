@@ -15,6 +15,7 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.timeout = 0;
 
   hardware.cpu.amd.updateMicrocode = true;
@@ -30,10 +31,11 @@
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
-  powerManagement.enable = true;
-
-  services.system76-scheduler.settings.cfsProfiles.enable = true;
-
+  services.system76-scheduler = {
+    enable = true;
+    settings.cfsProfiles.enable = true;
+  };
+  
   services.auto-cpufreq = {
     enable = true;
     settings = {

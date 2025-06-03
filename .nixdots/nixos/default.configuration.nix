@@ -53,7 +53,7 @@
     "v4l2loopback"
     "snd-aloop"
   ];
-  boot.kernelParams = [ "--quiet" ];
+  boot.kernelParams = [ "--quiet" "preempt=full" ];
   boot.tmp.cleanOnBoot = true;
 
   networking.networkmanager.enable = true;
