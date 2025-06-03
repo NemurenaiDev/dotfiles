@@ -1,6 +1,4 @@
 {
-  programs.noisetorch.enable = true;
-
   security.rtkit.enable = true;
   security.pam.loginLimits = [
     {
@@ -34,6 +32,8 @@
     LimitMEMLOCK = "8M";
     CPUSchedulingPolicy = "rr";
     CPUSchedulingPriority = 89;
+    wants = [ "rtkit-daemon.service" ];
+    after = [ "rtkit-daemon.service" ];
   };
 
   systemd.user.services."pipewire-pulse".serviceConfig = {
@@ -41,6 +41,8 @@
     LimitMEMLOCK = "8M";
     CPUSchedulingPolicy = "rr";
     CPUSchedulingPriority = 89;
+    wants = [ "rtkit-daemon.service" ];
+    after = [ "rtkit-daemon.service" ];
   };
 
   systemd.user.services."wireplumber".serviceConfig = {
@@ -48,6 +50,8 @@
     LimitMEMLOCK = "8M";
     CPUSchedulingPolicy = "rr";
     CPUSchedulingPriority = 89;
+    wants = [ "rtkit-daemon.service" ];
+    after = [ "rtkit-daemon.service" ];
   };
 
   services.pipewire = {
@@ -84,6 +88,5 @@
         resample.quality = 3;
       };
     };
-
   };
 }

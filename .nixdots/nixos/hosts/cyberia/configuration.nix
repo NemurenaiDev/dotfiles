@@ -41,10 +41,10 @@
     vulkan-tools
   ];
 
-  services.system76-scheduler = {
-    enable = true;
-    settings.cfsProfiles.enable = true;
-  };
+  # services.system76-scheduler = {
+  #   enable = true;
+  #   settings.cfsProfiles.enable = true;
+  # };
   
   powerManagement = {
     enable = true;
