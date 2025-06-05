@@ -5,6 +5,7 @@
     lutris
     bottles
     mangohud
+    steam-run
   ];
 
   programs.gamemode.enable = true;

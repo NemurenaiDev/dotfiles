@@ -53,7 +53,10 @@
     "v4l2loopback"
     "snd-aloop"
   ];
-  boot.kernelParams = [ "--quiet" "preempt=full" ];
+  boot.kernelParams = [
+    "--quiet"
+    "preempt=full"
+  ];
   boot.tmp.cleanOnBoot = true;
 
   networking.networkmanager.enable = true;
@@ -65,6 +68,15 @@
     8523
   ];
   networking.firewall.allowedUDPPorts = [ 5353 ];
+
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      DNS=94.140.14.14 94.140.15.15
+      FallbackDNS=
+      Domains=~.
+    '';
+  };
 
   services.getty.autologinOnce = true;
   services.getty.autologinUser = host.username;
