@@ -10,7 +10,7 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [ "rtc_cmos.use_acpi_alarm=1" ];
   boot.extraModprobeConfig = ''
-    options snd_hda_intel power_save=0
+    options snd_hda_intel power_save=0 power_save_controller=N
     options amdgpu dpm=1
   '';
 
@@ -41,13 +41,18 @@
     vulkan-tools
   ];
 
-  # services.system76-scheduler = {
-  #   enable = true;
-  #   settings.cfsProfiles.enable = true;
-  # };
-  
-  powerManagement = {
+  services.system76-scheduler = {
     enable = true;
-    cpuFreqGovernor = "schedutil";
+    settings.cfsProfiles.enable = true;
+  };
+
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      charger = {
+        governor = "schedutil";
+        turbo = "always";
+      };
+    };
   };
 }

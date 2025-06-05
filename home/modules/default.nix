@@ -10,11 +10,12 @@
     ./waybar
     ./mako
 
+    ./utils
     ./kitty
     ./copyq
     ./fuzzel
-
     ./thunar
+
     ./telegram
 
     inputs.catppuccin.homeManagerModules.catppuccin
