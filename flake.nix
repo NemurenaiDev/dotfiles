@@ -1,11 +1,12 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     qshell.url = "github:NemurenaiDev/qshell";
+
+    musnix.url = "github:musnix/musnix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -66,6 +67,7 @@
           modules = [
             ./nixos/hosts/${host.hostname}/configuration.nix
             inputs.catppuccin.nixosModules.catppuccin
+            inputs.musnix.nixosModules.musnix
           ];
         };
 

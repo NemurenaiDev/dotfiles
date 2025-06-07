@@ -36,7 +36,6 @@
     dates = "daily";
     options = "--delete-older-than 14d";
   };
-  nixpkgs.config.allowUnfree = true;
 
   users.users.${host.username} = {
     shell = pkgs.zsh;
@@ -90,6 +89,8 @@
   programs.zsh.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
+
+  systemd.tmpfiles.rules = [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
 
   qt = {
     enable = true;

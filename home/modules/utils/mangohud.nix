@@ -3,7 +3,7 @@
     force = true;
     text = ''
       no_display
-      toggle_hud=F12
+      toggle_hud=Ctrl+p
     '';
   };
 }

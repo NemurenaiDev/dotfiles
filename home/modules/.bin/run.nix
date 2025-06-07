@@ -42,8 +42,7 @@ let
     run-code-project = ''
       kitty --class "kitty-project" bash -ic \
           'code -n $(\
-              find ~/Projects -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -print0 | \
-              while IFS= read -r -d "" p; do readlink -f "$p"; done | \
+              find ~/Projects -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | \
               sed "s|$HOME|~|" | \
               sort -r | \
               fzf --ansi --preview-window border-left --preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$(eval echo {})" | \
