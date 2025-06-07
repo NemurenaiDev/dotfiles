@@ -85,7 +85,7 @@
       "SUPER, C, exec, run-discord"
 
       "SUPER, F3, exec, run-spotify"
-      "SUPER, F4, exec, run-obs-studio"
+      "SUPER, F4, exec, run-obs"
 
       "SUPER, TAB, exec, run-aichat"
 

@@ -1,5 +1,8 @@
 {
-  imports = [ ./run.nix ];
+  imports = [
+    ./desktop
+    ./run.nix
+  ];
 
   home.file.".bin" = {
     recursive = true;

@@ -1,6 +1,8 @@
 { pkgs, inputs, ... }:
 
 {
+  imports = [ ./overlays ];
+
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -10,6 +12,9 @@
     chromium
 
     mullvad-vpn
+
+    stress-ng
+    lm_sensors
 
     bun
     yarn
@@ -57,6 +62,9 @@
     nix-output-monitor
     nixd
     nixfmt-rfc-style
+
+    nemo-with-extensions
+    nemo-fileroller
 
     fuzzel
     plocate
@@ -139,10 +147,6 @@
     sox
     spotify
     telegram-desktop
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    xfce.thunar-volman
     tk
     tlp
     tmux

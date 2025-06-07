@@ -3,18 +3,16 @@
 {
   imports = [
     ./.bin
-    ./.desktop
-    ./terminal
+    ./.ui
 
-    ./hyprland
-    ./waybar
-    ./mako
+    ./shell
 
     ./utils
-    ./kitty
-    ./copyq
-    ./fuzzel
-    ./thunar
+
+    ./clipboard
+    ./terminal
+    ./launcher
+    ./explorer
 
     ./telegram
 

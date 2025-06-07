@@ -173,10 +173,6 @@
       "center, initialTitle:(Rename|File Operation)"
       "size 450 150, initialTitle:(Rename|File Operation)"
 
-      "float, initialTitle:(File Roller|Open.*|Save.*|Choose.*|All Files|Archive|Resize|Rotate|Theme File|Properties|Telegram Desktop - Thunar)"
-      "center, initialTitle:(File Roller|Open.*|Save.*|Choose.*|All Files|Archive|Resize|Rotate|Theme File|Properties|Telegram Desktop - Thunar)"
-      "size 960 720, initialTitle:(File Roller|Open.*|Save.*|Choose.*|All Files|Archive|Resize|Rotate|Theme File|Properties|Telegram Desktop - Thunar)"
-
       "pin, initialClass:(blueman-manager|blueman-services|blueman-sendto)"
       "float, initialClass:(blueman-manager|blueman-services|blueman-sendto)"
       "center, initialClass:(blueman-manager|blueman-services|blueman-sendto)"
