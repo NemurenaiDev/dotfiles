@@ -1,9 +1,9 @@
 { pkgs, inputs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    # inputs.nixpkgs-stable.legacyPackages.${host.system}.fuzzel
+  nixpkgs.config.allowUnfree = true;
 
+  environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${system}.default
     inputs.qshell.packages.${system}.default
 
@@ -24,6 +24,7 @@
     gcc
 
     zsh
+    oh-my-posh
     zsh-completions
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -123,8 +124,6 @@
     networkmanagerapplet
     nmap
     obs-studio
-    oh-my-posh
-    opentabletdriver
     php
     postgresql
     postman

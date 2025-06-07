@@ -138,7 +138,7 @@
 
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
-      eval "$(oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/ohmyposh.toml)"
+      eval "$(oh-my-posh --init --shell zsh --config ${config.home.homeDirectory}/.config/ohmyposh.toml)"
     '';
   };
 }

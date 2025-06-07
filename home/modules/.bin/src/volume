@@ -23,20 +23,23 @@ toggle_mute() {
 }
 
 
+get_default_mic() {
+	pactl info | awk -F': ' '/Default Source/ {print $2}'
+}
 toggle_mic() {
-	if [ "$(pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" --get-mute)" == "false" ]; then
-		pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$(pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" --get-volume)" -c adjustments -i "$iDIR/microphone-off.png" "OFF"
-	elif [ "$(pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" --get-mute)" == "true" ]; then
-		pamixer -u --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$(pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" --get-volume)" -c adjustments -i "$iDIR/microphone-on.png" "ON"
+	if [ "$(pamixer --source "$(get_default_mic)" --get-mute)" == "false" ]; then
+		pamixer --source "$(get_default_mic)" -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$(pamixer --source "$(get_default_mic)" --get-volume)" -c adjustments -i "$iDIR/microphone-off.png" "OFF"
+	elif [ "$(pamixer --source "$(get_default_mic)" --get-mute)" == "true" ]; then
+		pamixer -u --source "$(get_default_mic)" u && notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$(pamixer --source "$(get_default_mic)" --get-volume)" -c adjustments -i "$iDIR/microphone-on.png" "ON"
 	fi
 }
 inc_mic_volume() {
-	pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" -i 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$(pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" --get-volume)" -c adjustments -i "$iDIR/microphone-on.png" "$(pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" --get-volume)%"
+	pamixer --source "$(get_default_mic)" -i 5
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$(pamixer --source "$(get_default_mic)" --get-volume)" -c adjustments -i "$iDIR/microphone-on.png" "$(pamixer --source "$(get_default_mic)" --get-volume)%"
 }
 dec_mic_volume() {
-	pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" -d 5
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$(pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" --get-volume)" -c adjustments -i "$iDIR/microphone-on.png" "$(pamixer --source "alsa_input.usb-MUSIC-BOOST_HATOR_Signify_ES336C-00.mono-fallback" --get-volume)%"
+	pamixer --source "$(get_default_mic)" -d 5
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$(pamixer --source "$(get_default_mic)" --get-volume)" -c adjustments -i "$iDIR/microphone-on.png" "$(pamixer --source "$(get_default_mic)" --get-volume)%"
 }
 
 if [[ "$1" == "--get" ]]; then

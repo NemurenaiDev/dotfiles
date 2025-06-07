@@ -22,7 +22,9 @@
 
       "11, monitor:${host.monitors.left or host.monitors.central}, default:true"
       "12, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "13, monitor:${host.monitors.left or host.monitors.central}, default:true"
+
+      "13, monitor:${host.monitors.central}, default:true"
+
       "14, monitor:${host.monitors.left or host.monitors.central}, default:true"
       "15, monitor:${host.monitors.left or host.monitors.central}, default:true"
       "16, monitor:${host.monitors.left or host.monitors.central}, default:true"

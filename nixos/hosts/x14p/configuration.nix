@@ -31,10 +31,8 @@
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
-  services.system76-scheduler = {
-    enable = true;
-    settings.cfsProfiles.enable = true;
-  };
+  services.system76-scheduler.enable = true;
+  services.system76-scheduler.settings.cfsProfiles.enable = true;
   
   services.auto-cpufreq = {
     enable = true;
