@@ -10,7 +10,7 @@
       "uwsm app -- qshell --daemon --force"
       "uwsm app -- ${config.home.homeDirectory}/.bin/automation-server"
 
-      "uwsm app -- easyeffects --gapplication-service"
+      # "uwsm app -- easyeffects --gapplication-service"
       "uwsm app -- copyq --start-server"
       "uwsm app -- blueman-applet"
       "uwsm app -- nm-applet"

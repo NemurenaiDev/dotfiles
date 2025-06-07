@@ -39,7 +39,7 @@
 
     prismlauncher
 
-    catppuccin-cursors.mochaDark
+    catppuccin-cursors.mochaLight
     # magnetic-catppuccin-gtk
 
     gtk-engine-murrine

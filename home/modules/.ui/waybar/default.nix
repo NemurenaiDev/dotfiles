@@ -18,7 +18,8 @@
         "margin-left" = 5;
         "margin-right" = 5;
         "modules-left" = [
-          "custom/notification"
+          "hyprland/language"
+          # "custom/notification"
           "clock"
           "battery"
           "custom/weather"
@@ -29,7 +30,6 @@
           "tray"
           "backlight"
           "pulseaudio"
-          "hyprland/language"
         ];
         "battery" = {
           "format" = "󰁹 {}%";
@@ -93,7 +93,7 @@
         };
         "clock" = {
           "interval" = 1;
-          # "format" = "{ =%H =%M =%S %a %d.%m}";
+          "format" = "{:%d.%m %H:%M}";
           "tooltip-format" = "<tt>{calendar}</tt>";
           "calendar" = {
             "mode" = "year";
