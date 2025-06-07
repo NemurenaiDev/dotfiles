@@ -44,7 +44,7 @@
       export PATH="$PATH:$(yarn global bin)"
       export NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules"
 
-      who am i | grep tty1 && uwsm check may-start && uwsm start default
+      who am i | grep tty1 && clear && uwsm check may-start  && uwsm start default &>/dev/null
 
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;

@@ -53,7 +53,7 @@ let
 
     run-aichat = ''${run} "special:aichat" "chromium --app=https://chatgpt.com/" "$1"'';
 
-    run-explorer = ''[[ "$1" == "--just-run" ]] && thunar || ${run} "13" "thunar" "$1"'';
+    run-explorer = ''[[ "$1" == "--just-run" ]] && nemo || ${run} "13" "nemo" "$1"'';
     run-task-manager = ''${run} "15" "kitty --single-instance bash -ic btop" "$1"'';
     run-browser = ''${run} "21" "zen --profile ${config.home.homeDirectory}/.zen/x6xuobo4.nemurenai" "$@"'';
     run-browser-incognito = ''${run} "22" "zen --profile ${config.home.homeDirectory}/.zen/x6xuobo4.nemurenai --private-window" "$1"'';
