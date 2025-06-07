@@ -1,18 +1,16 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    zen-browser.url = "github:youwen5/zen-browser-flake";
-    catppuccin.url = "github:catppuccin/nix";
-    qshell.url = "github:NemurenaiDev/qshell";
-
-    musnix.url = "github:musnix/musnix";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    catppuccin.url = "github:catppuccin/nix";
     sops-nix.url = "github:Mic92/sops-nix";
+    qshell.url = "github:NemurenaiDev/qshell";
+    musnix.url = "github:musnix/musnix";
   };
 
   outputs =
@@ -76,9 +74,7 @@
         inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${host.system};
           extraSpecialArgs = { inherit inputs host; };
-          modules = [
-            ./home/home.nix
-          ];
+          modules = [ ./home/home.nix ];
         };
     in
     {

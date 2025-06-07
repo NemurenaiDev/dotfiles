@@ -14,6 +14,7 @@
     ./launcher
     ./explorer
 
+    ./spotify
     ./telegram
 
     inputs.catppuccin.homeManagerModules.catppuccin

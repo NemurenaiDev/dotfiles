@@ -1,11 +1,16 @@
-{ host, pkgs, ... }:
+{
+  config,
+  host,
+  pkgs,
+  ...
+}:
 
 let
   sessionVariables = {
     NH_FLAKE = "/home/${host.username}/Projects/dotfiles";
 
-    HYPRCURSOR_THEME = "catppuccin-mocha-dark-cursors";
-    HYPRCURSOR_SIZE = "18";
+    HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
+    HYPRCURSOR_SIZE = "22";
     QT_QPA_PLATFORMTHEME = "gtk3";
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
@@ -16,23 +21,16 @@ let
   };
 in
 {
+  imports = [ ./modules ];
+
   home.stateVersion = host.stateVersion;
   home.sessionVariables = sessionVariables;
   home.username = host.username;
   home.homeDirectory = "/home/${host.username}";
 
-  imports = [ ./modules ];
-
-  services.spotifyd = {
-    enable = true;
-    settings = {
-      global = {
-        bitrate = 320;
-        initial_volume = 100;
-        volume_normalisation = false;
-        device_type = "computer";
-        device_name = "${host.username}@${host.hostname}";
-      };
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      cursor-theme = config.home.sessionVariables.HYPRCURSOR_THEME;
     };
   };
 
@@ -60,15 +58,4 @@ in
       '';
     };
   };
-
-  #   xdg.configFile = {
-  #     "Kvantum/kvantum.kvconfig".text = ''
-  #       [General]
-  #       theme=catppuccin-mocha-maroon
-  #     '';
-
-  #     # "Kvantum/Catppuccin-Mocha-Maroon".source =
-  #     #   "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Maroon";
-  #   };
-
 }
