@@ -2,7 +2,7 @@
 
 {
   home.activation."link-telegram-downloads-to-tmp" = ''
-    rm -f ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
+    rm -rf ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
     ln -sf /tmp/TelegramDownloads ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
   '';
 

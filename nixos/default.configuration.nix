@@ -9,6 +9,7 @@
 
 {
   imports = [
+    inputs.catppuccin.nixosModules.catppuccin
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
@@ -19,6 +20,7 @@
     ./modules/gaming.nix
     ./modules/secrets.nix
     ./modules/packages.nix
+    ./modules/plymouth.nix
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault host.system;
@@ -46,35 +48,19 @@
     ];
   };
 
-  boot.kernelModules = [
-    "v4l2loopback"
-    "snd-aloop"
-  ];
+  boot.kernelModules = [ "v4l2loopback" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
-  boot.kernelParams = [
-    "preempt=full"
-    "quiet"
-    "splash"
-    "boot.shell_on_fail"
-    "udev.log_priority=3"
-    "vt.global_cursor_default=0"
-    "rd.systemd.show_status=auto"
-  ];
-  boot.consoleLogLevel = 3;
-  boot.initrd.verbose = false;
-  boot.plymouth.enable = true;
-  boot.plymouth.theme = "spinner";
+  boot.kernelParams = [ "preempt=full" ];
   boot.tmp.cleanOnBoot = true;
-
-  services.getty.autologinOnce = true;
-  services.getty.autologinUser = host.username;
 
   services.libinput.enable = true;
   services.openssh.enable = true;
   services.locate.enable = true;
 
-  services.mullvad-vpn.enable = true;
+  services.getty.autologinOnce = true;
+  services.getty.autologinUser = host.username;
 
+  services.mullvad-vpn.enable = true;
   services.resolved = {
     enable = true;
     extraConfig = ''

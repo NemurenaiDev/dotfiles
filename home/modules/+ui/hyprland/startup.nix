@@ -4,8 +4,9 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "echo $HYPRLAND_INSTANCE_SIGNATURE > /tmp/HyprlandInstanceSignature"
+      "ln -sf '/tmp/TelegramDesktop' '$HOME/Downloads/Telegram Desktop'"
 
-      "ln -s '/tmp/TelegramDesktop' '$HOME/Downloads/Telegram Desktop'"
+      "hyprlock --immediate --immediate-render --no-fade-in"
 
       "uwsm app -- qshell --daemon --force"
       "uwsm app -- ${config.home.homeDirectory}/.bin/automation-server"

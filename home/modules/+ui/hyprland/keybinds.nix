@@ -14,6 +14,10 @@
       "SUPER SHIFT, down, resizeactive,0 50"
     ];
 
+    bindr = [
+      "SHIFT, SHIFT_L, exec, makoctl dismiss"
+    ];
+
     bind = [
       ", xf86KbdBrightnessDown, exec, ${config.home.homeDirectory}/.bin/brightness --dec"
       ", xf86KbdBrightnessUp, exec, ${config.home.homeDirectory}/.bin/brightness --inc"
@@ -39,8 +43,6 @@
 
       "SUPER ALT, F1, exec, wl-copy \"$(hyprctl -j activewindow)\" && notify-send -u low -t 3000 \"Window info copied\""
 
-      ", code:66, exec, makoctl dismiss"
-
       "SUPER, F11, fullscreen, 2"
 
       "SUPER SHIFT, F10, exec, ${config.home.homeDirectory}/.bin/notifications --toggle"
@@ -48,7 +50,7 @@
       "SUPER SHIFT, F12, exec, killall inotifywait"
 
       "SUPER SHIFT, L, exec, run-powermenu"
-      "SUPER, L, exec, hyprctl switchxkblayout $KEYBOARD 0 && hyprlock"
+      "SUPER, L, exec, ${config.home.homeDirectory}/.bin/switch-layout 0 && hyprlock"
 
       "ALT SHIFT, 1, exec, ${config.home.homeDirectory}/.bin/switch-layout 0"
       "ALT SHIFT, 2, exec, ${config.home.homeDirectory}/.bin/switch-layout 1"
@@ -71,8 +73,8 @@
 
       "CTRL SHIFT, escape, exec, run-task-manager"
 
-      "SUPER, E, exec, run-explorer --run-anyway"
-      "SUPER SHIFT, E, exec, run-explorer --just-run"
+      "SUPER SHIFT, E, exec, run-explorer --run-anyway"
+      "SUPER, E, exec, run-explorer --just-run"
 
       "SUPER, G, exec, kitty --single-instance --class \"kitty-pulsemixer\" pulsemixer"
       "SUPER SHIFT, G, exec, pavucontrol"

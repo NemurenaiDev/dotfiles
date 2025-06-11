@@ -44,7 +44,7 @@
       export PATH="$PATH:$(yarn global bin)"
       export NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules"
 
-      who am i | grep tty1 && clear && uwsm check may-start  && uwsm start default &>/dev/null
+      who am i | grep tty1 && clear && uwsm check may-start && exec uwsm start default &>/dev/null
 
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
@@ -54,7 +54,7 @@
               fi
           fi
       fi
-      
+
 
       autoload -U select-word-style
       autoload -U add-zsh-hook
@@ -73,7 +73,7 @@
       setopt HIST_REDUCE_BLANKS
       setopt HIST_VERIFY
 
-      zstyle ":completion:*" completer _extensions _complete _approximate
+      zstyle ":completion:*" completer _extensions _complete #_approximate
       zstyle ":completion:*" menu select
       zstyle ":completion:*:*:*:*:descriptions" format "%F{green}-- %d --%f"
       zstyle ":completion:*" group-name ""
@@ -138,7 +138,7 @@
 
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
-      eval "$(oh-my-posh --init --shell zsh --config ${config.home.homeDirectory}/.config/ohmyposh.toml)"
+      eval "$(oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/ohmyposh.toml)"
     '';
   };
 }

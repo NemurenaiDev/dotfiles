@@ -6,5 +6,6 @@
     ./rules.nix
 
     ./hyprpaper.nix
+    ./hyprlock.nix
   ];
 }

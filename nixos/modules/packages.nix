@@ -9,10 +9,13 @@
     inputs.zen-browser.packages.${system}.default
     inputs.qshell.packages.${system}.default
 
+    prismlauncher
+
     chromium
 
     mullvad-vpn
 
+    powerstat
     stress-ng
     lm_sensors
 
@@ -29,6 +32,7 @@
     gcc
 
     zsh
+    starship
     oh-my-posh
     zsh-completions
     zsh-autosuggestions
@@ -36,11 +40,6 @@
     lsof
     btop
     jq
-
-    prismlauncher
-
-    catppuccin-cursors.mochaLight
-    # magnetic-catppuccin-gtk
 
     gtk-engine-murrine
     libsForQt5.qtstyleplugin-kvantum
@@ -57,9 +56,11 @@
     pamixer
     nssmdns
 
+    sops
     nh
     nvd
     nix-output-monitor
+    home-manager
     nixd
     nixfmt-rfc-style
 

@@ -1,5 +1,9 @@
-{ host, ... }:
+{ monitors, ... }:
 
+let
+  central = monitors.central;
+  leftOrCentral = monitors.left or monitors.central;
+in
 {
   wayland.windowManager.hyprland.settings = {
     layerrule = [
@@ -8,54 +12,54 @@
     ];
 
     workspace = [
-      "1, monitor:${host.monitors.central}, default:true"
-      "2, monitor:${host.monitors.central}, default:true"
-      "3, monitor:${host.monitors.central}, default:true"
-      "4, monitor:${host.monitors.central}, default:true"
-      "5, monitor:${host.monitors.central}, default:true"
-      "6, monitor:${host.monitors.central}, default:true"
-      "7, monitor:${host.monitors.central}, default:true"
-      "8, monitor:${host.monitors.central}, default:true"
+      "1, monitor:${central}, default:true"
+      "2, monitor:${central}, default:true"
+      "3, monitor:${central}, default:true"
+      "4, monitor:${central}, default:true"
+      "5, monitor:${central}, default:true"
+      "6, monitor:${central}, default:true"
+      "7, monitor:${central}, default:true"
+      "8, monitor:${central}, default:true"
 
-      "9, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "10, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "9, monitor:${leftOrCentral}, default:true"
+      "10, monitor:${leftOrCentral}, default:true"
 
-      "11, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "12, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "11, monitor:${leftOrCentral}, default:true"
+      "12, monitor:${leftOrCentral}, default:true"
 
-      "13, monitor:${host.monitors.central}, default:true"
+      "13, monitor:${central}, default:true"
 
-      "14, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "15, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "16, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "17, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "18, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "19, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "20, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "14, monitor:${leftOrCentral}, default:true"
+      "15, monitor:${leftOrCentral}, default:true"
+      "16, monitor:${leftOrCentral}, default:true"
+      "17, monitor:${leftOrCentral}, default:true"
+      "18, monitor:${leftOrCentral}, default:true"
+      "19, monitor:${leftOrCentral}, default:true"
+      "20, monitor:${leftOrCentral}, default:true"
 
-      "21, monitor:${host.monitors.central}, default:true"
-      "22, monitor:${host.monitors.central}, default:true"
-      "23, monitor:${host.monitors.central}, default:true"
-      "24, monitor:${host.monitors.central}, default:true"
-      "25, monitor:${host.monitors.central}, default:true, gapsout:80"
+      "21, monitor:${central}, default:true"
+      "22, monitor:${central}, default:true"
+      "23, monitor:${central}, default:true"
+      "24, monitor:${central}, default:true"
+      "25, monitor:${central}, default:true, gapsout:80"
 
-      "26, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "26, monitor:${leftOrCentral}, default:true"
 
-      "27, monitor:${host.monitors.central}, default:true"
-      "28, monitor:${host.monitors.central}, default:true"
-      "29, monitor:${host.monitors.central}, default:true"
-      "30, monitor:${host.monitors.central}, default:true"
+      "27, monitor:${central}, default:true"
+      "28, monitor:${central}, default:true"
+      "29, monitor:${central}, default:true"
+      "30, monitor:${central}, default:true"
 
-      "31, monitor:${host.monitors.central}, default:true"
-      "32, monitor:${host.monitors.central}, default:true"
-      "33, monitor:${host.monitors.central}, default:true"
-      "34, monitor:${host.monitors.central}, default:true"
-      "35, monitor:${host.monitors.central}, default:true"
+      "31, monitor:${central}, default:true"
+      "32, monitor:${central}, default:true"
+      "33, monitor:${central}, default:true"
+      "34, monitor:${central}, default:true"
+      "35, monitor:${central}, default:true"
 
-      "36, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "37, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "38, monitor:${host.monitors.left or host.monitors.central}, default:true"
-      "39, monitor:${host.monitors.left or host.monitors.central}, default:true"
+      "36, monitor:${leftOrCentral}, default:true"
+      "37, monitor:${leftOrCentral}, default:true"
+      "38, monitor:${leftOrCentral}, default:true"
+      "39, monitor:${leftOrCentral}, default:true"
 
       "special:aichat, gapsout:50"
     ];
@@ -75,24 +79,20 @@
 
       "float, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
       "center, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
-      "monitor ${
-        host.monitors.left or host.monitors.central
-      }, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
+      "monitor ${leftOrCentral}, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
       "size 1600 900, initialClass:(chromium-browser), initialTitle:(about:blank - Google Chrome for Testing)"
 
       "pin, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
       "float, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
-      "monitor ${
-        host.monitors.left or host.monitors.central
-      }, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
+      "monitor ${leftOrCentral}, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
       "move 100%-w-6 41, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
       "size 380 580, initialClass:(org.telegram.desktop), initialTitle:(^(?!.*(Telegram|Vladyslav|Media viewer)).+$)"
 
-      "monitor ${host.monitors.central}, initialClass:(org.telegram.desktop), initialTitle:(Telegram|Vladyslav|Media viewer)"
+      "monitor ${central}, initialClass:(org.telegram.desktop), initialTitle:(Telegram|Vladyslav|Media viewer)"
       "float, initialClass:(org.telegram.desktop), initialTitle:(Media viewer)"
       "tile, initialClass:(org.telegram.desktop), initialTitle:(Telegram|Vladyslav)"
 
-      "monitor ${host.monitors.central}, initialClass:(polkit-gnome-authentication-agent-1)"
+      "monitor ${central}, initialClass:(polkit-gnome-authentication-agent-1)"
 
       "pin, initialClass:(nm-)"
       "pin, initialClass:(blueman)"
@@ -151,7 +151,7 @@
 
       "pin, initialTitle:(Picture.in..icture)"
       "float, initialTitle:(Picture.in..icture)"
-      "monitor ${host.monitors.left or host.monitors.central}, initialTitle:(Picture.in..icture)"
+      "monitor ${leftOrCentral}, initialTitle:(Picture.in..icture)"
       "noinitialfocus, initialTitle:(Picture.in..icture)"
       "size 500 300, initialTitle:(Picture.in..icture)"
       "move 100%-506 100%-301, initialTitle:(Picture.in..icture)"

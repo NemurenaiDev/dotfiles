@@ -3,6 +3,7 @@
 {
   home.activation."link-copyq-dat" = ''
     touch ${config.home.homeDirectory}/.cache/copyq.dat
+    mkdir -p ${config.home.homeDirectory}/.config/copyq/
     ln -sf ${config.home.homeDirectory}/.cache/copyq.dat ${config.home.homeDirectory}/.config/copyq/copyq_tab_JmNsaXBib2FyZA==.dat
   '';
 

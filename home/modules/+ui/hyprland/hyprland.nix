@@ -1,13 +1,9 @@
-{ host, ... }:
-
 {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
 
     settings = {
-      monitor = host.monitors.config;
-
       general = {
         "gaps_in" = 2.5;
         "gaps_out" = 5;
