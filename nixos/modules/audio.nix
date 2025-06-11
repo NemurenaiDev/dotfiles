@@ -1,10 +1,5 @@
 {
-  musnix = {
-    enable = true;
-    ffado.enable = true;
-    alsaSeq.enable = true;
-    rtcqs.enable = true;
-  };
+  boot.kernelModules = [ "snd-aloop" ];
 
   services.pipewire = {
     enable = true;
@@ -16,8 +11,8 @@
     extraConfig.pipewire."92-low-latency" = {
       "context.properties" = {
         "default.clock.rate" = 48000;
-        "default.clock.quantum" = 64;
-        "default.clock.min-quantum" = 32;
+        "default.clock.quantum" = 256;
+        "default.clock.min-quantum" = 256;
         "default.clock.max-quantum" = 2048;
       };
     };
@@ -27,8 +22,8 @@
         {
           name = "libpipewire-module-protocol-pulse";
           args = {
-            pulse.default.req = "64/48000";
-            pulse.min.req = "32/48000";
+            pulse.default.req = "256/48000";
+            pulse.min.req = "256/48000";
             pulse.max.req = "2048/48000";
             pulse.min.quantum = "2048/48000";
             pulse.max.quantum = "2048/48000";
@@ -36,7 +31,7 @@
         }
       ];
       stream.properties = {
-        node.latency = "64/48000";
+        node.latency = "256/48000";
         resample.quality = 3;
       };
     };

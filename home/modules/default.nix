@@ -2,11 +2,10 @@
 
 {
   imports = [
-    ./.bin
-    ./.ui
+    ./+bin
+    ./+ui
 
     ./shell
-
     ./utils
 
     ./clipboard
@@ -23,6 +22,6 @@
   home.file.".assets" = {
     recursive = true;
     executable = true;
-    source = ./.assets;
+    source = ./+assets;
   };
 }

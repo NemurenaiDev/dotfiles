@@ -1,8 +1,8 @@
-{host, ...}:
+{ monitors, ... }:
 
 {
   home.file.".config/mako/config".text = ''
-    output=${host.monitors.central}
+    output=${monitors.central}
     max-history=100
     sort=+time
     on-touch=dismiss
