@@ -48,17 +48,17 @@
           modules = [ ./home/hosts/${host.hostname}/home.nix ];
         };
 
-      mapToAttrSet =
-        field: fn: list:
+      makeConfigurations =
+        nameFn: valueFn:
         builtins.listToAttrs (
-          map (item: {
-            name = item.${field};
-            value = fn item;
-          }) list
+          map (host: {
+            name = nameFn host;
+            value = valueFn host;
+          }) hosts
         );
     in
     {
-      nixosConfigurations = mapToAttrSet "hostname" nixosFor hosts;
-      homeConfigurations = mapToAttrSet "username" homeFor hosts;
+      nixosConfigurations = makeConfigurations (host: host.hostname) nixosFor;
+      homeConfigurations = makeConfigurations (host: "${host.username}@${host.hostname}") homeFor;
     };
 }
