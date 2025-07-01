@@ -20,4 +20,12 @@
 
     extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
+
+  zramSwap = {
+    enable = true;
+
+    memoryPercent = 10;
+    priority = 100;
+    algorithm = "zstd";
+  };
 }

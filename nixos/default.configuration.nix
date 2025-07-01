@@ -44,6 +44,7 @@
     extraGroups = [
       "wheel"
       "audio"
+      "docker"
       "networkmanager"
     ];
   };
@@ -52,6 +53,8 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
   boot.kernelParams = [ "preempt=full" ];
   boot.tmp.cleanOnBoot = true;
+
+  virtualisation.docker.enable = true;
 
   services.libinput.enable = true;
   services.openssh.enable = true;

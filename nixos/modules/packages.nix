@@ -1,9 +1,15 @@
-{ pkgs, inputs, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [ ./overlays ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowInsecurePredicate = pkg: builtins.elem (lib.getName pkg) [ "beekeeper-studio" ];
 
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${system}.default
@@ -22,7 +28,7 @@
     bun
     yarn
     biome
-    nodejs_24
+    nodejs
 
     node2nix
     binutils
@@ -66,6 +72,8 @@
 
     nemo-with-extensions
     nemo-fileroller
+
+    beekeeper-studio
 
     fuzzel
     plocate
