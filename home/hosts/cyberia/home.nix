@@ -18,7 +18,8 @@ in
     ];
 
     exec-once = [
-      "snapclient 192.168.1.111"
+      "mullvad-vpn"
+      "snapclient --host  192.168.1.111"
     ];
   };
 }
