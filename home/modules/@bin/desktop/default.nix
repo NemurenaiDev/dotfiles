@@ -3,7 +3,7 @@
 {
   imports = [
     ./browser.nix
-    ./project.nix
+    ./vscode.nix
   ];
 
   home.activation."link-desktop-to-applications" = ''
