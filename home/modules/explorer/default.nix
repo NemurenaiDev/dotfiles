@@ -5,6 +5,8 @@
     file:///home/nemurenai/Library Library
     file:///home/nemurenai/Pictures Pictures
     file:///home/nemurenai/Projects Projects
+    sftp://kt/root/ sftp://kt
+    sftp://store/root/ sftp://store
   '';
 
   home.file.".local/share/nemo/actions/open-terminal-here.nemo_action".text = ''

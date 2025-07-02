@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./+bin
-    ./+ui
+    "${builtins.toString ./.}/@bin"
+    "${builtins.toString ./.}/@ui"
 
     ./shell
     ./utils
@@ -22,6 +22,6 @@
   home.file.".assets" = {
     recursive = true;
     executable = true;
-    source = ./+assets;
+    source = "${builtins.toString ./.}/@assets";
   };
 }
