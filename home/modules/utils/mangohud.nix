@@ -4,6 +4,12 @@
     text = ''
       no_display
       toggle_hud=Ctrl+p
+
+      cpu_temp
+      gpu_temp
+
+      ram
+      vram
     '';
   };
 }
