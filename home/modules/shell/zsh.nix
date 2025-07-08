@@ -44,7 +44,9 @@
       export PATH="$PATH:$(yarn global bin)"
       export NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules"
 
-      who am i | grep tty1 && clear && uwsm check may-start && exec uwsm start default &>/dev/null
+      if who am i | grep tty1; then
+          clear && exec uwsm start default &>/dev/null
+      fi
 
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
@@ -102,8 +104,6 @@
 
 
       alias reload="source ~/.zshrc"
-
-      alias vi="nano" vim="nano" nvim="nano"
 
       alias kitty="kitty --single-instance"
 

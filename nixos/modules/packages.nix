@@ -30,13 +30,6 @@
     biome
     nodejs
 
-    node2nix
-    binutils
-    python3
-    gnumake
-    cmake
-    gcc
-
     zsh
     starship
     oh-my-posh
@@ -61,6 +54,7 @@
     avahi
     pamixer
     nssmdns
+    alsa-utils
 
     sops
     nh
@@ -75,11 +69,21 @@
 
     beekeeper-studio
 
+    vscode
+    neovim
+
+    node2nix
+    binutils
+    python3
+    gnumake
+    cmake
+    gcc
+
+    usbutils
     fuzzel
     plocate
     brightnessctl
     libnotify
-    alsa-utils
     aml
     bind
     blueman
@@ -174,7 +178,6 @@
     zoxide
     zram-generator
     fzf
-    vscode
     curl
   ];
 
