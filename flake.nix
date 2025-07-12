@@ -30,6 +30,13 @@
           system = "x86_64-linux";
           stateVersion = "24.11";
         }
+	      {
+	        hostname = "homelab";
+	        username = "nemurenai";
+	        timezone = "Europe/Kyiv";
+	        system = "x86_64-linux";
+	        stateVersion = "24.11";
+	      }
       ];
 
       nixosFor =
