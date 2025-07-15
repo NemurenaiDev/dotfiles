@@ -34,11 +34,12 @@
       typescript
 
       zsh
+      starship
       zellij
-      oh-my-posh
       lsof
       btop
       jq
+      bc
 
       snapcast
       playerctl
@@ -122,7 +123,6 @@
       with pkgs;
       [
         inputs.zen-browser.packages.${system}.default
-        inputs.qshell.packages.${system}.default
 
         hyprland
         hyprlang
@@ -140,6 +140,7 @@
 
         nemo-with-extensions
         nemo-fileroller
+        gnome-disk-utility
 
         beekeeper-studio
         vscode

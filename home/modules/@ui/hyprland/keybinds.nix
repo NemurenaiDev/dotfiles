@@ -66,7 +66,7 @@
 
       "SUPER SHIFT, C, exec, hyprpicker --autocopy --no-fancy --render-inactive"
 
-      "SUPER, code:49, exec, kitty --single-instance qshell --attach"
+      "SUPER, code:49, exec, kitty --single-instance"
       "SUPER SHIFT, code:49, exec, kitty --single-instance"
 
       "SUPER, S, exec, fuzzel"

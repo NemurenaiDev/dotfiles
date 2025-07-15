@@ -29,7 +29,7 @@
         "kb_options" = "fkeys:basic_13-24";
 
         touchpad = {
-          "disable_while_typing" = true;
+          "disable_while_typing" = false;
           "natural_scroll" = true;
           "scroll_factor" = 0.25;
           "clickfinger_behavior" = true;

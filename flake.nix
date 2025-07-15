@@ -9,7 +9,6 @@
     zen-browser.url = "github:youwen5/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     sops-nix.url = "github:Mic92/sops-nix";
-    qshell.url = "github:NemurenaiDev/qshell";
   };
 
   outputs =
