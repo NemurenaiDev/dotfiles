@@ -39,13 +39,11 @@
       }
 
 
-      export VISUAL="nano"
-      export EDITOR="nano"
       export PATH="$PATH:$(yarn global bin)"
       export NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules"
 
       if who am i | grep tty1; then
-          clear && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
+          clear && hyprctl && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
       fi
 
 

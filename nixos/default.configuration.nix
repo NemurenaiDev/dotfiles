@@ -1,4 +1,5 @@
 {
+  hasRole,
   config,
   inputs,
   host,
@@ -17,11 +18,10 @@
     }
 
     ./modules/audio.nix
-    ./modules/gaming.nix
     ./modules/secrets.nix
     ./modules/packages.nix
     ./modules/plymouth.nix
-  ];
+  ] ++ lib.optionals (hasRole "desktop") [ ./modules/gaming.nix ];
 
   nixpkgs.hostPlatform = lib.mkDefault host.system;
   system.stateVersion = host.stateVersion;
@@ -60,10 +60,14 @@
   services.openssh.enable = true;
   services.locate.enable = true;
 
-  services.getty.autologinOnce = true;
+  services.getty.autologinOnce = hasRole "desktop";
   services.getty.autologinUser = host.username;
 
-  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.enable = hasRole "desktop";
+  services.tailscale = {
+    enable = true;
+    interfaceName = "tailscale";
+  };
   services.resolved = {
     enable = true;
     extraConfig = ''
@@ -73,24 +77,29 @@
     '';
   };
 
+  programs.zsh.enable = true;
+
+  programs.hyprland.enable = hasRole "desktop";
+  programs.hyprland.withUWSM = hasRole "desktop";
+
   networking.networkmanager.enable = true;
   networking.networkmanager.settings.WiFi.powerSave = false;
 
   # spotify + automation-server (8523)
-  networking.firewall.allowedTCPPorts = [
-    57621
-    8523
-  ];
-  networking.firewall.allowedUDPPorts = [ 5353 ];
-
-  programs.zsh.enable = true;
-  programs.hyprland.enable = true;
-  programs.hyprland.withUWSM = true;
+  networking.firewall.allowedTCPPorts =
+    if hasRole "desktop" then
+      [
+        57621
+        8523
+      ]
+    else
+      [ ];
+  networking.firewall.allowedUDPPorts = if hasRole "desktop" then [ 5353 ] else [ ];
 
   systemd.tmpfiles.rules = [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
 
   qt = {
-    enable = true;
+    enable = hasRole "desktop";
     style = "kvantum";
     platformTheme = "qt5ct";
   };

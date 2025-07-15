@@ -41,8 +41,6 @@
       map ctrl+c copy_or_interrupt
       map ctrl+v paste_from_buffer clipboard
 
-      map ctrl+backspace send_text all \x17
-
       background #000000
     '';
   };

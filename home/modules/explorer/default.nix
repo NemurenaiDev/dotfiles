@@ -1,4 +1,5 @@
 {
+  home.file.".config/gtk-3.0/bookmarks".force = true;
   home.file.".config/gtk-3.0/bookmarks".text = ''
     file:///home/nemurenai Home
     file:///home/nemurenai/Downloads Downloads
@@ -9,6 +10,7 @@
     sftp://store/root/ sftp://store
   '';
 
+  home.file.".local/share/nemo/actions/open-terminal-here.nemo_action".force = true;
   home.file.".local/share/nemo/actions/open-terminal-here.nemo_action".text = ''
     [Nemo Action]
     Name=Open Terminal Here
@@ -19,6 +21,7 @@
     Terminal=false
   '';
 
+  home.file.".local/share/nemo/actions/open-vscode-here.nemo_action".force = true;
   home.file.".local/share/nemo/actions/open-vscode-here.nemo_action".text = ''
     [Nemo Action]
     Name=Open VSCode Here
@@ -29,6 +32,7 @@
     Terminal=false
   '';
 
+  home.file.".local/share/nemo/actions/extract-here.nemo_action".force = true;
   home.file.".local/share/nemo/actions/extract-here.nemo_action".text = ''
     [Nemo Action]
     Name=Extract Here
@@ -39,6 +43,7 @@
     Terminal=false
   '';
 
+  home.file.".local/share/nemo/actions/create-archive.nemo_action".force = true;
   home.file.".local/share/nemo/actions/create-archive.nemo_action".text = ''
     [Nemo Action]
     Name=Create Archive

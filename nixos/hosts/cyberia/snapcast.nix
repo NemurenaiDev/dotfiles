@@ -5,7 +5,7 @@
     enable = true;
     openFirewall = true;
     codec = "flac";
-    buffer = 100;
+    buffer = 400;
     http = {
       enable = true;
       listenAddress = "192.168.0.0";

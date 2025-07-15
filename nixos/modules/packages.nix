@@ -1,4 +1,5 @@
 {
+  hasRole,
   inputs,
   pkgs,
   lib,
@@ -6,180 +7,189 @@
 }:
 
 {
-  imports = [ ./overlays ];
-
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowInsecurePredicate = pkg: builtins.elem (lib.getName pkg) [ "beekeeper-studio" ];
 
-  environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages.${system}.default
-    inputs.qshell.packages.${system}.default
+  nixpkgs.config.allowInsecurePredicate =
+    if hasRole "desktop" then
+      pkg: builtins.elem (lib.getName pkg) [ "beekeeper-studio" ]
+    else
+      (_: false);
 
-    prismlauncher
+  environment.systemPackages =
+    with pkgs;
+    [
+      mullvad
+      tailscale
 
-    chromium
+      powerstat
+      stress-ng
+      lm_sensors
 
-    mullvad-vpn
+      neovim
 
-    powerstat
-    stress-ng
-    lm_sensors
+      bun
+      yarn
+      biome
+      nodejs
+      typescript
 
-    bun
-    yarn
-    biome
-    nodejs
+      zsh
+      zellij
+      oh-my-posh
+      lsof
+      btop
+      jq
 
-    zsh
-    starship
-    oh-my-posh
-    zsh-completions
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    lsof
-    btop
-    jq
+      snapcast
+      playerctl
+      pulseaudio
+      avahi
+      pamixer
+      nssmdns
+      alsa-utils
 
-    gtk-engine-murrine
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct
-    qt6Packages.qt6ct
-    qt5.full
-    qt6.full
+      sops
+      nh
+      nvd
+      nix-output-monitor
+      home-manager
+      nixd
+      nixfmt-rfc-style
 
-    snapcast
-    pavucontrol
-    playerctl
-    pulseaudio
-    avahi
-    pamixer
-    nssmdns
-    alsa-utils
+      node2nix
+      binutils
+      python3
+      gnumake
+      cmake
+      gcc
 
-    sops
-    nh
-    nvd
-    nix-output-monitor
-    home-manager
-    nixd
-    nixfmt-rfc-style
+      usbutils
+      plocate
+      brightnessctl
+      aml
+      bind
+      bluez
+      bridge-utils
+      cbonsai
+      cloc
+      cpio
+      dmidecode
+      docker
+      docker-compose
+      espeak-ng
+      evtest
+      fastfetch
+      fd
+      fuse-overlayfs
+      git
+      github-cli
+      gvfs
+      inotify-tools
+      iptables
+      less
+      libfaketime
+      libgphoto2
+      libgsf
+      libguestfs
+      libuinputplus
+      libva
+      libva-utils
+      lsd
+      man-db
+      mpd
+      mpv
+      nano
+      ncdu
+      nmap
+      php
+      postgresql
+      proxychains
+      rclone
+      rsync
+      sdbus-cpp
+      sox
+      traceroute
+      trash-cli
+      tree
+      wget
+      zoxide
+      zram-generator
+      fzf
+      curl
+    ]
+    ++ lib.optionals (hasRole "server") (with pkgs; [ ])
+    ++ lib.optionals (hasRole "desktop") (
+      with pkgs;
+      [
+        inputs.zen-browser.packages.${system}.default
+        inputs.qshell.packages.${system}.default
 
-    nemo-with-extensions
-    nemo-fileroller
+        hyprland
+        hyprlang
+        hyprlock
+        hyprpaper
+        hyprpicker
 
-    beekeeper-studio
+        prismlauncher
 
-    vscode
-    neovim
+        chromium
 
-    node2nix
-    binutils
-    python3
-    gnumake
-    cmake
-    gcc
+        mullvad-vpn
 
-    usbutils
-    fuzzel
-    plocate
-    brightnessctl
-    libnotify
-    aml
-    bind
-    blueman
-    bluez
-    bridge-utils
-    cbonsai
-    cliphist
-    cloc
-    copyq
-    cpio
-    dconf-editor
-    dmidecode
-    docker
-    docker-compose
-    droidcam
-    electron
-    eog
-    espeak-ng
-    evtest
-    fastfetch
-    fd
-    ffmpegthumbnailer
-    file-roller
-    freerdp
-    fuse-overlayfs
-    gamemode
-    git
-    github-cli
-    gnome-keyring
-    gnome-themes-extra
-    grim
-    gvfs
-    hyprland
-    hyprlang
-    hyprlock
-    hyprpaper
-    hyprpicker
-    inotify-tools
-    iptables
-    kitty
-    less
-    libfaketime
-    libgphoto2
-    libgsf
-    libguestfs
-    libuinputplus
-    libva
-    libva-utils
-    lsd
-    lutris
-    mako
-    man-db
-    motrix
-    mpc
-    mpd
-    mpv
-    nano
-    ncdu
-    networkmanagerapplet
-    nmap
-    obs-studio
-    php
-    postgresql
-    postman
-    proxychains
-    qpwgraph
-    rclone
-    remmina
-    rsync
-    rwpspread
-    sdbus-cpp
-    seahorse
-    slurp
-    sox
-    spotify
-    telegram-desktop
-    tk
-    tlp
-    tmux
-    traceroute
-    trash-cli
-    tree
-    typescript
-    vesktop
-    waybar
-    wev
-    wget
-    wireguard-tools
-    wl-clipboard
-    wttrbar
-    zenity
-    zoxide
-    zram-generator
-    fzf
-    curl
-  ];
+        pavucontrol
+
+        nemo-with-extensions
+        nemo-fileroller
+
+        beekeeper-studio
+        vscode
+
+        copyq
+        wl-clipboard
+
+        gtk-engine-murrine
+        libsForQt5.qtstyleplugin-kvantum
+        libsForQt5.qt5ct
+        qt6Packages.qt6ct
+        qt5.full
+        qt6.full
+
+        fuzzel
+        blueman
+        libnotify
+        dconf-editor
+        droidcam
+        electron
+        eog
+        ffmpegthumbnailer
+        file-roller
+        freerdp
+        seahorse
+        gnome-keyring
+        gnome-themes-extra
+        grim
+        slurp
+        kitty
+        lutris
+        mako
+        motrix
+        mpc
+        networkmanagerapplet
+        obs-studio
+        postman
+        qpwgraph
+        remmina
+        rwpspread
+        spotify
+        telegram-desktop
+        tk
+        vesktop
+        waybar
+        wev
+        wttrbar
+        zenity
+      ]
+    );
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
