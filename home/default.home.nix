@@ -1,4 +1,5 @@
 {
+  hasRole,
   config,
   host,
   pkgs,
@@ -8,6 +9,10 @@
 let
   sessionVariables = {
     NH_FLAKE = "/home/${host.username}/Projects/dotfiles";
+
+    SHELL = "zsh";
+    VISUAL = "nano";
+    EDITOR = "nano";
 
     HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
     HYPRCURSOR_SIZE = 22;
@@ -31,12 +36,6 @@ in
 
   _module.args.wallpaper = "${config.home.homeDirectory}/.assets/wallpaper.jpg";
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      cursor-theme = config.home.sessionVariables.HYPRCURSOR_THEME;
-    };
-  };
-
   catppuccin = {
     enable = true;
     flavor = "mocha";
@@ -44,26 +43,40 @@ in
     gtk.enable = true;
   };
 
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    cursorTheme = {
-      name = config.home.sessionVariables.HYPRCURSOR_THEME;
-      size = config.home.sessionVariables.HYPRCURSOR_SIZE;
-      package = pkgs.catppuccin-cursors.mochaLight;
-    };
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-  };
+  dconf.settings =
+    if hasRole "desktop" then
+      {
+        "org/gnome/desktop/interface" = {
+          cursor-theme = config.home.sessionVariables.HYPRCURSOR_THEME;
+        };
+      }
+    else
+      { };
+
+  gtk =
+    if hasRole "desktop" then
+      {
+        enable = true;
+        iconTheme = {
+          name = "Papirus-Dark";
+          package = pkgs.papirus-icon-theme;
+        };
+        cursorTheme = {
+          name = config.home.sessionVariables.HYPRCURSOR_THEME;
+          size = config.home.sessionVariables.HYPRCURSOR_SIZE;
+          package = pkgs.catppuccin-cursors.mochaLight;
+        };
+        gtk3.extraConfig = {
+          Settings = ''
+            gtk-application-prefer-dark-theme=1
+          '';
+        };
+        gtk4.extraConfig = {
+          Settings = ''
+            gtk-application-prefer-dark-theme=1
+          '';
+        };
+      }
+    else
+      { };
 }

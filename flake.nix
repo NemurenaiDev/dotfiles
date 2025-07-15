@@ -17,6 +17,7 @@
     let
       hosts = [
         {
+          roles = [ "desktop" ];
           hostname = "cyberia";
           username = "nemurenai";
           timezone = "Europe/Kyiv";
@@ -24,26 +25,31 @@
           stateVersion = "24.11";
         }
         {
+          roles = [ "desktop" ];
           hostname = "x14p";
           username = "nemurenai";
           timezone = "Europe/Kyiv";
           system = "x86_64-linux";
           stateVersion = "24.11";
         }
-	      {
-	        hostname = "homelab";
-	        username = "nemurenai";
-	        timezone = "Europe/Kyiv";
-	        system = "x86_64-linux";
-	        stateVersion = "24.11";
-	      }
+        {
+          roles = [ "server" ];
+          hostname = "homelab";
+          username = "nemurenai";
+          timezone = "Europe/Kyiv";
+          system = "x86_64-linux";
+          stateVersion = "24.11";
+        }
       ];
 
       nixosFor =
         host:
         inputs.nixpkgs.lib.nixosSystem {
           system = host.system;
-          specialArgs = { inherit inputs host; };
+          specialArgs = {
+            inherit inputs host;
+            hasRole = role: builtins.elem role host.roles;
+          };
           modules = [ ./nixos/hosts/${host.hostname}/configuration.nix ];
         };
 
@@ -51,7 +57,10 @@
         host:
         inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = inputs.nixpkgs.legacyPackages.${host.system};
-          extraSpecialArgs = { inherit inputs host; };
+          extraSpecialArgs = {
+            inherit inputs host;
+            hasRole = role: builtins.elem role host.roles;
+          };
           modules = [ ./home/hosts/${host.hostname}/home.nix ];
         };
 

@@ -1,25 +1,34 @@
-{ inputs, ... }:
+{
+  hasRole,
+  inputs,
+  lib,
+  ...
+}:
 
 {
-  imports = [
-    "${builtins.toString ./.}/@bin"
-    "${builtins.toString ./.}/@ui"
+  imports =
+    [
+      "${builtins.toString ./.}/@bin"
 
-    ./shell
-    ./utils
+      ./shell
+      ./utils
 
-    ./clipboard
-    ./terminal
-    ./launcher
-    ./explorer
+      inputs.catppuccin.homeManagerModules.catppuccin
+    ]
+    ++ lib.optionals (hasRole "desktop") [
+      "${builtins.toString ./.}/@ui"
 
-    ./spotify
-    ./telegram
+      ./clipboard
+      ./terminal
+      ./launcher
+      ./explorer
 
-    inputs.catppuccin.homeManagerModules.catppuccin
-  ];
+      ./spotify
+      ./telegram
+    ];
 
   home.file.".assets" = {
+    force = true;
     recursive = true;
     executable = true;
     source = "${builtins.toString ./.}/@assets";

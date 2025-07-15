@@ -1,6 +1,7 @@
 { monitors, ... }:
 
 {
+  home.file.".config/mako/config".force = true;
   home.file.".config/mako/config".text = ''
     output=${monitors.central}
     max-history=100

@@ -94,6 +94,7 @@
     '';
   };
 
+  home.file.".config/btop/catppuccin.mocha.theme".force = true;
   home.file.".config/btop/catppuccin.mocha.theme".text = ''
     theme[main_bg]="#1E1E2E"
     theme[main_fg]="#CDD6F4"
