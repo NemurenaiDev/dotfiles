@@ -8,7 +8,6 @@
 
       "hyprlock --immediate --immediate-render --no-fade-in"
 
-      "uwsm app -- qshell --daemon --force"
       "uwsm app -- ${config.home.homeDirectory}/.bin/automation-server"
 
       # "uwsm app -- easyeffects --gapplication-service"

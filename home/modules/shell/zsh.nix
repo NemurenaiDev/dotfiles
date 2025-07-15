@@ -1,10 +1,19 @@
-{ config, ... }:
-
 {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+
+    completionInit = ''
+      [[ $PERF == 1 ]] && zmodload zsh/datetime
+      [[ $PERF == 1 ]] && start=$EPOCHREALTIME
+      [[ $PERF == 1 ]] && zmodload zsh/zprof
+
+
+      # WARNING: "compinit -d" is a security risk only 
+      # if your system is multi-user with untrusted users
+      autoload -U compinit && compinit -d ~/.cache/zcompdump -C
+    '';
 
     initContent = ''
       toggle-sudo() {
@@ -39,13 +48,9 @@
       }
 
 
-      export PATH="$PATH:$(yarn global bin)"
-      export NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules"
-
       if who am i | grep tty1; then
           clear && hyprctl && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
       fi
-
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
           if [ "$(ps -a | grep -e Hyprland)" ]; then
@@ -56,14 +61,17 @@
       fi
 
 
-      autoload -U select-word-style
-      autoload -U add-zsh-hook
+      autoload -Uz select-word-style
 
-      WORDCHARS="*?_[]~=&;!#$%^(){}"
       select-word-style bash
+
+      autoload -Uz add-zsh-hook
 
       add-zsh-hook chpwd list-dir
       add-zsh-hook precmd update-history
+
+      HISTSIZE="2500"
+      SAVEHIST="2500"
 
       setopt INC_APPEND_HISTORY
       setopt SHARE_HISTORY
@@ -136,7 +144,12 @@
 
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
-      eval "$(oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/ohmyposh.toml)"
+      eval "$(starship init zsh)"
+
+
+      [[ $PERF == 1 ]] && zprof
+      [[ $PERF == 1 ]] && end=$EPOCHREALTIME
+      [[ $PERF == 1 ]] && echo "ENTIRE .zshrc LOADED IN: $(echo "$end - $start" | bc)s"
     '';
   };
 }

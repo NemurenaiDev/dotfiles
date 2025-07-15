@@ -1,7 +1,7 @@
 {
   imports = [
     ./multiplexer.nix
-    ./ohmyposh.nix
+    ./prompt.nix
     ./zsh.nix
 
     ./fastfetch.nix
