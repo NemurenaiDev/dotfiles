@@ -4,7 +4,6 @@
   imports = [
     ./../../default.configuration.nix
     ./hardware.nix
-    ./snapcast.nix
   ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];

@@ -21,6 +21,7 @@
     ./modules/secrets.nix
     ./modules/packages.nix
     ./modules/plymouth.nix
+    ./modules/snapcast.nix
   ] ++ lib.optionals (hasRole "desktop") [ ./modules/gaming.nix ];
 
   nixpkgs.hostPlatform = lib.mkDefault host.system;
