@@ -27,6 +27,7 @@
       dynamic_background_opacity no
       scrollback_lines 10000
 
+      term xterm-256color
 
       clear_all_shortcuts yes
 

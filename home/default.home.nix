@@ -11,11 +11,11 @@ let
     NH_FLAKE = "/home/${host.username}/Projects/dotfiles";
 
     SHELL = "zsh";
-    VISUAL="nano";
-    EDITOR="nano";
-    
-    PATH="$PATH:${config.home.homeDirectory}/.yarn/bin";
-    NODE_PATH="${config.home.homeDirectory}/.npm-packages/lib/node_modules";
+    VISUAL = "nano";
+    EDITOR = "nano";
+
+    PATH = "$PATH:${config.home.homeDirectory}/.yarn/bin";
+    NODE_PATH = "${config.home.homeDirectory}/.npm-packages/lib/node_modules";
 
     HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
     HYPRCURSOR_SIZE = 22;
