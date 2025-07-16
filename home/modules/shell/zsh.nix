@@ -10,8 +10,7 @@
       [[ $PERF == 1 ]] && zmodload zsh/zprof
 
 
-      # WARNING: "compinit -d" is a security risk only 
-      # if your system is multi-user with untrusted users
+      # WARNING: "compinit -d" may be a security risk when your system is multi-user with untrusted users
       autoload -U compinit && compinit -d ~/.cache/zcompdump -C
     '';
 
@@ -49,7 +48,7 @@
 
 
       if who am i | grep tty1; then
-          clear && hyprctl && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
+          clear && uwsm -v && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
       fi
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
