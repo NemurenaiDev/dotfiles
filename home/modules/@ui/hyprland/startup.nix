@@ -15,8 +15,8 @@
       "uwsm app -- blueman-applet"
       "uwsm app -- nm-applet"
 
-      "uwsm app -- waybar"
-      "uwsm app -- mako"
+      "uwsm app -- waybar -u app-waybar"
+      "uwsm app -- mako -u app-mako"
 
       "uwsm app -- run-task-manager --silent"
       "uwsm app -- run-aichat --silent"

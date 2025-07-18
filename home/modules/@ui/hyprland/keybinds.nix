@@ -45,9 +45,8 @@
 
       "SUPER, F11, fullscreen, 2"
 
-      "SUPER SHIFT, F10, exec, ${config.home.homeDirectory}/.bin/notifications --toggle"
       "SUPER SHIFT, F11, exec, hyprctl reload config-only"
-      "SUPER SHIFT, F12, exec, killall inotifywait"
+      "SUPER SHIFT, F12, exec, systemctl --user restart app-waybar"
 
       "SUPER SHIFT, L, exec, run-powermenu"
       "SUPER, L, exec, ${config.home.homeDirectory}/.bin/switch-layout 0 && hyprlock"
@@ -76,7 +75,7 @@
       "SUPER SHIFT, E, exec, run-explorer --run-anyway"
       "SUPER, E, exec, run-explorer --just-run"
 
-      "SUPER, G, exec, kitty --single-instance --class \"kitty-pulsemixer\" pulsemixer"
+      "SUPER, G, exec, kitty --single-instance --class kitty-pulsemixer pulsemixer"
       "SUPER SHIFT, G, exec, pavucontrol"
       "SUPER CTRL, G, exec, easyeffects"
       "SUPER ALT, G, exec, blueman-manager"
