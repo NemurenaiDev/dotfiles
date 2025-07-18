@@ -3,5 +3,6 @@
     ./hyprland
     ./waybar
     ./mako
+    ./xdg
   ];
 }

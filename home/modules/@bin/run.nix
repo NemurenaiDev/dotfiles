@@ -40,7 +40,7 @@ let
 
   scripts = {
     run-code-project = ''
-      kitty --class "kitty-project" bash -ic \
+      kitty --class "kitty-project" sh -c \
           'code -n $(\
               find ~/Projects -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | \
               sed "s|$HOME|~|" | \
@@ -49,12 +49,14 @@ let
               sed "s|~|$HOME|g" \
           )' 
     '';
-    run-powermenu = ''kitty --class "kitty-powermenu" bash -ic "~/.bin/powermenu"'';
+    run-powermenu = ''kitty --class "kitty-powermenu" sh -c "~/.bin/powermenu"'';
 
-    run-aichat = ''${run} "special:aichat" "chromium --app=https://chatgpt.com/" "$1"'';
+    # run-aichat = ''${run} "special:aichat" "chromium --app=https://chatgpt.com/" "$1"'';
+    # run-aichat = ''${run} "special:aichat" "chromium --app=https://claude.ai/new" "$1"'';
+    run-aichat = ''${run} "special:aichat" "chromium --app=https://gemini.google.com/" "$1"'';
 
     run-explorer = ''[[ "$1" == "--just-run" ]] && nemo || ${run} "13" "nemo" "$1"'';
-    run-task-manager = ''${run} "15" "kitty --single-instance bash -ic btop" "$1"'';
+    run-task-manager = ''${run} "15" "kitty --single-instance btop" "$1"'';
     run-browser = ''${run} "21" "zen --profile ${config.home.homeDirectory}/.zen/x6xuobo4.nemurenai" "$@"'';
     run-browser-incognito = ''${run} "22" "zen --profile ${config.home.homeDirectory}/.zen/x6xuobo4.nemurenai --private-window" "$1"'';
     run-telegram = ''${run} "25" "Telegram" "$1"'';

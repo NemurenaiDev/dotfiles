@@ -4,7 +4,7 @@
     ./prompt.nix
     ./zsh.nix
 
-    ./fastfetch.nix
-    ./btop.nix
+    ./apps/fastfetch.nix
+    ./apps/btop.nix
   ];
 }

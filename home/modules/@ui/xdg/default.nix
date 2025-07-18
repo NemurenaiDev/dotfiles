@@ -1,4 +1,5 @@
 {
+  xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = {
     "text/plain" = "code.desktop";
     "text/javascript" = "code.desktop";

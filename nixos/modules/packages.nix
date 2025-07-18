@@ -34,6 +34,7 @@
       typescript
 
       zsh
+      chafa
       starship
       zellij
       lsof
@@ -44,6 +45,7 @@
       snapcast
       playerctl
       pulseaudio
+      pulsemixer
       avahi
       pamixer
       nssmdns
@@ -118,11 +120,12 @@
       fzf
       curl
     ]
-    ++ lib.optionals (hasRole "server") (with pkgs; [ ])
     ++ lib.optionals (hasRole "desktop") (
       with pkgs;
       [
         inputs.zen-browser.packages.${system}.default
+
+        chromium
 
         hyprland
         hyprlang
@@ -132,20 +135,14 @@
 
         prismlauncher
 
-        chromium
-
-        mullvad-vpn
-
-        pavucontrol
-
         nemo-with-extensions
         nemo-fileroller
-        gnome-disk-utility
 
         beekeeper-studio
         vscode
 
         copyq
+        # cliphist
         wl-clipboard
 
         gtk-engine-murrine
@@ -155,6 +152,9 @@
         qt5.full
         qt6.full
 
+        gnome-disk-utility
+        mullvad-vpn
+        pavucontrol
         fuzzel
         blueman
         libnotify
