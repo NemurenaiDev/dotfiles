@@ -75,7 +75,7 @@
       "SUPER SHIFT, E, exec, run-explorer --run-anyway"
       "SUPER, E, exec, run-explorer --just-run"
 
-      "SUPER, G, exec, kitty --single-instance --class kitty-pulsemixer pulsemixer"
+      "SUPER, G, exec, run-sink-selector"
       "SUPER SHIFT, G, exec, pavucontrol"
       "SUPER CTRL, G, exec, easyeffects"
       "SUPER ALT, G, exec, blueman-manager"
