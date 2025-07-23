@@ -39,6 +39,11 @@ let
   run = "${run-on-workspace}/bin/run-on-workspace";
 
   scripts = {
+    select-default-sink = ''pactl set-default-sink "$(pactl -f json list sinks | jq -r --arg default "$(pactl get-default-sink)" '.[] | "\(.index) \(if .name == $default then "* " else "  " end)\(.name)"' | fzf | grep -oP "\d+")"'';
+
+    run-sink-selector = ''kitty --class "kitty-sink-selector" select-default-sink'';
+
+    run-powermenu = ''kitty --class "kitty-powermenu" sh -c "~/.bin/powermenu"'';
     run-code-project = ''
       kitty --class "kitty-project" sh -c \
           'code -n $(\
@@ -49,7 +54,6 @@ let
               sed "s|~|$HOME|g" \
           )' 
     '';
-    run-powermenu = ''kitty --class "kitty-powermenu" sh -c "~/.bin/powermenu"'';
 
     # run-aichat = ''${run} "special:aichat" "chromium --app=https://chatgpt.com/" "$1"'';
     # run-aichat = ''${run} "special:aichat" "chromium --app=https://claude.ai/new" "$1"'';

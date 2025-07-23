@@ -13,6 +13,8 @@
       ./shell
       ./utils
 
+      ./spotifyd
+      
       inputs.catppuccin.homeManagerModules.catppuccin
     ]
     ++ lib.optionals (hasRole "desktop") [
@@ -23,7 +25,6 @@
       ./launcher
       ./explorer
 
-      ./spotify
       ./telegram
     ];
 

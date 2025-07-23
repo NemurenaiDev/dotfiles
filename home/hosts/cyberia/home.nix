@@ -19,7 +19,10 @@ in
       # "${monitors.left}, 1920x1080@144, 0x0, 1, mirror, DP-1"
     ];
 
-    exec-once = [ "mullvad-vpn" ];
+    exec-once = [
+      "mullvad-vpn"
+      "openrgb --startminimized --profile default"
+    ];
   };
 
   systemd.user.services.snapclient-127-0-0-1 = {

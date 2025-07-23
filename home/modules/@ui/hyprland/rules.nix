@@ -102,8 +102,9 @@ in
       "float, initialClass:kitty-.*"
       "center, initialClass:kitty-.*"
       "size 200 150, initialClass:kitty-powermenu"
-      "size 800 450, initialClass:kitty-project"
+      "size 300 200, initialClass:kitty-sink-selector"
       "size 800 450, initialClass:kitty-pulsemixer"
+      "size 800 450, initialClass:kitty-project"
 
       "pin, initialTitle:Picture.in..icture"
       "float, initialTitle:Picture.in..icture"
@@ -128,6 +129,10 @@ in
       "float, initialTitle:Rename|File Operation"
       "center, initialTitle:Rename|File Operation"
       "size 450 150, initialTitle:Rename|File Operation"
+
+      "float, initialTitle:File Upload"
+      "center, initialTitle:File Upload"
+      "size 960 720, initialTitle:File Upload"
 
       "pin, initialClass:.*blueman.*|.*nm-connection-editor.*"
       "float, initialClass:.*blueman.*|.*nm-connection-editor.*"

@@ -25,14 +25,15 @@
       stress-ng
       lm_sensors
 
-      neovim
-
       bun
       yarn
       biome
+      turbo
       nodejs
+      corepack
       typescript
 
+      neovim
       zsh
       chafa
       starship
