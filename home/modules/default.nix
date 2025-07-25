@@ -14,11 +14,14 @@
       ./utils
 
       ./spotifyd
-      
+
       inputs.catppuccin.homeManagerModules.catppuccin
     ]
     ++ lib.optionals (hasRole "desktop") [
-      "${builtins.toString ./.}/@ui"
+      ./hyprland
+      ./waybar
+      ./mako
+      ./xdg
 
       ./clipboard
       ./terminal
