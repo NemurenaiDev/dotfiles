@@ -18,7 +18,7 @@ let
     NODE_PATH = "${config.home.homeDirectory}/.npm-packages/lib/node_modules";
 
     HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
-    HYPRCURSOR_SIZE = 22;
+    HYPRCURSOR_SIZE = 24;
     QT_QPA_PLATFORMTHEME = "gtk3";
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
