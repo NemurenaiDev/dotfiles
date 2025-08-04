@@ -22,7 +22,8 @@
     ./modules/packages.nix
     ./modules/plymouth.nix
     ./modules/snapcast.nix
-  ] ++ lib.optionals (hasRole "desktop") [ ./modules/gaming.nix ];
+  ]
+  ++ lib.optionals (hasRole "desktop") [ ./modules/gaming.nix ];
 
   nixpkgs.hostPlatform = lib.mkDefault host.system;
   system.stateVersion = host.stateVersion;
@@ -87,15 +88,11 @@
   networking.networkmanager.settings.WiFi.powerSave = false;
 
   # spotify + automation-server (8523)
-  networking.firewall.allowedTCPPorts =
-    if hasRole "desktop" then
-      [
-        57621
-        8523
-      ]
-    else
-      [ ];
-  networking.firewall.allowedUDPPorts = if hasRole "desktop" then [ 5353 ] else [ ];
+  networking.firewall.allowedTCPPorts = [
+    57621
+    8523
+  ];
+  networking.firewall.allowedUDPPorts = [ 5353 ];
 
   systemd.tmpfiles.rules = [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
 

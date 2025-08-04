@@ -9,6 +9,10 @@
           }
 
           normal {
+            bind "PageUp" { PageScrollUp; }
+            bind "PageDown" { PageScrollDown; }
+
+
             bind "Alt g" { SwitchToMode "locked"; }
 
 

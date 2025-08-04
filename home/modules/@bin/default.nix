@@ -1,6 +1,5 @@
 {
   imports = [
-    ./desktop
     ./run.nix
   ];
 
