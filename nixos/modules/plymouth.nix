@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 {
   boot.kernelParams = [
     "quiet"

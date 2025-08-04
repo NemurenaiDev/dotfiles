@@ -140,6 +140,8 @@
       alias gp="git push"
       alias gpo="git push origin"
 
+      alias attach="zellij attach \"\$(zellij list-sessions | fzf --ansi | awk '{print \$1}')\""
+
 
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
