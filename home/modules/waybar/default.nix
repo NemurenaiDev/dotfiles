@@ -32,7 +32,17 @@
           "pulseaudio"
         ];
         "battery" = {
-          "format" = "󰁹 {}%";
+          "format" = "󰁹 {capacity}% {time}";
+          "format-time" = "{H}h {m}m";
+        };
+        "backlight" = {
+          "format" = "{icon} {percent}%";
+          "format-icons" = [
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
+          "tooltip" = false;
         };
         "custom/weather" = {
           "format" = "{}°";

@@ -40,46 +40,35 @@ in
   _module.args.wallpaper = "${config.home.homeDirectory}/.assets/wallpaper.jpg";
 
   catppuccin = {
-    enable = true;
+    enable = hasRole "desktop";
     flavor = "mocha";
     accent = "maroon";
-    gtk.enable = true;
   };
 
-  dconf.settings =
-    if hasRole "desktop" then
-      {
-        "org/gnome/desktop/interface" = {
-          cursor-theme = config.home.sessionVariables.HYPRCURSOR_THEME;
-        };
-      }
-    else
-      { };
-
-  gtk =
-    if hasRole "desktop" then
-      {
-        enable = true;
-        iconTheme = {
-          name = "Papirus-Dark";
-          package = pkgs.papirus-icon-theme;
-        };
-        cursorTheme = {
-          name = config.home.sessionVariables.HYPRCURSOR_THEME;
-          size = config.home.sessionVariables.HYPRCURSOR_SIZE;
-          package = pkgs.catppuccin-cursors.mochaLight;
-        };
-        gtk3.extraConfig = {
-          Settings = ''
-            gtk-application-prefer-dark-theme=1
-          '';
-        };
-        gtk4.extraConfig = {
-          Settings = ''
-            gtk-application-prefer-dark-theme=1
-          '';
-        };
-      }
-    else
-      { };
+  gtk = {
+    enable = hasRole "desktop";
+    theme = {
+      name = "catppuccin-mocha-maroon-standard";
+      package = pkgs.catppuccin-gtk.override {
+        variant = "mocha";
+        accents = [ "maroon" ];
+        size = "standard";
+      };
+    };
+    cursorTheme = {
+      name = config.home.sessionVariables.HYPRCURSOR_THEME;
+      size = config.home.sessionVariables.HYPRCURSOR_SIZE;
+      package = pkgs.catppuccin-cursors.mochaLight;
+    };
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+  };
 }

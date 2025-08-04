@@ -18,6 +18,7 @@
   environment.systemPackages =
     with pkgs;
     [
+      frp
       mullvad
       tailscale
 
@@ -67,6 +68,8 @@
       cmake
       gcc
 
+      jdk
+      wakeonlan
       usbutils
       plocate
       brightnessctl

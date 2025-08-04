@@ -48,7 +48,7 @@
 
 
       if who am i | grep tty1; then
-          clear && uwsm -v && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
+          clear && uwsm check may-start && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
       fi
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;

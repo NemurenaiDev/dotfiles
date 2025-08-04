@@ -62,4 +62,6 @@
     motherboard = "amd";
     package = pkgs.openrgb-with-all-plugins;
   };
+
+  networking.interfaces.enp42s0.wakeOnLan.enable = true;
 }
