@@ -8,7 +8,7 @@
 
 let
   sessionVariables = {
-    NH_FLAKE = "/home/${host.username}/Projects/dotfiles";
+    NH_FLAKE = host.dotfiles;
 
     SHELL = "zsh";
     VISUAL = "nano";
