@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bin.nix
     ./run.nix
   ];
 

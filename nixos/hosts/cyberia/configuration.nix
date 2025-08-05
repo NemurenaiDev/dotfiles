@@ -49,7 +49,7 @@
     enable = true;
     settings = {
       charger = {
-        governor = "schedutil";
+        governor = "performance";
         turbo = "always";
       };
     };

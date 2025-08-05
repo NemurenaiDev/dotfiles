@@ -46,6 +46,14 @@
         nix shell "nixpkgs#$1"
       }
 
+      gs() {
+        local server
+        server=$(grep -E '^Host ' ~/.ssh/config | awk '{print $2}' | fzf --height=10 --layout=reverse --preview-window=border-left --preview "sed -n '/^Host {}$/,/^Host /p' ~/.ssh/config | head -n -1")
+        if [[ -n $server ]]; then
+          ssh $server
+        fi
+      }
+
 
       if who am i | grep tty1; then
           clear && uwsm check may-start && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
