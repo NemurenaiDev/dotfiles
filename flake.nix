@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -19,6 +19,7 @@
         {
           hostname = "cyberia";
           username = "nemurenai";
+          deviceId = "LZAWUPK-DVPWCJ5-7INP5UI-ULGJYSM-25VYXL6-CCHYYXG-A5YFA4O-PORVFAO";
           dotfiles = "/home/nemurenai/Projects/dotfiles";
           timezone = "Europe/Kyiv";
           system = "x86_64-linux";
@@ -32,6 +33,7 @@
         {
           hostname = "x14p";
           username = "nemurenai";
+          deviceId = "VZHX56X-H3U2APW-3E7QETV-3NR6QCV-7JTOVFF-FAY3E5B-DNY3HHH-RATQEAW";
           dotfiles = "/home/nemurenai/Projects/dotfiles";
           timezone = "Europe/Kyiv";
           system = "x86_64-linux";
@@ -45,6 +47,7 @@
         {
           hostname = "homelab";
           username = "nemurenai";
+          deviceId = "Y33IVUJ-5HMEGX6-CLW3PAQ-PXKI2RF-TUM3Y7C-VAQTDE7-V43LW4V-RV7TIAD";
           dotfiles = "/home/nemurenai/Projects/dotfiles";
           timezone = "Europe/Kyiv";
           system = "x86_64-linux";
@@ -58,7 +61,7 @@
         inputs.nixpkgs.lib.nixosSystem {
           system = host.system;
           specialArgs = {
-            inherit inputs host;
+            inherit inputs hosts host;
             hasRole = role: builtins.elem role host.roles;
           };
           modules = [ ./nixos/hosts/${host.hostname}/configuration.nix ];
@@ -69,7 +72,7 @@
         inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = inputs.nixpkgs.legacyPackages.${host.system};
           extraSpecialArgs = {
-            inherit inputs host;
+            inherit inputs hosts host;
             hasRole = role: builtins.elem role host.roles;
           };
           modules = [ ./home/hosts/${host.hostname}/home.nix ];

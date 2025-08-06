@@ -22,6 +22,7 @@
     ./modules/packages.nix
     ./modules/plymouth.nix
     ./modules/snapcast.nix
+    ./modules/syncthing.nix
   ]
   ++ lib.optionals (hasRole "desktop") [ ./modules/gaming.nix ];
 
