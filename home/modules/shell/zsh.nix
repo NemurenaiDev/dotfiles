@@ -54,6 +54,22 @@
         fi
       }
 
+      att() {
+        local session
+
+        session=$(
+          FZF_DEFAULT_COMMAND="zellij list-sessions" \
+            fzf \
+              --ansi --height=10 --layout=reverse \
+              --header="Press Enter to attach or Del to kill session" \
+              --bind 'del:execute-silent(echo {} | awk "{print \$1}" | xargs zellij delete-session --force)+reload(eval $FZF_DEFAULT_COMMAND)'
+        )
+
+        if [[ -n "$session" ]]; then
+          zellij attach "$(echo $session | awk '{print $1}')"
+        fi
+      }
+
 
       if who am i | grep tty1; then
           clear && uwsm check may-start && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
@@ -147,8 +163,6 @@
       alias gc="git commit -m"
       alias gp="git push"
       alias gpo="git push origin"
-
-      alias attach="zellij attach \"\$(zellij list-sessions | fzf --ansi | awk '{print \$1}')\""
 
 
       eval "$(fzf --zsh)"

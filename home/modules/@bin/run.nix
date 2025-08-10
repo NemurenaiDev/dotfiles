@@ -53,9 +53,9 @@ let
           )' 
     '';
 
-    # run-aichat = ''${run} "special:aichat" "chromium --app=https://chatgpt.com/" "$1"'';
+    run-aichat = ''${run} "special:aichat" "chromium --app=https://chatgpt.com/" "$1"'';
     # run-aichat = ''${run} "special:aichat" "chromium --app=https://claude.ai/new" "$1"'';
-    run-aichat = ''${run} "special:aichat" "chromium --app=https://gemini.google.com/" "$1"'';
+    # run-aichat = ''${run} "special:aichat" "chromium --app=https://gemini.google.com/" "$1"'';
 
     run-explorer = ''[[ "$1" == "--just-run" ]] && nemo || ${run} "13" "nemo" "$1"'';
     run-task-manager = ''${run} "15" "kitty --single-instance btop" "$1"'';
