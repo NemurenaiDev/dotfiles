@@ -15,15 +15,19 @@
   outputs =
     { ... }@inputs:
     let
-      hosts = [
+      commonHostFields = {
+        hostname = "<DEVICE-HOSTNAME>";
+        username = "nemurenai";
+        deviceId = "<SYNKTHING-DEVICE-ID>";
+        timezone = "Europe/Kyiv";
+        system = "x86_64-linux";
+        stateVersion = "24.11";
+      };
+
+      hostsRaw = [
         {
           hostname = "cyberia";
-          username = "nemurenai";
           deviceId = "LZAWUPK-DVPWCJ5-7INP5UI-ULGJYSM-25VYXL6-CCHYYXG-A5YFA4O-PORVFAO";
-          dotfiles = "/home/nemurenai/Projects/dotfiles";
-          timezone = "Europe/Kyiv";
-          system = "x86_64-linux";
-          stateVersion = "24.11";
           roles = [ "desktop" ];
           snapserver = {
             buffer = 400;
@@ -32,12 +36,7 @@
         }
         {
           hostname = "x14p";
-          username = "nemurenai";
           deviceId = "VZHX56X-H3U2APW-3E7QETV-3NR6QCV-7JTOVFF-FAY3E5B-DNY3HHH-RATQEAW";
-          dotfiles = "/home/nemurenai/Projects/dotfiles";
-          timezone = "Europe/Kyiv";
-          system = "x86_64-linux";
-          stateVersion = "24.11";
           roles = [ "desktop" ];
           snapserver = {
             buffer = 400;
@@ -46,15 +45,12 @@
         }
         {
           hostname = "homelab";
-          username = "nemurenai";
           deviceId = "Y33IVUJ-5HMEGX6-CLW3PAQ-PXKI2RF-TUM3Y7C-VAQTDE7-V43LW4V-RV7TIAD";
-          dotfiles = "/home/nemurenai/Projects/dotfiles";
-          timezone = "Europe/Kyiv";
-          system = "x86_64-linux";
-          stateVersion = "24.11";
           roles = [ "server" ];
         }
       ];
+
+      hosts = map (host: inputs.nixpkgs.lib.recursiveUpdate commonHostFields host) hostsRaw;
 
       nixosFor =
         host:
