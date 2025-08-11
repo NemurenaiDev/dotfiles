@@ -1,7 +1,10 @@
 keys:
-  - &primary age1w35xxgtzl4uutper7kfu7pgtznjc4yc747rryvmqzwdkmllft5tqej4wgj
+  - &primary age1wvuj20gp2e775mmum6wc2qp8ky4mk7vx0tc8yn89vplq69ryfqlsjffpfq
 creation_rules:
-  - path_regex: secrets/secrets.yaml$
+  - path_regex: \.sops\.secrets\.yaml$
     key_groups:
-    - age:
-      - *primary
+      - age:
+        - *primary
+
+# Command to generate AGE key from ~/.ssh/id_ed25519:
+# mkdir -p ~/.config/sops/age/ && nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i $HOME/.ssh/id_ed25519 -o $HOME/.config/sops/age/key.txt" && nix-shell -p age --run "echo '' && echo -n 'Public AGE key: ' && age-keygen -y $HOME/.config/sops/age/key.txt"

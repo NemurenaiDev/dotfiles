@@ -8,7 +8,7 @@
 
 let
   sessionVariables = {
-    NH_FLAKE = host.dotfiles;
+    NH_FLAKE = "/home/${host.username}/Projects/dotfiles";
 
     SHELL = "zsh";
     VISUAL = "nano";
@@ -16,6 +16,7 @@ let
 
     PATH = "$PATH:${config.home.homeDirectory}/.yarn/bin";
     NODE_PATH = "${config.home.homeDirectory}/.npm-packages/lib/node_modules";
+    SOPS_AGE_KEY_FILE = "/home/${host.username}/.config/sops/age/key.txt";
 
     HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
     HYPRCURSOR_SIZE = 24;
