@@ -43,6 +43,10 @@
       btop
       jq
       bc
+      tree
+      zoxide
+      fzf
+
 
       snapcast
       playerctl
@@ -61,6 +65,9 @@
       nixd
       nixfmt-rfc-style
 
+      openssl
+      php
+      postgresql
       node2nix
       binutils
       python3
@@ -103,13 +110,11 @@
       libva-utils
       lsd
       man-db
-      mpd
       mpv
+      ffmpeg
       nano
       ncdu
       nmap
-      php
-      postgresql
       proxychains
       rclone
       rsync
@@ -117,11 +122,8 @@
       sox
       traceroute
       trash-cli
-      tree
       wget
-      zoxide
       zram-generator
-      fzf
       curl
     ]
     ++ lib.optionals (hasRole "desktop") (
@@ -146,8 +148,46 @@
         vscode
 
         copyq
-        # cliphist
         wl-clipboard
+
+        libreoffice
+        mullvad-vpn
+        kitty
+        motrix
+        obs-studio
+        spotify
+        telegram-desktop
+        vesktop
+        eog
+        gnome-disk-utility
+        file-roller
+        pavucontrol
+        fuzzel
+        blueman
+        dconf-editor
+        lutris
+        networkmanagerapplet
+        postman
+        qpwgraph
+        remmina
+
+        mako
+        waybar
+        libnotify
+        droidcam
+        electron
+        ffmpegthumbnailer
+        seahorse
+        gnome-keyring
+        gnome-themes-extra
+        grim
+        slurp
+        mpc
+        freerdp
+        rwpspread
+        tk
+        wev
+        wttrbar
 
         gtk-engine-murrine
         libsForQt5.qtstyleplugin-kvantum
@@ -155,44 +195,6 @@
         qt6Packages.qt6ct
         qt5.full
         qt6.full
-
-        gnome-disk-utility
-        mullvad-vpn
-        pavucontrol
-        fuzzel
-        blueman
-        libnotify
-        dconf-editor
-        droidcam
-        electron
-        eog
-        ffmpegthumbnailer
-        file-roller
-        freerdp
-        seahorse
-        gnome-keyring
-        gnome-themes-extra
-        grim
-        slurp
-        kitty
-        lutris
-        mako
-        motrix
-        mpc
-        networkmanagerapplet
-        obs-studio
-        postman
-        qpwgraph
-        remmina
-        rwpspread
-        spotify
-        telegram-desktop
-        tk
-        vesktop
-        waybar
-        wev
-        wttrbar
-        zenity
       ]
     );
 

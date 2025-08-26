@@ -2,18 +2,21 @@
 
 {
   imports = [
-    ./browser.nix
-    ./vscode.nix
-    
+    ./apps/browser.nix
+    ./apps/vscode.nix
+
     ./mime.nix
   ];
 
   home.activation."link-desktop-to-applications" = ''
-    mkdir -p ${config.home.homeDirectory}/Desktop
-    mkdir -p ${config.home.homeDirectory}/.local/share/applications
+    desktopPath="${config.home.homeDirectory}/.local/share/applications/Desktop"
+    desktopLinkPath="${config.home.homeDirectory}/Desktop"
 
-    rm -f ${config.home.homeDirectory}/.local/share/applications/Desktop
+    [ -f "$desktopLinkPath" ] && rm -f "$desktopLinkPath"
+    [ -f "$desktopPath" ] && rm -f "$desktopPath"
 
-    ln -sf ${config.home.homeDirectory}/Desktop ${config.home.homeDirectory}/.local/share/applications/Desktop
+    mkdir -p "$desktopPath"
+
+    ln -sf "$desktopPath" "$desktopLinkPath"
   '';
 }

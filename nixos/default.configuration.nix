@@ -90,6 +90,7 @@
 
   # spotify + automation-server (8523)
   networking.firewall.allowedTCPPorts = [
+    25565
     57621
     8523
   ];
