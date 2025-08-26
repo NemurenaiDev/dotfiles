@@ -38,21 +38,21 @@ in
   home.homeDirectory = "/home/${host.username}";
   home.packages = [ pkgs.catppuccin-cursors.mochaLight ];
 
-  _module.args.wallpaper = "${config.home.homeDirectory}/.assets/wallpaper.jpg";
+  _module.args.wallpaper = "${config.home.homeDirectory}/.assets/wallpapers/dandadan-op1-8-darken.jpg";
 
   catppuccin = {
     enable = hasRole "desktop";
     flavor = "mocha";
-    accent = "maroon";
+    accent = "teal";
   };
 
   gtk = {
     enable = hasRole "desktop";
     theme = {
-      name = "catppuccin-mocha-maroon-standard";
+      name = "catppuccin-mocha-teal-standard";
       package = pkgs.catppuccin-gtk.override {
         variant = "mocha";
-        accents = [ "maroon" ];
+        accents = [ "teal" ];
         size = "standard";
       };
     };

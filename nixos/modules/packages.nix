@@ -47,7 +47,6 @@
       zoxide
       fzf
 
-
       snapcast
       playerctl
       pulseaudio
@@ -138,6 +137,7 @@
         hyprlock
         hyprpaper
         hyprpicker
+        hyprland
 
         prismlauncher
 
@@ -158,7 +158,6 @@
         spotify
         telegram-desktop
         vesktop
-        eog
         gnome-disk-utility
         file-roller
         pavucontrol
@@ -180,14 +179,18 @@
         seahorse
         gnome-keyring
         gnome-themes-extra
-        grim
-        slurp
+
         mpc
         freerdp
-        rwpspread
         tk
         wev
         wttrbar
+
+        dipc
+        eog
+        grim
+        slurp
+        rwpspread
 
         gtk-engine-murrine
         libsForQt5.qtstyleplugin-kvantum
