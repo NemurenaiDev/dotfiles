@@ -7,9 +7,6 @@
     defaultSopsFile = ./../../../.sops.secrets.yaml;
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/${host.username}/.config/sops/age/key.txt";
-    secrets = {
-      spotifyUser = { };
-      spotifyPass = { };
-    };
+    secrets = { };
   };
 }

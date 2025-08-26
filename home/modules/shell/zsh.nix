@@ -54,7 +54,7 @@
         fi
       }
 
-      att() {
+      at() {
         local session
 
         session=$(
