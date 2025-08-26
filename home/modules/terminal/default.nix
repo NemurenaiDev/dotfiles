@@ -23,7 +23,7 @@
       window_padding_width 10
       tab_bar_style separator
 
-      background_opacity 0.4
+      background_opacity 0.6
       dynamic_background_opacity no
       scrollback_lines 10000
 
