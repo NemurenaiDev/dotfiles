@@ -18,19 +18,32 @@
         "margin-left" = 5;
         "margin-right" = 5;
         "modules-left" = [
-          "hyprland/language"
-          # "custom/notification"
-          "clock"
+          "clock#n1"
+          "clock#n2"
           "battery"
-          "custom/weather"
+          "custom/playerlabel"
         ];
         "modules-center" = [ "hyprland/workspaces" ];
         "modules-right" = [
-          "custom/playerlabel"
           "tray"
           "backlight"
           "pulseaudio"
+          "hyprland/language"
         ];
+        "cpu" = {
+          "interval" = 1;
+          "format" = " {icon} {usage}%  ";
+          "format-icons" = [
+            "▁"
+            "▂"
+            "▃"
+            "▄"
+            "▅"
+            "▆"
+            "▇"
+            "█"
+          ];
+        };
         "battery" = {
           "format" = "󰁹 {capacity}% {time}";
           "format-time" = "{H}h {m}m";
@@ -97,13 +110,13 @@
           "return-type" = "json";
           "max-length" = 36;
           "exec" =
-            "playerctl -s metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}'";
+            "playerctl -s metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' || echo '{\"text\": \"\", \"alt\": \"None\", \"class\": \"None\"}'";
           "interval" = 1;
           "tooltip" = false;
         };
-        "clock" = {
+        "clock#n1" = {
           "interval" = 1;
-          "format" = "{:%d.%m %H:%M}";
+          "format" = "{:%a %d.%m}";
           "tooltip-format" = "<tt>{calendar}</tt>";
           "calendar" = {
             "mode" = "year";
@@ -111,17 +124,22 @@
             "weeks-pos" = "none";
             "on-scroll" = 1;
             "format" = {
-              "months" = "<span color='#ffead3'><b>{}</b></span>";
-              "days" = "<span color='#ecc6d9'><b>{}</b></span>";
-              "weeks" = "<span color='#99ffdd'><b>W{}</b></span>";
-              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
-              "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
+              "months" = "<span color='#f9e2af'><b>{}</b></span>";
+              "days" = "<span color='#a6adc8'><b>{}</b></span>";
+              "weeks" = "<span color='#bac2de'><b>W{}</b></span>";
+              "weekdays" = "<span color='#cdd6f4'><b>{}</b></span>";
+              "today" = "<span color='#94e2d5'><b><u>{}</u></b></span>";
             };
           };
           "actions" = {
             "on-scroll-up" = "shift_up";
             "on-scroll-down" = "shift_down";
           };
+        };
+        "clock#n2" = {
+          "interval" = 1;
+          "format" = "{:%H:%M:%S}";
+          "tooltip-format" = "{:%H:%M:%S}";
         };
         "hyprland/language" = {
           "format" = "{}";
