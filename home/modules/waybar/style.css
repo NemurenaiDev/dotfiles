@@ -1,3 +1,32 @@
+/* @define-color Rosewater rgb(245, 224, 220); */
+/* @define-color Flamingo rgb(242, 205, 205); */
+/* @define-color Pink rgb(245, 194, 231); */
+/* @define-color Mauve rgb(203, 166, 247); */
+/* @define-color Red rgb(243, 139, 168); */
+/* @define-color Maroon rgb(235, 160, 172); */
+/* @define-color Peach rgb(250, 179, 135); */
+/* @define-color Yellow rgb(249, 226, 175); */
+/* @define-color Green rgb(166, 227, 161); */
+/* @define-color Teal rgb(148, 226, 213); */
+/* @define-color Sky rgb(137, 220, 235); */
+/* @define-color Sapphire rgb(116, 199, 236); */
+/* @define-color Blue rgb(137, 180, 250); */
+/* @define-color Lavender rgb(180, 190, 254); */
+/* @define-color Text rgb(205, 214, 244); */
+/* @define-color Subtext1 rgb(186, 194, 222); */
+/* @define-color Subtext0 rgb(166, 173, 200); */
+/* @define-color Overlay2 rgb(147, 153, 178); */
+/* @define-color Overlay1 rgb(127, 132, 156); */
+/* @define-color Overlay0 rgb(108, 112, 134); */
+/* @define-color Surface2 rgb(88, 91, 112); */
+/* @define-color Surface1 rgb(69, 71, 90); */
+/* @define-color Surface0 rgb(49, 50, 68); */
+/* @define-color Base rgb(30, 30, 46); */
+/* @define-color Mantle rgb(24, 24, 37); */
+/* @define-color MantleT80 rgb(24, 24, 37, 0.8); */
+/* @define-color Crust rgb(17, 17, 27); */
+
+
 * {
     font-family: "JetBrainsMono Nerd Font";
     font-weight: normal;
@@ -8,127 +37,122 @@
     padding: 0;
 }
 
-window#waybar {
-    background: rgba(0, 0, 0, 0);
+
+/* workspace buttons */
+#workspaces button {
+    color: rgb(186, 194, 222);
+    padding: 2px;
 }
 
-.modules-left,
-.modules-center,
-.modules-right {
-    background: rgba(24, 25, 38, 0.6);
-    border-radius: 16px;
-    padding: 3px 2.5px;
-    border: 1px solid rgba(245, 194, 231, 0.25);
+#workspaces button.active {
+    color: rgb(148, 226, 213);
 }
 
+#workspaces button:hover {
+    color: rgb(148, 226, 213);
+}
+
+
+/* tooltips */
 tooltip {
-    background: rgba(24, 25, 38, 0.8);
+    background: rgba(30, 30, 46, 0.8);
     border-radius: 10px;
 }
 
 tooltip label {
     padding: 5px 10px;
-    border: #9d8c98 1px solid;
+    border: rgba(148, 226, 213, 0.25) 1px solid;
     border-radius: 5px;
-    color: #c7aebb;
+    color: rgb(205, 214, 244);
     font-size: 14px;
 }
 
-#workspaces button {
-    color: #d4b6cc;
-    padding: 2px;
-}
 
-#workspaces button.active {
-    color: #cdd6f4;
-}
 
-#workspaces button:hover {
-    color: #d9a8c6;
-}
-
+/* basic module styles */
 #clock,
+#cpu,
+#network,
 #upower,
 #battery,
 #temperature,
 #pulseaudio,
 #wireplumber,
-#mode,
 #tray,
 #backlight,
-#mpd,
 #bluetooth,
 #taskbar,
 #taskbar button,
 #workspaces,
 #window,
 #language,
-#custom-notification,
-#custom-cloudflare-warp,
 #custom-playerlabel,
-#custom-pacman,
-#custom-language,
-#custom-wireguard,
 #custom-weather {
-    color: #c7aebb;
-    padding: 0 8px;
+    color: rgb(186, 194, 222);
+    background: rgba(30, 30, 46, 0.85);
+    border: 1px solid rgba(148, 226, 213, 0.3);
+
+    margin: 0 3px;
+    padding: 2px 8px;
+    border-radius: 14px;
 }
 
-#custom-wireguard {
-    padding: 0 0 0 2px;
-}
 
-#custom-notification {
-    padding: 0 10px;
-}
-
-#custom-playerlabel,
-#window {
-    color: #c7aebb;
+/* individual module colors */
+#custom-playerlabel.Paused,
+#custom-playerlabel.Stopped {
+    color: rgb(166, 173, 200);
 }
 
 #clock,
-#custom-language {
-    color: #f3d1a2;
+#language {
+    color: rgb(148, 226, 213);
 }
 
-#upower,
+#pulseaudio,
 #battery,
-#backlight,
-#pulseaudio {
-    color: #efc4bc;
+#upower {
+    color: rgb(245, 194, 231);
 }
 
-#window {
-    font-weight: normal;
-    font-style: normal;
+#backlight {
+    color: rgb(249, 226, 175);
 }
 
-#waybar.empty #window {
+
+/* edge modules */
+#clock.n1 {
+    margin-left: 0;
+}
+
+#language {
+    margin-right: 0;
+}
+
+
+/* invisible */
+#waybar,
+#waybar.empty #window,
+#custom-playerlabel.None,
+.modules-left,
+.modules-center,
+.modules-right {
+    color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
     padding: 0;
     margin: 0;
 }
 
-#custom-playerlabel {
-    font-weight: normal;
-    font-style: normal;
-}
 
+/* danger animation */
+#battery.critical:not(.charging),
 #temperature.critical {
-    background-color: #f38ba8;
+    animation: dangerBlink 250ms ease-in-out infinite alternate;
 }
 
-@keyframes blink {
-    to {
-        color: #45475a;
+@keyframes dangerBlink {
+    100% {
+        color: rgb(243, 139, 168);
     }
-}
-
-#battery.critical:not(.charging) {
-    color: #f38ba8;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
