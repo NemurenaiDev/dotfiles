@@ -40,7 +40,7 @@
 
 /* workspace buttons */
 #workspaces button {
-    color: rgb(186, 194, 222);
+    color: rgb(166, 173, 200);
     padding: 2px;
 }
 
@@ -90,7 +90,7 @@ tooltip label {
 #custom-weather {
     color: rgb(186, 194, 222);
     background: rgba(30, 30, 46, 0.85);
-    border: 1px solid rgba(148, 226, 213, 0.3);
+    border: 1px solid rgba(148, 226, 213, 0.25);
 
     margin: 0 3px;
     padding: 2px 8px;
@@ -99,20 +99,26 @@ tooltip label {
 
 
 /* individual module colors */
-#custom-playerlabel.Paused,
-#custom-playerlabel.Stopped {
-    color: rgb(166, 173, 200);
-}
+/* #custom-playerlabel {
+    color: rgb(242, 205, 205);
+} */
 
 #clock,
 #language {
     color: rgb(148, 226, 213);
 }
 
-#pulseaudio,
 #battery,
 #upower {
+    color: rgb(166, 227, 161);
+}
+
+#pulseaudio {
     color: rgb(245, 194, 231);
+}
+
+#clock.n2 {
+    color: rgb(249, 226, 175);
 }
 
 #backlight {
