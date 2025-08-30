@@ -45,8 +45,11 @@
           ];
         };
         "battery" = {
-          "format" = "󰁹 {capacity}% {time}";
+          "format" = "󰁹 {capacity}%";
+        	"format-plugged" = " {capacity}%";
+        	"format-charging" = " {capacity}%";
           "format-time" = "{H}h {m}m";
+          "interval" = 1;
         };
         "backlight" = {
           "format" = "{icon} {percent}%";
@@ -106,7 +109,12 @@
           "on-scroll-down" = "hyprctl dispatch workspace e-1";
         };
         "custom/playerlabel" = {
-          "format" = "<span>{}</span>";
+          "format" = "<span>{icon}{}</span>";
+          "format-icons" = {
+            "Playing" = " ";
+            "Paused" = " ";
+            "Stopped" = " ";
+          };
           "return-type" = "json";
           "max-length" = 36;
           "exec" =
