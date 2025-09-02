@@ -9,6 +9,7 @@
   ];
 
   programs.gamemode.enable = true;
+  programs.gamescope.enable = true;
 
   programs.steam = {
     enable = true;
@@ -21,10 +22,10 @@
     extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
 
+  # Just in case for Proton
   zramSwap = {
     enable = true;
-
-    memoryPercent = 10;
+    memoryPercent = 5;
     priority = 100;
     algorithm = "zstd";
   };
