@@ -9,12 +9,6 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.allowInsecurePredicate =
-    if hasRole "desktop" then
-      pkg: builtins.elem (lib.getName pkg) [ "beekeeper-studio" ]
-    else
-      (_: false);
-
   environment.systemPackages =
     with pkgs;
     [
@@ -144,7 +138,6 @@
         nemo-with-extensions
         nemo-fileroller
 
-        beekeeper-studio
         vscode
 
         copyq
@@ -193,11 +186,6 @@
         rwpspread
 
         gtk-engine-murrine
-        libsForQt5.qtstyleplugin-kvantum
-        libsForQt5.qt5ct
-        qt6Packages.qt6ct
-        qt5.full
-        qt6.full
       ]
     );
 

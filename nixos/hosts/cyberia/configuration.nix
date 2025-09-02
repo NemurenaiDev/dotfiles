@@ -31,19 +31,15 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [ amdvlk ];
-    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+    extraPackages = with pkgs; [ mesa ];
+    extraPackages32 = with pkgs; [ driversi686Linux.mesa ];
   };
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   environment.systemPackages = with pkgs; [
-    mesa
     vulkan-loader
     vulkan-tools
   ];
-
-  services.system76-scheduler.enable = true;
-  services.system76-scheduler.settings.cfsProfiles.enable = true;
 
   services.auto-cpufreq = {
     enable = true;

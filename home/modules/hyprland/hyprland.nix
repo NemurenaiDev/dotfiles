@@ -1,8 +1,9 @@
+{ monitors, ... }:
+
 {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
-
     settings = {
       general = {
         "gaps_in" = 2.5;
@@ -11,7 +12,7 @@
         "resize_on_border" = false;
         "allow_tearing" = true;
 
-        "col.active_border" = "rgb(F38BA8) rgb(94E2D5) rgb(F5C2E7) 270deg";
+        "col.active_border" = "rgb(94E2D5) rgb(F38BA8) rgb(F9E2AF) 270deg";
 
         "bezier" = "linear, 0.0, 0.0, 1.0, 1.0";
         "animation" = "borderangle, 1, 50, linear, loop";
@@ -52,7 +53,7 @@
 
       cursor = {
         "sync_gsettings_theme" = true;
-        "default_monitor" = "$MonitorCenter";
+        "default_monitor" = monitors.central;
       };
 
       decoration = {

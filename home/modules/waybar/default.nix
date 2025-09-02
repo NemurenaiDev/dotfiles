@@ -119,6 +119,7 @@
           "max-length" = 36;
           "exec" =
             "playerctl -s metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' || echo '{\"text\": \"\", \"alt\": \"None\", \"class\": \"None\"}'";
+          "on-click" = "playerctl play-pause";
           "interval" = 1;
           "tooltip" = false;
         };
