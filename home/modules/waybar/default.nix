@@ -46,8 +46,8 @@
         };
         "battery" = {
           "format" = "󰁹 {capacity}%";
-        	"format-plugged" = " {capacity}%";
-        	"format-charging" = " {capacity}%";
+          "format-plugged" = " {capacity}%";
+          "format-charging" = " {capacity}%";
           "format-time" = "{H}h {m}m";
           "interval" = 1;
         };
@@ -120,6 +120,7 @@
           "exec" =
             "playerctl -s metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' || echo '{\"text\": \"\", \"alt\": \"None\", \"class\": \"None\"}'";
           "on-click" = "playerctl play-pause";
+          "on-click-right" = "playerctl stop";
           "interval" = 1;
           "tooltip" = false;
         };
