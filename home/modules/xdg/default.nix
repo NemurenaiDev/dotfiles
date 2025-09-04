@@ -17,6 +17,6 @@
 
     mkdir -p "$desktopPath"
 
-    ln -sf "$desktopPath" "$desktopLinkPath"
+    ln -sfn "$desktopPath" "$desktopLinkPath"
   '';
 }
