@@ -29,6 +29,8 @@
       typescript
 
       neovim
+      moar
+      highlight
       zsh
       chafa
       starship
