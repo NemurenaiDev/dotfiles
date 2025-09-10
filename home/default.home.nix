@@ -10,9 +10,13 @@ let
   sessionVariables = {
     NH_FLAKE = "/home/${host.username}/Projects/dotfiles";
 
-    SHELL = "zsh";
-    VISUAL = "nano";
-    EDITOR = "nano";
+    SHELL = "${pkgs.zsh}/bin/zsh";
+    VISUAL = "${pkgs.nano}/bin/nano";
+    EDITOR = "${pkgs.nano}/bin/nano";
+
+    PAGER = "${pkgs.moar}/bin/moar";
+    SYSTEMD_PAGER = "${pkgs.moar}/bin/moar";
+    SYSTEMD_PAGERSECURE = "0";
 
     PATH = "$PATH:${config.home.homeDirectory}/.yarn/bin";
     NODE_PATH = "${config.home.homeDirectory}/.npm-packages/lib/node_modules";

@@ -156,6 +156,9 @@
       alias ff="fastfetch"
       alias wlcp="wl-copy -n"
 
+      alias d="docker"
+      alias dc="docker compose"
+
       alias g="git"
       alias gst="git status"
       alias ga="git add"
