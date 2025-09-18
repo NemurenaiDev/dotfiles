@@ -6,6 +6,8 @@
     bottles
     mangohud
     steam-run
+
+    prismlauncher
   ];
 
   programs.gamemode.enable = true;

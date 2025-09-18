@@ -35,14 +35,14 @@
         RemainAfterExit = true;
         ExecStart = "${(pkgs.writeShellScriptBin "load-snapcast-sink" ''
           # Default audio sink for volume control without touching device volume itself
-          prevDefaultSink=$(${pkgs.pulseaudio}/bin/pactl list modules short | grep "module-virtual-sink.*sink_name=default" | cut -f1)
+          prevDefaultSink=$(${pkgs.pulseaudio}/bin/pactl list modules short | ${pkgs.gnugrep}/bin/grep "module-virtual-sink.*sink_name=default" | cut -f1)
           if [ -n "$prevDefaultSink" ]; then
             ${pkgs.pulseaudio}/bin/pactl unload-module "$prevDefaultSink"
           fi
           ${pkgs.pulseaudio}/bin/pactl load-module module-virtual-sink sink_name=default sink_properties=device.description="Default"
 
           # Snapcast sink
-          prevSnapcastSink=$(${pkgs.pulseaudio}/bin/pactl list modules short | grep "module-pipe-sink.*sink_name=Snapcast" | cut -f1)
+          prevSnapcastSink=$(${pkgs.pulseaudio}/bin/pactl list modules short | ${pkgs.gnugrep}/bin/grep "module-pipe-sink.*sink_name=Snapcast" | cut -f1)
           if [ -n "$prevSnapcastSink" ]; then
             ${pkgs.pulseaudio}/bin/pactl unload-module "$prevSnapcastSink"
           fi

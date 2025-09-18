@@ -134,16 +134,12 @@
         hyprpaper
         hyprpicker
         hyprland
-
-        prismlauncher
-
-        nemo-with-extensions
-        nemo-fileroller
-
-        vscode
+        hyprpolkitagent
 
         copyq
         wl-clipboard
+
+        vscode
 
         libreoffice
         mullvad-vpn
@@ -153,8 +149,11 @@
         spotify
         telegram-desktop
         vesktop
-        gnome-disk-utility
+
+        nemo-with-extensions
+        nemo-fileroller
         file-roller
+        kdiskmark
         pavucontrol
         fuzzel
         blueman
