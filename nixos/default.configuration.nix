@@ -59,7 +59,7 @@
 
   virtualisation.docker.enable = true;
 
-  security.polkit.enable = hasRole "desktop";
+  security.polkit.enable = lib.mkForce (hasRole "desktop");
 
   services.libinput.enable = true;
   services.openssh.enable = true;
