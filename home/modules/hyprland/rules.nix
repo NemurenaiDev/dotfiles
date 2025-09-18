@@ -65,30 +65,16 @@ in
     ];
 
     windowrulev2 = [
+
+      ### other ###
+
       "bordersize 1, floating:1"
       "workspace 26, initialClass:vesktop"
       "fullscreenstate * 2, initialClass:code"
 
-      "float, initialClass:zen, title:Extension.*Bitwarden.*"
-      "center, initialClass:zen, title:Extension.*Bitwarden.*"
-      "size 400 720, initialClass:zen, title:Extension.*Bitwarden.*"
-
-      "monitor ${central}, initialClass:.*polkit.*auth.*"
-
-      "pin, initialClass:.*nm-.*"
-      "pin, initialClass:.*blueman.*"
-      "pin, initialClass:.*polkit.*auth.*"
-
-      "float, initialClass:.*nm-.*"
-      "float, initialClass:.*blueman.*"
-      "float, initialClass:.*(file-roller|FileRoller).*"
-
-      "center, initialClass:.*nm-.*"
-      "center, initialClass:.*blueman.*"
-      "center, initialClass:.*(file-roller|FileRoller).*"
+      ### gaming ###
 
       "float, initialClass:Steam|steam"
-      "center, initialClass:Steam|steam"
 
       "tile, initialClass:Steam|steam, initialTitle:^Steam$"
 
@@ -100,6 +86,8 @@ in
       "center, initialClass:.*lutris.*, initialTitle:Lutris"
       "size 1200 720, initialClass:.*lutris.*, initialTitle:Lutris"
 
+      ### dialogs ###
+
       "pin, initialClass:kitty-.*"
       "float, initialClass:kitty-.*"
       "center, initialClass:kitty-.*"
@@ -108,6 +96,8 @@ in
       "size 800 450, initialClass:kitty-pulsemixer"
       "size 800 450, initialClass:kitty-project"
 
+      ### media ###
+
       "pin, initialTitle:Picture.in..icture"
       "float, initialTitle:Picture.in..icture"
       "monitor ${leftOrCentral}, initialTitle:Picture.in..icture"
@@ -115,14 +105,12 @@ in
       "size 500 300, initialTitle:Picture.in..icture"
       "move 100%-506 100%-301, initialTitle:Picture.in..icture"
 
-      "float, initialClass:dconf-editor"
-      "center, initialClass:dconf-editor"
-      "size 1600 900, initialClass:dconf-editor"
-
       "float, initialClass:mpv|eog|Eog"
       "center, initialClass:mpv|eog|Eog"
       "size 96% 92.5%, initialClass:mpv|eog|Eog"
       "move 2% 5%, initialClass:mpv|eog|Eog"
+
+      ### files ###
 
       "float, initialTitle:Confirm"
       "center, initialTitle:Confirm"
@@ -132,9 +120,31 @@ in
       "center, initialTitle:Rename|File Operation"
       "size 450 150, initialTitle:Rename|File Operation"
 
-      "float, initialTitle:File Upload"
-      "center, initialTitle:File Upload"
-      "size 960 720, initialTitle:File Upload"
+      "float, initialTitle:File Upload|Choose Files"
+      "center, initialTitle:File Upload|Choose Files"
+      "size 960 720, initialTitle:File Upload|Choose Files"
+
+      ### utils ###
+
+      "pin, initialClass:.*copyq.*"
+      "float, initialClass:.*copyq.*"
+      "center, initialClass:.*copyq.*"
+      "size 960 720, initialClass:.*copyq.*"
+
+      "float, initialClass:dconf-editor"
+      "center, initialClass:dconf-editor"
+      "size 1600 900, initialClass:dconf-editor"
+
+      "pin, initialClass:.*nm-.*"
+      "pin, initialClass:.*blueman.*"
+
+      "float, initialClass:.*nm-.*"
+      "float, initialClass:.*blueman.*"
+      "float, initialClass:.*(file-roller|FileRoller).*"
+
+      "center, initialClass:.*nm-.*"
+      "center, initialClass:.*blueman.*"
+      "center, initialClass:.*(file-roller|FileRoller).*"
 
       "pin, initialClass:.*blueman.*|.*nm-connection-editor.*"
       "float, initialClass:.*blueman.*|.*nm-connection-editor.*"
@@ -142,11 +152,6 @@ in
       "maxsize 960 720, initialClass:.*blueman.*|.*nm-connection-editor.*"
 
       "size 640 480, initialClass:.*blueman-manager.*|.*blueman-services.*|.*blueman-sendto.*"
-
-      "pin, initialClass:.*copyq.*"
-      "float, initialClass:.*copyq.*"
-      "center, initialClass:.*copyq.*"
-      "size 960 720, initialClass:.*copyq.*"
 
       "float, initialClass:.*pavucontrol.*|.*easyeffects.*"
       "center, initialClass:.*pavucontrol.*|.*easyeffects.*"

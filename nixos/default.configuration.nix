@@ -59,6 +59,8 @@
 
   virtualisation.docker.enable = true;
 
+  security.polkit.enable = hasRole "desktop";
+
   services.libinput.enable = true;
   services.openssh.enable = true;
   services.locate.enable = true;
@@ -93,15 +95,9 @@
     57621 # spotify
     8523 # automation-server
   ];
-  networking.firewall.allowedUDPPorts = [ 
+  networking.firewall.allowedUDPPorts = [
     5353 # avahi/zeroconf
   ];
 
   systemd.tmpfiles.rules = [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
-
-  qt = {
-    enable = hasRole "desktop";
-    style = "kvantum";
-    platformTheme = "qt5ct";
-  };
 }

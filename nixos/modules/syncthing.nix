@@ -9,7 +9,7 @@ let
   otherHosts = lib.filter (h: h.hostname != host.hostname) hosts;
   userOtherHosts = lib.filter (h: h.username == host.username) otherHosts;
 
-  otherDeviceNames = lib.map (host: host.hostname) otherHosts;
+  # otherDeviceNames = lib.map (host: host.hostname) otherHosts;
   userOtherDeviceNames = lib.map (host: host.hostname) userOtherHosts;
 
   otherDevices = lib.listToAttrs (
@@ -28,10 +28,7 @@ in
 
     user = host.username;
     dataDir = "/home/${host.username}/.cache/syncthing";
-    extraFlags = [
-      "--no-default-folder"
-      "--no-browser"
-    ];
+    extraFlags = [ "--no-browser" ];
 
     settings = {
       devices = otherDevices;
