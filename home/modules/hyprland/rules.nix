@@ -92,8 +92,8 @@ in
       "center, initialClass:kitty-.*"
       "size 200 150, initialClass:kitty-powermenu"
       "size 300 200, initialClass:kitty-sink-selector"
-      "size 800 450, initialClass:kitty-pulsemixer"
       "size 800 450, initialClass:kitty-project"
+      "size 1280 720, initialClass:kitty-windowinfo"
 
       ### media ###
 

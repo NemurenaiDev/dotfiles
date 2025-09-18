@@ -39,11 +39,11 @@ let
   run = "${run-on-workspace}/bin/run-on-workspace";
 
   scripts = {
-    run-sink-selector = ''kitty --class "kitty-sink-selector" select-default-sink'';
+    run-sink-selector = ''kitty --single-instance --class "kitty-sink-selector" select-default-sink'';
 
-    run-powermenu = ''kitty --class "kitty-powermenu" sh -c "~/.bin/powermenu"'';
+    run-powermenu = ''kitty --single-instance --class "kitty-powermenu" sh -c "~/.bin/powermenu"'';
     run-code-project = ''
-      kitty --class "kitty-project" sh -c \
+      kitty --single-instance --class "kitty-project" sh -c \
           'code -n $(\
               find ~/Projects -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | \
               sed "s|$HOME|~|" | \
