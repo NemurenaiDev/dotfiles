@@ -74,17 +74,16 @@ in
 
       ### gaming ###
 
-      "float, initialClass:Steam|steam"
+      "float, initialClass:.*lutris.*, initialTitle:Lutris"
+      "center, initialClass:.*lutris.*, initialTitle:Lutris"
+      "size 1200 720, initialClass:.*lutris.*, initialTitle:Lutris"
 
+      "float, initialClass:Steam|steam, initialTitle:.+"
       "tile, initialClass:Steam|steam, initialTitle:^Steam$"
 
       "size 1600 900, initialClass:Steam|steam, initialTitle:Screenshot"
 
       "renderunfocused, initialClass:steam_app_1086940, initialTitle:Baldur.s.Gate.3.*"
-
-      "float, initialClass:.*lutris.*, initialTitle:Lutris"
-      "center, initialClass:.*lutris.*, initialTitle:Lutris"
-      "size 1200 720, initialClass:.*lutris.*, initialTitle:Lutris"
 
       ### dialogs ###
 
