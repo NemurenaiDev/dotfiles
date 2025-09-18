@@ -46,7 +46,6 @@
       snapcast
       playerctl
       pulseaudio
-      pulsemixer
       avahi
       pamixer
       nssmdns
