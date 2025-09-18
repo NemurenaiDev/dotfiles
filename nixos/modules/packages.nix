@@ -192,9 +192,13 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    font-awesome
+
+    liberation_ttf
+
     noto-fonts
     noto-fonts-emoji
-    google-fonts
-    font-awesome
+    noto-fonts-extra
+    noto-fonts-cjk-sans
   ];
 }
