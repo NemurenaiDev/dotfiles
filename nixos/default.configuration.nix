@@ -93,6 +93,7 @@
   networking.firewall.allowedTCPPorts = [
     25565 # minecraft
     57621 # spotify
+    57622 # spotify librespot
     8523 # automation-server
   ];
   networking.firewall.allowedUDPPorts = [
