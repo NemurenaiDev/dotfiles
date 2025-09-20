@@ -12,8 +12,8 @@
 
       "uwsm app -- ${config.home.homeDirectory}/.bin/automation-server"
 
-      "uwsm app -t service -a app-waybar -- waybar"
-      "uwsm app -t service -a app-mako -- mako"
+      "uwsm app -t service -u app-waybar.service -- waybar"
+      "uwsm app -t service -u app-mako.service -- mako"
 
       "uwsm app -- copyq --start-server"
       "uwsm app -- blueman-applet"

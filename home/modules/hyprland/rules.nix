@@ -68,9 +68,12 @@ in
 
       ### other ###
 
+      "bordersize 0, onworkspace:w[t1]"
       "bordersize 1, floating:1"
-      "workspace 26, initialClass:vesktop"
+
       "fullscreenstate * 2, initialClass:code"
+
+      "workspace 26, initialClass:vesktop"
 
       ### gaming ###
 
