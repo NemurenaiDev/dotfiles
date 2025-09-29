@@ -13,7 +13,7 @@
       ./shell
       ./utils
 
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.catppuccin.homeModules.catppuccin
     ]
     ++ lib.optionals (hasRole "desktop") [
       ./hyprland

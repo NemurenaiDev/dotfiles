@@ -18,7 +18,9 @@
       };
 
       stream = {
-        source = "pipe:///run/snapserver/pipewire?name=pipewire";
+        codec = host.snapserver.codec;
+        buffer = host.snapserver.buffer;
+        source = [ "pipe:///run/snapserver/pipewire?name=pipewire" ];
       };
     };
   };
