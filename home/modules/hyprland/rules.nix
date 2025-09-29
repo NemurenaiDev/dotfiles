@@ -98,7 +98,13 @@ in
       "size 800 450, initialClass:kitty-project"
       "size 1280 720, initialClass:kitty-windowinfo"
 
-      ### media ###
+      ### media & docs ###
+
+      "float, initialClass:soffice"
+      "center, initialClass:soffice"
+      "size 1200 720, initialClass:soffice"
+      
+      "workspace special:hidden silent, initialClass:^$, initialTitle:LibreOffice"
 
       "pin, initialTitle:Picture.in..icture"
       "float, initialTitle:Picture.in..icture"

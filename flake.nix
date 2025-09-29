@@ -33,6 +33,10 @@
             buffer = 400;
             codec = "flac";
           };
+          snapclients = [
+            "127.0.0.1"
+            "192.168.1.111"
+          ];
         }
         {
           hostname = "x14p";
@@ -47,6 +51,10 @@
           hostname = "homelab";
           deviceId = "Y33IVUJ-5HMEGX6-CLW3PAQ-PXKI2RF-TUM3Y7C-VAQTDE7-V43LW4V-RV7TIAD";
           roles = [ "server" ];
+          snapclients = [
+            "192.168.1.110"
+            "192.168.1.111"
+          ];
         }
       ];
 

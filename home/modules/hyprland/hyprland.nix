@@ -106,8 +106,8 @@
 
       dwindle = {
         "pseudotile" = true;
-        "smart_split" = true;
-        "preserve_split" = false;
+        "smart_split" = false;
+        "preserve_split" = true;
       };
 
       debug = {

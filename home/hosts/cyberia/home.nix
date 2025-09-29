@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 let
   monitors = {
     central = "DP-1";
@@ -23,33 +21,5 @@ in
       "mullvad-vpn"
       "openrgb --startminimized --profile default"
     ];
-  };
-
-  systemd.user.services.snapclient-127-0-0-1 = {
-    Unit = {
-      Description = "Snapclient for 127.0.0.1";
-      After = [ "network.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.snapcast}/bin/snapclient --host 127.0.0.1";
-      Restart = "on-failure";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
-
-  systemd.user.services.snapclient-192-168-1-111 = {
-    Unit = {
-      Description = "Snapclient for 192.168.1.111";
-      After = [ "network.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.snapcast}/bin/snapclient --host 192.168.1.111";
-      Restart = "on-failure";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
   };
 }
