@@ -77,9 +77,9 @@ in
 
       ### gaming ###
 
-      "float, initialClass:.*lutris.*, initialTitle:Lutris"
-      "center, initialClass:.*lutris.*, initialTitle:Lutris"
-      "size 1200 720, initialClass:.*lutris.*, initialTitle:Lutris"
+      "float, initialClass:net.lutris.Lutris"
+      "center, initialClass:net.lutris.Lutris"
+      "size 1200 720, initialClass:net.lutris.Lutris"
 
       "float, initialClass:Steam|steam, initialTitle:.+"
       "tile, initialClass:Steam|steam, initialTitle:^Steam$"
@@ -93,9 +93,16 @@ in
       "pin, initialClass:kitty-.*"
       "float, initialClass:kitty-.*"
       "center, initialClass:kitty-.*"
+
+      "stayfocused, initialClass:kitty-powermenu"
       "size 200 150, initialClass:kitty-powermenu"
+
+      "stayfocused, initialClass:kitty-sink-selector"
       "size 300 200, initialClass:kitty-sink-selector"
+
+      "stayfocused, initialClass:kitty-project"
       "size 800 450, initialClass:kitty-project"
+
       "size 1280 720, initialClass:kitty-windowinfo"
 
       ### media & docs ###

@@ -6,10 +6,10 @@ choice=$(echo -e "$options" | fzf --ansi --highlight-line --margin=0%)
 
 case $choice in
     "Shutdown")
-        shutdown now
+        systemctl poweroff
     ;;
     "Reboot")
-        shutdown -r now
+        systemctl reboot
     ;;
     "Suspend")
         systemctl suspend
