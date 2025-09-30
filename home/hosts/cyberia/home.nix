@@ -18,7 +18,7 @@ in
     ];
 
     exec-once = [
-      "mullvad-vpn"
+      "mullvad connect --wait && mullvad-vpn"
       "openrgb --startminimized --profile default"
     ];
   };
