@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     lutris
-    bottles
     mangohud
     steam-run
 

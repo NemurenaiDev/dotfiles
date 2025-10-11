@@ -12,6 +12,8 @@
   environment.systemPackages =
     with pkgs;
     [
+      inputs.nixpkgs-stable.legacyPackages.${system}.pamixer
+
       frp
       mullvad
       tailscale
@@ -47,7 +49,6 @@
       playerctl
       pulseaudio
       avahi
-      pamixer
       nssmdns
       alsa-utils
 
@@ -99,7 +100,6 @@
       libgphoto2
       libgsf
       libguestfs
-      libuinputplus
       libva
       libva-utils
       lsd

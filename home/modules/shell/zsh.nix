@@ -143,7 +143,7 @@
       alias watch="CLICOLOR_FORCE=1 watch -c"
 
       alias rm="trash -v"
-      alias hist="history 0 | fzf | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | wl-copy -n"
+      alias hist="history 0 | tac | fzf | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | wl-copy -n"
       alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /run --exclude /mnt --exclude /home/yabai/Library"
 
       alias os="nh os"

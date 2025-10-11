@@ -61,7 +61,7 @@
           "tooltip" = false;
         };
         "custom/weather" = {
-          "format" = "{}°";
+          "format" = "{text}°";
           "tooltip" = true;
           "interval" = 600;
           "exec" = "wttrbar --hide-conditions";
@@ -109,7 +109,7 @@
           "on-scroll-down" = "hyprctl dispatch workspace e-1";
         };
         "custom/playerlabel" = {
-          "format" = "<span>{icon}{}</span>";
+          "format" = "<span>{icon}{text}</span>";
           "format-icons" = {
             "Playing" = " ";
             "Paused" = " ";
@@ -134,11 +134,11 @@
             "weeks-pos" = "none";
             "on-scroll" = 1;
             "format" = {
-              "months" = "<span color='#f9e2af'><b>{}</b></span>";
-              "days" = "<span color='#a6adc8'><b>{}</b></span>";
-              "weeks" = "<span color='#bac2de'><b>W{}</b></span>";
-              "weekdays" = "<span color='#cdd6f4'><b>{}</b></span>";
-              "today" = "<span color='#94e2d5'><b><u>{}</u></b></span>";
+              "months" = "<span color='#f9e2af'><b>{text}</b></span>";
+              "days" = "<span color='#a6adc8'><b>{text}</b></span>";
+              "weeks" = "<span color='#bac2de'><b>W{text}</b></span>";
+              "weekdays" = "<span color='#cdd6f4'><b>{text}</b></span>";
+              "today" = "<span color='#94e2d5'><b><u>{text}</u></b></span>";
             };
           };
           "actions" = {
@@ -152,7 +152,7 @@
           "tooltip-format" = "{:%H:%M:%S}";
         };
         "hyprland/language" = {
-          "format" = "{}";
+          "format" = "{text}";
           "format-en" = "[US]";
           "format-uk" = "[UK]";
           "format-ru" = "[RU]";
