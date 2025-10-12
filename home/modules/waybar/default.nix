@@ -67,18 +67,6 @@
           "exec" = "wttrbar --hide-conditions";
           "return-type" = "json";
         };
-        "custom/notification" = {
-          "format" = "{icon}";
-          "tooltip" = false;
-          "interval" = 1;
-          "return-type" = "json";
-          "format-icons" = {
-            "default" = "<span color=\"#F7F7F7\">\uF49A</span>";
-            "do-not-disturb" = "<span color=\"#F7F7F7\">\uF478</span>";
-          };
-          "on-click" = "exec ${config.home.homeDirectory}/.bin/notifications --toggle";
-          "exec" = "exec ${config.home.homeDirectory}/.bin/notifications";
-        };
         "hyprland/workspaces" = {
           "format" = "{icon}";
           "on-click" = "activate";
