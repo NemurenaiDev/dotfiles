@@ -9,6 +9,10 @@ in
     layerrule = [
       "blur, launcher"
       "dimaround, launcher"
+      "ignorezero, launcher"
+
+      "blur, notifications"
+      "ignorezero, notifications"
     ];
 
     workspace = [

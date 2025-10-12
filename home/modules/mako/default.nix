@@ -29,14 +29,10 @@
     ignore-timeout=0
     max-visible=5
     layer=overlay
-    background-color=#1e1e2e
+    background-color=#1e1e2e80
     text-color=#cdd6f4
-    border-color=#b4befe
-    progress-color=#89b4fa
-
-    # [mode=do-not-disturb]
-    # invisible=true
-
+    border-color=#94e2d5
+    progress-color=#94e2d5
 
     [urgency=low]
     default-timeout=3000
@@ -47,7 +43,6 @@
     anchor=bottom-left
 
     [urgency=high]
-    # invisible=false
     default-timeout=0
     anchor=bottom-left
     border-color=#eb6f92
@@ -58,7 +53,6 @@
     default-timeout=16000
 
     [category=adjustments]
-    # invisible=false
     text-color=#f7f7f7
     text-alignment=right
     default-timeout=2000
@@ -68,11 +62,10 @@
     width=175
 
     [category=error]
-    # invisible=false
     border-size=2
     border-color=#e64553
     default-timeout=10000
-    anchor=bottom-right
+    anchor=bottom-left
 
 
     [app-name=Zen]
@@ -82,7 +75,6 @@
     border-color=#FF7456
 
     [app-name=Spotify]
-    invisible=false
     default-timeout=5000
     border-color=#a6e3a1
   '';
