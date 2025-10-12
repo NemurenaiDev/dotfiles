@@ -152,7 +152,7 @@
           "tooltip-format" = "{:%H:%M:%S}";
         };
         "hyprland/language" = {
-          "format" = "{text}";
+          "format" = "{}";
           "format-en" = "[US]";
           "format-uk" = "[UK]";
           "format-ru" = "[RU]";

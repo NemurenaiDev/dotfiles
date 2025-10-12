@@ -42,7 +42,7 @@ in
   home.homeDirectory = "/home/${host.username}";
   home.packages = [ pkgs.catppuccin-cursors.mochaLight ];
 
-  _module.args.wallpaper = "${config.home.homeDirectory}/.assets/wallpapers/dandadan-op1-8-darken.jpg";
+  _module.args.wallpaper = "${config.home.homeDirectory}/.assets/wallpapers/erinthul-moon-witch.png";
 
   catppuccin = {
     enable = hasRole "desktop";
