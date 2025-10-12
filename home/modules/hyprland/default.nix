@@ -5,6 +5,7 @@
     ./keybinds.nix
     ./rules.nix
 
+    ./hyprsunset.nix
     ./hyprpaper.nix
     ./hyprlock.nix
   ];

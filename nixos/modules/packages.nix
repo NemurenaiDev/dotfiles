@@ -131,8 +131,8 @@
         hyprlang
         hyprlock
         hyprpaper
+        hyprsunset
         hyprpicker
-        hyprland
         hyprpolkitagent
 
         copyq
