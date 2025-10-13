@@ -76,10 +76,8 @@
       fi
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
-          if [ "$(ps -a | grep -e Hyprland)" ]; then
-              if [ -f /tmp/HyprlandInstanceSignature ]; then
-                export HYPRLAND_INSTANCE_SIGNATURE="$(cat /tmp/HyprlandInstanceSignature)"
-              fi
+          if [ -f /tmp/HYPRLAND_INSTANCE_SIGNATURE ]; then
+            export HYPRLAND_INSTANCE_SIGNATURE="$(cat /tmp/HYPRLAND_INSTANCE_SIGNATURE)"
           fi
       fi
 

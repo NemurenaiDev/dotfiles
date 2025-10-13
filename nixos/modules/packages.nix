@@ -48,8 +48,6 @@
       snapcast
       playerctl
       pulseaudio
-      avahi
-      nssmdns
       alsa-utils
 
       sops
@@ -139,6 +137,7 @@
         wl-clipboard
 
         vscode
+        unityhub
 
         libreoffice
         mullvad-vpn

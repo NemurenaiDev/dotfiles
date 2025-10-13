@@ -91,13 +91,14 @@
   networking.networkmanager.settings.WiFi.powerSave = false;
 
   networking.firewall.allowedTCPPorts = [
+    8523 # automation-server
     25565 # minecraft
     57621 # spotify
     57622 # spotify librespot
-    8523 # automation-server
   ];
   networking.firewall.allowedUDPPorts = [
-    5353 # avahi/zeroconf
+    5353 # mDNS
+    57622 # spotify librespot
   ];
 
   systemd.tmpfiles.rules = [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
