@@ -3,7 +3,7 @@
 {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "echo $HYPRLAND_INSTANCE_SIGNATURE > /tmp/HyprlandInstanceSignature"
+      "echo $HYPRLAND_INSTANCE_SIGNATURE > /tmp/HYPRLAND_INSTANCE_SIGNATURE"
       "ln -sf '/tmp/TelegramDesktop' '$HOME/Downloads/Telegram Desktop'"
 
       "systemctl --user start hyprpolkitagent"
@@ -15,6 +15,7 @@
       "uwsm app -t service -u app-waybar.service -- waybar"
       "uwsm app -t service -u app-mako.service -- mako"
 
+      "uwsm app -- nemo ~/.local/share/nemo"
       "uwsm app -- copyq --start-server"
       "uwsm app -- blueman-applet"
       "uwsm app -- nm-applet"

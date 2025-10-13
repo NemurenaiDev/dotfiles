@@ -79,6 +79,9 @@ in
 
       "workspace 26, initialClass:vesktop"
 
+      "workspace special:hidden silent, initialClass:^$, initialTitle:LibreOffice"
+      "workspace special:hidden silent, initialClass:nemo, initialTitle:nemo.*/.local/share/nemo"
+
       ### gaming ###
 
       "float, initialClass:net.lutris.Lutris"
@@ -114,8 +117,6 @@ in
       "float, initialClass:soffice"
       "center, initialClass:soffice"
       "size 1200 720, initialClass:soffice"
-      
-      "workspace special:hidden silent, initialClass:^$, initialTitle:LibreOffice"
 
       "pin, initialTitle:Picture.in..icture"
       "float, initialTitle:Picture.in..icture"
