@@ -75,11 +75,14 @@ in
       "bordersize 0, onworkspace:w[t1]"
       "bordersize 1, floating:1"
 
-      "fullscreenstate * 2, initialClass:code"
-
       "workspace 26, initialClass:vesktop"
 
+      "fullscreenstate * 2, initialClass:code"
+
+      "move cursor 0 0, initialClass:Unity, initialTitle:UnityEditor.PopupWindow"
+
       "workspace special:hidden silent, initialClass:^$, initialTitle:LibreOffice"
+      "workspace special:hidden silent, initialClass:^$, initialTitle:.*is.sharing.your.screen.*"
       "workspace special:hidden silent, initialClass:nemo, initialTitle:nemo.*/.local/share/nemo"
 
       ### gaming ###

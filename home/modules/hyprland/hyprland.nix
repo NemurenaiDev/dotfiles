@@ -30,13 +30,14 @@
         "kb_options" = "fkeys:basic_13-24";
 
         touchpad = {
-          "disable_while_typing" = false;
+          "disable_while_typing" = true;
           "natural_scroll" = true;
           "scroll_factor" = 0.25;
-          "clickfinger_behavior" = true;
           "middle_button_emulation" = true;
+          "clickfinger_behavior" = true;
           "tap-to-click" = true;
-          "drag_lock" = true;
+          "tap-and-drag" = true;
+          "drag_lock" = 1;
         };
       };
 
