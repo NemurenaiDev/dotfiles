@@ -138,6 +138,7 @@
 
         vscode
         unityhub
+        dotnet-sdk
 
         libreoffice
         mullvad-vpn
