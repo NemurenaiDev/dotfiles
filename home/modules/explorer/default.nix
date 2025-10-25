@@ -3,11 +3,8 @@
   home.file.".config/gtk-3.0/bookmarks".text = ''
     file:///home/nemurenai Home
     file:///home/nemurenai/Downloads Downloads
-    file:///home/nemurenai/Library Library
     file:///home/nemurenai/Pictures Pictures
     file:///home/nemurenai/Projects Projects
-    sftp://kt/root/ sftp://kt
-    sftp://store/root/ sftp://store
   '';
 
   home.file.".local/share/nemo/actions/open-terminal-here.nemo_action".force = true;

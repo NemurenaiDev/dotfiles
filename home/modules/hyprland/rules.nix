@@ -79,6 +79,8 @@ in
 
       "fullscreenstate * 2, initialClass:code"
 
+      "renderunfocused, initialClass:chromium"
+
       "move cursor 0 0, initialClass:Unity, initialTitle:UnityEditor.PopupWindow"
 
       "workspace special:hidden silent, initialClass:^$, initialTitle:LibreOffice"
@@ -89,12 +91,12 @@ in
 
       "float, initialClass:net.lutris.Lutris"
       "center, initialClass:net.lutris.Lutris"
-      "size 1200 720, initialClass:net.lutris.Lutris"
+      "size 1400 800, initialClass:net.lutris.Lutris"
 
       "float, initialClass:Steam|steam, initialTitle:.+"
       "tile, initialClass:Steam|steam, initialTitle:^Steam$"
 
-      "size 1600 900, initialClass:Steam|steam, initialTitle:Screenshot"
+      "size 1600 900, initialClass:Steam|steam, initialTitle:.*Screenshot.*"
 
       "renderunfocused, initialClass:steam_app_1086940, initialTitle:Baldur.s.Gate.3.*"
 
