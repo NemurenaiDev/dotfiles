@@ -14,8 +14,8 @@ let
     VISUAL = "${pkgs.nano}/bin/nano";
     EDITOR = "${pkgs.nano}/bin/nano";
 
-    PAGER = "${pkgs.moar}/bin/moar";
-    SYSTEMD_PAGER = "${pkgs.moar}/bin/moar";
+    PAGER = "${pkgs.moor}/bin/moor";
+    SYSTEMD_PAGER = "${pkgs.moor}/bin/moor";
     SYSTEMD_PAGERSECURE = "0";
 
     PATH = "$PATH:${config.home.homeDirectory}/.yarn/bin";

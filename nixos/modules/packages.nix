@@ -12,8 +12,6 @@
   environment.systemPackages =
     with pkgs;
     [
-      inputs.nixpkgs-stable.legacyPackages.${system}.pamixer
-
       frp
       mullvad
       tailscale
@@ -31,7 +29,7 @@
       typescript
 
       neovim
-      moar
+      moor
       highlight
       zsh
       chafa
@@ -45,6 +43,7 @@
       zoxide
       fzf
 
+      inputs.nixpkgs-stable.legacyPackages.${system}.pamixer
       snapcast
       playerctl
       pulseaudio
@@ -123,6 +122,7 @@
       [
         inputs.zen-browser.packages.${system}.default
 
+
         chromium
 
         hyprland
@@ -133,7 +133,7 @@
         hyprpicker
         hyprpolkitagent
 
-        copyq
+        inputs.nixpkgs-stable.legacyPackages.${system}.copyq
         wl-clipboard
 
         vscode

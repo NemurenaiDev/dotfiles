@@ -4,6 +4,7 @@
   imports = [
     ./../../default.configuration.nix
     ./hardware.nix
+    ./library.nix
   ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];

@@ -64,7 +64,7 @@
       custom_gpu_name4 = ""
       custom_gpu_name5 = ""
 
-      disks_filter = ""
+      disks_filter = "exclude=/nix/store"
       mem_graphs = False
       mem_below_net = False
       zfs_arc_cached = True
