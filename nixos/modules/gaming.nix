@@ -5,6 +5,10 @@
     lutris
     mangohud
     steam-run
+    
+    bottles
+    winetricks
+    wine-wayland
 
     prismlauncher
   ];

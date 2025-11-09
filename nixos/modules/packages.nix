@@ -196,8 +196,7 @@
     liberation_ttf
 
     noto-fonts
-    noto-fonts-emoji
-    noto-fonts-extra
     noto-fonts-cjk-sans
+    noto-fonts-color-emoji
   ];
 }

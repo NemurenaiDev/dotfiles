@@ -89,9 +89,9 @@ in
 
       ### gaming ###
 
-      "float, initialClass:net.lutris.Lutris"
-      "center, initialClass:net.lutris.Lutris"
-      "size 1400 800, initialClass:net.lutris.Lutris"
+      "float, initialClass:net.lutris.Lutris, initialTitle:Lutris.+"
+      "center, initialClass:net.lutris.Lutris, initialTitle:Lutris.+"
+      "size 1400 800, initialClass:net.lutris.Lutris, initialTitle:Lutris.+"
 
       "float, initialClass:Steam|steam, initialTitle:.+"
       "tile, initialClass:Steam|steam, initialTitle:^Steam$"
@@ -165,11 +165,13 @@ in
 
       "float, initialClass:.*nm-.*"
       "float, initialClass:.*blueman.*"
-      "float, initialClass:.*(file-roller|FileRoller).*"
 
       "center, initialClass:.*nm-.*"
       "center, initialClass:.*blueman.*"
+
+      "float, initialClass:.*(file-roller|FileRoller).*"
       "center, initialClass:.*(file-roller|FileRoller).*"
+      "maxsize 960 720, initialClass:.*(file-roller|FileRoller).*"
 
       "pin, initialClass:.*blueman.*|.*nm-connection-editor.*"
       "float, initialClass:.*blueman.*|.*nm-connection-editor.*"

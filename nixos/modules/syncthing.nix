@@ -33,10 +33,62 @@ in
     settings = {
       devices = otherDevices;
       folders = {
+
         ".ssh" = {
           path = "/home/${host.username}/.ssh";
           devices = userOtherDeviceNames;
         };
+
+        "Projects" = {
+          path = "/home/${host.username}/Projects";
+          devices = userOtherDeviceNames;
+          ignorePatterns = [
+            # Garbage
+            "logs/"
+            "Logs/"
+            "*.log"
+            "*.tmp"
+            "*.bak"
+
+            # Builds
+            "out/"
+            "dist/"
+            "build/"
+            "target/"
+            "bin/"
+            "go.sum"
+            "*.out"
+            "*.exe"
+            "*.dll"
+            "*.so"
+            "*.a"
+            "*.o"
+
+            # Javascript / Typescript
+            "node_modules/"
+            ".next/"
+            ".nuxt/"
+            ".yarn/"
+            ".cache/"
+            ".turbo/"
+            ".parcel-cache/"
+
+            # Python
+            "__pycache__/"
+            "*.pyc"
+            ".venv/"
+            "venv/"
+
+            # Unity
+            "PackageCache/"
+            "Library/"
+
+            # Go
+            "pkg/"
+            "vendor/"
+          ];
+        };
+
       };
     };
   };
