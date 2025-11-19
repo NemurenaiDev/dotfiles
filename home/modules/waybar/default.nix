@@ -49,6 +49,10 @@
           "format-plugged" = " {capacity}%";
           "format-charging" = " {capacity}%";
           "format-time" = "{H}h {m}m";
+          "states" = {
+            "warning" = 40;
+            "critical" = 20;
+          };
           "interval" = 1;
         };
         "backlight" = {

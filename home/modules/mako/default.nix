@@ -14,7 +14,7 @@
     font=JetBrainsMono Nerd Font Mono
     width=400
     height=100
-    margin=5
+    outer-margin=5
     padding=10
     border-size=1
     border-radius=10
@@ -60,6 +60,17 @@
     padding=2,4
     max-icon-size=24
     width=175
+
+    [category=battery]
+    text-color=#f7f7f7
+    text-alignment=center
+    icon-location=bottom
+    anchor=bottom-center
+    default-timeout=3000
+    max-icon-size=128
+    padding=8,10
+    height=96
+    width=96
 
     [category=error]
     border-size=2

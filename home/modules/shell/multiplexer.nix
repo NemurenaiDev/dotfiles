@@ -18,7 +18,7 @@
 
             bind "Alt [" { NewPane "down"; }
             bind "Alt ]" { NewPane "right"; }
-            bind "Alt Tab" { ToggleFloatingPanes; }
+            bind "Alt `" { ToggleFloatingPanes; }
 
             bind "Ctrl w" { CloseFocus; }
             bind "Alt e" { FocusNextPane; }

@@ -151,13 +151,21 @@ tooltip label {
 }
 
 
-/* danger animation */
+/* warnings */
+
+#battery.warning:not(.charging) {
+    color: rgb(250, 179, 135);
+}
+
 #battery.critical:not(.charging),
 #temperature.critical {
     animation: dangerBlink 250ms ease-in-out infinite alternate;
 }
 
 @keyframes dangerBlink {
+    0% {
+        color: rgb(250, 179, 135);
+    }
     100% {
         color: rgb(243, 139, 168);
     }

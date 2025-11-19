@@ -23,10 +23,10 @@
       bun
       yarn
       biome
-      turbo
       nodejs
       corepack
       typescript
+      inputs.nixpkgs-stable.legacyPackages.${system}.turbo
 
       neovim
       moor
@@ -121,7 +121,6 @@
       with pkgs;
       [
         inputs.zen-browser.packages.${system}.default
-
 
         chromium
 
