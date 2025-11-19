@@ -79,10 +79,10 @@
 
       "ALT, Tab, cyclenext"
 
-      "SUPER, left, movefocus, l"
-      "SUPER, right, movefocus, r"
-      "SUPER, up, movefocus, u"
-      "SUPER, down, movefocus, d"
+      # "SUPER, left, movefocus, l"
+      # "SUPER, right, movefocus, r"
+      # "SUPER, up, movefocus, u"
+      # "SUPER, down, movefocus, d"
 
       ### window control ###
 

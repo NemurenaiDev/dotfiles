@@ -46,6 +46,7 @@ let
       kitty --single-instance --class "kitty-project" sh -c \
           'code -n $(\
               find ~/Projects -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | \
+              grep -v .stfolder | \
               sed "s|$HOME|~|" | \
               sort -r | \
               fzf --ansi --preview-window border-left --preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$(eval echo {})" | \

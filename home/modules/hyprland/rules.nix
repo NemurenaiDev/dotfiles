@@ -117,6 +117,9 @@ in
 
       "size 1280 720, initialClass:kitty-windowinfo"
 
+      "size 600 765, initialClass:org.telegram.desktop, initialTitle:Mini.App.+"
+      "float, initialClass:org.telegram.desktop, initialTitle:Mini.App.+"
+
       ### media & docs ###
 
       "float, initialClass:soffice"

@@ -5,6 +5,10 @@
     file:///home/nemurenai/Downloads Downloads
     file:///home/nemurenai/Pictures Pictures
     file:///home/nemurenai/Projects Projects
+    
+    sftp://cyberia/home/nemurenai Cyberia
+    sftp://homelab/home/nemurenai Homelab
+    sftp://laptop/home/nemurenai Laptop
   '';
 
   home.file.".local/share/nemo/actions/open-terminal-here.nemo_action".force = true;

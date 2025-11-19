@@ -1,0 +1,55 @@
+#!/usr/bin/env sh
+
+BAT=/sys/class/power_supply/BATT
+BAT_LOW_THRESHOLD=100
+
+[ -n "$1" ] && BAT_LOW_THRESHOLD="$1"
+[ -n "$2" ] && BAT="$2"
+
+
+battery_status() {
+    cat "$BAT/status"
+}
+
+battery_capacity() {
+    cat "$BAT/capacity"
+}
+
+
+STATUS=$(battery_status)
+BATTERY_LOW="false"
+BATTERY_LOW_FIRED="false"
+
+while true; do
+    inotifywait "$BAT/uevent" >/dev/null 2>&1
+
+    NEW_STATUS=$(battery_status)
+    CAPACITY=$(battery_capacity)
+
+    if [ "$CAPACITY" -lt "$BAT_LOW_THRESHOLD" ]; then
+	BATTERY_LOW="true"
+    else
+	BATTERY_LOW="false"
+    fi
+
+
+    if [ "$BATTERY_LOW_FIRED" = "false" ] && [ "$BATTERY_LOW" = "true" ] && [ "$STATUS" = "$NEW_STATUS" ]; then
+        notify-send -c battery -i "$HOME/.assets/icons/battery-low.png" ""
+        BATTERY_LOW_FIRED="true"
+    elif [ "$BATTERY_LOW" = "false" ]; then
+        BATTERY_LOW_FIRED="false"
+    fi
+
+    if [ "$STATUS" != "$NEW_STATUS" ]; then
+        if [ "$NEW_STATUS" = "Charging" ]; then
+            notify-send -c battery -i "$HOME/.assets/icons/battery-charging.png" ""
+        elif [ "$NEW_STATUS" = "Discharging" ]; then
+	    if [ "$BATTERY_LOW" = "true" ]; then
+                notify-send -c battery -i "$HOME/.assets/icons/battery-low.png" ""
+	   else
+		notify-send -c battery -i "$HOME/.assets/icons/battery-full.png" ""
+	   fi
+        fi
+        STATUS="$NEW_STATUS"
+    fi
+done
