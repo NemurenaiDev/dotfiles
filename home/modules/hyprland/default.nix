@@ -5,9 +5,9 @@
     ./keybinds.nix
     ./rules.nix
 
-    ./hyprsunset.nix
-    ./hyprpaper.nix
-    ./hyprlock.nix
-    ./hypridle.nix
+    ./plugins/hyprsunset.nix
+    ./plugins/hyprpaper.nix
+    ./plugins/hyprlock.nix
+    ./plugins/hypridle.nix
   ];
 }

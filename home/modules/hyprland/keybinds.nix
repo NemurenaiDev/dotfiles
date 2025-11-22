@@ -71,18 +71,14 @@
       "SUPER CTRL, S, exec, ${config.home.homeDirectory}/.bin/screenshot --screen"
       "SUPER SHIFT, S, exec, ${config.home.homeDirectory}/.bin/screenshot --area"
 
-      ### focus control ###
+      ### focus control & groups control ###
+
+      "ALT, Tab, exec, hyprctl activewindow -j | jq -e '.grouped | length > 1' && hyprctl dispatch changegroupactive || hyprctl dispatch cyclenext"
 
       "SUPER, escape, focusmonitor, +1"
-      "SUPER SHIFT, escape, movewindow, mon:+1"
-      "SUPER CTRL, escape, movecurrentworkspacetomonitor, +1"
 
-      "ALT, Tab, cyclenext"
-
-      # "SUPER, left, movefocus, l"
-      # "SUPER, right, movefocus, r"
-      # "SUPER, up, movefocus, u"
-      # "SUPER, down, movefocus, d"
+      "SUPER, T, togglegroup"
+      "SUPER SHIFT, T, lockactivegroup, toggle"
 
       ### window control ###
 
@@ -112,6 +108,8 @@
       "SUPER SHIFT, F1, movetoworkspace, 9"
       "SUPER SHIFT, F2, movetoworkspace, 10"
 
+      "SUPER SHIFT, escape, movewindow, mon:+1"
+
       ### workspace control ###
 
       "SUPER, 1, workspace, 1"
@@ -127,6 +125,8 @@
       "SUPER CTRL SHIFT, left, workspace, -1"
       "SUPER CTRL SHIFT, right, workspace, +1"
 
+      "SUPER CTRL, escape, movecurrentworkspacetomonitor, +1"
+
       ### keyboard layout ###
 
       "ALT SHIFT, 1, exec, ${config.home.homeDirectory}/.bin/switch-layout 0"
@@ -135,27 +135,24 @@
 
       ### xf86 buttons ###
 
-      ", xf86KbdBrightnessDown, exec, ${config.home.homeDirectory}/.bin/brightness --dec"
-      ", xf86KbdBrightnessUp, exec, ${config.home.homeDirectory}/.bin/brightness --inc"
       ", xf86MonBrightnessDown, exec, ${config.home.homeDirectory}/.bin/brightness --dec"
       ", xf86MonBrightnessUp, exec, ${config.home.homeDirectory}/.bin/brightness --inc"
 
-      ", xf86audioraisevolume, exec, ${config.home.homeDirectory}/.bin/volume --inc"
-      ", xf86audiolowervolume, exec, ${config.home.homeDirectory}/.bin/volume --dec"
-      ", XF86Calculator, exec, ${config.home.homeDirectory}/.bin/volume --inc"
-      ", XF86HomePage, exec, ${config.home.homeDirectory}/.bin/volume --dec"
+      ", xf86AudioRaiseVolume, exec, ${config.home.homeDirectory}/.bin/volume --inc"
+      ", xf86AudioLowerVolume, exec, ${config.home.homeDirectory}/.bin/volume --dec"
+      ", XF86AudioMicMute, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
+      ", XF86AudioMute, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
 
-      ", xf86audiomute, exec, ${config.home.homeDirectory}/.bin/volume --toggle"
-      ", xf86AudioMicMute, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
-      ", XF86Mail, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
-      ", XF86Tools, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
+      ", xf86AudioStop, exec, playerctl stop"
+      ", xf86AudioPlay, exec, playerctl play-pause"
+      ", xf86AudioPause, exec, playerctl play-pause"
+      ", xf86AudioNext, exec, playerctl next"
+      ", xf86AudioPrev, exec, playerctl previous"
 
-      ", xf86audioplay, exec, playerctl play-pause"
-      ", XF86audiopause, exec, playerctl play-pause"
-      ", xf86audionext, exec, playerctl next"
-      ", xf86audioprev, exec, playerctl previous"
-      ", xf86audiostop, exec, playerctl stop"
-      ", XF86Search, exec, playerctl stop"
+      ", F21, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
+      ", F22, exec, playerctl play-pause"
+      ", F23, exec, playerctl previous"
+      ", F24, exec, playerctl next"
     ];
   };
 }

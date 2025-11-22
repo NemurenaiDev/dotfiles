@@ -17,6 +17,7 @@
       home-manager.useUserPackages = false;
     }
 
+    ./modules/keyd.nix
     ./modules/audio.nix
     ./modules/secrets.nix
     ./modules/packages.nix
