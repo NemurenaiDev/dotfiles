@@ -72,7 +72,7 @@ in
 
       ### other ###
 
-      "bordersize 0, onworkspace:w[t1]"
+      "bordersize 0, onworkspace:w[tv1]"
       "bordersize 1, floating:1"
 
       "group set always, workspace:25"
