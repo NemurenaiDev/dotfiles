@@ -4,8 +4,6 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "echo $HYPRLAND_INSTANCE_SIGNATURE > /tmp/HYPRLAND_INSTANCE_SIGNATURE"
-      "ln -sf '/tmp/TelegramDesktop' '$HOME/Downloads/Telegram Desktop'"
-
       "systemctl --user start hyprpolkitagent"
 
       "hyprlock --immediate --immediate-render --no-fade-in"

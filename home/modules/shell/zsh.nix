@@ -9,6 +9,17 @@
       [[ $PERF == 1 ]] && start=$EPOCHREALTIME
       [[ $PERF == 1 ]] && zmodload zsh/zprof
 
+      
+      if who am i | grep tty1; then
+          clear && uwsm check may-start -q && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
+      fi
+
+      if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
+          if [ -f /tmp/HYPRLAND_INSTANCE_SIGNATURE ]; then
+            export HYPRLAND_INSTANCE_SIGNATURE="$(cat /tmp/HYPRLAND_INSTANCE_SIGNATURE)"
+          fi
+      fi
+
 
       # WARNING: "compinit -d" may be a security risk when your system is multi-user with untrusted users
       autoload -U compinit && compinit -d ~/.cache/zcompdump -C
@@ -71,8 +82,9 @@
       }
 
 
+
       if who am i | grep tty1; then
-          clear && uwsm check may-start && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
+          clear && uwsm check may-start -q && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
       fi
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
