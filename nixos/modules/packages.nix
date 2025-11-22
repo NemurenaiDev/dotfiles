@@ -100,6 +100,7 @@
       libguestfs
       libva
       libva-utils
+      libinput
       lsd
       man-db
       mpv
@@ -117,6 +118,7 @@
       wget
       zram-generator
       curl
+      keyd
     ]
     ++ lib.optionals (hasRole "desktop") (
       with pkgs;

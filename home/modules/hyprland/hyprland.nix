@@ -18,6 +18,23 @@
         "animation" = "borderangle, 1, 50, linear, loop";
       };
 
+      group = {
+        "col.border_active" = "rgb(94E2D5) rgb(F38BA8) rgb(F9E2AF) 270deg";
+        "col.border_inactive" = "rgb(94E2D5) rgb(F38BA8) rgb(F9E2AF) 270deg";
+        "col.border_locked_active" = "rgb(94E2D5) rgb(F38BA8) rgb(F9E2AF) 270deg";
+        "col.border_locked_inactive" = "rgb(94E2D5) rgb(F38BA8) rgb(F9E2AF) 270deg";
+
+        groupbar = {
+          render_titles = false;
+          scrolling = false;
+
+          "col.active" = "rgb(94E2D5)";
+          "col.inactive" = "rgb(585B70)";
+          "col.locked_active" = "rgb(B4BEFE)";
+          "col.locked_inactive" = "rgb(45475A)";
+        };
+      };
+
       input = {
         "repeat_rate" = 50;
         "repeat_delay" = 300;
