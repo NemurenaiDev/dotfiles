@@ -42,6 +42,8 @@
       tree
       zoxide
       fzf
+      fd
+      ripgrep
 
       inputs.nixpkgs-stable.legacyPackages.${system}.pamixer
       snapcast
@@ -85,7 +87,6 @@
       espeak-ng
       evtest
       fastfetch
-      fd
       fuse-overlayfs
       git
       github-cli
@@ -127,6 +128,7 @@
         hyprland
         hyprlang
         hyprlock
+        hypridle
         hyprpaper
         hyprsunset
         hyprpicker
@@ -140,7 +142,6 @@
         dotnet-sdk
 
         libreoffice
-        mullvad-vpn
         kitty
         motrix
         obs-studio

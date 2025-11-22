@@ -63,16 +63,14 @@
 
   services.libinput.enable = true;
   services.openssh.enable = true;
-  services.locate.enable = true;
 
   services.getty.autologinOnce = hasRole "desktop";
   services.getty.autologinUser = host.username;
+  services.getty.greetingLine = lib.mkForce "";
+  services.getty.helpLine = lib.mkForce "";
 
-  services.mullvad-vpn.enable = hasRole "desktop";
-  services.tailscale = {
-    enable = true;
-    interfaceName = "tailscale";
-  };
+  services.mullvad-vpn.enable = true;
+  services.tailscale.enable = true;
   services.resolved = {
     enable = true;
     extraConfig = ''
@@ -101,5 +99,7 @@
     57622 # spotify librespot
   ];
 
-  systemd.tmpfiles.rules = [ "d /tmp/TelegramDownloads 1700 ${host.username} users -" ];
+  systemd.tmpfiles.rules = [
+    "d /tmp/${host.username}/TelegramDownloads 1700 ${host.username} users -"
+  ];
 }
