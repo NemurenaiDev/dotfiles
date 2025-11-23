@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+handle() {
+  case $1 in
+    windowtitlev2*) handle_windowtitlev2 "$@" ;;
+  esac
+}
+
+handle_windowtitlev2() {
+    ADDRESS="$(echo "$@" | grep -oE ">>[A-Za-z0-9]{12}," | grep -oE "[A-Za-z0-9]{12}")"
+    CLIENT="$(hyprctl clients -j | jq ".[] | select(.address == \"0x$ADDRESS\")")"
+
+    if echo "$CLIENT" | jq -e 'select(.class == "zen" or .class == "chromium")' > /dev/null; then
+        if echo "$CLIENT" | jq -e '(.title != .initialTitle)' > /dev/null; then
+            if echo "$CLIENT" | jq -e 'select(.title | test("Extension:.*Bitwarden"; "i") | not)' > /dev/null; then
+                echo "dispatching settiled for: $@"
+                hyprctl dispatch settiled "address:0x$ADDRESS"
+            fi
+        fi
+    fi
+}
+
+socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done
