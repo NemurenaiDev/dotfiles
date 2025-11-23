@@ -70,6 +70,7 @@
       gcc
 
       jdk
+      socat
       wakeonlan
       usbutils
       plocate

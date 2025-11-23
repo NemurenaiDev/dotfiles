@@ -77,6 +77,9 @@ in
 
       "group set always, workspace:25"
 
+      "float, initialClass:^zen|chromium$"
+      "size 400 600, initialClass:^zen|chromium$"
+
       "workspace 26, initialClass:vesktop"
 
       "fullscreenstate * 2, initialClass:code"

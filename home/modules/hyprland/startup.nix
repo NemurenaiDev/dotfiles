@@ -9,6 +9,7 @@
       "hyprlock --immediate --immediate-render --no-fade-in"
 
       "uwsm app -- ${config.home.homeDirectory}/.bin/automation-server"
+      "uwsm app -- ${config.home.homeDirectory}/.bin/dynamic-window-rules"
 
       "uwsm app -t service -u app-waybar.service -- waybar"
       "uwsm app -t service -u app-mako.service -- mako"
