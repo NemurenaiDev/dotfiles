@@ -6,33 +6,26 @@
 }:
 
 {
-  imports =
-    [
-      "${builtins.toString ./.}/@bin"
+  imports = [
+    "${builtins.toString ./.}/@assets"
+    "${builtins.toString ./.}/@bin"
 
-      ./shell
-      ./utils
+    ./shell
+    ./utils
 
-      inputs.catppuccin.homeModules.catppuccin
-    ]
-    ++ lib.optionals (hasRole "desktop") [
-      ./hyprland
-      ./waybar
-      ./mako
-      ./xdg
+    inputs.catppuccin.homeModules.catppuccin
+  ]
+  ++ lib.optionals (hasRole "desktop") [
+    ./hyprland
+    ./waybar
+    ./mako
+    ./xdg
 
-      ./clipboard
-      ./terminal
-      ./launcher
-      ./explorer
+    ./clipboard
+    ./terminal
+    ./launcher
+    ./explorer
 
-      ./telegram
-    ];
-
-  home.file.".assets" = {
-    force = true;
-    recursive = true;
-    executable = true;
-    source = "${builtins.toString ./.}/@assets";
-  };
+    ./telegram
+  ];
 }

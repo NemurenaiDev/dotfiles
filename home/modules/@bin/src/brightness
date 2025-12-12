@@ -7,9 +7,9 @@ get_backlight() {
 get_icon() {
     current=$(get_backlight | sed 's/%//')
     if [ "$current" -le "20" ]; then
-        icon="$HOME/.local/share/icons/brightness-min.png"
+        icon="$HOME/.assets/icons/brightness-min.png"
     else
-        icon="$HOME/.local/share/icons/brightness-max.png"
+        icon="$HOME/.assets/icons/brightness-max.png"
     fi
 }
 
@@ -26,10 +26,10 @@ case "$1" in
     get_backlight
     ;;
 "--inc")
-    change_backlight "+2%"
+    change_backlight "+1%"
     ;;
 "--dec")
-    change_backlight "2%-"
+    change_backlight "1%-"
     ;;
 *)
     get_backlight

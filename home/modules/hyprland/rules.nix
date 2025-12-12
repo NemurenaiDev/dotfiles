@@ -77,8 +77,8 @@ in
 
       "group set always, workspace:25"
 
-      "float, initialClass:^zen|chromium$"
-      "size 400 600, initialClass:^zen|chromium$"
+      "float, initialClass:zen|chromium, initialTitle:negative:Picture.in..icture"
+      "size 400 600, initialClass:zen|chromium, initialTitle:negative:Picture.in..icture"
 
       "workspace 26, initialClass:vesktop"
 

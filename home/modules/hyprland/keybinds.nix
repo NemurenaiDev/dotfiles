@@ -28,7 +28,7 @@
 
       "SUPER SHIFT, L, exec, run-powermenu"
 
-      "SUPER, L, exec, ${config.home.homeDirectory}/.bin/switch-layout 0 && hyprlock"
+      "SUPER, L, exec, loginctl lock-session"
 
       ### utility apps ###
 
@@ -38,24 +38,28 @@
 
       "SUPER, S, exec, fuzzel"
 
+      "SUPER, E, exec, nemo"
+
       "SUPER SHIFT, C, exec, hyprpicker --autocopy --no-fancy --render-inactive"
 
       ### workspace-specific applications ###
 
-      "CTRL SHIFT, escape, exec, run-task-manager"
+      "SUPER, W, exec, run-on-workspace '21' 'zen --profile ${config.home.homeDirectory}/.zen/xxxxxxxx.nemurenai'"
+      "SUPER SHIFT, W, movetoworkspace, 21"
 
-      "SUPER SHIFT, E, exec, run-explorer --run-anyway"
-      "SUPER, E, exec, run-explorer --just-run"
+      "SUPER, A, exec, run-on-workspace '22' 'zen --profile ${config.home.homeDirectory}/.zen/xxxxxxxx.nemurenai --private-window'"
+      "SUPER SHIFT, A, movetoworkspace, 22"
 
-      "SUPER, W, exec, run-browser"
-      "SUPER, A, exec, run-browser-incognito"
-      "SUPER, X, exec, run-telegram"
-      "SUPER, C, exec, run-discord"
+      "SUPER, X, exec, run-on-workspace '25' 'Telegram'"
+      "SUPER SHIFT, X, movetoworkspace, 25"
 
-      "SUPER, F3, exec, run-spotify"
-      "SUPER, F4, exec, run-obs"
+      "SUPER, C, exec, run-on-workspace '26' 'vesktop'"
+      "SUPER SHIFT, C, movetoworkspace, 26"
 
-      "SUPER, TAB, exec, run-aichat"
+      "SUPER, F3, exec, run-on-workspace '36' 'spotify --enable-features=UseOzonePlatform --ozone-platform-hint=wayland'"
+      "SUPER, F4, exec, run-on-workspace '39' 'obs'"
+
+      "SUPER, TAB, exec, run-on-workspace 'special:aichat' 'chromium --app=https://chatgpt.com/'"
 
       ### audio & bluetooth ###
 

@@ -61,5 +61,5 @@ elif [[ "$1" == "--mic-inc" ]]; then
 elif [[ "$1" == "--mic-dec" ]]; then
 	dec_mic_volume
 else
-	get_volume
+    echo -e "Available Options : --get --inc --dec --toggle --toggle-mic --get-icon --get-mic-icon --mic-inc --mic-dec"
 fi

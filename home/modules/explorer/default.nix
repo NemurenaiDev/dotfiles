@@ -1,6 +1,7 @@
 {
   home.file.".config/gtk-3.0/bookmarks".force = true;
   home.file.".config/gtk-3.0/bookmarks".text = ''
+    file:/// /
     file:///home/nemurenai Home
     file:///home/nemurenai/Downloads Downloads
     file:///home/nemurenai/Pictures Pictures

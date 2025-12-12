@@ -10,7 +10,7 @@
 
   xdg.desktopEntries.browser = {
     name = "Zen Browser";
-    exec = "zen --profile ${config.home.homeDirectory}/.zen/x6xuobo4.nemurenai %u";
+    exec = "zen --profile ${config.home.homeDirectory}/.zen/xxxxxxxx.nemurenai %u";
     icon = "zen";
     type = "Application";
     mimeType = [
