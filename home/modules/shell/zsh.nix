@@ -83,17 +83,6 @@
 
 
 
-      if who am i | grep tty1; then
-          clear && uwsm check may-start -q && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
-      fi
-
-      if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
-          if [ -f /tmp/HYPRLAND_INSTANCE_SIGNATURE ]; then
-            export HYPRLAND_INSTANCE_SIGNATURE="$(cat /tmp/HYPRLAND_INSTANCE_SIGNATURE)"
-          fi
-      fi
-
-
       autoload -Uz select-word-style
 
       select-word-style bash
@@ -149,7 +138,8 @@
       alias l="list-dir"
       alias ls="list-dir"
       alias ll="list-dir -lh"
-      alias lll="list-dir -lAh"
+      alias lll="list-dir -Ah"
+      alias llll="list-dir -lAh"
       alias watch="CLICOLOR_FORCE=1 watch -c"
 
       alias rm="trash -v"

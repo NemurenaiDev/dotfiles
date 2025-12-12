@@ -61,7 +61,19 @@
   virtualisation.docker.enable = true;
 
   security.polkit.enable = lib.mkForce (hasRole "desktop");
+  security.sudo.extraRules = [
+    {
+      groups = [ "wheel" ];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/veracrypt --text --unmount";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 
+  services.journald.extraConfig = "MaxRetentionSec=7day";
   services.libinput.enable = true;
   services.openssh.enable = true;
 
@@ -93,11 +105,16 @@
     8523 # automation-server
     25565 # minecraft
     57621 # spotify
-    57622 # spotify librespot
+    57622 # spotify
+    57631 # librespot
+    57632 # librespot
   ];
   networking.firewall.allowedUDPPorts = [
     5353 # mDNS
-    57622 # spotify librespot
+    57621 # spotify
+    57622 # spotify
+    57631 # librespot
+    57632 # librespot
   ];
 
   systemd.tmpfiles.rules = [

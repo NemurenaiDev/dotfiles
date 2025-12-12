@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -17,8 +16,8 @@
     { ... }@inputs:
     let
       commonHostFields = {
-        hostname = "<DEVICE-HOSTNAME>";
         username = "nemurenai";
+        hostname = "<DEVICE-HOSTNAME>";
         deviceId = "<SYNKTHING-DEVICE-ID>";
         snapclients = [ ];
         timezone = "Europe/Kyiv";
@@ -27,6 +26,15 @@
       };
 
       hostsRaw = [
+        {
+          hostname = "homelab";
+          deviceId = "Y33IVUJ-5HMEGX6-CLW3PAQ-PXKI2RF-TUM3Y7C-VAQTDE7-V43LW4V-RV7TIAD";
+          roles = [ "server" ];
+          snapclients = [
+            "192.168.1.110"
+            "192.168.1.111"
+          ];
+        }
         {
           hostname = "cyberia";
           deviceId = "LZAWUPK-DVPWCJ5-7INP5UI-ULGJYSM-25VYXL6-CCHYYXG-A5YFA4O-PORVFAO";
@@ -48,15 +56,6 @@
             buffer = 400;
             codec = "flac";
           };
-        }
-        {
-          hostname = "homelab";
-          deviceId = "Y33IVUJ-5HMEGX6-CLW3PAQ-PXKI2RF-TUM3Y7C-VAQTDE7-V43LW4V-RV7TIAD";
-          roles = [ "server" ];
-          snapclients = [
-            "192.168.1.110"
-            "192.168.1.111"
-          ];
         }
       ];
 

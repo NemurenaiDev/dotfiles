@@ -42,6 +42,8 @@ in
   home.homeDirectory = "/home/${host.username}";
   home.packages = [ pkgs.catppuccin-cursors.mochaLight ];
 
+  home.enableNixpkgsReleaseCheck = false; # bullshit (i guess)
+
   _module.args.wallpaper = "${config.home.homeDirectory}/.assets/wallpapers/erinthul-moon-witch.png";
 
   catppuccin = {

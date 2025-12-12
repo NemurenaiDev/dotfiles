@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 let
   monitors = {
     central = "DP-1";

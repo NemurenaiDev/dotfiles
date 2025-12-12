@@ -4,7 +4,7 @@
   home.file.".config/mako/config".force = true;
   home.file.".config/mako/config".text = ''
     output=${monitors.central}
-    max-history=100
+    max-history=3
     sort=+time
     on-touch=dismiss
     on-button-left=dismiss
@@ -80,7 +80,6 @@
 
 
     [app-name=Zen]
-    # invisible=true
     default-timeout=16000
     anchor=bottom-left
     border-color=#FF7456

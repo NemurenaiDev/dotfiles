@@ -13,20 +13,11 @@
     with pkgs;
     [
       frp
-      mullvad
       tailscale
 
       powerstat
       stress-ng
       lm_sensors
-
-      bun
-      yarn
-      biome
-      nodejs
-      corepack
-      typescript
-      inputs.nixpkgs-stable.legacyPackages.${system}.turbo
 
       neovim
       moor
@@ -44,12 +35,21 @@
       fzf
       fd
       ripgrep
+      shfmt
 
-      inputs.nixpkgs-stable.legacyPackages.${system}.pamixer
+      bun
+      yarn
+      biome
+      nodejs
+      corepack
+      typescript
+      turbo
+
       snapcast
       playerctl
       pulseaudio
       alsa-utils
+      pamixer
 
       sops
       nh
@@ -68,8 +68,10 @@
       gnumake
       cmake
       gcc
-
       jdk
+
+      psmisc
+      bubblewrap
       socat
       wakeonlan
       usbutils
@@ -137,7 +139,7 @@
         hyprpicker
         hyprpolkitagent
 
-        inputs.nixpkgs-stable.legacyPackages.${system}.copyq
+        copyq
         wl-clipboard
 
         vscode
@@ -165,6 +167,7 @@
         postman
         qpwgraph
         remmina
+        veracrypt
 
         mako
         waybar

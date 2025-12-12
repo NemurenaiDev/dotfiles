@@ -11,7 +11,8 @@
     style = "yellow"
 
     [hostname]
-    ssh_only = true
+    ssh_only = false
+    detect_env_vars = ['SSH_CONNECTION', 'BWRAP']
     format = "[$hostname ](bold red)"
 
     [character]
