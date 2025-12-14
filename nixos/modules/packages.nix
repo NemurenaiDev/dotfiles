@@ -12,6 +12,8 @@
   environment.systemPackages =
     with pkgs;
     [
+      inputs.nh.packages.${system}.default
+
       frp
       tailscale
 
@@ -52,7 +54,6 @@
       pamixer
 
       sops
-      nh
       nvd
       nix-output-monitor
       home-manager
