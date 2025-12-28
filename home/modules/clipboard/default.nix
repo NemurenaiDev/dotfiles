@@ -1,10 +1,10 @@
-{ config, ... }:
+{ host, ... }:
 
 {
   home.activation."link-copyq-dat" = ''
-    touch ${config.home.homeDirectory}/.cache/copyq.dat
-    mkdir -p ${config.home.homeDirectory}/.config/copyq/
-    ln -sf ${config.home.homeDirectory}/.cache/copyq.dat ${config.home.homeDirectory}/.config/copyq/copyq_tab_JmNsaXBib2FyZA==.dat
+    touch /home/${host.username}/.cache/copyq.dat
+    mkdir -p /home/${host.username}/.config/copyq/
+    ln -sf /home/${host.username}/.cache/copyq.dat /home/${host.username}/.config/copyq/copyq_tab_JmNsaXBib2FyZA==.dat
   '';
 
   home.file.".config/copyq/copyq.conf".force = true;

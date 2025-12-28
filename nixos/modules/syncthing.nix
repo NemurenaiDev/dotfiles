@@ -79,10 +79,6 @@ in
             ".venv/"
             "venv/"
 
-            # Unity
-            "PackageCache/"
-            "Library/"
-
             # Go
             "pkg/"
             "vendor/"

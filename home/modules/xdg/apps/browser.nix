@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
 {
   xdg.desktopEntries.zen = lib.mkForce {
@@ -7,10 +7,10 @@
     type = "Application";
     noDisplay = true;
   };
-
+  
   xdg.desktopEntries.browser = {
     name = "Zen Browser";
-    exec = "zen --profile ${config.home.homeDirectory}/.zen/xxxxxxxx.nemurenai %u";
+    exec = "zen %u";
     icon = "zen";
     type = "Application";
     mimeType = [

@@ -46,6 +46,7 @@
       corepack
       typescript
       turbo
+      serve
 
       snapcast
       playerctl
@@ -71,6 +72,7 @@
       gcc
       jdk
 
+      unzip
       psmisc
       bubblewrap
       socat
@@ -129,7 +131,7 @@
       [
         inputs.zen-browser.packages.${system}.default
 
-        chromium
+        ungoogled-chromium
 
         hyprland
         hyprlang
@@ -144,8 +146,7 @@
         wl-clipboard
 
         vscode
-        unityhub
-        dotnet-sdk
+        code-cursor
 
         libreoffice
         kitty
@@ -163,12 +164,12 @@
         fuzzel
         blueman
         dconf-editor
-        lutris
         networkmanagerapplet
         postman
         qpwgraph
         remmina
         veracrypt
+        udiskie
 
         mako
         waybar

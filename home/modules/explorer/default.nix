@@ -1,15 +1,17 @@
+{ host, ... }:
+
 {
   home.file.".config/gtk-3.0/bookmarks".force = true;
   home.file.".config/gtk-3.0/bookmarks".text = ''
     file:/// /
-    file:///home/nemurenai Home
-    file:///home/nemurenai/Downloads Downloads
-    file:///home/nemurenai/Pictures Pictures
-    file:///home/nemurenai/Projects Projects
-    
-    sftp://cyberia/home/nemurenai Cyberia
-    sftp://homelab/home/nemurenai Homelab
-    sftp://laptop/home/nemurenai Laptop
+    file:///home/${host.username} Home
+    file:///home/${host.username}/Downloads Downloads
+    file:///home/${host.username}/Pictures Pictures
+    file:///home/${host.username}/Projects Projects
+
+    sftp://cyberia/home/${host.username} Cyberia
+    sftp://homelab/home/${host.username} Homelab
+    sftp://laptop/home/${host.username} Laptop
   '';
 
   home.file.".local/share/nemo/actions/open-terminal-here.nemo_action".force = true;

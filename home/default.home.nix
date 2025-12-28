@@ -18,8 +18,8 @@ let
     SYSTEMD_PAGER = "${pkgs.moor}/bin/moor";
     SYSTEMD_PAGERSECURE = "0";
 
-    PATH = "$PATH:${config.home.homeDirectory}/.yarn/bin";
-    NODE_PATH = "${config.home.homeDirectory}/.npm-packages/lib/node_modules";
+    PATH = "$PATH:/home/${host.username}/.yarn/bin";
+    NODE_PATH = "/home/${host.username}/.npm-packages/lib/node_modules";
     SOPS_AGE_KEY_FILE = "/home/${host.username}/.config/sops/age/key.txt";
 
     HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
@@ -44,7 +44,7 @@ in
 
   home.enableNixpkgsReleaseCheck = false; # bullshit (i guess)
 
-  _module.args.wallpaper = "${config.home.homeDirectory}/.assets/wallpapers/erinthul-moon-witch.png";
+  _module.args.wallpaper = "/home/${host.username}/.assets/wallpapers/erinthul-moon-witch.png";
 
   catppuccin = {
     enable = hasRole "desktop";
