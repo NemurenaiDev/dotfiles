@@ -59,7 +59,7 @@
 
       gs() {
         local server
-        server=$(grep -E '^Host ' ~/.ssh/config | awk '{print $2}' | fzf --height=10 --layout=reverse --preview-window=border-left --preview "sed -n '/^Host {}$/,/^Host /p' ~/.ssh/config | head -n -1")
+        server=$(grep -E '^Host ' ~/.ssh/config | awk '$2 != "*" {print $2}' | fzf --height=10 --layout=reverse --preview-window=border-left --preview "sed -n '/^Host {}$/,/^Host /p' ~/.ssh/config | head -n -1")
         if [[ -n $server ]]; then
           ssh $server
         fi

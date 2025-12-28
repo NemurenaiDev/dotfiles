@@ -75,18 +75,19 @@ in
       "bordersize 0, onworkspace:w[tv1]"
       "bordersize 1, floating:1"
 
-      "group set always, workspace:25"
-
       "float, initialClass:zen|chromium, initialTitle:negative:Picture.in..icture"
-      "size 400 600, initialClass:zen|chromium, initialTitle:negative:Picture.in..icture"
+      "size 600 765, initialClass:zen|chromium, initialTitle:negative:Picture.in..icture"
 
       "workspace 26, initialClass:vesktop"
 
       "fullscreenstate * 2, initialClass:code"
 
-      "renderunfocused, initialClass:chromium"
-
       "move cursor 0 0, initialClass:Unity, initialTitle:UnityEditor.PopupWindow"
+
+      "size 600 765, initialClass:org.telegram.desktop, initialTitle:Mini.App.+"
+      "float, initialClass:org.telegram.desktop, initialTitle:Mini.App.+"
+
+      "suppressevent maximize, initialClass:libreoffice.*"
 
       "workspace special:hidden silent, initialClass:^$, initialTitle:LibreOffice"
       "workspace special:hidden silent, initialClass:^$, initialTitle:.*is.sharing.your.screen.*"
@@ -122,9 +123,6 @@ in
 
       "size 1280 720, initialClass:kitty-windowinfo"
 
-      "size 600 765, initialClass:org.telegram.desktop, initialTitle:Mini.App.+"
-      "float, initialClass:org.telegram.desktop, initialTitle:Mini.App.+"
-
       ### media & docs ###
 
       "float, initialClass:soffice"
@@ -138,24 +136,24 @@ in
       "size 500 300, initialTitle:Picture.in..icture"
       "move 100%-506 100%-301, initialTitle:Picture.in..icture"
 
-      "float, initialClass:mpv|eog|Eog"
-      "center, initialClass:mpv|eog|Eog"
-      "size 96% 92.5%, initialClass:mpv|eog|Eog"
-      "move 2% 5%, initialClass:mpv|eog|Eog"
+      "float, initialClass:(mpv|eog|Eog)"
+      "center, initialClass:(mpv|eog|Eog)"
+      "size 96% 92.5%, initialClass:(mpv|eog|Eog)"
+      "move 2% 5%, initialClass:(mpv|eog|Eog)"
 
       ### files ###
 
-      "float, initialTitle:Confirm"
-      "center, initialTitle:Confirm"
-      "size 960 300, initialTitle:Confirm"
+      "float, initialTitle:.*(Confirm).*"
+      "center, initialTitle:.*(Confirm).*"
+      "size 960 300, initialTitle:.*(Confirm).*"
 
-      "float, initialTitle:Rename|File Operation"
-      "center, initialTitle:Rename|File Operation"
-      "size 450 150, initialTitle:Rename|File Operation"
+      "float, initialTitle:.*(Rename|File.*Operation).*"
+      "center, initialTitle:.*(Rename|File.*Operation).*"
+      "size 450 150, initialTitle:.*(Rename|File.*Operation).*"
 
-      "float, initialTitle:File Upload|Choose Files"
-      "center, initialTitle:File Upload|Choose Files"
-      "size 960 720, initialTitle:File Upload|Choose Files"
+      "float, initialTitle:.*(Upload|Choose|Select).*"
+      "center, initialTitle:.*(Upload|Choose|Select).*"
+      "size 960 720, initialTitle:.*(Upload|Choose|Select).*"
 
       ### utils ###
 
@@ -181,16 +179,16 @@ in
       "center, initialClass:.*(file-roller|FileRoller).*"
       "maxsize 960 720, initialClass:.*(file-roller|FileRoller).*"
 
-      "pin, initialClass:.*blueman.*|.*nm-connection-editor.*"
-      "float, initialClass:.*blueman.*|.*nm-connection-editor.*"
-      "center, initialClass:.*blueman.*|.*nm-connection-editor.*"
-      "maxsize 960 720, initialClass:.*blueman.*|.*nm-connection-editor.*"
+      "pin, initialClass:.*(blueman|nm-connection-editor).*"
+      "float, initialClass:.*(blueman|nm-connection-editor).*"
+      "center, initialClass:.*(blueman|nm-connection-editor).*"
+      "maxsize 960 720, initialClass:.*(blueman|nm-connection-editor).*"
 
-      "size 640 480, initialClass:.*blueman-manager.*|.*blueman-services.*|.*blueman-sendto.*"
+      "size 640 480, initialClass:.*(blueman-manager|blueman-services|blueman-sendto).*"
 
-      "float, initialClass:.*pavucontrol.*|.*easyeffects.*"
-      "center, initialClass:.*pavucontrol.*|.*easyeffects.*"
-      "size 960 720, initialClass:.*pavucontrol.*|.*easyeffects.*"
+      "float, initialClass:.*(pavucontrol|easyeffects).*"
+      "center, initialClass:.*(pavucontrol|easyeffects).*"
+      "size 960 720, initialClass:.*(pavucontrol|easyeffects).*"
     ];
   };
 }

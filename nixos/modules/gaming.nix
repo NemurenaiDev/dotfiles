@@ -2,13 +2,13 @@
 
 {
   environment.systemPackages = with pkgs; [
-    lutris
-    mangohud
-    steam-run
-    
-    bottles
-    winetricks
     wine-wayland
+    winetricks
+    steam-run
+    mangohud
+
+    lutris
+    bottles
 
     prismlauncher
   ];

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ host, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -44,10 +44,10 @@
 
       ### workspace-specific applications ###
 
-      "SUPER, W, exec, run-on-workspace '21' 'zen --profile ${config.home.homeDirectory}/.zen/xxxxxxxx.nemurenai'"
+      "SUPER, W, exec, run-on-workspace '21' 'zen'"
       "SUPER SHIFT, W, movetoworkspace, 21"
 
-      "SUPER, A, exec, run-on-workspace '22' 'zen --profile ${config.home.homeDirectory}/.zen/xxxxxxxx.nemurenai --private-window'"
+      "SUPER, A, exec, run-on-workspace '22' 'zen --private-window'"
       "SUPER SHIFT, A, movetoworkspace, 22"
 
       "SUPER, X, exec, run-on-workspace '25' 'Telegram'"
@@ -69,11 +69,11 @@
 
       ### screenshot ###
 
-      ", Print, exec, ${config.home.homeDirectory}/.bin/screenshot --now"
-      "SHIFT, Print, exec, ${config.home.homeDirectory}/.bin/screenshot --now"
-      "SUPER ALT, S, exec, ${config.home.homeDirectory}/.bin/screenshot --win"
-      "SUPER CTRL, S, exec, ${config.home.homeDirectory}/.bin/screenshot --screen"
-      "SUPER SHIFT, S, exec, ${config.home.homeDirectory}/.bin/screenshot --area"
+      ", Print, exec, /home/${host.username}/.bin/screenshot --now"
+      "SHIFT, Print, exec, /home/${host.username}/.bin/screenshot --now"
+      "SUPER ALT, S, exec, /home/${host.username}/.bin/screenshot --win"
+      "SUPER CTRL, S, exec, /home/${host.username}/.bin/screenshot --screen"
+      "SUPER SHIFT, S, exec, /home/${host.username}/.bin/screenshot --area"
 
       ### focus control & groups control ###
 
@@ -133,19 +133,19 @@
 
       ### keyboard layout ###
 
-      "ALT SHIFT, 1, exec, ${config.home.homeDirectory}/.bin/switch-layout 0"
-      "ALT SHIFT, 2, exec, ${config.home.homeDirectory}/.bin/switch-layout 1"
-      "ALT SHIFT, 3, exec, ${config.home.homeDirectory}/.bin/switch-layout 2"
+      "ALT SHIFT, 1, exec, /home/${host.username}/.bin/switch-layout 0"
+      "ALT SHIFT, 2, exec, /home/${host.username}/.bin/switch-layout 1"
+      "ALT SHIFT, 3, exec, /home/${host.username}/.bin/switch-layout 2"
 
       ### xf86 buttons ###
 
-      ", xf86MonBrightnessDown, exec, ${config.home.homeDirectory}/.bin/brightness --dec"
-      ", xf86MonBrightnessUp, exec, ${config.home.homeDirectory}/.bin/brightness --inc"
+      ", xf86MonBrightnessDown, exec, /home/${host.username}/.bin/brightness --dec"
+      ", xf86MonBrightnessUp, exec, /home/${host.username}/.bin/brightness --inc"
 
-      ", xf86AudioRaiseVolume, exec, ${config.home.homeDirectory}/.bin/volume --inc"
-      ", xf86AudioLowerVolume, exec, ${config.home.homeDirectory}/.bin/volume --dec"
-      ", XF86AudioMicMute, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
-      ", XF86AudioMute, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
+      ", xf86AudioRaiseVolume, exec, /home/${host.username}/.bin/volume --inc"
+      ", xf86AudioLowerVolume, exec, /home/${host.username}/.bin/volume --dec"
+      ", XF86AudioMicMute, exec, /home/${host.username}/.bin/volume --toggle-mic"
+      ", XF86AudioMute, exec, /home/${host.username}/.bin/volume --toggle-mic"
 
       ", xf86AudioStop, exec, playerctl stop"
       ", xf86AudioPlay, exec, playerctl play-pause"
@@ -153,7 +153,7 @@
       ", xf86AudioNext, exec, playerctl next"
       ", xf86AudioPrev, exec, playerctl previous"
 
-      ", F21, exec, ${config.home.homeDirectory}/.bin/volume --toggle-mic"
+      ", F21, exec, /home/${host.username}/.bin/volume --toggle-mic"
       ", F22, exec, playerctl play-pause"
       ", F23, exec, playerctl previous"
       ", F24, exec, playerctl next"

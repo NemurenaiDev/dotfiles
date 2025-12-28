@@ -1,11 +1,11 @@
-{ config, ... }:
+{ host, ... }:
 
 {
   programs.btop = {
     enable = true;
 
     extraConfig = ''
-      color_theme = "${config.home.homeDirectory}/.config/btop/catppuccin.mocha.theme"
+      color_theme = "/home/${host.username}/.config/btop/catppuccin.mocha.theme"
       log_level = "WARNING"
       theme_background = False
       truecolor = True

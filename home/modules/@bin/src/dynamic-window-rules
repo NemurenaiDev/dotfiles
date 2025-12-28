@@ -9,10 +9,12 @@ handle() {
 handle_windowtitlev2() {
     ADDRESS="$(echo "$@" | grep -oE ">>[A-Za-z0-9]{12}," | grep -oE "[A-Za-z0-9]{12}")"
     CLIENT="$(hyprctl clients -j | jq ".[] | select(.address == \"0x$ADDRESS\")")"
+	
+	REGEX="Extension:.*Bitwarden|.*Google Pay.*|.*Google accounts.*|.*Authorize application.*"
 
     if echo "$CLIENT" | jq -e 'select(.class == "zen" or .class == "chromium")' > /dev/null; then
         if echo "$CLIENT" | jq -e '(.title != .initialTitle)' > /dev/null; then
-            if echo "$CLIENT" | jq -e 'select(.title | test("(Extension:.*Bitwarden|.*Google Pay.*|.*Google accounts.*)"; "i") | not)' > /dev/null; then
+            if echo "$CLIENT" | jq -e "select(.title | test(\"($REGEX)\"; \"i\") | not)" > /dev/null; then
                 workspace="$(echo "$CLIENT" | jq '.workspace.id')"
                 hyprctl dispatch settiled "address:0x$ADDRESS"
                 hyprctl dispatch movetoworkspacesilent $workspace, "address:0x$ADDRESS"

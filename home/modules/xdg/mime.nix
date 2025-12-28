@@ -6,17 +6,21 @@
     [Removed Associations]
 
     [Default Applications]
+    
+    inode/directory=nemo.desktop
+
+
     x-scheme-handler/postman=Postman.desktop
 
-    x-scheme-handler/tg=org.telegram.desktop.desktop
-    x-scheme-handler/tonsite=org.telegram.desktop.desktop
+    x-scheme-handler/tg=org.telegram.desktop
+    x-scheme-handler/tonsite=org.telegram.desktop
 
-    x-scheme-handler/about=browser.desktop.desktop
-    x-scheme-handler/chrome=browser.desktop.desktop
-    x-scheme-handler/http=browser.desktop.desktop
-    x-scheme-handler/https=browser.desktop.desktop
-    x-scheme-handler/mailto=browser.desktop.desktop
-    x-scheme-handler/unknown=browser.desktop.desktop
+    x-scheme-handler/about=browser.desktop
+    x-scheme-handler/chrome=browser.desktop
+    x-scheme-handler/http=browser.desktop
+    x-scheme-handler/https=browser.desktop
+    x-scheme-handler/mailto=browser.desktop
+    x-scheme-handler/unknown=browser.desktop
 
 
     application/pdf=browser.desktop
