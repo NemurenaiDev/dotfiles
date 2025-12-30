@@ -1,32 +1,32 @@
 #!/usr/bin/env sh
 
-shotnow() {
-	grim - | wl-copy
-}
-
-shotwin() {
+shot-win() {
 	w_pos="$(hyprctl activewindow -j | jq -r '.at | join(",")')"
 	w_size="$(hyprctl activewindow -j | jq -r '.size | join("x")')"
 	grim -g "$w_pos $w_size" - | wl-copy
 }
 
-shotarea() {
+shot-area() {
 	grim -g "$(slurp -b 1B1F28CC -w 0)" - | wl-copy
 }
 
-shotscreen() {
+shot-and-ocr-area() {
+	grim -g "$(slurp -b 1B1F28CC -w 0)" - | tesseract stdin stdout -l eng+ukr+rus 2>/dev/null | wl-copy
+}
+
+shot-screen() {
     grim -o "$(hyprctl -j activeworkspace | jq -r '.monitor')" - | wl-copy
 }
 
 
-if [[ "$1" == "--now" ]]; then
-	shotnow
-elif [[ "$1" == "--win" ]]; then
-	shotwin
+if [[ "$1" == "--win" ]]; then
+	shot-win
 elif [[ "$1" == "--area" ]]; then
-	shotarea
+	shot-area
 elif [[ "$1" == "--screen" ]]; then
-	shotscreen
+	shot-screen
+elif [[ "$1" == "--ocr-area" ]]; then
+	shot-and-ocr-area
 else
-    echo -e "Available Options : --now --win --area --screen"
+    echo -e "Available Options : --win --area --screen --ocr-area"
 fi

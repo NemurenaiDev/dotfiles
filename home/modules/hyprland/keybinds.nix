@@ -53,9 +53,6 @@
       "SUPER, X, exec, run-on-workspace '25' 'Telegram'"
       "SUPER SHIFT, X, movetoworkspace, 25"
 
-      "SUPER, C, exec, run-on-workspace '26' 'vesktop'"
-      "SUPER SHIFT, C, movetoworkspace, 26"
-
       "SUPER, F3, exec, run-on-workspace '36' 'spotify --enable-features=UseOzonePlatform --ozone-platform-hint=wayland'"
       "SUPER, F4, exec, run-on-workspace '39' 'obs'"
 
@@ -69,11 +66,13 @@
 
       ### screenshot ###
 
-      ", Print, exec, /home/${host.username}/.bin/screenshot --now"
-      "SHIFT, Print, exec, /home/${host.username}/.bin/screenshot --now"
+      ", Print, exec, /home/${host.username}/.bin/screenshot --screen"
+      
       "SUPER ALT, S, exec, /home/${host.username}/.bin/screenshot --win"
       "SUPER CTRL, S, exec, /home/${host.username}/.bin/screenshot --screen"
       "SUPER SHIFT, S, exec, /home/${host.username}/.bin/screenshot --area"
+
+      "SUPER SHIFT, R, exec, /home/${host.username}/.bin/screenshot --ocr-area"
 
       ### focus control & groups control ###
 
@@ -126,6 +125,7 @@
       "SUPER, 8, workspace, 8"
       "SUPER, F1, workspace, 9"
       "SUPER, F2, workspace, 10"
+      
       "SUPER CTRL SHIFT, left, workspace, -1"
       "SUPER CTRL SHIFT, right, workspace, +1"
 

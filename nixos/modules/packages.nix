@@ -47,6 +47,7 @@
       typescript
       turbo
       serve
+      prisma
 
       snapcast
       playerctl
@@ -144,6 +145,7 @@
 
         copyq
         wl-clipboard
+        tesseract
 
         vscode
         code-cursor

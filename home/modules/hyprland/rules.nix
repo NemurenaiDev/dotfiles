@@ -31,8 +31,7 @@ in
       "11, monitor:${leftOrCentral}, default:true"
       "12, monitor:${leftOrCentral}, default:true"
 
-      "13, monitor:${central}, default:true"
-
+      "13, monitor:${leftOrCentral}, default:true"
       "14, monitor:${leftOrCentral}, default:true"
       "15, monitor:${leftOrCentral}, default:true"
       "16, monitor:${leftOrCentral}, default:true"
