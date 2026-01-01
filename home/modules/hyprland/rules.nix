@@ -135,24 +135,28 @@ in
       "size 500 300, initialTitle:Picture.in..icture"
       "move 100%-506 100%-301, initialTitle:Picture.in..icture"
 
-      "float, initialClass:(mpv|eog|Eog)"
-      "center, initialClass:(mpv|eog|Eog)"
-      "size 96% 92.5%, initialClass:(mpv|eog|Eog)"
-      "move 2% 5%, initialClass:(mpv|eog|Eog)"
+      "float, initialClass:(org.kde.haruna|mpv|eog|Eog)"
+      "center, initialClass:(org.kde.haruna|mpv|eog|Eog)"
+      "size 96% 92.5%, initialClass:(org.kde.haruna|mpv|eog|Eog)"
+      "move 2% 5%, initialClass:(org.kde.haruna|mpv|eog|Eog)"
 
       ### files ###
 
-      "float, initialTitle:.*(Confirm).*"
-      "center, initialTitle:.*(Confirm).*"
-      "size 960 300, initialTitle:.*(Confirm).*"
+      "float, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Confirm).*"
+      "center, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Confirm).*"
+      "size 960 300, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Confirm).*"
 
-      "float, initialTitle:.*(Rename|File.*Operation).*"
-      "center, initialTitle:.*(Rename|File.*Operation).*"
-      "size 450 150, initialTitle:.*(Rename|File.*Operation).*"
+      "float, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Rename|File.*Operation).*"
+      "center, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Rename|File.*Operation).*"
+      "size 450 150, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Rename|File.*Operation).*"
 
-      "float, initialTitle:.*(Upload|Choose|Select).*"
-      "center, initialTitle:.*(Upload|Choose|Select).*"
-      "size 960 720, initialTitle:.*(Upload|Choose|Select).*"
+      "float, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Open.with).*"
+      "center, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Open.with).*"
+      "size 720 680, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Open.with).*"
+
+      "float, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Upload|Choose|Select).*"
+      "center, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Upload|Choose|Select).*"
+      "size 960 720, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Upload|Choose|Select).*"
 
       ### utils ###
 

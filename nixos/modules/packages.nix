@@ -21,6 +21,8 @@
       stress-ng
       lm_sensors
 
+      vimv
+      nano
       neovim
       moor
       highlight
@@ -85,7 +87,6 @@
       bind
       bluez
       bridge-utils
-      cbonsai
       cloc
       cpio
       dmidecode
@@ -110,7 +111,6 @@
       libinput
       lsd
       man-db
-      mpv
       ffmpeg
       nano
       ncdu
@@ -149,6 +149,9 @@
 
         vscode
         code-cursor
+
+        mpv
+        haruna
 
         libreoffice
         kitty

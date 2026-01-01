@@ -39,6 +39,15 @@ in
           devices = userOtherDeviceNames;
         };
 
+        ".config" = {
+          path = "/home/${host.username}/.config";
+          devices = userOtherDeviceNames;
+          ignorePatterns = [
+            "!mimeapps.list"
+            "*"
+          ];
+        };
+
         "Projects" = {
           path = "/home/${host.username}/Projects";
           devices = userOtherDeviceNames;

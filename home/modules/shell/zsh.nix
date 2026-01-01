@@ -168,6 +168,10 @@
       alias gpo="git push origin"
 
 
+      alias vimv="EDITOR='$VISUAL' vimv"
+      alias rename="EDITOR='$VISUAL' vimv"
+
+
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
       eval "$(starship init zsh)"
