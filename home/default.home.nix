@@ -11,8 +11,9 @@ let
     NH_FLAKE = "/home/${host.username}/Projects/dotfiles";
 
     SHELL = "${pkgs.zsh}/bin/zsh";
-    VISUAL = "${pkgs.nano}/bin/nano";
-    EDITOR = "${pkgs.nano}/bin/nano";
+
+    EDITOR = "nano";
+    VISUAL = if hasRole "desktop" then "code --wait --new-window" else "nano";
 
     PAGER = "${pkgs.moor}/bin/moor";
     SYSTEMD_PAGER = "${pkgs.moor}/bin/moor";
