@@ -1,9 +1,4 @@
-{
-  pkgs,
-  host,
-  lib,
-  ...
-}:
+{ host, lib, ... }:
 
 {
   services.snapserver = lib.optionalAttrs (host ? snapserver) {
@@ -11,11 +6,7 @@
     openFirewall = true;
 
     settings = {
-      http = {
-        enabled = true;
-        bind_to_address = "192.168.0.0";
-        doc_root = "${pkgs.snapcast}/share/snapserver/snapweb/";
-      };
+      http.enabled = false;
 
       stream = {
         codec = host.snapserver.codec;
