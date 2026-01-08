@@ -89,7 +89,6 @@
       "SUPER SHIFT, Q, exec, kill \"$(hyprctl -j activewindow | jq -r '.pid')\""
 
       "SUPER, F, fullscreen, 2"
-      "SUPER, F11, fullscreen, 2"
 
       "SUPER, RETURN, togglefloating"
       "SUPER SHIFT, RETURN, pin"
@@ -126,9 +125,6 @@
       "SUPER, F1, workspace, 9"
       "SUPER, F2, workspace, 10"
       
-      "SUPER CTRL SHIFT, left, workspace, -1"
-      "SUPER CTRL SHIFT, right, workspace, +1"
-
       "SUPER CTRL, escape, movecurrentworkspacetomonitor, +1"
 
       ### keyboard layout ###
@@ -145,7 +141,7 @@
       ", xf86AudioRaiseVolume, exec, /home/${host.username}/.bin/volume --inc"
       ", xf86AudioLowerVolume, exec, /home/${host.username}/.bin/volume --dec"
       ", XF86AudioMicMute, exec, /home/${host.username}/.bin/volume --toggle-mic"
-      ", XF86AudioMute, exec, /home/${host.username}/.bin/volume --toggle-mic"
+      ", XF86AudioMute, exec, /home/${host.username}/.bin/volume --toggle"
 
       ", xf86AudioStop, exec, playerctl stop"
       ", xf86AudioPlay, exec, playerctl play-pause"

@@ -43,7 +43,16 @@ in
           path = "/home/${host.username}/.config";
           devices = userOtherDeviceNames;
           ignorePatterns = [
+            "!haruna"
+
+            "!libreoffice/4/user/config"
+            "!libreoffice/4/user/autocorr"
+            "!libreoffice/4/user/autotext"
+            "!libreoffice/4/user/psprint"
+            "!libreoffice/4/user/extensions"
+
             "!mimeapps.list"
+
             "*"
           ];
         };
