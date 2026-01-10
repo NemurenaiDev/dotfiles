@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   programs.kitty = {
     enable = true;
@@ -41,6 +43,8 @@
 
       map ctrl+c copy_or_interrupt
       map ctrl+v paste_from_buffer clipboard
+
+      map f1 pipe @text overlay ${config.home.sessionVariables.EDITOR}
 
       background #000000
     '';

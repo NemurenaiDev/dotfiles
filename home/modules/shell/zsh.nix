@@ -59,7 +59,7 @@
 
       gs() {
         local server
-        server=$(grep -E '^Host ' ~/.ssh/config | awk '$2 != "*" {print $2}' | fzf --height=10 --layout=reverse --preview-window=border-left --preview "sed -n '/^Host {}$/,/^Host /p' ~/.ssh/config | head -n -1")
+        server=$(grep -E '^Host ' ~/.ssh/config | awk '$2 != "*" {print $2}' | fzf --height=10 --min-height=2 --layout=reverse --preview-window=border-left --preview "sed -n '/^Host {}$/,/^Host /p' ~/.ssh/config | head -n -1")
         if [[ -n $server ]]; then
           ssh $server
         fi
@@ -71,7 +71,7 @@
         session=$(
           FZF_DEFAULT_COMMAND="zellij list-sessions" \
             fzf \
-              --ansi --height=10 --layout=reverse \
+              --ansi --height=10 --min-height=2 --layout=reverse \
               --header="Press Enter to attach or Del to kill session" \
               --bind 'del:execute-silent(echo {} | awk "{print \$1}" | xargs zellij delete-session --force)+reload(eval $FZF_DEFAULT_COMMAND)'
         )
@@ -87,13 +87,23 @@
 
       select-word-style bash
 
+
+      autoload -Uz edit-command-line
+
+      zle -N edit-command-line
+
+
       autoload -Uz add-zsh-hook
 
       add-zsh-hook chpwd list-dir
       add-zsh-hook precmd update-history
 
+      zle -N fzf-hist-replace
+
+
       HISTSIZE="2500"
       SAVEHIST="2500"
+
 
       setopt INC_APPEND_HISTORY
       setopt SHARE_HISTORY
@@ -102,6 +112,7 @@
       setopt HIST_IGNORE_ALL_DUPS
       setopt HIST_REDUCE_BLANKS
       setopt HIST_VERIFY
+
 
       zstyle ":completion:*" completer _extensions _complete #_approximate
       zstyle ":completion:*" menu select
@@ -112,11 +123,11 @@
       zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
       zstyle ":completion:*" list-colors "''${(s.:.)LS_COLORS}"
 
-      bindkey "^f" autosuggest-accept
+      
+      bindkey "^[f" autosuggest-accept
       bindkey "^[s" toggle-sudo
-
-      bindkey "^[[A" history-search-backward
-      bindkey "^[[B" history-search-forward
+      bindkey '^[e' edit-command-line
+      bindkey "^[r" fzf-history-widget
 
       bindkey "^[[3;5~" kill-word
       bindkey "^H" backward-kill-word
@@ -129,6 +140,7 @@
 
       bindkey "^Z" undo
       bindkey "^Y" redo
+
 
 
       alias reload="source ~/.zshrc"
@@ -145,6 +157,12 @@
       alias rm="trash -v"
       alias hist="history 0 | tac | fzf | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | wl-copy -n"
       alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /run --exclude /mnt --exclude /home/yabai/Library"
+
+      alias vimv="vimv"
+      alias rename="vimv"
+
+      alias ed="$EDITOR"
+      alias edit="$EDITOR"
 
       alias os="nh os"
       alias oss="sudo -v && nh os switch"
@@ -168,9 +186,7 @@
       alias gpo="git push origin"
 
 
-      alias vimv="EDITOR='$VISUAL' vimv"
-      alias rename="EDITOR='$VISUAL' vimv"
-
+      export FZF_CTRL_R_OPTS="--ansi --height=10 --min-height=2"
 
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
