@@ -5,6 +5,7 @@
     ./zsh.nix
 
     ./apps/fastfetch.nix
+    ./apps/micro.nix
     ./apps/btop.nix
   ];
 }

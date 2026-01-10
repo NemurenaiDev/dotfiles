@@ -86,6 +86,7 @@ tooltip label {
 #workspaces,
 #window,
 #language,
+#custom-steam,
 #custom-playerlabel,
 #custom-weather {
     color: rgb(186, 194, 222);
@@ -97,6 +98,9 @@ tooltip label {
     border-radius: 14px;
 }
 
+#custom-steam {
+    padding-right: 11px;
+}
 
 /* individual module colors */
 /* #custom-playerlabel {

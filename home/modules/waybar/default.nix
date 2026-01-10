@@ -1,4 +1,4 @@
-{ host, ... }:
+{ host, pkgs, ... }:
 
 {
   programs.waybar = {
@@ -18,6 +18,7 @@
         "margin-left" = 5;
         "margin-right" = 5;
         "modules-left" = [
+          "custom/steam"
           "clock#n1"
           "clock#n2"
           "battery"
@@ -30,6 +31,11 @@
           "pulseaudio"
           "hyprland/language"
         ];
+        "custom/steam" = {
+          "format" = "";
+          "tooltip" = "Launch Steam Big Picture";
+          "on-click" = "notify-send 'Steam is starting...' && hyprctl dispatch exec steam -bigpicture";
+        };
         "cpu" = {
           "interval" = 1;
           "format" = " {icon} {usage}%  ";

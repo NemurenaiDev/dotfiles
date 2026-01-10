@@ -21,8 +21,9 @@
       stress-ng
       lm_sensors
 
+      micro
       vimv
-      nano
+      vim
       neovim
       moor
       highlight
