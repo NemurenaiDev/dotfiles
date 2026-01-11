@@ -34,7 +34,7 @@
         "custom/steam" = {
           "format" = "";
           "tooltip" = "Launch Steam Big Picture";
-          "on-click" = "notify-send 'Steam is starting...' && hyprctl dispatch exec steam -bigpicture";
+          "on-click" = "notify-send 'Steam is starting...' && steam -bigpicture";
         };
         "cpu" = {
           "interval" = 1;
