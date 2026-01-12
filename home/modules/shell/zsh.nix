@@ -34,7 +34,6 @@
           fi
           zle end-of-line
       }
-      zle -N toggle-sudo
 
       get-terminal-name() {
           ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))"
@@ -81,24 +80,33 @@
         fi
       }
 
+      fzf-history-widget() {
+        local selected
+        selected="$(history 0 | tac | fzf --ansi --height=10 --min-height=2 --query="$LBUFFER")" || return
+        LBUFFER="$(echo "$selected" | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//')"
+        zle reset-prompt
+      }
+
+      edit-command-line-editor() {
+        VISUAL=$EDITOR zle edit-command-line
+      }
+
 
 
       autoload -Uz select-word-style
+      autoload -Uz edit-command-line
+      autoload -Uz add-zsh-hook
 
       select-word-style bash
 
-
-      autoload -Uz edit-command-line
-
+      zle -N toggle-sudo
+      zle -N fzf-history-widget
       zle -N edit-command-line
-
-
-      autoload -Uz add-zsh-hook
+      zle -N edit-command-line-editor
 
       add-zsh-hook chpwd list-dir
       add-zsh-hook precmd update-history
 
-      zle -N fzf-hist-replace
 
 
       HISTSIZE="2500"
@@ -124,14 +132,14 @@
       zstyle ":completion:*" list-colors "''${(s.:.)LS_COLORS}"
 
       
-      bindkey "^[f" autosuggest-accept
       bindkey "^[s" toggle-sudo
-      bindkey '^[e' edit-command-line
-      bindkey "^[r" fzf-history-widget
+      bindkey "^f" autosuggest-accept
+      bindkey "^r" fzf-history-widget
+      bindkey '^e' edit-command-line-editor
 
+      bindkey "^[[3~" delete-char
       bindkey "^[[3;5~" kill-word
       bindkey "^H" backward-kill-word
-      bindkey "^[[3~" delete-char
 
       bindkey "^[[1;5D" backward-word
       bindkey "^[[1;5C" forward-word
@@ -186,9 +194,7 @@
       alias gpo="git push origin"
 
 
-      export FZF_CTRL_R_OPTS="--ansi --height=10 --min-height=2"
 
-      eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
       eval "$(starship init zsh)"
 
