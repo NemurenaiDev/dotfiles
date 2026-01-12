@@ -98,12 +98,14 @@ in
       "center, initialClass:net.lutris.Lutris, initialTitle:Lutris.+"
       "size 1400 800, initialClass:net.lutris.Lutris, initialTitle:Lutris.+"
 
-      "float, initialClass:Steam|steam, initialTitle:.+"
-      "tile, initialClass:Steam|steam, initialTitle:^Steam$"
+      "float, initialClass:Steam|steam, initialTitle:negative:Steam|Steam.Big.Picture.Mode"
+
+      "tile, initialClass:Steam|steam, initialTitle:Steam|Steam.Big.Picture.Mode"
+      "suppressevent fullscreen, initialClass:Steam|steam, initialTitle:Steam|Steam.Big.Picture.Mode"
+
+      "fullscreen, initialClass:steam_app_.*"
 
       "size 1600 900, initialClass:Steam|steam, initialTitle:.*Screenshot.*"
-
-      "renderunfocused, initialClass:steam_app_1086940, initialTitle:Baldur.s.Gate.3.*"
 
       ### dialogs ###
 
