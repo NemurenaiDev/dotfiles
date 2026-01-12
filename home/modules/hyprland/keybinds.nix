@@ -133,21 +133,21 @@
       "ALT SHIFT, 2, exec, /home/${host.username}/.bin/switch-layout 1"
       "ALT SHIFT, 3, exec, /home/${host.username}/.bin/switch-layout 2"
 
-      ### xf86 buttons ###
+      ### functional keys ###
 
-      ", xf86MonBrightnessDown, exec, /home/${host.username}/.bin/brightness --dec"
-      ", xf86MonBrightnessUp, exec, /home/${host.username}/.bin/brightness --inc"
+      ", XF86MonBrightnessDown, exec, /home/${host.username}/.bin/brightness --dec"
+      ", XF86MonBrightnessUp, exec, /home/${host.username}/.bin/brightness --inc"
 
-      ", xf86AudioRaiseVolume, exec, /home/${host.username}/.bin/volume --inc"
-      ", xf86AudioLowerVolume, exec, /home/${host.username}/.bin/volume --dec"
+      ", XF86AudioRaiseVolume, exec, /home/${host.username}/.bin/volume --inc"
+      ", XF86AudioLowerVolume, exec, /home/${host.username}/.bin/volume --dec"
       ", XF86AudioMicMute, exec, /home/${host.username}/.bin/volume --toggle-mic"
       ", XF86AudioMute, exec, /home/${host.username}/.bin/volume --toggle"
 
-      ", xf86AudioStop, exec, playerctl stop"
-      ", xf86AudioPlay, exec, playerctl play-pause"
-      ", xf86AudioPause, exec, playerctl play-pause"
-      ", xf86AudioNext, exec, playerctl next"
-      ", xf86AudioPrev, exec, playerctl previous"
+      ", XF86AudioStop, exec, playerctl stop"
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioPause, exec, playerctl play-pause"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPrev, exec, playerctl previous"
 
       ", F21, exec, /home/${host.username}/.bin/volume --toggle-mic"
       ", F22, exec, playerctl play-pause"

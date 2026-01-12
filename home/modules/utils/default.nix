@@ -9,6 +9,7 @@
     ./librespot.nix
   ]
   ++ lib.optionals (hasRole "desktop") [
+    ./gamepad.nix
     ./mangohud.nix
   ];
 }

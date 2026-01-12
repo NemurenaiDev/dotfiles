@@ -7,8 +7,8 @@
 
 {
   imports = [
-    "${builtins.toString ./.}/@assets"
-    "${builtins.toString ./.}/@bin"
+    "${toString ./.}/@assets"
+    "${toString ./.}/@bin"
 
     ./shell
     ./utils

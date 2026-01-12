@@ -43,6 +43,7 @@
     anchor=bottom-left
 
     [urgency=high]
+    output=
     default-timeout=0
     anchor=bottom-left
     border-color=#eb6f92
@@ -53,6 +54,7 @@
     default-timeout=16000
 
     [category=adjustments]
+    output=
     text-color=#f7f7f7
     text-alignment=right
     default-timeout=2000
@@ -62,6 +64,7 @@
     width=175
 
     [category=battery]
+    output=
     text-color=#f7f7f7
     text-alignment=center
     icon-location=bottom
@@ -72,7 +75,19 @@
     height=96
     width=96
 
+    [category=gaming]
+    output=
+    text-color=#f7f7f7
+    text-alignment=left
+    icon-location=left
+    anchor=top-center
+    default-timeout=3000
+    max-icon-size=32
+    height=100
+    width=250
+
     [category=error]
+    output=
     border-size=2
     border-color=#e64553
     default-timeout=10000
