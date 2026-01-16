@@ -149,6 +149,7 @@
         tesseract
 
         vscode
+        opencode
         code-cursor
 
         mpv

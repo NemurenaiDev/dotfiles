@@ -7,12 +7,12 @@ in
 {
   wayland.windowManager.hyprland.settings = {
     layerrule = [
-      "blur, launcher"
-      "dimaround, launcher"
-      "ignorezero, launcher"
+      "blur on, match:namespace (launcher)"
+      "dim_around on, match:namespace (launcher)"
+      "ignore_alpha 0, match:namespace (launcher)"
 
-      "blur, notifications"
-      "ignorezero, notifications"
+      "blur on, match:namespace (notifications)"
+      "ignore_alpha 0, match:namespace (notifications)"
     ];
 
     workspace = [
@@ -67,133 +67,135 @@ in
       "special:aichat, gapsout:50"
     ];
 
-    windowrulev2 = [
+    windowrule = [
 
       ### other ###
 
-      "bordersize 0, onworkspace:w[tv1]"
-      "bordersize 1, floating:1"
+      "border_size 0, match:workspace w[tv1]"
+      "border_size 1, match:float true"
 
-      "float, initialClass:zen|chromium, initialTitle:negative:Picture.in..icture"
-      "size 600 765, initialClass:zen|chromium, initialTitle:negative:Picture.in..icture"
+      "float on, match:class (zen|chromium), match:title negative:(Picture.in..icture)"
+      "size 600 765, match:class (zen|chromium), match:title negative:(Picture.in..icture)"
 
-      "workspace 26, initialClass:vesktop"
+      "workspace 26, match:class (vesktop)"
 
-      "fullscreenstate * 2, initialClass:code"
+      "fullscreen_state 0 2, match:class (code)"
 
-      "move cursor 0 0, initialClass:Unity, initialTitle:UnityEditor.PopupWindow"
+      "move cursor 0 0, match:class (Unity), match:title (UnityEditor.PopupWindow)"
 
-      "size 600 765, initialClass:org.telegram.desktop, initialTitle:Mini.App.+"
-      "float, initialClass:org.telegram.desktop, initialTitle:Mini.App.+"
+      "size 600 765, match:class (org.telegram.desktop), match:title (Mini.App.+)"
+      "float on, match:class (org.telegram.desktop), match:title (Mini.App.+)"
 
-      "suppressevent maximize, initialClass:libreoffice.*"
+      "suppress_event maximize, match:class (libreoffice.*)"
 
-      "workspace special:hidden silent, initialClass:^$, initialTitle:LibreOffice"
-      "workspace special:hidden silent, initialClass:^$, initialTitle:.*is.sharing.your.screen.*"
-      "workspace special:hidden silent, initialClass:nemo, initialTitle:nemo.*/.local/share/nemo"
+      "workspace special:aichat silent, match:class (.*chrome-chatgpt.*)"
+
+      "workspace special:hidden silent, match:class (^$), match:title (LibreOffice)"
+      "workspace special:hidden silent, match:class (^$), match:title (.*is.sharing.your.screen.*)"
+      "workspace special:hidden silent, match:class (nemo), match:title (nemo.*/.local/share/nemo)"
 
       ### gaming ###
 
-      "float, initialClass:net.lutris.Lutris, initialTitle:Lutris.+"
-      "center, initialClass:net.lutris.Lutris, initialTitle:Lutris.+"
-      "size 1400 800, initialClass:net.lutris.Lutris, initialTitle:Lutris.+"
+      "float on, match:class (net.lutris.Lutris), match:title (Lutris.+)"
+      "center on, match:class (net.lutris.Lutris), match:title (Lutris.+)"
+      "size 1400 800, match:class (net.lutris.Lutris), match:title (Lutris.+)"
 
-      "float, initialClass:Steam|steam, initialTitle:negative:Steam|Steam.Big.Picture.Mode"
+      "float on, match:class (Steam|steam), match:title negative:(Steam|Steam.Big.Picture.Mode)"
 
-      "tile, initialClass:Steam|steam, initialTitle:Steam|Steam.Big.Picture.Mode"
-      "suppressevent fullscreen, initialClass:Steam|steam, initialTitle:Steam|Steam.Big.Picture.Mode"
+      "tile on, match:class (Steam|steam), match:title (Steam|Steam.Big.Picture.Mode)"
+      "suppress_event fullscreen, match:class (Steam|steam), match:title (Steam|Steam.Big.Picture.Mode)"
 
-      "fullscreen, initialClass:steam_app_.*"
+      "size 1600 900, match:class (Steam|steam), match:title (.*Screenshot.*)"
 
-      "size 1600 900, initialClass:Steam|steam, initialTitle:.*Screenshot.*"
+      "fullscreen on, match:class (steam_app_.*)"
 
       ### dialogs ###
 
-      "pin, initialClass:kitty-.*"
-      "float, initialClass:kitty-.*"
-      "center, initialClass:kitty-.*"
+      "pin on, match:class (kitty-.*)"
+      "float on, match:class (kitty-.*)"
+      "center on, match:class (kitty-.*)"
 
-      "stayfocused, initialClass:kitty-powermenu"
-      "size 200 150, initialClass:kitty-powermenu"
+      "size 200 150, match:class (kitty-powermenu)"
+      "stay_focused on, match:initial_class (kitty-powermenu)"
 
-      "stayfocused, initialClass:kitty-sink-selector"
-      "size 300 200, initialClass:kitty-sink-selector"
+      "size 300 200, match:class (kitty-sink-selector)"
+      "stay_focused on, match:initial_class (kitty-sink-selector)"
 
-      "stayfocused, initialClass:kitty-project"
-      "size 800 450, initialClass:kitty-project"
+      "size 800 450, match:class (kitty-project)"
+      "stay_focused on, match:initial_class (kitty-project)"
 
-      "size 1280 720, initialClass:kitty-windowinfo"
+      "size 1280 720, match:class (kitty-windowinfo)"
 
       ### media & docs ###
 
-      "float, initialClass:soffice"
-      "center, initialClass:soffice"
-      "size 1200 720, initialClass:soffice"
+      "float on, match:class (soffice)"
+      "center on, match:class (soffice)"
+      "size 1200 720, match:class (soffice)"
 
-      "pin, initialTitle:Picture.in..icture"
-      "float, initialTitle:Picture.in..icture"
-      "monitor ${leftOrCentral}, initialTitle:Picture.in..icture"
-      "noinitialfocus, initialTitle:Picture.in..icture"
-      "size 500 300, initialTitle:Picture.in..icture"
-      "move 100%-506 100%-301, initialTitle:Picture.in..icture"
+      "pin on, match:title (Picture.in..icture)"
+      "float on, match:title (Picture.in..icture)"
+      "monitor ${leftOrCentral}, match:title (Picture.in..icture)"
+      "no_initial_focus on, match:title (Picture.in..icture)"
+      "size 500 300, match:title (Picture.in..icture)"
+      "move 100%-506 100%-301, match:title (Picture.in..icture)"
 
-      "float, initialClass:(org.kde.haruna|mpv|eog|Eog)"
-      "center, initialClass:(org.kde.haruna|mpv|eog|Eog)"
-      "size 96% 92.5%, initialClass:(org.kde.haruna|mpv|eog|Eog)"
-      "move 2% 5%, initialClass:(org.kde.haruna|mpv|eog|Eog)"
+      "float on, match:class (org.kde.haruna|mpv|eog|Eog)"
+      "center on, match:class (org.kde.haruna|mpv|eog|Eog)"
+      "size 96% 92.5%, match:class (org.kde.haruna|mpv|eog|Eog)"
+      "move 2% 5%, match:class (org.kde.haruna|mpv|eog|Eog)"
 
       ### files ###
 
-      "float, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Confirm).*"
-      "center, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Confirm).*"
-      "size 960 300, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Confirm).*"
+      "float on, match:class negative:(com.github.hluk.copyq), match:title (.*(Confirm).*)"
+      "center on, match:class negative:(com.github.hluk.copyq), match:title (.*(Confirm).*)"
+      "size 960 300, match:class negative:(com.github.hluk.copyq), match:title (.*(Confirm).*)"
 
-      "float, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Rename|File.*Operation).*"
-      "center, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Rename|File.*Operation).*"
-      "size 450 150, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Rename|File.*Operation).*"
+      "float on, match:class negative:(com.github.hluk.copyq), match:title (.*(Rename|File.*Operation).*)"
+      "center on, match:class negative:(com.github.hluk.copyq), match:title (.*(Rename|File.*Operation).*)"
+      "size 450 150, match:class negative:(com.github.hluk.copyq), match:title (.*(Rename|File.*Operation).*)"
 
-      "float, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Open.with).*"
-      "center, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Open.with).*"
-      "size 720 680, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Open.with).*"
+      "float on, match:class negative:(com.github.hluk.copyq), match:title (.*(Open.with).*)"
+      "center on, match:class negative:(com.github.hluk.copyq), match:title (.*(Open.with).*)"
+      "size 720 680, match:class negative:(com.github.hluk.copyq), match:title (.*(Open.with).*)"
 
-      "float, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Upload|Choose|Select).*"
-      "center, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Upload|Choose|Select).*"
-      "size 960 720, initialClass:negative:com.github.hluk.copyq, initialTitle:.*(Upload|Choose|Select).*"
+      "float on, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select).*)"
+      "center on, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select).*)"
+      "size 960 720, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select).*)"
 
       ### utils ###
 
-      "pin, initialClass:.*copyq.*"
-      "float, initialClass:.*copyq.*"
-      "center, initialClass:.*copyq.*"
-      "size 960 720, initialClass:.*copyq.*"
+      "pin on, match:class (com.github.hluk.copyq)"
+      "float on, match:class (com.github.hluk.copyq)"
+      "center on, match:class (com.github.hluk.copyq)"
+      "size 960 720, match:class (com.github.hluk.copyq)"
 
-      "float, initialClass:dconf-editor"
-      "center, initialClass:dconf-editor"
-      "size 1600 900, initialClass:dconf-editor"
+      "float on, match:class (dconf-editor)"
+      "center on, match:class (dconf-editor)"
+      "size 1600 900, match:class (dconf-editor)"
 
-      "pin, initialClass:.*nm-.*"
-      "pin, initialClass:.*blueman.*"
+      "pin on, match:class (.*nm-.*)"
+      "pin on, match:class (.*blueman.*)"
 
-      "float, initialClass:.*nm-.*"
-      "float, initialClass:.*blueman.*"
+      "float on, match:class (.*nm-.*)"
+      "float on, match:class (.*blueman.*)"
 
-      "center, initialClass:.*nm-.*"
-      "center, initialClass:.*blueman.*"
+      "center on, match:class (.*nm-.*)"
+      "center on, match:class (.*blueman.*)"
 
-      "float, initialClass:.*(file-roller|FileRoller).*"
-      "center, initialClass:.*(file-roller|FileRoller).*"
-      "maxsize 960 720, initialClass:.*(file-roller|FileRoller).*"
+      "float on, match:class (.*(file-roller|FileRoller).*)"
+      "center on, match:class (.*(file-roller|FileRoller).*)"
+      "size 960 720, match:class (.*(file-roller|FileRoller).*)"
 
-      "pin, initialClass:.*(blueman|nm-connection-editor).*"
-      "float, initialClass:.*(blueman|nm-connection-editor).*"
-      "center, initialClass:.*(blueman|nm-connection-editor).*"
-      "maxsize 960 720, initialClass:.*(blueman|nm-connection-editor).*"
+      "pin on, match:class (.*(blueman|nm-connection-editor).*)"
+      "float on, match:class (.*(blueman|nm-connection-editor).*)"
+      "center on, match:class (.*(blueman|nm-connection-editor).*)"
+      "size 960 720, match:class (.*(blueman|nm-connection-editor).*)"
 
-      "size 640 480, initialClass:.*(blueman-manager|blueman-services|blueman-sendto).*"
+      "size 640 480, match:class (.*(blueman-manager|blueman-services|blueman-sendto).*)"
 
-      "float, initialClass:.*(pavucontrol|easyeffects).*"
-      "center, initialClass:.*(pavucontrol|easyeffects).*"
-      "size 960 720, initialClass:.*(pavucontrol|easyeffects).*"
+      "float on, match:class (.*(pavucontrol|easyeffects).*)"
+      "center on, match:class (.*(pavucontrol|easyeffects).*)"
+      "size 960 720, match:class (.*(pavucontrol|easyeffects).*)"
     ];
   };
 }
