@@ -20,7 +20,7 @@ let
       WorkspaceLastWindow="''${WorkspaceLastWindow//\"/}"
 
       if [[ -z $WorkspaceLastWindow ]]; then
-          hyprctl dispatch exec [workspace "$workspace_id" silent] "$command" > /dev/null
+          hyprctl dispatch exec "[workspace $workspace_id silent]" "$command" > /dev/null
       fi
     '';
 

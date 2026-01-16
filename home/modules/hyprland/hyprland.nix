@@ -110,7 +110,7 @@
         "focus_on_activate" = false;
         "enable_swallow" = true;
         "vfr" = true;
-        "new_window_takes_over_fullscreen" = 2;
+        "on_focus_under_fullscreen" = 2;
       };
 
       ecosystem = {

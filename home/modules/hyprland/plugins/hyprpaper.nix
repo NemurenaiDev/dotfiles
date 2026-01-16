@@ -1,22 +1,16 @@
-{
-  wallpaper,
-  monitors,
-  lib,
-  ...
-}:
+{ wallpaper, ... }:
 
 {
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      ipc = "on";
-      splash = false;
-      preload = [ wallpaper ];
-      wallpaper = lib.filter (x: x != null) [
-        (if monitors ? central then "${monitors.central}, ${wallpaper}" else null)
-        (if monitors ? right then "${monitors.right}, ${wallpaper}" else null)
-        (if monitors ? left then "${monitors.left}, ${wallpaper}" else null)
-      ];
-    };
-  };
+  services.hyprpaper.enable = true;
+
+  home.file.".config/hypr/hyprpaper.conf".force = true;
+  home.file.".config/hypr/hyprpaper.conf".text = ''
+    ipc = true
+    splash = false
+
+    wallpaper {
+        monitor = 
+        path = ${wallpaper}
+    }
+  '';
 }
