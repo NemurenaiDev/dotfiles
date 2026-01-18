@@ -74,25 +74,33 @@ in
       "border_size 0, match:workspace w[tv1]"
       "border_size 1, match:float true"
 
-      "float on, match:class (zen|chromium), match:title negative:(Picture.in..icture)"
-      "size 600 765, match:class (zen|chromium), match:title negative:(Picture.in..icture)"
-
-      "workspace 26, match:class (vesktop)"
-
-      "fullscreen_state 0 2, match:class (code)"
-
-      "move cursor 0 0, match:class (Unity), match:title (UnityEditor.PopupWindow)"
-
-      "size 600 765, match:class (org.telegram.desktop), match:title (Mini.App.+)"
-      "float on, match:class (org.telegram.desktop), match:title (Mini.App.+)"
-
-      "suppress_event maximize, match:class (libreoffice.*)"
-
       "workspace special:aichat silent, match:class (.*chrome-chatgpt.*)"
 
       "workspace special:hidden silent, match:class (^$), match:title (LibreOffice)"
       "workspace special:hidden silent, match:class (^$), match:title (.*is.sharing.your.screen.*)"
       "workspace special:hidden silent, match:class (nemo), match:title (nemo.*/.local/share/nemo)"
+
+      "workspace 26, match:class (vesktop)"
+
+      "float on, match:class (zen|chromium), match:title negative:(Picture.in..icture)"
+      "size 600 765, match:class (zen|chromium), match:title negative:(Picture.in..icture)"
+
+      "fullscreen_state 0 2, match:class (code)"
+
+      "move cursor 0 0, match:class (Unity), match:title (UnityEditor.PopupWindow)"
+
+      "suppress_event maximize, match:class (libreoffice.*)"
+
+      "suppress_event maximize, match:class (org.telegram.desktop)"
+      "suppress_event fullscreen, match:class (org.telegram.desktop)"
+
+      "size 600 765, match:class (org.telegram.desktop), match:title (Mini.App.+)"
+      "float on, match:class (org.telegram.desktop), match:title (Mini.App.+)"
+
+      "float on, match:class (org.telegram.desktop), match:title (Media viewer)"
+      "center on, match:class (org.telegram.desktop), match:title (Media viewer)"
+      "move 30 50, match:class (org.telegram.desktop), match:title (Media viewer)"
+      "size monitor_w-60 monitor_h-80, match:class (org.telegram.desktop), match:title (Media viewer)"
 
       ### gaming ###
 
@@ -141,8 +149,8 @@ in
 
       "float on, match:class (org.kde.haruna|mpv|eog|Eog)"
       "center on, match:class (org.kde.haruna|mpv|eog|Eog)"
-      "size 96% 92.5%, match:class (org.kde.haruna|mpv|eog|Eog)"
-      "move 2% 5%, match:class (org.kde.haruna|mpv|eog|Eog)"
+      "move 30 50, match:class (org.kde.haruna|mpv|eog|Eog)"
+      "size monitor_w-60 monitor_h-80, match:class (org.kde.haruna|mpv|eog|Eog)"
 
       ### files ###
 
