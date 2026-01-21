@@ -82,8 +82,8 @@ in
 
       "workspace 26, match:class (vesktop)"
 
-      "float on, match:class (zen|chromium), match:title negative:(Picture.in..icture)"
-      "size 600 765, match:class (zen|chromium), match:title negative:(Picture.in..icture)"
+      "float on, match:class (zen|chromium), match:title negative:(Picture-in-Picture)"
+      "size 600 765, match:class (zen|chromium), match:title negative:(Picture-in-Picture)"
 
       "fullscreen_state 0 2, match:class (code)"
 
@@ -140,12 +140,11 @@ in
       "center on, match:class (soffice)"
       "size 1200 720, match:class (soffice)"
 
-      "pin on, match:title (Picture.in..icture)"
-      "float on, match:title (Picture.in..icture)"
-      "monitor ${leftOrCentral}, match:title (Picture.in..icture)"
-      "no_initial_focus on, match:title (Picture.in..icture)"
-      "size 500 300, match:title (Picture.in..icture)"
-      "move 100%-506 100%-301, match:title (Picture.in..icture)"
+      "pin on, match:title (Picture-in-Picture)"
+      "float on, match:title (Picture-in-Picture)"
+      "no_initial_focus on, match:title (Picture-in-Picture)"
+      "size 500 300, match:title (Picture-in-Picture)"
+      "move monitor_w-window_w-5 monitor_h-window_h-5, match:title (Picture-in-Picture)"
 
       "float on, match:class (org.kde.haruna|mpv|eog|Eog)"
       "center on, match:class (org.kde.haruna|mpv|eog|Eog)"

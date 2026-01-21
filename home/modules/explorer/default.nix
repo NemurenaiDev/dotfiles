@@ -59,6 +59,10 @@
   '';
 
   dconf.settings = {
+    "org/gnome/eog/ui" = {
+      statusbar = true;
+    };
+
     "org/nemo/compact-view" = {
       all-columns-have-same-width = false;
       default-zoom-level = "standard";

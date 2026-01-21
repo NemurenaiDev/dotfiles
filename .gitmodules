@@ -1,0 +1,3 @@
+[submodule "home/modules/@assets/wallpapers"]
+	path = home/modules/@assets/wallpapers
+	url = ../wallpapers
