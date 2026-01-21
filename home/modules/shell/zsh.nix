@@ -157,9 +157,8 @@
 
       alias l="list-dir"
       alias ls="list-dir"
-      alias ll="list-dir -lh"
-      alias lll="list-dir -Ah"
-      alias llll="list-dir -lAh"
+      alias ll="list-dir -Ah"
+      alias lll="list-dir -lh"
       alias watch="CLICOLOR_FORCE=1 watch -c"
 
       alias rm="trash -v"

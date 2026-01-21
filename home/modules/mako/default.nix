@@ -3,6 +3,7 @@
 {
   home.file.".config/mako/config".force = true;
   home.file.".config/mako/config".text = ''
+    output=${monitors.central}
     max-history=3
     sort=+time
     on-touch=dismiss
@@ -34,12 +35,10 @@
     progress-color=#94e2d5
 
     [urgency=low]
-    # output=${monitors.central}
     default-timeout=3000
     anchor=bottom-left
 
     [urgency=normal]
-    # output=${monitors.central}
     default-timeout=5000
     anchor=bottom-left
 
@@ -70,6 +69,7 @@
     width=96
 
     [category=gaming]
+    output=${monitors.left or monitors.central}
     text-color=#f7f7f7
     text-alignment=left
     icon-location=left
@@ -87,19 +87,16 @@
 
 
     [category=im.received]
-    # output=${monitors.central}
     border-color=#89b4fa
     default-timeout=16000
 
 
     [app-name=Zen]
-    # output=${monitors.central}
     default-timeout=16000
     anchor=bottom-left
     border-color=#FF7456
 
     [app-name=Spotify]
-    # output=${monitors.central}
     default-timeout=5000
     border-color=#a6e3a1
   '';
