@@ -12,8 +12,6 @@
   environment.systemPackages =
     with pkgs;
     [
-      inputs.nh.packages.${system}.default
-
       frp
       tailscale
 
@@ -41,6 +39,7 @@
       fd
       ripgrep
       shfmt
+      tldr
 
       bun
       yarn
@@ -64,6 +63,7 @@
       home-manager
       nixd
       nixfmt-rfc-style
+      nh
 
       openssl
       php

@@ -86,11 +86,16 @@
   services.tailscale.enable = true;
   services.resolved = {
     enable = true;
-    extraConfig = ''
-      DNS=94.140.14.14 94.140.15.15
-      FallbackDNS=
-      Domains=~.
-    '';
+    settings = {
+      Resolve = {
+        DNS = [
+          "94.140.14.14"
+          "94.140.15.15"
+        ];
+        FallbackDNS = [ ];
+        Domains = [ "~." ];
+      };
+    };
   };
 
   services.udisks2.enable = true;

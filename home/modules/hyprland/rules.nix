@@ -77,7 +77,7 @@ in
       "workspace special:aichat silent, match:class (.*chrome-chatgpt.*)"
 
       "workspace special:hidden silent, match:class (^$), match:title (LibreOffice)"
-      "workspace special:hidden silent, match:class (^$), match:title (.*is.sharing.your.screen.*)"
+      "workspace special:hidden silent, match:class (^$), match:title (.*is.sharing.*)"
       "workspace special:hidden silent, match:class (nemo), match:title (nemo.*/.local/share/nemo)"
 
       "workspace 26, match:class (vesktop)"

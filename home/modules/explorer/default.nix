@@ -8,6 +8,7 @@
     file:///home/${host.username}/Downloads Downloads
     file:///home/${host.username}/Pictures Pictures
     file:///home/${host.username}/Projects Projects
+    trash:/// Trash
 
     sftp://cyberia/home/${host.username} Cyberia
     sftp://homelab/home/${host.username} Homelab

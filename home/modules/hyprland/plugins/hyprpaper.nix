@@ -1,16 +1,21 @@
-{ wallpaper, ... }:
+{ wallpaper, pkgs, ... }:
 
 {
   services.hyprpaper.enable = true;
 
-  home.file.".config/hypr/hyprpaper.conf".force = true;
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    ipc = true
-    splash = false
+  xdg.configFile."hypr/hyprpaper.conf" = {
+    text = ''
+      ipc = true
+      splash = false
 
-    wallpaper {
-        monitor = 
+      wallpaper {
+        monitor =
         path = ${wallpaper}
-    }
-  '';
+      }
+    '';
+
+    onChange = ''
+      ${pkgs.systemd}/bin/systemctl --user restart hyprpaper.service
+    '';
+  };
 }
