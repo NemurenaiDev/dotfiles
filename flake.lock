@@ -92,6 +92,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
         "sops-nix": "sops-nix",
+        "wallpapers": "wallpapers",
         "zen-browser": "zen-browser"
       }
     },
@@ -110,6 +111,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769017905,
+        "narHash": "sha256-Vcua/QIqUdy8/+9tkXZX48hi6QqyWz6b7ySIomDZFkI=",
+        "owner": "nemurenaidev",
+        "repo": "wallpapers",
+        "rev": "e5ec2def3ac5c2b81468b587b31a39f4b76113e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nemurenaidev",
+        "repo": "wallpapers",
         "type": "github"
       }
     },

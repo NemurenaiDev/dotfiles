@@ -1,13 +1,12 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 
 {
-  home.file.".assets" = {
-    force = true;
-    recursive = true;
-    executable = true;
-    source = pkgs.lib.cleanSourceWith {
-      src = ./.;
-      filter = path: type: baseNameOf path != "default.nix";
-    };
-  };
+  home.file.".assets/audio".force = true;
+  home.file.".assets/audio".source = ./audio;
+
+  home.file.".assets/icons".force = true;
+  home.file.".assets/icons".source = ./icons;
+
+  home.file.".assets/wallpapers".force = true;
+  home.file.".assets/wallpapers".source = inputs.wallpapers;
 }

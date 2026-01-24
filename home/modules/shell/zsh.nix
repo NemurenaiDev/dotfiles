@@ -168,9 +168,6 @@
       alias vimv="vimv"
       alias rename="vimv"
 
-      alias ed="$EDITOR"
-      alias edit="$EDITOR"
-
       alias os="nh os"
       alias oss="sudo -v && nh os switch"
       alias hm="nh home"
