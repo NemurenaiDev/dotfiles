@@ -10,6 +10,8 @@
 
 {
   imports = [
+    ./hosts/${host.hostname}/configuration.nix
+
     inputs.catppuccin.nixosModules.catppuccin
     inputs.home-manager.nixosModules.home-manager
     {
@@ -21,11 +23,13 @@
     ./modules/audio.nix
     ./modules/secrets.nix
     ./modules/packages.nix
-    ./modules/plymouth.nix
     ./modules/snapcast.nix
     ./modules/syncthing.nix
   ]
-  ++ lib.optionals (hasRole "desktop") [ ./modules/gaming.nix ];
+  ++ lib.optionals (hasRole "desktop") [
+    ./modules/plymouth.nix
+    ./modules/gaming.nix
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault host.system;
   system.stateVersion = host.stateVersion;
@@ -99,6 +103,7 @@
   };
 
   services.udisks2.enable = true;
+  services.playerctld.enable = true;
 
   programs.zsh.enable = true;
 
@@ -109,6 +114,7 @@
   networking.networkmanager.settings.WiFi.powerSave = false;
 
   networking.firewall.allowedTCPPorts = [
+    8123 # home-assistant
     8523 # automation-server
     25565 # minecraft
     57621 # spotify

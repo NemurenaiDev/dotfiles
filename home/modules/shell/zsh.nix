@@ -49,11 +49,11 @@
 
       use() {
         if [ -z "$1" ]; then
-          echo "Usage: use <package>"
+          echo "Usage: use <package> [args...]"
           return 1
         fi
-
-        nix shell "nixpkgs#$1"
+      
+        nix shell "nixpkgs#$1" "''${@:2}"
       }
 
       gs() {

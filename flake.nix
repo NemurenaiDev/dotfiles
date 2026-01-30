@@ -35,7 +35,12 @@
           hostname = "homelab";
           deviceId = "Y33IVUJ-5HMEGX6-CLW3PAQ-PXKI2RF-TUM3Y7C-VAQTDE7-V43LW4V-RV7TIAD";
           roles = [ "server" ];
+          snapserver = {
+            buffer = 300;
+            codec = "flac";
+          };
           snapclients = [
+            "127.0.0.1"
             "192.168.1.110"
             "192.168.1.111"
           ];
@@ -45,11 +50,12 @@
           deviceId = "LZAWUPK-DVPWCJ5-7INP5UI-ULGJYSM-25VYXL6-CCHYYXG-A5YFA4O-PORVFAO";
           roles = [ "desktop" ];
           snapserver = {
-            buffer = 400;
+            buffer = 300;
             codec = "flac";
           };
           snapclients = [
             "127.0.0.1"
+            "192.168.1.101"
             "192.168.1.111"
           ];
         }
@@ -58,7 +64,7 @@
           deviceId = "VZHX56X-H3U2APW-3E7QETV-3NR6QCV-7JTOVFF-FAY3E5B-DNY3HHH-RATQEAW";
           roles = [ "desktop" ];
           snapserver = {
-            buffer = 400;
+            buffer = 300;
             codec = "flac";
           };
         }
@@ -74,7 +80,7 @@
             inherit inputs hosts host;
             hasRole = role: builtins.elem role host.roles;
           };
-          modules = [ ./nixos/hosts/${host.hostname}/configuration.nix ];
+          modules = [ ./nixos/default.configuration.nix ];
         };
 
       homeFor =
@@ -85,7 +91,7 @@
             inherit inputs hosts host;
             hasRole = role: builtins.elem role host.roles;
           };
-          modules = [ ./home/hosts/${host.hostname}/home.nix ];
+          modules = [ ./home/default.home.nix ];
         };
 
       makeConfigurations =

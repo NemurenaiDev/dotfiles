@@ -1,8 +1,10 @@
 {
   hasRole,
+  inputs,
   config,
   host,
   pkgs,
+  lib,
   ...
 }:
 
@@ -25,7 +27,7 @@ let
 
     HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
     HYPRCURSOR_SIZE = 24;
-    
+
     QT_QPA_PLATFORMTHEME = "gtk3";
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -33,10 +35,35 @@ let
     WLR_NO_HARDWARE_CURSORS = "1";
     WLR_DRM_NO_ATOMIC = "1";
     NIXOS_OZONE_WL = "1";
+
+    NIXPKGS_ALLOW_UNFREE = "1";
   };
 in
 {
-  imports = [ ./modules ];
+  imports = [
+    ./hosts/${host.hostname}/home.nix
+
+    inputs.catppuccin.homeModules.catppuccin
+
+    "${toString ./modules}/@assets"
+    "${toString ./modules}/@bin"
+
+    ./modules/shell
+    ./modules/utils
+  ]
+  ++ lib.optionals (hasRole "desktop") [
+    ./modules/hyprland
+    ./modules/waybar
+    ./modules/mako
+    ./modules/xdg
+
+    ./modules/clipboard
+    ./modules/terminal
+    ./modules/launcher
+    ./modules/explorer
+
+    ./modules/telegram
+  ];
 
   home.stateVersion = host.stateVersion;
   home.sessionVariables = sessionVariables;

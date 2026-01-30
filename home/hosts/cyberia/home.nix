@@ -5,8 +5,6 @@ let
   };
 in
 {
-  imports = [ ./../../default.home.nix ];
-
   _module.args.monitors = monitors;
 
   wayland.windowManager.hyprland.settings = {
@@ -18,7 +16,7 @@ in
     ];
 
     exec-once = [
-      "openrgb --startminimized --profile default"
+      "uwsm app -- openrgb --startminimized --profile default"
     ];
   };
 }

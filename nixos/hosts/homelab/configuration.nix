@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./../../default.configuration.nix
     ./hardware.nix
   ];
 

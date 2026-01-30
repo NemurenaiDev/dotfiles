@@ -7,8 +7,6 @@ let
   };
 in
 {
-  imports = [ ./../../default.home.nix ];
-
   _module.args.monitors = monitors;
 
   wayland.windowManager.hyprland.settings = {

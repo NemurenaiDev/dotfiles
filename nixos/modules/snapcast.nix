@@ -6,7 +6,14 @@
     openFirewall = true;
 
     settings = {
-      http.enabled = false;
+      http.enabled = true;
+      http.bind_to_address = "127.0.0.1";
+
+      tcp-control.enabled = true;
+      tcp-control.bind_to_address = "0.0.0.0";
+
+      tcp-streaming.enabled = true;
+      tcp-streaming.bind_to_address = "0.0.0.0";
 
       stream = {
         codec = host.snapserver.codec;

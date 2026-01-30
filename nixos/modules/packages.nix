@@ -55,6 +55,7 @@
       playerctl
       pulseaudio
       alsa-utils
+      pulsemixer
       pamixer
 
       sops
@@ -62,7 +63,7 @@
       nix-output-monitor
       home-manager
       nixd
-      nixfmt-rfc-style
+      nixfmt
       nh
 
       openssl
@@ -161,7 +162,6 @@
         obs-studio
         spotify
         telegram-desktop
-        vesktop
 
         nemo-with-extensions
         nemo-fileroller

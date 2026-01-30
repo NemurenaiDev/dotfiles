@@ -1,6 +1,4 @@
 {
-  imports = [ ./../../default.home.nix ];
-
   _module.args.monitors = { };
 
   wayland.windowManager.hyprland.settings = {
