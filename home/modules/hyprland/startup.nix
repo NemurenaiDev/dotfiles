@@ -1,4 +1,4 @@
-{ host, ... }:
+{ config, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -12,8 +12,8 @@
       "uwsm app -t service -u app-waybar.service -- waybar"
       "uwsm app -t service -u app-mako.service -- mako"
 
-      "uwsm app -- /home/${host.username}/.bin/automation-server"
-      "uwsm app -- /home/${host.username}/.bin/dynamic-window-rules"
+      "uwsm app -- ${config.xdg.dataHome}/bin/automation-server"
+      "uwsm app -- ${config.xdg.dataHome}/bin/dynamic-window-rules"
 
       "uwsm app -- udiskie --automount --notify --smart-tray"
 

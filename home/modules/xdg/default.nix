@@ -1,6 +1,10 @@
+{ lib, hasRole, ... }:
+
 {
-  imports = [
+  imports = lib.optionals (hasRole "desktop") [
     ./apps/browser.nix
     ./apps/vscode.nix
   ];
+
+  config.xdg.enable = true;
 }

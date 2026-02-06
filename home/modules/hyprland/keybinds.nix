@@ -1,4 +1,4 @@
-{ host, ... }:
+{ config, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -66,13 +66,13 @@
 
       ### screenshot ###
 
-      ", Print, exec, /home/${host.username}/.bin/screenshot --screen"
+      ", Print, exec, ${config.xdg.dataHome}/bin/screenshot --screen"
       
-      "SUPER ALT, S, exec, /home/${host.username}/.bin/screenshot --win"
-      "SUPER CTRL, S, exec, /home/${host.username}/.bin/screenshot --screen"
-      "SUPER SHIFT, S, exec, /home/${host.username}/.bin/screenshot --area"
+      "SUPER ALT, S, exec, ${config.xdg.dataHome}/bin/screenshot --win"
+      "SUPER CTRL, S, exec, ${config.xdg.dataHome}/bin/screenshot --screen"
+      "SUPER SHIFT, S, exec, ${config.xdg.dataHome}/bin/screenshot --area"
 
-      "SUPER SHIFT, R, exec, /home/${host.username}/.bin/screenshot --ocr-area"
+      "SUPER SHIFT, R, exec, ${config.xdg.dataHome}/bin/screenshot --ocr-area"
 
       ### focus control & groups control ###
 
@@ -129,19 +129,19 @@
 
       ### keyboard layout ###
 
-      "ALT SHIFT, 1, exec, /home/${host.username}/.bin/switch-layout 0"
-      "ALT SHIFT, 2, exec, /home/${host.username}/.bin/switch-layout 1"
-      "ALT SHIFT, 3, exec, /home/${host.username}/.bin/switch-layout 2"
+      "ALT SHIFT, 1, exec, ${config.xdg.dataHome}/bin/switch-layout 0"
+      "ALT SHIFT, 2, exec, ${config.xdg.dataHome}/bin/switch-layout 1"
+      "ALT SHIFT, 3, exec, ${config.xdg.dataHome}/bin/switch-layout 2"
 
       ### functional keys ###
 
-      ", XF86MonBrightnessDown, exec, /home/${host.username}/.bin/brightness --dec"
-      ", XF86MonBrightnessUp, exec, /home/${host.username}/.bin/brightness --inc"
+      ", XF86MonBrightnessDown, exec, ${config.xdg.dataHome}/bin/brightness --dec"
+      ", XF86MonBrightnessUp, exec, ${config.xdg.dataHome}/bin/brightness --inc"
 
-      ", XF86AudioRaiseVolume, exec, /home/${host.username}/.bin/volume --inc"
-      ", XF86AudioLowerVolume, exec, /home/${host.username}/.bin/volume --dec"
-      ", XF86AudioMicMute, exec, /home/${host.username}/.bin/volume --toggle-mic"
-      ", XF86AudioMute, exec, /home/${host.username}/.bin/volume --toggle"
+      ", XF86AudioRaiseVolume, exec, ${config.xdg.dataHome}/bin/volume --inc"
+      ", XF86AudioLowerVolume, exec, ${config.xdg.dataHome}/bin/volume --dec"
+      ", XF86AudioMicMute, exec, ${config.xdg.dataHome}/bin/volume --toggle-mic"
+      ", XF86AudioMute, exec, ${config.xdg.dataHome}/bin/volume --toggle"
 
       ", XF86AudioStop, exec, playerctl stop"
       ", XF86AudioPlay, exec, playerctl play-pause"
@@ -149,7 +149,7 @@
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPrev, exec, playerctl previous"
 
-      ", F21, exec, /home/${host.username}/.bin/volume --toggle-mic"
+      ", F21, exec, ${config.xdg.dataHome}/bin/volume --toggle-mic"
       ", F22, exec, playerctl play-pause"
       ", F23, exec, playerctl previous"
       ", F24, exec, playerctl next"

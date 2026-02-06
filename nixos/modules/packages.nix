@@ -42,7 +42,6 @@
       tldr
 
       bun
-      yarn
       biome
       nodejs
       corepack
@@ -158,7 +157,7 @@
 
         libreoffice
         kitty
-        motrix
+        deluge
         obs-studio
         spotify
         telegram-desktop

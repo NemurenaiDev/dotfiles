@@ -1,8 +1,8 @@
 { monitors, ... }:
 
 {
-  home.file.".config/mako/config".force = true;
-  home.file.".config/mako/config".text = ''
+  xdg.configFile."mako/config".force = true;
+  xdg.configFile."mako/config".text = ''
     output=${monitors.central}
     max-history=3
     sort=+time

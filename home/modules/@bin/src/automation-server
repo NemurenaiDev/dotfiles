@@ -14,8 +14,8 @@ const routes = {
 	"/player/next": "playerctl next",
 	"/player/forw": "playerctl position 5+",
 	"/player/back": "playerctl position 5-",
-	"/volume/inc": "$HOME/.bin/volume --inc",
-	"/volume/dec": "$HOME/.bin/volume --dec",
+	"/volume/inc": "$XDG_DATA_HOME/bin/volume --inc",
+	"/volume/dec": "$XDG_DATA_HOME/bin/volume --dec",
 };
 
 const server = http.createServer((req, res) => {

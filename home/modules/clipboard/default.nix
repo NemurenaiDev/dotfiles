@@ -1,14 +1,14 @@
-{ host, ... }:
+{ config, ... }:
 
 {
   home.activation."link-copyq-dat" = ''
-    touch /home/${host.username}/.cache/copyq.dat
-    mkdir -p /home/${host.username}/.config/copyq/
-    ln -sf /home/${host.username}/.cache/copyq.dat /home/${host.username}/.config/copyq/copyq_tab_JmNsaXBib2FyZA==.dat
+    touch ${config.xdg.cacheHome}/copyq.dat
+    mkdir -p ${config.xdg.configHome}/copyq/
+    ln -sf ${config.xdg.cacheHome}/copyq.dat ${config.xdg.configHome}/copyq/copyq_tab_JmNsaXBib2FyZA==.dat
   '';
 
-  home.file.".config/copyq/copyq.conf".force = true;
-  home.file.".config/copyq/copyq.conf".text = ''
+  xdg.configFile."copyq/copyq.conf".force = true;
+  xdg.configFile."copyq/copyq.conf".text = ''
     [General]
     plugin_priority=itemimage, itemencrypted, itemfakevim, itemnotes, itempinned, itemsync, itemtags, itemtext
 

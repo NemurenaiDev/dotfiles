@@ -1,4 +1,4 @@
-{ pkgs, host, ... }:
+{ config, pkgs, ... }:
 
 let
   gamepad-keybind-daemon-pkg =
@@ -105,7 +105,7 @@ let
     hyprctl dispatch workspace 9 1>/dev/null
     hyprctl dispatch exec "[workspace 9]" "steam -bigpicture" 1>/dev/null
 
-    notify-send -c gaming 'Launching steam...' --icon '/home/${host.username}/.assets/icons/steam.png'
+    notify-send -c gaming 'Launching steam...' --icon '${config.xdg.dataHome}/assets/icons/steam.png'
   '';
   gamepad-mode-key-action = "${gamepad-mode-key-action-pkg}/bin/gamepad-mode-key-action";
 in

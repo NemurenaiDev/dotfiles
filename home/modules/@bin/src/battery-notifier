@@ -34,8 +34,8 @@ while true; do
 
 
     if [ "$BATTERY_LOW_FIRED" = "false" ] && [ "$BATTERY_LOW" = "true" ] && [ "$STATUS" = "$NEW_STATUS" ]; then
-        notify-send -u critical -c battery -i "$HOME/.assets/icons/battery-low.png" ""
-        paplay --volume 65536 $HOME/.assets/audio/low-battery.mp3
+        notify-send -u critical -c battery -i "$XDG_DATA_HOME/assets/icons/battery-low.png" ""
+        paplay --volume 65536 $XDG_DATA_HOME/assets/audio/low-battery.mp3
         BATTERY_LOW_FIRED="true"
     elif [ "$BATTERY_LOW" = "false" ]; then
         BATTERY_LOW_FIRED="false"
@@ -43,12 +43,12 @@ while true; do
 
     if [ "$STATUS" != "$NEW_STATUS" ]; then
         if [ "$NEW_STATUS" = "Charging" ]; then
-            notify-send -c battery -i "$HOME/.assets/icons/battery-charging.png" ""
+            notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-charging.png" ""
         elif [ "$NEW_STATUS" = "Discharging" ]; then
 	    if [ "$BATTERY_LOW" = "true" ]; then
-                notify-send -c battery -i "$HOME/.assets/icons/battery-low.png" ""
+                notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-low.png" ""
 	   else
-		notify-send -c battery -i "$HOME/.assets/icons/battery-full.png" ""
+		notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-full.png" ""
 	   fi
         fi
         STATUS="$NEW_STATUS"

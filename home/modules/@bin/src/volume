@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-iDIR="$HOME/.assets/icons"
+iDIR="$XDG_DATA_HOME/assets/icons"
 
 get_volume() {
 	volume=$(pamixer --get-volume)

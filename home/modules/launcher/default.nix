@@ -1,6 +1,6 @@
 {
-  home.file.".config/fuzzel/fuzzel.ini".force = true;
-  home.file.".config/fuzzel/fuzzel.ini".text = ''
+  xdg.configFile."fuzzel/fuzzel.ini".force = true;
+  xdg.configFile."fuzzel/fuzzel.ini".text = ''
     font=JetBrainsMono Nerd Font Mono:weight=bold:size=13
     fields=name,generic,comment,categories,filename,keywords
     line-height=30

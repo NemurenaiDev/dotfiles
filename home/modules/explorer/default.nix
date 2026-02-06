@@ -1,62 +1,19 @@
-{ host, ... }:
+{ config, ... }:
 
 {
-  home.file.".config/gtk-3.0/bookmarks".force = true;
-  home.file.".config/gtk-3.0/bookmarks".text = ''
+  xdg.configFile."gtk-3.0/bookmarks".force = true;
+  xdg.configFile."gtk-3.0/bookmarks".text = ''
     file:/// /
-    file:///home/${host.username} Home
-    file:///home/${host.username}/Downloads Downloads
-    file:///home/${host.username}/Pictures Pictures
-    file:///home/${host.username}/Projects Projects
+    file://${config.home.homeDirectory} Home
+    file://${config.home.homeDirectory}/Downloads Downloads
+    file://${config.home.homeDirectory}/Pictures Pictures
+    file://${config.home.homeDirectory}/Projects Projects
+    
     trash:/// Trash
 
-    sftp://cyberia/home/${host.username} Cyberia
-    sftp://homelab/home/${host.username} Homelab
-    sftp://laptop/home/${host.username} Laptop
-  '';
-
-  home.file.".local/share/nemo/actions/open-terminal-here.nemo_action".force = true;
-  home.file.".local/share/nemo/actions/open-terminal-here.nemo_action".text = ''
-    [Nemo Action]
-    Name=Open Terminal Here
-    Exec=kitty %F
-    Icon-Name=utilities-terminal
-    Selection=any
-    Extensions=dir;inode/directory;
-    Terminal=false
-  '';
-
-  home.file.".local/share/nemo/actions/open-vscode-here.nemo_action".force = true;
-  home.file.".local/share/nemo/actions/open-vscode-here.nemo_action".text = ''
-    [Nemo Action]
-    Name=Open VSCode Here
-    Exec=code --new-window --enable-features=UseOzonePlatform --ozone-platform=wayland %F
-    Icon-Name=visual-studio-code
-    Selection=any
-    Extensions=dir;inode/directory;
-    Terminal=false
-  '';
-
-  home.file.".local/share/nemo/actions/extract-here.nemo_action".force = true;
-  home.file.".local/share/nemo/actions/extract-here.nemo_action".text = ''
-    [Nemo Action]
-    Name=Extract Here
-    Exec=file-roller --extract-here %F
-    Icon-Name=package-x-generic
-    Selection=any
-    Extensions=application/zip;application/x-compressed-tar;application/x-xz;
-    Terminal=false
-  '';
-
-  home.file.".local/share/nemo/actions/create-archive.nemo_action".force = true;
-  home.file.".local/share/nemo/actions/create-archive.nemo_action".text = ''
-    [Nemo Action]
-    Name=Create Archive
-    Exec=sh -c 'cd %d && file-roller --add %F'
-    Icon-Name=package-x-generic
-    Selection=any
-    Extensions=dir;inode/directory;
-    Terminal=false
+    sftp://cyberia${config.home.homeDirectory} sftp://cyberia
+    sftp://homelab${config.home.homeDirectory} sftp://homelab
+    sftp://x14p${config.home.homeDirectory} sftp://x14p
   '';
 
   dconf.settings = {

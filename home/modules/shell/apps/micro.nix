@@ -34,8 +34,8 @@
     };
   };
 
-  home.file.".config/micro/bindings.json".force = true;
-  home.file.".config/micro/bindings.json".text = ''
+  xdg.configFile."micro/bindings.json".force = true;
+  xdg.configFile."micro/bindings.json".text = ''
     {
       "Esc": "Escape",
       "Esc": "RemoveAllMultiCursors",

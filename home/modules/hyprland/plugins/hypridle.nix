@@ -1,4 +1,4 @@
-{ host, pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   hyprlock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
@@ -12,7 +12,7 @@ in
         lock_cmd = "${hyprlock_cmd}";
         unlock_cmd = "";
 
-        on_lock_cmd = "/home/${host.username}/.bin/switch-layout 0";
+        on_lock_cmd = "${config.xdg.dataHome}/bin/switch-layout 0";
         on_unlock_cmd = "";
 
         before_sleep_cmd = "vc-unmount; ${hyprlock_cmd} --immediate --immediate-render --no-fade-in";

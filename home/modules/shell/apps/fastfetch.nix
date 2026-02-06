@@ -1,6 +1,6 @@
 {
-  home.file.".config/fastfetch/config.jsonc".force = true;
-  home.file.".config/fastfetch/config.jsonc".text = ''
+  xdg.configFile."fastfetch/config.jsonc".force = true;
+  xdg.configFile."fastfetch/config.jsonc".text = ''
     {
         "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
         "logo": {

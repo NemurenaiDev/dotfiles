@@ -1,4 +1,4 @@
-{ host, ... }:
+{ config, ... }:
 
 let
   monitors = {
@@ -17,7 +17,7 @@ in
     ];
 
     exec-once = [
-      "uwsm app -- /home/${host.username}/.bin/battery-notifier 20 /sys/class/power_supply/BATT"
+      "uwsm app -- ${config.xdg.dataHome}/bin/battery-notifier 20 /sys/class/power_supply/BATT"
     ];
   };
 }

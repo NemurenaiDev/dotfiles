@@ -1,6 +1,6 @@
 {
-  home.file.".config/starship.toml".force = true;
-  home.file.".config/starship.toml".text = ''
+  xdg.configFile."starship.toml".force = true;
+  xdg.configFile."starship.toml".text = ''
     continuation_prompt = "[❯❯](magenta)"
     right_format = "$cmd_duration"
     format = "$directory $hostname$character"

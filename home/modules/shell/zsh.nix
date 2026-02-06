@@ -1,15 +1,19 @@
+{ config, ... }:
+
 {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    dotDir = "${config.xdg.configHome}/zsh";
+
     completionInit = ''
       [[ $PERF == 1 ]] && zmodload zsh/datetime
       [[ $PERF == 1 ]] && start=$EPOCHREALTIME
       [[ $PERF == 1 ]] && zmodload zsh/zprof
 
-      
+
       if who am i | grep tty1; then
           clear && uwsm check may-start -q && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
       fi
@@ -22,7 +26,7 @@
 
 
       # WARNING: "compinit -d" may be a security risk when your system is multi-user with untrusted users
-      autoload -U compinit && compinit -d ~/.cache/zcompdump -C
+      autoload -U compinit && compinit -d $XDG_CACHE_HOME/zcompdump -C
     '';
 
     initContent = ''
@@ -52,7 +56,7 @@
           echo "Usage: use <package> [args...]"
           return 1
         fi
-      
+
         nix shell "nixpkgs#$1" "''${@:2}"
       }
 
@@ -131,7 +135,7 @@
       zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
       zstyle ":completion:*" list-colors "''${(s.:.)LS_COLORS}"
 
-      
+
       bindkey "^[s" toggle-sudo
       bindkey "^f" autosuggest-accept
       bindkey "^r" fzf-history-widget
@@ -151,7 +155,7 @@
 
 
 
-      alias reload="source ~/.zshrc"
+      alias reload="source $ZDOTDIR/.zshrc"
 
       alias kitty="kitty --single-instance"
 

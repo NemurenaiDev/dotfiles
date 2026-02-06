@@ -21,7 +21,6 @@
 
     ./modules/keyd.nix
     ./modules/audio.nix
-    ./modules/secrets.nix
     ./modules/packages.nix
     ./modules/snapcast.nix
     ./modules/syncthing.nix
@@ -36,6 +35,7 @@
   networking.hostName = host.hostname;
   time.timeZone = host.timezone;
 
+  nix.settings.use-xdg-base-directories = true;
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -53,6 +53,7 @@
       "wheel"
       "audio"
       "docker"
+      "plugdev"
       "networkmanager"
     ];
   };
@@ -102,6 +103,7 @@
     };
   };
 
+  services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.playerctld.enable = true;
 
@@ -131,6 +133,6 @@
   ];
 
   systemd.tmpfiles.rules = [
-    "d /tmp/${host.username}/TelegramDownloads 1700 ${host.username} users -"
+    "d /tmp/${host.username}/ 1700 ${host.username} users -"
   ];
 }

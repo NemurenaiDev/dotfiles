@@ -24,19 +24,7 @@ let
       fi
     '';
 
-    run-code-project = ''
-      kitty --single-instance --class "kitty-project" sh -c \
-          'code -n $(\
-              find ~/Projects -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | \
-              grep -v .stfolder | \
-              sed "s|$HOME|~|" | \
-              sort -r | \
-              fzf --ansi --preview-window border-left --preview "lsd --literal --icon always --color always --group-dirs first --date +%x\ %T \$(eval echo {})" | \
-              sed "s|~|$HOME|g" \
-          )' 
-    '';
-
-    run-powermenu = ''kitty --single-instance --class "kitty-powermenu" sh -c "~/.bin/powermenu"'';
+    run-powermenu = ''kitty --single-instance --class "kitty-powermenu" sh -c "$XDG_DATA_HOME/bin/powermenu"'';
 
     run-sink-selector = ''kitty --single-instance --class "kitty-sink-selector" select-default-sink'';
 
@@ -48,7 +36,7 @@ let
           grep -oP "\d+")"
     '';
 
-    vc-mount = ''sudo veracrypt --text --mount "$HOME/.local/share/crypt.img" --protect-hidden=no --keyfiles=""'';
+    vc-mount = ''sudo veracrypt --text --mount "$XDG_DATA_HOME/crypt.img" --protect-hidden=no --keyfiles=""'';
 
     vc-unmount = ''
       if ! veracrypt --text --list &>/dev/null; then
@@ -86,10 +74,10 @@ let
       if veracrypt --text --list &>/dev/null; then
       	echo "CRITICAL: Veracrypt volume still exists after unmounting"
       	notify-send -u critical "Veracrypt volume still exists after unmounting"
-      	paplay --volume 65536 $HOME/.assets/audio/error-010.mp3
+      	paplay --volume 65536 $XDG_DATA_HOME/assets/audio/error-010.mp3
       	exit 1
       else
-      	paplay --volume 65536 $HOME/.assets/audio/beep.mp3
+      	paplay --volume 65536 $XDG_DATA_HOME/assets/audio/beep.mp3
       fi
     '';
   };

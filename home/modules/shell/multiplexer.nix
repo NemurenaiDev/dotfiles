@@ -1,8 +1,6 @@
-{ ... }:
-
 {
-  home.file.".config/zellij/config.kdl".force = true;
-  home.file.".config/zellij/config.kdl".text = ''
+  xdg.configFile."zellij/config.kdl".force = true;
+  xdg.configFile."zellij/config.kdl".text = ''
         keybinds clear-defaults=true {
           locked {
               bind "Alt g" { SwitchToMode "normal"; }

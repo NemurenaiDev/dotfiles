@@ -3,14 +3,14 @@
 {
   imports = [ ./bin.nix ];
 
-  home.file.".bin" = {
+  xdg.dataFile.bin = {
     force = true;
     recursive = true;
     executable = true;
     source = ./src;
   };
 
-  # home.packages = builtins.map (name: pkgs.writeScriptBin name (builtins.readFile ./src/${name})) (
+  # home.packages = map (name: pkgs.writeScriptBin name (builtins.readFile ./src/${name})) (
   #   builtins.attrNames (builtins.readDir ./src)
   # );
 }

@@ -10,20 +10,13 @@
 
 let
   sessionVariables = {
-    NH_FLAKE = "/home/${host.username}/Projects/dotfiles";
-
-    SHELL = "${pkgs.zsh}/bin/zsh";
-
     EDITOR = "micro";
     VISUAL = if hasRole "desktop" then "code --wait --new-window" else "micro";
 
+    SHELL = "${pkgs.zsh}/bin/zsh";
     PAGER = "${pkgs.moor}/bin/moor";
     SYSTEMD_PAGER = "${pkgs.moor}/bin/moor";
     SYSTEMD_PAGERSECURE = "0";
-
-    PATH = "$PATH:/home/${host.username}/.yarn/bin";
-    NODE_PATH = "/home/${host.username}/.npm-packages/lib/node_modules";
-    SOPS_AGE_KEY_FILE = "/home/${host.username}/.config/sops/age/key.txt";
 
     HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
     HYPRCURSOR_SIZE = 24;
@@ -37,6 +30,24 @@ let
     NIXOS_OZONE_WL = "1";
 
     NIXPKGS_ALLOW_UNFREE = "1";
+
+    NH_FLAKE = "${config.home.homeDirectory}/Projects/dotfiles";
+    SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/sops/age/key.txt";
+
+    KODI_DATA = "${config.xdg.dataHome}/kodi";
+    CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
+    DOCKER_CONFIG = "${config.xdg.configHome}/docker";
+    PKG_CACHE_PATH = "${config.xdg.cacheHome}/pkg-cache";
+
+    DOTNET_CLI_HOME = "${config.xdg.dataHome}/dotnet";
+    NUGET_PACKAGES = "${config.xdg.cacheHome}/NuGetPackages";
+
+    NPM_CONFIG_INIT_MODULE = "${config.xdg.configHome}/npm/config/npm-init.js";
+    NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
+
+    TERMINFO = "${config.xdg.dataHome}/terminfo";
+    TERMINFO_DIRS = "${config.xdg.dataHome}/terminfo:/usr/share/terminfo";
   };
 in
 {
@@ -48,6 +59,7 @@ in
     "${toString ./modules}/@assets"
     "${toString ./modules}/@bin"
 
+    ./modules/xdg
     ./modules/shell
     ./modules/utils
   ]
@@ -55,7 +67,6 @@ in
     ./modules/hyprland
     ./modules/waybar
     ./modules/mako
-    ./modules/xdg
 
     ./modules/clipboard
     ./modules/terminal
@@ -65,18 +76,18 @@ in
     ./modules/telegram
   ];
 
-  home.stateVersion = host.stateVersion;
-  home.sessionVariables = sessionVariables;
   home.username = host.username;
   home.homeDirectory = "/home/${host.username}";
+  home.stateVersion = host.stateVersion;
+  home.sessionVariables = sessionVariables;
   home.packages = [ pkgs.catppuccin-cursors.mochaLight ];
 
   home.enableNixpkgsReleaseCheck = false; # bullshit (i guess)
 
-  _module.args.wallpaper = "/home/${host.username}/.assets/wallpapers/erinthul-moon-witch.png";
+  _module.args.wallpaper = "${config.xdg.dataHome}/assets/wallpapers/erinthul-moon-witch.png";
 
   catppuccin = {
-    enable = hasRole "desktop";
+    enable = true;
     flavor = "mocha";
     accent = "teal";
   };

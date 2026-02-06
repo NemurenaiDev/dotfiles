@@ -89,6 +89,8 @@ in
 
       "move cursor 0 0, match:class (Unity), match:title (UnityEditor.PopupWindow)"
 
+      "suppress_event maximize, match:class (deluge)"
+
       "suppress_event maximize, match:class (libreoffice.*)"
 
       "suppress_event maximize, match:class (org.telegram.desktop)"
@@ -146,10 +148,10 @@ in
       "size 500 300, match:title (Picture-in-Picture)"
       "move monitor_w-window_w-5 monitor_h-window_h-5, match:title (Picture-in-Picture)"
 
-      "float on, match:class (org.kde.haruna|mpv|eog|Eog)"
-      "center on, match:class (org.kde.haruna|mpv|eog|Eog)"
-      "move 30 50, match:class (org.kde.haruna|mpv|eog|Eog)"
-      "size monitor_w-60 monitor_h-80, match:class (org.kde.haruna|mpv|eog|Eog)"
+      "float on, match:class (org.kde.haruna|org.gnome.eog|mpv)"
+      "center on, match:class (org.kde.haruna|org.gnome.eog|mpv)"
+      "move 30 50, match:class (org.kde.haruna|org.gnome.eog|mpv)"
+      "size monitor_w-60 monitor_h-80, match:class (org.kde.haruna|org.gnome.eog|mpv)"
 
       ### files ###
 

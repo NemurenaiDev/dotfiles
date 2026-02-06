@@ -1,4 +1,4 @@
-{ host, ... }:
+{ config, ... }:
 
 {
   programs.waybar = {
@@ -168,10 +168,10 @@
           };
           "ignored-sinks" = [ "Easy Effects Sink" ];
           "scroll-step" = 5.0;
-          "on-click" = "/home/${host.username}/.bin/volume --toggle";
+          "on-click" = "${config.xdg.dataHome}/bin/volume --toggle";
           "on-click-right" = "pavucontrol";
-          "on-scroll-up" = "/home/${host.username}/.bin/volume --inc";
-          "on-scroll-down" = "/home/${host.username}/.bin/volume --dec";
+          "on-scroll-up" = "${config.xdg.dataHome}/bin/volume --inc";
+          "on-scroll-down" = "${config.xdg.dataHome}/bin/volume --dec";
           "smooth-scrolling-threshold" = 1;
           "interval" = 1;
         };

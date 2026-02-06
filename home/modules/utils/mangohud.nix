@@ -1,6 +1,6 @@
 {
-  home.file.".config/MangoHud/MangoHud.conf".force = true;
-  home.file.".config/MangoHud/MangoHud.conf".text = ''
+  xdg.configFile."MangoHud/MangoHud.conf".force = true;
+  xdg.configFile."MangoHud/MangoHud.conf".text = ''
     no_display
     toggle_hud=Ctrl+p
 

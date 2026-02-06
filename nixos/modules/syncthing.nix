@@ -51,6 +51,11 @@ in
             "!libreoffice/4/user/psprint"
             "!libreoffice/4/user/extensions"
 
+            "!deluge/ui.conf"
+            "!deluge/core.conf"
+            "!deluge/gtk3ui.conf"
+            "!deluge/plugins"
+
             "!mimeapps.list"
 
             "*"

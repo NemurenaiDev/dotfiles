@@ -7,9 +7,9 @@ get_backlight() {
 get_icon() {
     current=$(get_backlight | sed 's/%//')
     if [ "$current" -le "20" ]; then
-        icon="$HOME/.assets/icons/brightness-min.png"
+        icon="$XDG_DATA_HOME/assets/icons/brightness-min.png"
     else
-        icon="$HOME/.assets/icons/brightness-max.png"
+        icon="$XDG_DATA_HOME/assets/icons/brightness-max.png"
     fi
 }
 

@@ -1,13 +1,20 @@
-{ host, ... }:
+{
+  config,
+  host,
+  pkgs,
+  ...
+}:
 
 {
   home.activation."link-telegram-downloads-to-tmp" = ''
-    rm -rf /home/${host.username}/Downloads/Telegram\ Desktop
-    mkdir -p /home/${host.username}/Downloads
-    ln -sf /tmp/${host.username}/TelegramDownloads /home/${host.username}/Downloads/Telegram\ Desktop
+    ${pkgs.coreutils}/bin/mkdir -p ${config.home.homeDirectory}/Downloads
+    ${pkgs.coreutils}/bin/rm -rf ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
+
+    ${pkgs.coreutils}/bin/mkdir -p /tmp/${host.username}/TelegramDownloads
+    ${pkgs.coreutils}/bin/ln -sf /tmp/${host.username}/TelegramDownloads ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
   '';
 
-  home.file.".local/share/TelegramDesktop/tdata/shortcuts-custom.json" = {
+  xdg.dataFile."TelegramDesktop/tdata/shortcuts-custom.json" = {
     force = true;
     text = ''
       [
