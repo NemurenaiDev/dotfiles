@@ -62,6 +62,10 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
   boot.kernelParams = [ "preempt=full" ];
   boot.tmp.cleanOnBoot = true;
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv6.conf.all.forwarding" = 1;
+  };
 
   virtualisation.docker.enable = true;
 
@@ -123,6 +127,9 @@
     57622 # spotify
     57631 # librespot
     57632 # librespot
+  ]
+  ++ lib.optionals (hasRole "server") [
+    2283 # immich
   ];
   networking.firewall.allowedUDPPorts = [
     5353 # mDNS

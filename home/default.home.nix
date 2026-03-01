@@ -31,6 +31,8 @@ let
 
     NIXPKGS_ALLOW_UNFREE = "1";
 
+    # NIX_XDG_DESKTOP_PORTAL_DIR = "${config.home.profileDirectory}/share/xdg-desktop-portal/portals";
+
     NH_FLAKE = "${config.home.homeDirectory}/Projects/dotfiles";
     SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/sops/age/key.txt";
 
@@ -75,6 +77,8 @@ in
 
     ./modules/telegram
   ];
+
+  nix.assumeXdg = true; # temporary fix
 
   home.username = host.username;
   home.homeDirectory = "/home/${host.username}";

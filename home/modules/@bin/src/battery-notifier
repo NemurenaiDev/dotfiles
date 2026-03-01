@@ -1,56 +1,65 @@
 #!/usr/bin/env sh
 
 BAT=/sys/class/power_supply/BATT
-BAT_LOW_THRESHOLD=100
+BAT_LOW_THRESHOLD=20
 
 [ -n "$1" ] && BAT_LOW_THRESHOLD="$1"
 [ -n "$2" ] && BAT="$2"
 
-
 battery_status() {
-    cat "$BAT/status"
+	cat "$BAT/status"
 }
 
 battery_capacity() {
-    cat "$BAT/capacity"
+	cat "$BAT/capacity"
 }
 
-
 STATUS=$(battery_status)
-BATTERY_LOW="false"
-BATTERY_LOW_FIRED="false"
+CAPACITY=$(battery_capacity)
+
+if [ "$CAPACITY" -lt "$BAT_LOW_THRESHOLD" ]; then
+	LOW="1"
+else
+	LOW="0"
+fi
+
+LOW_FIRED="0"
 
 while true; do
-    inotifywait "$BAT/uevent" >/dev/null 2>&1
+	inotifywait -q -e modify,create,delete "$BAT" >/dev/null 2>&1
 
-    NEW_STATUS=$(battery_status)
-    CAPACITY=$(battery_capacity)
+	NEW_STATUS=$(battery_status)
+	NEW_CAPACITY=$(battery_capacity)
 
-    if [ "$CAPACITY" -lt "$BAT_LOW_THRESHOLD" ]; then
-	BATTERY_LOW="true"
-    else
-	BATTERY_LOW="false"
-    fi
+	if [ "$NEW_CAPACITY" -lt "$BAT_LOW_THRESHOLD" ]; then
+		NEW_LOW="1"
+	else
+		NEW_LOW="0"
+	fi
 
+	if [ "$LOW" -eq 0 ] && [ "$NEW_LOW" -eq 1 ] && [ "$NEW_STATUS" = "Discharging" ]; then
+		notify-send -u critical -c battery -i "$XDG_DATA_HOME/assets/icons/battery-low.png" ""
+		paplay --volume 65536 "$XDG_DATA_HOME/assets/audio/low-battery.mp3"
+		LOW_FIRED="1"
+	fi
 
-    if [ "$BATTERY_LOW_FIRED" = "false" ] && [ "$BATTERY_LOW" = "true" ] && [ "$STATUS" = "$NEW_STATUS" ]; then
-        notify-send -u critical -c battery -i "$XDG_DATA_HOME/assets/icons/battery-low.png" ""
-        paplay --volume 65536 $XDG_DATA_HOME/assets/audio/low-battery.mp3
-        BATTERY_LOW_FIRED="true"
-    elif [ "$BATTERY_LOW" = "false" ]; then
-        BATTERY_LOW_FIRED="false"
-    fi
+	if [ "$STATUS" != "$NEW_STATUS" ]; then
+		case "$NEW_STATUS" in
+		Charging)
+			notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-charging.png" ""
+			LOW_FIRED="0"
+			;;
+		Discharging)
+			if [ "$NEW_LOW" -eq 1 ]; then
+				notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-low.png" ""
+			else
+				notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-full.png" ""
+			fi
+			;;
+		esac
+	fi
 
-    if [ "$STATUS" != "$NEW_STATUS" ]; then
-        if [ "$NEW_STATUS" = "Charging" ]; then
-            notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-charging.png" ""
-        elif [ "$NEW_STATUS" = "Discharging" ]; then
-	    if [ "$BATTERY_LOW" = "true" ]; then
-                notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-low.png" ""
-	   else
-		notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-full.png" ""
-	   fi
-        fi
-        STATUS="$NEW_STATUS"
-    fi
+	STATUS="$NEW_STATUS"
+	CAPACITY="$NEW_CAPACITY"
+	LOW="$NEW_LOW"
 done

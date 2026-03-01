@@ -20,9 +20,10 @@
       lm_sensors
 
       micro
-      vimv
-      vim
+      nano
       neovim
+      vim
+      vimv
       moor
       highlight
       zsh
@@ -40,15 +41,19 @@
       ripgrep
       shfmt
       tldr
+      lsd
+      man-db
+      ncdu
+      trash-cli
 
       bun
       biome
       nodejs
-      corepack
+      inputs.stable.legacyPackages.${system}.corepack
       typescript
-      turbo
       serve
       prisma
+      inputs.stable.legacyPackages.${system}.turbo
 
       snapcast
       playerctl
@@ -66,9 +71,7 @@
       nh
 
       openssl
-      php
       postgresql
-      node2nix
       binutils
       python3
       gnumake
@@ -103,18 +106,13 @@
       inotify-tools
       iptables
       less
-      libfaketime
       libgphoto2
       libgsf
       libguestfs
       libva
       libva-utils
       libinput
-      lsd
-      man-db
       ffmpeg
-      nano
-      ncdu
       nmap
       proxychains
       rclone
@@ -122,17 +120,16 @@
       sdbus-cpp
       sox
       traceroute
-      trash-cli
       wget
       zram-generator
       curl
-      keyd
     ]
     ++ lib.optionals (hasRole "desktop") (
       with pkgs;
       [
         inputs.zen-browser.packages.${system}.default
 
+        vivaldi
         ungoogled-chromium
 
         hyprland
@@ -155,7 +152,7 @@
         mpv
         haruna
 
-        libreoffice
+        inputs.stable.legacyPackages.${system}.libreoffice
         kitty
         deluge
         obs-studio
@@ -204,13 +201,13 @@
     );
 
   fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
     font-awesome
+    nerd-fonts.jetbrains-mono
 
     liberation_ttf
 
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
+    inputs.stable.legacyPackages.${system}.noto-fonts
+    inputs.stable.legacyPackages.${system}.noto-fonts-cjk-sans
+    inputs.stable.legacyPackages.${system}.noto-fonts-color-emoji
   ];
 }
