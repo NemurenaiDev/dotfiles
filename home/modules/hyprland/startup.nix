@@ -13,7 +13,7 @@
       "uwsm app -t service -u app-mako.service -- mako"
 
       "uwsm app -- ${config.xdg.dataHome}/bin/automation-server"
-      "uwsm app -- ${config.xdg.dataHome}/bin/dynamic-window-rules"
+      # "uwsm app -- ${config.xdg.dataHome}/bin/dynamic-window-rules"
 
       "uwsm app -- udiskie --automount --notify --smart-tray"
 
@@ -25,7 +25,7 @@
       "uwsm app -- run-on-workspace 'special:hidden' 'kitty --single-instance sh' --silent"
 
       "uwsm app -- run-on-workspace 'special:aichat' 'chromium --app=https://chatgpt.com/' --silent"
-      "uwsm app -- run-on-workspace '21' 'zen' --silent"
+      "uwsm app -- run-on-workspace '21' 'vivaldi' --silent"
       "uwsm app -- run-on-workspace '25' 'Telegram' --silent"
     ];
   };

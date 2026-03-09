@@ -31,8 +31,6 @@ let
 
     NIXPKGS_ALLOW_UNFREE = "1";
 
-    # NIX_XDG_DESKTOP_PORTAL_DIR = "${config.home.profileDirectory}/share/xdg-desktop-portal/portals";
-
     NH_FLAKE = "${config.home.homeDirectory}/Projects/dotfiles";
     SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/sops/age/key.txt";
 
@@ -41,6 +39,8 @@ let
     XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     PKG_CACHE_PATH = "${config.xdg.cacheHome}/pkg-cache";
+
+    GRADLE_USER_HOME = "${config.xdg.dataHome}/gradle";
 
     DOTNET_CLI_HOME = "${config.xdg.dataHome}/dotnet";
     NUGET_PACKAGES = "${config.xdg.cacheHome}/NuGetPackages";
@@ -78,7 +78,7 @@ in
     ./modules/telegram
   ];
 
-  nix.assumeXdg = true; # temporary fix
+  nix.assumeXdg = true; # temporary(?) fix
 
   home.username = host.username;
   home.homeDirectory = "/home/${host.username}";

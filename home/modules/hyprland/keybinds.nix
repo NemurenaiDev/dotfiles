@@ -44,10 +44,10 @@
 
       ### workspace-specific applications ###
 
-      "SUPER, W, exec, run-on-workspace '21' 'zen'"
+      "SUPER, W, exec, run-on-workspace '21' 'vivaldi'"
       "SUPER SHIFT, W, movetoworkspace, 21"
 
-      "SUPER, A, exec, run-on-workspace '22' 'zen --private-window'"
+      "SUPER, A, exec, run-on-workspace '22' 'vivaldi --incognito'"
       "SUPER SHIFT, A, movetoworkspace, 22"
 
       "SUPER, X, exec, run-on-workspace '25' 'Telegram'"

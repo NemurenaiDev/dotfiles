@@ -1,17 +1,17 @@
 { lib, ... }:
 
 {
-  xdg.desktopEntries.zen = lib.mkForce {
+  xdg.desktopEntries.vivaldi = lib.mkForce {
     name = "stub";
     exec = "true";
     type = "Application";
     noDisplay = true;
   };
-  
+
   xdg.desktopEntries.browser = {
-    name = "Zen Browser";
-    exec = "zen %u";
-    icon = "zen";
+    name = "Vivaldi";
+    exec = "vivaldi %u";
+    icon = "vivaldi";
     type = "Application";
     mimeType = [
       "text/html"

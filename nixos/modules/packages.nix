@@ -127,8 +127,6 @@
     ++ lib.optionals (hasRole "desktop") (
       with pkgs;
       [
-        inputs.zen-browser.packages.${system}.default
-
         vivaldi
         ungoogled-chromium
 

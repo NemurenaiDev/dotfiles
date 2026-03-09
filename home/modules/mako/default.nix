@@ -91,11 +91,6 @@
     default-timeout=16000
 
 
-    [app-name=Zen]
-    default-timeout=16000
-    anchor=bottom-left
-    border-color=#FF7456
-
     [app-name=Spotify]
     default-timeout=5000
     border-color=#a6e3a1
