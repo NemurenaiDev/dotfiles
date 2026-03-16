@@ -19,6 +19,7 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+  boot.blacklistedKernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {

@@ -6,9 +6,12 @@
     ./library.nix
   ];
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.blacklistedKernelModules = [ "hid_uclogic" ];
-  boot.kernelParams = [ "rtc_cmos.use_acpi_alarm=1" ];
+  boot.kernelParams = [
+    "amdgpu.dc=1"
+    "amdgpu.dpm=1"
+    "amd_pstate=active"
+    "rtc_cmos.use_acpi_alarm=1"
+  ];
   boot.extraModprobeConfig = ''
     options snd_hda_intel power_save=0 power_save_controller=N
     options snd_hda_intel enable_msi=1

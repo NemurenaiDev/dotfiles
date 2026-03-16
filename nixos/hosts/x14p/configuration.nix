@@ -5,8 +5,8 @@
     ./hardware.nix
   ];
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
+    "amdgpu.dc=1"
     "amdgpu.dpm=1"
     "amdgpu.runpm=1"
     "amd_pstate=active"

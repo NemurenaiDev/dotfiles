@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.zsh = {
@@ -14,9 +14,14 @@
       [[ $PERF == 1 ]] && zmodload zsh/zprof
 
 
-      if who am i | grep tty1; then
-          clear && uwsm check may-start -q && exec sh -c "uwsm start default || uwsm start select" &>/dev/null
+      if [ "$(tty)" = "/dev/tty1" ]; then
+        exec sh -c '
+          ${pkgs.jp2a}/bin/jp2a --term-fit --term-zoom --term-center "${config.xdg.dataHome}/assets/wallpapers/frieren-sleeps-for-ascii.png"
+
+          exec uwsm start -e -N Hyprland -D Hyprland ${pkgs.hyprland}/bin/start-hyprland > /dev/null 2>&1
+        '
       fi
+
 
       if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
           if [ -f /tmp/HYPRLAND_INSTANCE_SIGNATURE ]; then

@@ -5,6 +5,11 @@
     ./hardware.nix
   ];
 
+  boot.kernelParams = [
+    "i915.fastboot=1"
+    "rtc_cmos.use_acpi_alarm=1"
+  ];
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.timeout = 0;

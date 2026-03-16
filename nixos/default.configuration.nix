@@ -26,7 +26,6 @@
     ./modules/environment.nix
   ]
   ++ lib.optionals (hasRole "desktop") [
-    ./modules/plymouth.nix
     ./modules/gaming.nix
   ];
 
@@ -60,8 +59,9 @@
     ];
   };
 
-  boot.kernelModules = [ "v4l2loopback" ];
+  boot.initrd.stage1Greeting = "";
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback.out ];
+  boot.kernelModules = [ "v4l2loopback" ];
   boot.kernelParams = [ "preempt=full" ];
   boot.tmp.cleanOnBoot = true;
   boot.kernel.sysctl = {

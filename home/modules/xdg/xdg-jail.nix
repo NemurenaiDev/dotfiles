@@ -18,14 +18,7 @@ let
       name = "${pkg.name}-enjailed-${host.username}";
       paths = [ pkg ];
       buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/${bin} \
-          --run "
-            cd ${homedir}/${jail-soft}
-            export HOME=${homedir}/${jail-soft}
-            exec $out/bin/.${bin}-wrapped \"\$@\"
-          "
-      '';
+      postBuild = "wrapProgram $out/bin/${bin} --run 'export HOME=${homedir}/${jail-soft} && cd \$HOME'";
     });
 
   enjail-bwrap =
@@ -38,6 +31,14 @@ let
         pkgs.bubblewrap
       ];
       postBuild = ''
+        # resolve $hidden the same way wrapProgram does
+        # https://github.com/NixOS/nixpkgs/blob/bd53ac106738b7bc47f89d56b5ddbff4bd4af4bf/pkgs/build-support/setup-hooks/make-wrapper.sh#L229-L232
+
+        hidden="$out/bin/.${bin}-wrapped"
+        while [ -e "$hidden" ]; do
+          hidden="''${hidden}_"
+        done
+
         wrapProgram $out/bin/${bin} \
           --prefix PATH : ${pkgs.bubblewrap}/bin \
           --run "
@@ -59,7 +60,7 @@ let
               \
               --die-with-parent \
               \
-              $out/bin/.${bin}-wrapped \"\$@\"
+              \"$hidden\" \"\$@\"
           "
       '';
     });
@@ -69,9 +70,11 @@ in
     ${pkgs.coreutils}/bin/mkdir -p ${homedir}/${jail-bwrap}
     ${pkgs.coreutils}/bin/mkdir -p ${homedir}/${jail-soft}
 
-    ${pkgs.coreutils}/bin/ln -sfn "${homedir}/.config" "${homedir}/${jail-soft}/.config"
-    ${pkgs.coreutils}/bin/ln -sfn "${homedir}/.local" "${homedir}/${jail-soft}/.local"
-    ${pkgs.coreutils}/bin/ln -sfn "${homedir}/.cache" "${homedir}/${jail-soft}/.cache"
+    ${pkgs.coreutils}/bin/ln -sfn ${homedir}/.config ${homedir}/${jail-soft}/.config
+    ${pkgs.coreutils}/bin/ln -sfn ${homedir}/.local ${homedir}/${jail-soft}/.local
+    ${pkgs.coreutils}/bin/ln -sfn ${homedir}/.cache ${homedir}/${jail-soft}/.cache
+
+    ${pkgs.coreutils}/bin/ln -sfn ${homedir}/*/ ${homedir}/${jail-soft}/
   '';
 
   home.activation."mv-to-xdg-jail" = lib.hm.dag.entryAfter [ "link-xdg-jail-to-home" ] ''
