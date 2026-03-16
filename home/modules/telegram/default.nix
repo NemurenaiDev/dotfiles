@@ -11,7 +11,7 @@
     ${pkgs.coreutils}/bin/rm -rf ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
 
     ${pkgs.coreutils}/bin/mkdir -p /tmp/${host.username}/TelegramDownloads
-    ${pkgs.coreutils}/bin/ln -sf /tmp/${host.username}/TelegramDownloads ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
+    ${pkgs.coreutils}/bin/ln -sfn /tmp/${host.username}/TelegramDownloads ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
   '';
 
   xdg.dataFile."TelegramDesktop/tdata/shortcuts-custom.json" = {

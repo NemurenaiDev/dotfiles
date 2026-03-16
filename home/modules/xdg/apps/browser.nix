@@ -1,6 +1,13 @@
 { lib, ... }:
 
 {
+  xdg.desktopEntries.vivaldi-stable = lib.mkForce {
+    name = "stub";
+    exec = "true";
+    type = "Application";
+    noDisplay = true;
+  };
+
   xdg.desktopEntries.vivaldi = lib.mkForce {
     name = "stub";
     exec = "true";

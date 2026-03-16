@@ -80,7 +80,9 @@ in
       "workspace special:hidden silent, match:class (^$), match:title (.*is.sharing.*)"
       "workspace special:hidden silent, match:class (nemo), match:title (nemo.*/.local/share/nemo)"
 
-      "workspace 26, match:class (vesktop)"
+      "workspace 9 silent, match:class (gamescope)"
+      "workspace 9 silent, match:class (steam_app_.*)"
+      "workspace 9 silent, match:class (steam), match:title (Steam Big Picture Mode)"
 
       # "float on, match:class (chromium|vivaldi.*), match:title negative:(.icture.in..icture)"
       # "size 600 765, match:class (chromium|vivaldi.*), match:title negative:(.icture.in..icture)"
@@ -111,6 +113,7 @@ in
       "size 1400 800, match:class (net.lutris.Lutris), match:title (Lutris.+)"
 
       "float on, match:class (Steam|steam), match:title negative:(Steam|Steam.Big.Picture.Mode)"
+      "center on, match:class (Steam|steam)"
 
       "tile on, match:class (Steam|steam), match:title (Steam|Steam.Big.Picture.Mode)"
       "suppress_event fullscreen, match:class (Steam|steam), match:title (Steam|Steam.Big.Picture.Mode)"
@@ -146,7 +149,7 @@ in
       "float on, match:title (.icture.in..icture)"
       "no_initial_focus on, match:title (.icture.in..icture)"
       "size 500 300, match:title (.icture.in..icture)"
-      "move monitor_w-window_w-5 monitor_h-window_h-5, match:title (.icture.in..icture)"
+      "move monitor_w-500-5 monitor_h-300-5, match:title (.icture.in..icture)"
 
       "float on, match:class (org.kde.haruna|org.gnome.eog|mpv)"
       "center on, match:class (org.kde.haruna|org.gnome.eog|mpv)"

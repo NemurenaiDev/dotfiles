@@ -3,7 +3,7 @@
   xdg.configFile."starship.toml".text = ''
     continuation_prompt = "[❯❯](magenta)"
     right_format = "$cmd_duration"
-    format = "$directory $hostname$character"
+    format = "$directory $hostname$env_var$character"
 
     [cmd_duration]
     min_time = 5000
@@ -14,6 +14,10 @@
     ssh_only = false
     detect_env_vars = ['SSH_CONNECTION', 'BWRAP']
     format = "[$hostname ](bold red)"
+
+    [env_var.DEVSHELL]
+    variable = 'DEVSHELL'
+    format = "[$env_value ](bold yellow)"
 
     [character]
     success_symbol = "[❯](magenta)"

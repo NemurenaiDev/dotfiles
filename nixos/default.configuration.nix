@@ -16,24 +16,26 @@
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = false;
+      home-manager.useUserPackages = true;
     }
 
     ./modules/keyd.nix
     ./modules/audio.nix
-    ./modules/packages.nix
     ./modules/snapcast.nix
     ./modules/syncthing.nix
+    ./modules/environment.nix
   ]
   ++ lib.optionals (hasRole "desktop") [
     ./modules/plymouth.nix
     ./modules/gaming.nix
   ];
 
-  nixpkgs.hostPlatform = lib.mkDefault host.system;
   system.stateVersion = host.stateVersion;
   networking.hostName = host.hostname;
   time.timeZone = host.timezone;
+
+  nixpkgs.hostPlatform = lib.mkDefault host.system;
+  nixpkgs.config.allowUnfree = true;
 
   nix.settings.use-xdg-base-directories = true;
   nix.settings.experimental-features = [
@@ -128,7 +130,7 @@
     57631 # librespot
     57632 # librespot
   ]
-  ++ lib.optionals (hasRole "server") [
+  ++ lib.optionals (hasRole "immich") [
     2283 # immich
   ];
   networking.firewall.allowedUDPPorts = [

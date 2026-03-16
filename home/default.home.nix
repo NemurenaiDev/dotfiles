@@ -21,29 +21,14 @@ let
     HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
     HYPRCURSOR_SIZE = 24;
 
-    QT_QPA_PLATFORMTHEME = "gtk3";
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    WLR_NO_HARDWARE_CURSORS = "1";
-    WLR_DRM_NO_ATOMIC = "1";
-    NIXOS_OZONE_WL = "1";
-
-    NIXPKGS_ALLOW_UNFREE = "1";
-
     NH_FLAKE = "${config.home.homeDirectory}/Projects/dotfiles";
+    DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/sops/age/key.txt";
 
     KODI_DATA = "${config.xdg.dataHome}/kodi";
     CARGO_HOME = "${config.xdg.dataHome}/cargo";
     XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
-    DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     PKG_CACHE_PATH = "${config.xdg.cacheHome}/pkg-cache";
-
-    GRADLE_USER_HOME = "${config.xdg.dataHome}/gradle";
-
-    DOTNET_CLI_HOME = "${config.xdg.dataHome}/dotnet";
-    NUGET_PACKAGES = "${config.xdg.cacheHome}/NuGetPackages";
 
     NPM_CONFIG_INIT_MODULE = "${config.xdg.configHome}/npm/config/npm-init.js";
     NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
@@ -78,15 +63,16 @@ in
     ./modules/telegram
   ];
 
-  nix.assumeXdg = true; # temporary(?) fix
+  nixpkgs.config.allowUnfree = true;
+  
+  nix.assumeXdg = true; # not sure i can remove it
+  home.preferXdgDirectories = true;
 
   home.username = host.username;
   home.homeDirectory = "/home/${host.username}";
   home.stateVersion = host.stateVersion;
   home.sessionVariables = sessionVariables;
   home.packages = [ pkgs.catppuccin-cursors.mochaLight ];
-
-  home.enableNixpkgsReleaseCheck = false; # bullshit (i guess)
 
   _module.args.wallpaper = "${config.xdg.dataHome}/assets/wallpapers/erinthul-moon-witch.png";
 

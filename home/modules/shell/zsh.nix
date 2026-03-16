@@ -25,22 +25,21 @@
       fi
 
 
-      # WARNING: "compinit -d" may be a security risk when your system is multi-user with untrusted users
-      autoload -U compinit && compinit -d $XDG_CACHE_HOME/zcompdump -C
+      autoload -U compinit && compinit
     '';
 
     initContent = ''
       toggle-sudo() {
-          if [[ $BUFFER == sudo\ * ]]; then
-              BUFFER="''${BUFFER#sudo }"
-          else
-              BUFFER="sudo $BUFFER"
-          fi
-          zle end-of-line
+        if [[ $BUFFER == sudo\ * ]]; then
+            BUFFER="''${BUFFER#sudo }"
+        else
+            BUFFER="sudo $BUFFER"
+        fi
+        zle end-of-line
       }
 
       get-terminal-name() {
-          ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))"
+        ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))"
       }
 
       update-history() {
@@ -48,7 +47,7 @@
       }
 
       list-dir() {
-        lsd --literal --icon always --color always --group-dirs first --date "+%x %T" "$@"
+        lsd --almost-all --literal --icon always --color always --group-dirs first --date "+%x %T" "$@"
       }
 
       use() {
@@ -162,7 +161,7 @@
       alias l="list-dir"
       alias ls="list-dir"
       alias ll="list-dir -Ah"
-      alias lll="list-dir -lh"
+      alias lll="list-dir -lAh"
       alias watch="CLICOLOR_FORCE=1 watch -c"
 
       alias rm="trash -v"

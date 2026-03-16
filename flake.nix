@@ -32,7 +32,10 @@
         {
           hostname = "homelab";
           deviceId = "Y33IVUJ-5HMEGX6-CLW3PAQ-PXKI2RF-TUM3Y7C-VAQTDE7-V43LW4V-RV7TIAD";
-          roles = [ "server" ];
+          roles = [
+            "server"
+            "immich"
+          ];
           snapserver = {
             buffer = 300;
             codec = "flac";
@@ -46,7 +49,10 @@
         {
           hostname = "cyberia";
           deviceId = "LZAWUPK-DVPWCJ5-7INP5UI-ULGJYSM-25VYXL6-CCHYYXG-A5YFA4O-PORVFAO";
-          roles = [ "desktop" ];
+          roles = [
+            "desktop"
+            "gamehost"
+          ];
           snapserver = {
             buffer = 300;
             codec = "flac";
@@ -60,7 +66,10 @@
         {
           hostname = "x14p";
           deviceId = "VZHX56X-H3U2APW-3E7QETV-3NR6QCV-7JTOVFF-FAY3E5B-DNY3HHH-RATQEAW";
-          roles = [ "desktop" ];
+          roles = [
+            "desktop"
+            "gameclient"
+          ];
           snapserver = {
             buffer = 300;
             codec = "flac";

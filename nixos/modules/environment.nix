@@ -7,7 +7,26 @@
 }:
 
 {
-  nixpkgs.config.allowUnfree = true;
+  systemd.tmpfiles.rules = [
+    "d /var/xdg-jail 0774 root users - -"
+  ];
+
+  environment.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_QPA_PLATFORMTHEME = "gtk3";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+
+    WLR_DRM_NO_ATOMIC = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+
+    NIXOS_OZONE_WL = "1";
+    NIXPKGS_ALLOW_UNFREE = "1";
+
+    NUGET_PACKAGES = "/var/xdg-jail/nuget";
+    DOTNET_CLI_HOME = "/var/xdg-jail/dotnet";
+    GRADLE_USER_HOME = "/var/xdg-jail/gradle";
+  };
 
   environment.systemPackages =
     with pkgs;
@@ -127,9 +146,6 @@
     ++ lib.optionals (hasRole "desktop") (
       with pkgs;
       [
-        vivaldi
-        ungoogled-chromium
-
         hyprland
         hyprlang
         hyprlock
@@ -143,14 +159,12 @@
         wl-clipboard
         tesseract
 
-        vscode
         opencode
-        code-cursor
 
         mpv
         haruna
 
-        inputs.stable.legacyPackages.${system}.libreoffice
+        libreoffice
         kitty
         deluge
         obs-studio
@@ -204,8 +218,8 @@
 
     liberation_ttf
 
-    inputs.stable.legacyPackages.${system}.noto-fonts
-    inputs.stable.legacyPackages.${system}.noto-fonts-cjk-sans
-    inputs.stable.legacyPackages.${system}.noto-fonts-color-emoji
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
   ];
 }

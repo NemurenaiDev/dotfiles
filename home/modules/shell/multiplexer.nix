@@ -483,6 +483,10 @@
         // also default to the scrollback size. This does nothing if `serialize_pane_viewport` is not true.
         // 
         // scrollback_lines_to_serialize 10000
+
+        // When Zellij attempts to discover commands running inside panes so that it can serialize them, it can sometimes be inaccurate. This can happen when (for example) commands are run inside some sort of wrapper. To get around this, it's possible to define a post_command_discovery_hook. This is a command that will run in the context of te user's default shell and be provided the $RESURRECT_COMMAND that has just been discovered for a specific pane and not yet serialized. Whatever this command sends over STDOUT will be serialized in place of the discovered command.
+        // 
+        post_command_discovery_hook "echo \"\""
          
         // Enable or disable the rendering of styled and colored underlines (undercurl).
         // May need to be disabled for certain unsupported terminals
