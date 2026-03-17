@@ -107,6 +107,8 @@ in
     (enjail-soft pkgs.vivaldi "vivaldi")
     (enjail-soft pkgs.ungoogled-chromium "chromium")
 
+    (enjail-soft pkgs.spotify "spotify")
+
     (enjail-soft pkgs.vscode-fhs "code")
     (enjail-soft pkgs.code-cursor-fhs "cursor")
     (enjail-soft pkgs.antigravity-fhs "antigravity")

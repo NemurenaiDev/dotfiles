@@ -168,7 +168,6 @@
         kitty
         deluge
         obs-studio
-        spotify
         telegram-desktop
 
         nemo-with-extensions
