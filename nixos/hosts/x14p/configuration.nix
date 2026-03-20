@@ -6,20 +6,15 @@
   ];
 
   boot.kernelParams = [
-    "amdgpu.dc=1"
-    "amdgpu.dpm=1"
-    "amdgpu.runpm=1"
+    "idle=nomwait"
+    "rcu_nocbs=0-15"
     "amd_pstate=active"
     "rtc_cmos.use_acpi_alarm=1"
   ];
-  boot.extraModprobeConfig = ''
-    options snd_hda_intel power_save=0 power_save_controller=N
-    options snd_hda_intel enable_msi=1
-  '';
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.consoleMode = "max";
+  boot.loader.systemd-boot.consoleMode = "keep";
   boot.loader.timeout = 0;
 
   hardware.cpu.amd.updateMicrocode = true;

@@ -170,9 +170,9 @@ in
       "center on, match:class negative:(com.github.hluk.copyq), match:title (.*(Open.with).*)"
       "size 720 680, match:class negative:(com.github.hluk.copyq), match:title (.*(Open.with).*)"
 
-      "float on, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select).*)"
-      "center on, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select).*)"
-      "size 960 720, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select).*)"
+      "float on, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select|Open.File).*)"
+      "center on, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select|Open.File).*)"
+      "size 960 720, match:class negative:(com.github.hluk.copyq), match:title (.*(Upload|Choose|Select|Open.File).*)"
 
       ### utils ###
 

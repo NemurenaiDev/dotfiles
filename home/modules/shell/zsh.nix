@@ -117,8 +117,8 @@
 
 
 
-      HISTSIZE="2500"
-      SAVEHIST="2500"
+      HISTSIZE="5000"
+      SAVEHIST="5000"
 
 
       setopt INC_APPEND_HISTORY

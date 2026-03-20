@@ -7,8 +7,6 @@
   ];
 
   boot.kernelParams = [
-    "amdgpu.dc=1"
-    "amdgpu.dpm=1"
     "amd_pstate=active"
     "rtc_cmos.use_acpi_alarm=1"
   ];

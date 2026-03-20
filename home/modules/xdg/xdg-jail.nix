@@ -9,19 +9,10 @@
 let
   homedir = config.home.homeDirectory;
 
-  jail-soft = ".local/xdg-jail/soft";
-  jail-bwrap = ".local/xdg-jail/bwrap";
+  jail = ".local/xdg-jail";
+  jail-soft = ".local/xdg-jail/.softjail";
 
-  enjail-soft =
-    pkg: bin:
-    (pkgs.symlinkJoin {
-      name = "${pkg.name}-enjailed-${host.username}";
-      paths = [ pkg ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = "wrapProgram $out/bin/${bin} --run 'export HOME=${homedir}/${jail-soft} && cd \$HOME'";
-    });
-
-  enjail-bwrap =
+  enjail =
     pkg: bin:
     (pkgs.symlinkJoin {
       name = "${pkg.name}-enjailed-${host.username}";
@@ -45,18 +36,21 @@ let
             exec ${pkgs.bubblewrap}/bin/bwrap \
               --bind / / \
               \
-              --dev /dev \
+              --dev-bind /dev /dev \
               --proc /proc \
               \
-              --bind ${homedir}/${jail-bwrap} ${homedir} \
-              --bind ${homedir} ${homedir}/HOME \
+              --bind ${homedir}/${jail} ${homedir} \
               --bind ${homedir}/.cache ${homedir}/.cache \
               --bind ${homedir}/.config ${homedir}/.config \
               --bind ${homedir}/.local ${homedir}/.local \
+              \
+              --bind-try ${homedir} ${homedir}/Original \
               --bind-try ${homedir}/Desktop ${homedir}/Desktop \
               --bind-try ${homedir}/Downloads ${homedir}/Downloads \
+              --bind-try ${homedir}/Movies ${homedir}/Movies \
               --bind-try ${homedir}/Pictures ${homedir}/Pictures \
               --bind-try ${homedir}/Projects ${homedir}/Projects \
+              --bind-try ${homedir}/Services ${homedir}/Services \
               \
               --die-with-parent \
               \
@@ -64,10 +58,19 @@ let
           "
       '';
     });
+
+  enjail-soft =
+    pkg: bin:
+    (pkgs.symlinkJoin {
+      name = "${pkg.name}-enjailed-${host.username}";
+      paths = [ pkg ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = "wrapProgram $out/bin/${bin} --run 'export HOME=${homedir}/${jail-soft} && cd \$HOME'";
+    });
 in
 {
   home.activation."link-xdg-jail-to-home" = lib.hm.dag.entryAnywhere ''
-    ${pkgs.coreutils}/bin/mkdir -p ${homedir}/${jail-bwrap}
+    ${pkgs.coreutils}/bin/mkdir -p ${homedir}/${jail}
     ${pkgs.coreutils}/bin/mkdir -p ${homedir}/${jail-soft}
 
     ${pkgs.coreutils}/bin/ln -sfn ${homedir}/.config ${homedir}/${jail-soft}/.config
@@ -88,31 +91,32 @@ in
       fi
     }
 
-    mv-to-jail "${homedir}/.pki" "${homedir}/${jail-soft}/.pki"
-    mv-to-jail "${homedir}/.vscode" "${homedir}/${jail-soft}/.vscode"
-    mv-to-jail "${homedir}/.cursor" "${homedir}/${jail-soft}/.cursor"
-    mv-to-jail "${homedir}/.antigravity" "${homedir}/${jail-soft}/.antigravity"
+    mv-to-jail "${homedir}/.pki" "${homedir}/${jail}/.pki"
+
+    mv-to-jail "${homedir}/.anydesk" "${homedir}/${jail}/.anydesk"
+
+    mv-to-jail "${homedir}/.vscode" "${homedir}/${jail}/.vscode"
+    mv-to-jail "${homedir}/.cursor" "${homedir}/${jail}/.cursor"
+    mv-to-jail "${homedir}/.antigravity" "${homedir}/${jail}/.antigravity"
 
     mv-to-jail "${homedir}/.steam" "${homedir}/${jail-soft}/.steam"
     mv-to-jail "${homedir}/.steampid" "${homedir}/${jail-soft}/.steampid"
     mv-to-jail "${homedir}/.steampath" "${homedir}/${jail-soft}/.steampath"
-
-    mv-to-jail "${homedir}/.anydesk" "${homedir}/${jail-bwrap}/.anydesk"
   '';
 
   home.packages = [
     (enjail-soft pkgs.steam "steam")
     (enjail-soft pkgs.steam-run "steam-run")
 
-    (enjail-soft pkgs.vivaldi "vivaldi")
-    (enjail-soft pkgs.ungoogled-chromium "chromium")
+    (enjail pkgs.spotify "spotify")
 
-    (enjail-soft pkgs.spotify "spotify")
+    (enjail pkgs.vivaldi "vivaldi")
+    (enjail pkgs.ungoogled-chromium "chromium")
 
-    (enjail-soft pkgs.vscode-fhs "code")
-    (enjail-soft pkgs.code-cursor-fhs "cursor")
-    (enjail-soft pkgs.antigravity-fhs "antigravity")
+    (enjail pkgs.vscode-fhs "code")
+    (enjail pkgs.code-cursor-fhs "cursor")
+    (enjail pkgs.antigravity-fhs "antigravity")
 
-    (enjail-bwrap pkgs.anydesk "anydesk")
+    (enjail pkgs.anydesk "anydesk")
   ];
 }
