@@ -1,6 +1,5 @@
 {
   hasRole,
-  inputs,
   pkgs,
   lib,
   ...
@@ -68,11 +67,9 @@
       bun
       biome
       nodejs
-      inputs.stable.legacyPackages.${system}.corepack
       typescript
       serve
-      prisma
-      inputs.stable.legacyPackages.${system}.turbo
+      turbo
 
       snapcast
       playerctl

@@ -67,7 +67,7 @@
       ### screenshot ###
 
       ", Print, exec, ${config.xdg.dataHome}/bin/screenshot --screen"
-      
+
       "SUPER ALT, S, exec, ${config.xdg.dataHome}/bin/screenshot --win"
       "SUPER CTRL, S, exec, ${config.xdg.dataHome}/bin/screenshot --screen"
       "SUPER SHIFT, S, exec, ${config.xdg.dataHome}/bin/screenshot --area"
@@ -78,17 +78,20 @@
 
       "ALT, Tab, exec, hyprctl activewindow -j | jq -e '.grouped | length > 1' && hyprctl dispatch changegroupactive || hyprctl dispatch cyclenext"
 
-      "SUPER, escape, focusmonitor, +1"
+      "SUPER, mouse_up, exec, hyprctl activewindow -j | jq -e '.grouped | length > 1' && hyprctl dispatch changegroupactive f || hyprctl dispatch cyclenext"
+      "SUPER, mouse_down, exec, hyprctl activewindow -j | jq -e '.grouped | length > 1' && hyprctl dispatch changegroupactive b || hyprctl dispatch cyclenext prev"
 
-      "SUPER, T, togglegroup"
-      "SUPER SHIFT, T, lockactivegroup, toggle"
+      "SUPER, escape, focusmonitor, +1"
 
       ### window control ###
 
       "SUPER, Q, killactive"
-      "SUPER SHIFT, Q, exec, kill \"$(hyprctl -j activewindow | jq -r '.pid')\""
+      "SUPER SHIFT, Q, forcekillactive"
 
       "SUPER, F, fullscreen, 2"
+
+      "SUPER, T, togglegroup"
+      "SUPER SHIFT, T, lockactivegroup, toggle"
 
       "SUPER, RETURN, togglefloating"
       "SUPER SHIFT, RETURN, pin"
@@ -124,7 +127,7 @@
       "SUPER, 8, workspace, 8"
       "SUPER, F1, workspace, 9"
       "SUPER, F2, workspace, 10"
-      
+
       "SUPER CTRL, escape, movecurrentworkspacetomonitor, +1"
 
       ### keyboard layout ###

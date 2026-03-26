@@ -4,6 +4,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
+
     settings = {
       general = {
         "gaps_in" = 2.5;
@@ -16,6 +17,8 @@
 
         "bezier" = "linear, 0.0, 0.0, 1.0, 1.0";
         "animation" = "borderangle, 1, 50, linear, loop";
+
+        "layout" = "dwindle";
       };
 
       group = {
@@ -25,8 +28,8 @@
         "col.border_locked_inactive" = "rgb(94E2D5) rgb(F38BA8) rgb(F9E2AF) 270deg";
 
         groupbar = {
-          render_titles = false;
-          scrolling = false;
+          "render_titles" = false;
+          "scrolling" = false;
 
           "col.active" = "rgb(94E2D5)";
           "col.inactive" = "rgb(585B70)";
@@ -35,13 +38,20 @@
         };
       };
 
+      dwindle = {
+        "pseudotile" = true;
+        "smart_split" = false;
+        "preserve_split" = true;
+      };
+
       input = {
         "repeat_rate" = 50;
         "repeat_delay" = 300;
         "numlock_by_default" = false;
         "accel_profile" = "flat";
-        "follow_mouse" = 1;
         "sensitivity" = 0;
+        "follow_mouse" = 1;
+        "follow_mouse_threshold" = 100;
 
         "kb_layout" = "us,ua,ru";
         "kb_options" = "fkeys:basic_13-24";
@@ -61,6 +71,11 @@
       gesture = [
         "3, horizontal, workspace"
       ];
+
+      binds = {
+        "scroll_event_delay" = 25;
+        "workspace_back_and_forth" = false;
+      };
 
       cursor = {
         "sync_gsettings_theme" = true;
@@ -116,16 +131,6 @@
       ecosystem = {
         "no_update_news" = true;
         "no_donation_nag" = true;
-      };
-
-      binds = {
-        "workspace_back_and_forth" = false;
-      };
-
-      dwindle = {
-        "pseudotile" = true;
-        "smart_split" = false;
-        "preserve_split" = true;
       };
 
       debug = {

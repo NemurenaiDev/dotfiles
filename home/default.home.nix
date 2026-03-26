@@ -84,6 +84,7 @@ in
 
   gtk = {
     enable = hasRole "desktop";
+
     theme = {
       name = "catppuccin-mocha-teal-standard";
       package = pkgs.catppuccin-gtk.override {
@@ -92,16 +93,20 @@ in
         size = "standard";
       };
     };
+
     cursorTheme = {
       name = config.home.sessionVariables.HYPRCURSOR_THEME;
       size = config.home.sessionVariables.HYPRCURSOR_SIZE;
       package = pkgs.catppuccin-cursors.mochaLight;
     };
+
     gtk3.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
       '';
     };
+
+    gtk4.theme = config.gtk.theme;
     gtk4.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
