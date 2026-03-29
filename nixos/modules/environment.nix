@@ -176,7 +176,6 @@
         blueman
         dconf-editor
         networkmanagerapplet
-        postman
         qpwgraph
         remmina
         veracrypt

@@ -4,7 +4,7 @@
     settings = {
       profile = [
         {
-          time = "7:30";
+          time = "10:00";
           identity = true;
         }
         {

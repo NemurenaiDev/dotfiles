@@ -80,9 +80,9 @@ in
       "workspace special:hidden silent, match:class (^$), match:title (.*is.sharing.*)"
       "workspace special:hidden silent, match:class (nemo), match:title (nemo.*/.local/share/nemo)"
 
-      "workspace 9 silent, match:class (gamescope)"
-      "workspace 9 silent, match:class (steam_app_.*)"
-      "workspace 9 silent, match:class (steam), match:title (Steam Big Picture Mode)"
+      # "workspace 9 silent, match:class (gamescope)"
+      # "workspace 9 silent, match:class (steam_app_.*)"
+      # "workspace 9 silent, match:class (steam), match:title (Steam Big Picture Mode)"
 
       # "float on, match:class (chromium|vivaldi.*), match:title negative:(.icture.in..icture)"
       # "size 600 765, match:class (chromium|vivaldi.*), match:title negative:(.icture.in..icture)"

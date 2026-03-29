@@ -108,6 +108,8 @@ in
     (enjail-soft pkgs.steam "steam")
     (enjail-soft pkgs.steam-run "steam-run")
 
+    (enjail pkgs.anydesk "anydesk")
+
     (enjail pkgs.spotify "spotify")
 
     (enjail pkgs.vivaldi "vivaldi")
@@ -117,6 +119,12 @@ in
     (enjail pkgs.code-cursor-fhs "cursor")
     (enjail pkgs.antigravity-fhs "antigravity")
 
-    (enjail pkgs.anydesk "anydesk")
+    (enjail (pkgs.symlinkJoin {
+      name = "${pkgs.postman}-gsettings-schemas-fixed";
+      paths = [ pkgs.postman ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = "wrapProgram $out/bin/postman --set GSETTINGS_SCHEMA_DIR ${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}/glib-2.0/schemas";
+    }) "postman")
+    (enjail pkgs.insomnia "insomnia")
   ];
 }

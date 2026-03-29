@@ -115,6 +115,7 @@
 
   programs.zsh.enable = true;
 
+  programs.dconf.enable = hasRole "desktop";
   programs.hyprland.enable = hasRole "desktop";
   programs.hyprland.withUWSM = hasRole "desktop";
 

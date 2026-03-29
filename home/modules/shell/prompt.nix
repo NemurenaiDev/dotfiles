@@ -17,7 +17,11 @@
 
     [env_var.DEVSHELL]
     variable = 'DEVSHELL'
-    format = "[$env_value ](bold yellow)"
+    format = "[dev ](bright-black)[$env_value ](bold yellow)"
+
+    [env_var.USEPKGS]
+    variable = 'USEPKGS'
+    format = "[use](bright-black)[$env_value ](bold yellow)"
 
     [character]
     success_symbol = "[❯](magenta)"

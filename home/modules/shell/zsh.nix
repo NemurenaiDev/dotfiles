@@ -23,7 +23,7 @@
       fi
 
 
-      if [ ! "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
+      if [ ! -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then;
           if [ -f /tmp/HYPRLAND_INSTANCE_SIGNATURE ]; then
             export HYPRLAND_INSTANCE_SIGNATURE="$(cat /tmp/HYPRLAND_INSTANCE_SIGNATURE)"
           fi
@@ -61,7 +61,11 @@
           return 1
         fi
 
-        nix shell "nixpkgs#$1" "''${@:2}"
+        USEPKGS="$USEPKGS $1" nix shell --impure "nixpkgs#$1" "''${@:2}"
+      }
+
+      dev() {
+        nix develop
       }
 
       gs() {
@@ -80,12 +84,16 @@
             fzf \
               --ansi --height=10 --min-height=2 --layout=reverse \
               --header="Press Enter to attach or Del to kill session" \
-              --bind 'del:execute-silent(echo {} | awk "{print \$1}" | xargs zellij delete-session --force)+reload(eval $FZF_DEFAULT_COMMAND)'
+              --bind 'del:execute-silent(zellij delete-session --force "$(echo {} | sed "s/ \[.*//")")+reload(eval $FZF_DEFAULT_COMMAND)'
         )
 
         if [[ -n "$session" ]]; then
-          zellij attach "$(echo $session | awk '{print $1}')"
+          zellij attach "$(printf "%s\n" "$session" | sed "s/ \[.*//")"
         fi
+      }
+
+      zs() {
+        zellij attach --create "$(sed "s|$HOME/||g; s|/| > |g" <<< "$PWD")"
       }
 
       fzf-history-widget() {
@@ -163,11 +171,10 @@
 
       alias kitty="kitty --single-instance"
 
-      alias l="list-dir"
-      alias ls="list-dir"
-      alias ll="list-dir -Ah"
-      alias lll="list-dir -lAh"
-      alias watch="CLICOLOR_FORCE=1 watch -c"
+      alias l="list-dir --hyperlink auto"
+      alias ls="list-dir --hyperlink auto"
+      alias ll="list-dir --hyperlink auto -Ah"
+      alias lll="list-dir --hyperlink auto -lAh"
 
       alias rm="trash -v"
       alias hist="history 0 | tac | fzf | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | wl-copy -n"
@@ -176,17 +183,13 @@
       alias vimv="vimv"
       alias rename="vimv"
 
-      alias os="nh os"
-      alias oss="sudo -v && nh os switch"
-      alias hm="nh home"
-      alias hms="nh home switch"
       alias sw="sudo -v && nh os switch && nh home switch"
       alias swu="sudo -v && nh os switch -u && nh home switch"
+      alias hms="nh home switch"
 
       alias ff="fastfetch"
       alias wlcp="wl-copy -n"
 
-      alias d="docker"
       alias dc="docker compose"
 
       alias g="git"
@@ -201,6 +204,20 @@
 
       eval "$(zoxide init --cmd cd zsh)"
       eval "$(starship init zsh)"
+
+
+
+      if [ -n "$USEPKGS" ]; then
+        USEPKG_PATHS=("''${(@s/:/)PATH}")
+        USEPKG_CURR="''${USEPKG_PATHS[1]}"
+
+        if [ "$USEPKG_CURR" != "$USEPKG_PREV" ]; then
+          export USEPKG_PREV="$USEPKG_CURR"
+          
+          list-dir --tree --hyperlink auto --blocks size,name "$USEPKG_CURR"
+        fi
+      fi
+
 
 
       [[ $PERF == 1 ]] && zprof
