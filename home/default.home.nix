@@ -64,10 +64,10 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
-  
+
   nix.assumeXdg = true; # not sure i can remove it
   home.preferXdgDirectories = true;
-
+  
   home.username = host.username;
   home.homeDirectory = "/home/${host.username}";
   home.stateVersion = host.stateVersion;

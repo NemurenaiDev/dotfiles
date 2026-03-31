@@ -156,12 +156,9 @@
         wl-clipboard
         tesseract
 
-        opencode
-
         mpv
         haruna
 
-        libreoffice
         kitty
         deluge
         obs-studio

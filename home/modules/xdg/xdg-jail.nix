@@ -12,8 +12,15 @@ let
   jail = ".local/xdg-jail";
   jail-soft = ".local/xdg-jail/.softjail";
 
-  enjail =
-    pkg: bin:
+  enjail = pkg: (enjail-raw pkg { });
+  enjail-raw =
+    pkg:
+    {
+      bin ? pkg.meta.mainProgram,
+      preRun ? "",
+      preBuild ? "",
+      postBuild ? "",
+    }:
     (pkgs.symlinkJoin {
       name = "${pkg.name}-enjailed-${host.username}";
       paths = [ pkg ];
@@ -22,6 +29,9 @@ let
         pkgs.bubblewrap
       ];
       postBuild = ''
+        pkg="${pkg}"
+        bin="${bin}"
+
         # resolve $hidden the same way wrapProgram does
         # https://github.com/NixOS/nixpkgs/blob/bd53ac106738b7bc47f89d56b5ddbff4bd4af4bf/pkgs/build-support/setup-hooks/make-wrapper.sh#L229-L232
 
@@ -30,9 +40,13 @@ let
           hidden="''${hidden}_"
         done
 
+        ${preBuild}
+
         wrapProgram $out/bin/${bin} \
           --prefix PATH : ${pkgs.bubblewrap}/bin \
           --run "
+            ${preRun}
+
             exec ${pkgs.bubblewrap}/bin/bwrap \
               --bind / / \
               \
@@ -56,16 +70,29 @@ let
               \
               \"$hidden\" \"\$@\"
           "
+
+        # fix the .desktop files to point to the new bin path
+        if [ -d $out/share/applications ]; then
+          # rebuild entire $out/share using symlinks to 
+          # ensure that 'share' or 'applications' dirs aren`t symlinks and have correct permissions
+          rm -rf $out/share && cp -rLs $pkg/share $out/share && chmod 755 -R $out/share/applications
+
+          for desktop in $out/share/applications/*.desktop; do
+            [ -f "$desktop" ] && sed -i "s|$pkg/bin|$out/bin|g" "$desktop"
+          done
+        fi
+
+        ${postBuild}
       '';
     });
 
   enjail-soft =
-    pkg: bin:
+    pkg:
     (pkgs.symlinkJoin {
       name = "${pkg.name}-enjailed-${host.username}";
       paths = [ pkg ];
       buildInputs = [ pkgs.makeWrapper ];
-      postBuild = "wrapProgram $out/bin/${bin} --run 'export HOME=${homedir}/${jail-soft} && cd \$HOME'";
+      postBuild = "wrapProgram $out/bin/${pkg.meta.mainProgram} --run 'export HOME=${homedir}/${jail-soft} && cd \$HOME'";
     });
 in
 {
@@ -105,26 +132,32 @@ in
   '';
 
   home.packages = [
-    (enjail-soft pkgs.steam "steam")
-    (enjail-soft pkgs.steam-run "steam-run")
+    # ---------- Soft jail ---------- #
 
-    (enjail pkgs.anydesk "anydesk")
+    (enjail-soft pkgs.steam)
+    (enjail-soft pkgs.steam-run)
 
-    (enjail pkgs.spotify "spotify")
+    # ---------- Regular pkgs ---------- #
 
-    (enjail pkgs.vivaldi "vivaldi")
-    (enjail pkgs.ungoogled-chromium "chromium")
+    (enjail pkgs.anydesk)
+    (enjail pkgs.spotify)
+    (enjail pkgs.onlyoffice-desktopeditors)
 
-    (enjail pkgs.vscode-fhs "code")
-    (enjail pkgs.code-cursor-fhs "cursor")
-    (enjail pkgs.antigravity-fhs "antigravity")
+    (enjail pkgs.vivaldi)
+    (enjail pkgs.ungoogled-chromium)
 
-    (enjail (pkgs.symlinkJoin {
-      name = "${pkgs.postman}-gsettings-schemas-fixed";
-      paths = [ pkgs.postman ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = "wrapProgram $out/bin/postman --set GSETTINGS_SCHEMA_DIR ${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}/glib-2.0/schemas";
-    }) "postman")
-    (enjail pkgs.insomnia "insomnia")
+    (enjail pkgs.vscode-fhs)
+    (enjail pkgs.code-cursor-fhs)
+    (enjail pkgs.antigravity-fhs)
+
+    (enjail pkgs.codex)
+    (enjail pkgs.opencode)
+    (enjail pkgs.claude-code)
+
+    # ---------- Special pkgs ---------- #
+
+    (enjail-raw pkgs.postman {
+      preRun = "export GSETTINGS_SCHEMA_DIR='${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}/glib-2.0/schemas'";
+    })
   ];
 }

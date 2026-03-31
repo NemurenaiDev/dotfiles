@@ -45,12 +45,6 @@ in
           ignorePatterns = [
             "!haruna"
 
-            "!libreoffice/4/user/config"
-            "!libreoffice/4/user/autocorr"
-            "!libreoffice/4/user/autotext"
-            "!libreoffice/4/user/psprint"
-            "!libreoffice/4/user/extensions"
-
             "!deluge/ui.conf"
             "!deluge/core.conf"
             "!deluge/gtk3ui.conf"
