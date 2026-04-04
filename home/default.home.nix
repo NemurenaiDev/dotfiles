@@ -23,7 +23,6 @@ let
 
     NH_FLAKE = "${config.home.homeDirectory}/Projects/dotfiles";
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
-    SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/sops/age/key.txt";
 
     KODI_DATA = "${config.xdg.dataHome}/kodi";
     CARGO_HOME = "${config.xdg.dataHome}/cargo";

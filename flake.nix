@@ -7,7 +7,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     catppuccin.url = "github:catppuccin/nix";
-    sops-nix.url = "github:Mic92/sops-nix";
 
     wallpapers = {
       url = "github:nemurenaidev/wallpapers";

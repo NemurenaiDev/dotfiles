@@ -78,7 +78,6 @@
       pulsemixer
       pamixer
 
-      sops
       nvd
       nix-output-monitor
       home-manager

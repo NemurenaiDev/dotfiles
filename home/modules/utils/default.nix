@@ -3,7 +3,6 @@
 {
   imports = [
     ./docker.nix
-    ./secrets.nix
 
     ./snapcast.nix
     ./librespot.nix
