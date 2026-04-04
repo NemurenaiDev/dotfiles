@@ -79,6 +79,19 @@
 
       hosts = map (host: inputs.nixpkgs.lib.recursiveUpdate commonHostFields host) hostsRaw;
 
+      basepkgs = {
+        nixpkgs.config.allowUnfree = true;
+        nixpkgs.overlays = [
+          (final: prev: {
+            stable = import inputs.stable {
+              overlays = prev.overlays;
+              system = prev.stdenv.hostPlatform.system;
+              config.allowUnfree = prev.config.allowUnfree;
+            };
+          })
+        ];
+      };
+
       nixosFor =
         host:
         inputs.nixpkgs.lib.nixosSystem {
@@ -87,18 +100,18 @@
             inherit inputs hosts host;
             hasRole = role: builtins.elem role host.roles;
           };
-          modules = [ ./nixos/default.configuration.nix ];
+          modules = [ basepkgs ] ++ [ ./nixos/default.configuration.nix ];
         };
 
       homeFor =
         host:
         inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages.${host.system};
+          pkgs = import inputs.nixpkgs { system = host.system; };
           extraSpecialArgs = {
             inherit inputs hosts host;
             hasRole = role: builtins.elem role host.roles;
           };
-          modules = [ ./home/default.home.nix ];
+          modules = [ basepkgs ] ++ [ ./home/default.home.nix ];
         };
 
       makeConfigurations =

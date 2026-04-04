@@ -70,7 +70,7 @@
       show-compact-view-icon-toolbar = false;
       show-edit-icon-toolbar = false;
       show-full-path-titles = true;
-      show-hidden-files = false;
+      show-hidden-files = true;
       show-icon-view-icon-toolbar = false;
       show-list-view-icon-toolbar = false;
       start-with-dual-pane = false;

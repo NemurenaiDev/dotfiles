@@ -1,7 +1,7 @@
 {
   hasRole,
-  inputs,
   config,
+  inputs,
   host,
   pkgs,
   lib,
@@ -31,7 +31,9 @@ let
     PKG_CACHE_PATH = "${config.xdg.cacheHome}/pkg-cache";
 
     NPM_CONFIG_INIT_MODULE = "${config.xdg.configHome}/npm/config/npm-init.js";
+    NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/config/npmrc";
     NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
+    NPM_CONFIG_TMP = "/run/npm/${host.username}";
 
     TERMINFO = "${config.xdg.dataHome}/terminfo";
     TERMINFO_DIRS = "${config.xdg.dataHome}/terminfo:/usr/share/terminfo";
@@ -63,16 +65,13 @@ in
     ./modules/telegram
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
   nix.assumeXdg = true; # not sure i can remove it
   home.preferXdgDirectories = true;
-  
+
   home.username = host.username;
   home.homeDirectory = "/home/${host.username}";
   home.stateVersion = host.stateVersion;
   home.sessionVariables = sessionVariables;
-  home.packages = [ pkgs.catppuccin-cursors.mochaLight ];
 
   _module.args.wallpaper = "${config.xdg.dataHome}/assets/wallpapers/erinthul-moon-witch.png";
 
@@ -81,6 +80,8 @@ in
     flavor = "mocha";
     accent = "teal";
   };
+
+  home.packages = lib.optionals (hasRole "desktop") [ pkgs.catppuccin-cursors.mochaLight ];
 
   gtk = {
     enable = hasRole "desktop";

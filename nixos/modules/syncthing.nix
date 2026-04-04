@@ -20,6 +20,12 @@ let
       };
     }) otherHosts
   );
+
+  basefolder = {
+    fsWatcherEnabled = true;
+    fsWatcherDelayS = 1;
+    fsWatcherTimeoutS = 0;
+  };
 in
 {
   services.syncthing = {
@@ -31,19 +37,24 @@ in
     extraFlags = [ "--no-browser" ];
 
     settings = {
+      # fix the infinite crash loop issue: https://github.com/syncthing/syncthing/issues/10611
+      options.listenAddresses = [ "tcp://:22000" ];
+
       devices = otherDevices;
       folders = {
 
-        ".ssh" = {
+        ".ssh" = basefolder // {
           path = "/home/${host.username}/.ssh";
           devices = userOtherDeviceNames;
         };
 
-        ".config" = {
+        ".config" = basefolder // {
           path = "/home/${host.username}/.config";
           devices = userOtherDeviceNames;
           ignorePatterns = [
             "!haruna"
+
+            "!onlyoffice"
 
             "!deluge/ui.conf"
             "!deluge/core.conf"
@@ -56,7 +67,7 @@ in
           ];
         };
 
-        "Projects" = {
+        "Projects" = basefolder // {
           path = "/home/${host.username}/Projects";
           devices = userOtherDeviceNames;
           ignorePatterns = [

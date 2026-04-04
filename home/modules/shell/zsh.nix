@@ -70,7 +70,18 @@
 
       gs() {
         local server
-        server=$(grep -E '^Host ' ~/.ssh/config | awk '$2 != "*" {print $2}' | fzf --height=10 --min-height=2 --layout=reverse --preview-window=border-left --preview "sed -n '/^Host {}$/,/^Host /p' ~/.ssh/config | head -n -1")
+
+        server=$(\
+          grep -E '^(Host) ' ~/.ssh/config | \
+          awk '$2 != "*" {print $2}' | \
+          fzf --height=10 --min-height=2 --layout=reverse --preview-window=border-left --preview "
+            grep -Em1 -A 10 '^(Host.{}|Match.host.{})' ~/.ssh/config | \
+            awk '{print} END {print \"\"}' | \
+            grep -Em1 -B 10 '^\s*$' | \
+            sed 's/ exec.*//' \
+          " \
+        )
+
         if [[ -n $server ]]; then
           ssh $server
         fi

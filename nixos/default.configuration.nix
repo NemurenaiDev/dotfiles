@@ -33,9 +33,6 @@
   networking.hostName = host.hostname;
   time.timeZone = host.timezone;
 
-  nixpkgs.hostPlatform = lib.mkDefault host.system;
-  nixpkgs.config.allowUnfree = true;
-
   nix.settings.use-xdg-base-directories = true;
   nix.settings.experimental-features = [
     "nix-command"

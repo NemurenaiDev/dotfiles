@@ -184,8 +184,6 @@
         droidcam
         electron
         ffmpegthumbnailer
-        seahorse
-        gnome-keyring
         gnome-themes-extra
 
         mpc

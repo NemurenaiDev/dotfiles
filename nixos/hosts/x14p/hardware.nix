@@ -34,7 +34,17 @@
     ];
   };
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/658a6633-2649-44d7-adc7-b2bc76c6906e"; } ];
+  # requires security improvements to be enabled
+  # https://mynixos.com/nixpkgs/option/swapDevices.*.randomEncryption
+  #
+  # swapDevices = [
+  #   {
+  #     device = "/dev/disk/by-uuid/658a6633-2649-44d7-adc7-b2bc76c6906e";
+  #
+  #     # randomEncryption.enable = true;
+  #     # randomEncryption.allowDiscards = true;
+  #   }
+  # ];
 
   networking.useDHCP = lib.mkDefault true;
 

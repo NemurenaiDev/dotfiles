@@ -131,32 +131,32 @@ in
     mv-to-jail "${homedir}/.steampath" "${homedir}/${jail-soft}/.steampath"
   '';
 
-  home.packages = [
+  home.packages = with pkgs; [
     # ---------- Soft jail ---------- #
 
-    (enjail-soft pkgs.steam)
-    (enjail-soft pkgs.steam-run)
+    (enjail-soft steam)
+    (enjail-soft steam-run)
 
     # ---------- Regular pkgs ---------- #
 
-    (enjail pkgs.anydesk)
-    (enjail pkgs.spotify)
-    (enjail pkgs.onlyoffice-desktopeditors)
+    (enjail anydesk)
+    (enjail spotify)
+    (enjail onlyoffice-desktopeditors)
 
-    (enjail pkgs.vivaldi)
-    (enjail pkgs.ungoogled-chromium)
+    (enjail vivaldi)
+    (enjail ungoogled-chromium)
 
-    (enjail pkgs.vscode-fhs)
-    (enjail pkgs.code-cursor-fhs)
-    (enjail pkgs.antigravity-fhs)
+    (enjail vscode-fhs)
+    (enjail code-cursor-fhs)
+    (enjail antigravity-fhs)
 
-    (enjail pkgs.codex)
-    (enjail pkgs.opencode)
-    (enjail pkgs.claude-code)
+    (enjail codex)
+    (enjail opencode)
+    (enjail stable.claude-code)
 
     # ---------- Special pkgs ---------- #
 
-    (enjail-raw pkgs.postman {
+    (enjail-raw postman {
       preRun = "export GSETTINGS_SCHEMA_DIR='${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}/glib-2.0/schemas'";
     })
   ];
