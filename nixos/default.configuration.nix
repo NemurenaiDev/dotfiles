@@ -119,25 +119,18 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.settings.WiFi.powerSave = false;
 
-  networking.firewall.allowedTCPPorts = [
-    8123 # home-assistant
-    8523 # automation-server
-    25565 # minecraft
-    57621 # spotify
-    57622 # spotify
-    57631 # librespot
-    57632 # librespot
-  ]
-  ++ lib.optionals (hasRole "immich") [
-    2283 # immich
-  ];
   networking.firewall.allowedUDPPorts = [
     5353 # mDNS
     57621 # spotify
     57622 # spotify
-    57631 # librespot
-    57632 # librespot
   ];
+  networking.firewall.allowedTCPPorts = [
+    25565 # minecraft
+    57621 # spotify
+    57622 # spotify
+  ]
+  ++ lib.optionals (hasRole "immich") [ 2283 ]
+  ++ lib.optionals (hasRole "hassistant") [ 8123 ];
 
   systemd.tmpfiles.rules = [
     "d /tmp/${host.username}/ 1700 ${host.username} users -"

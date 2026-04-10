@@ -34,6 +34,7 @@
           roles = [
             "server"
             "immich"
+            "hassistant"
           ];
           snapserver = {
             buffer = 300;
