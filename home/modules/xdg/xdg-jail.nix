@@ -20,6 +20,7 @@ let
       preRun ? "",
       preBuild ? "",
       postBuild ? "",
+      extraArgs ? [ ],
     }:
     (pkgs.symlinkJoin {
       name = "${pkg.name}-enjailed-${host.username}";
@@ -68,7 +69,7 @@ let
               \
               --die-with-parent \
               \
-              \"$hidden\" \"\$@\"
+              \"$hidden\" ${lib.escapeShellArgs extraArgs} \"\$@\"
           "
 
         # fix the .desktop files to point to the new bin path
@@ -141,7 +142,6 @@ in
 
     (enjail anydesk)
     (enjail spotify)
-    (enjail onlyoffice-desktopeditors)
 
     (enjail vivaldi)
     (enjail ungoogled-chromium)
@@ -155,6 +155,8 @@ in
     (enjail stable.claude-code)
 
     # ---------- Special pkgs ---------- #
+
+    (enjail-raw onlyoffice-desktopeditors { extraArgs = [ "--force-scale=1" ]; })
 
     (enjail-raw postman {
       preRun = "export GSETTINGS_SCHEMA_DIR='${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}/glib-2.0/schemas'";

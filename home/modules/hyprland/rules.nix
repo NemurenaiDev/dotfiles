@@ -84,9 +84,6 @@ in
       # "workspace 9 silent, match:class (steam_app_.*)"
       # "workspace 9 silent, match:class (steam), match:title (Steam Big Picture Mode)"
 
-      # "float on, match:class (chromium|vivaldi.*), match:title negative:(.icture.in..icture)"
-      # "size 600 765, match:class (chromium|vivaldi.*), match:title negative:(.icture.in..icture)"
-
       "fullscreen_state 0 2, match:class (code)"
 
       "move cursor 0 0, match:class (Unity), match:title (UnityEditor.PopupWindow)"
@@ -128,7 +125,7 @@ in
       "float on, match:class (kitty-.*)"
       "center on, match:class (kitty-.*)"
 
-      "size 200 150, match:class (kitty-powermenu)"
+      "size 250 200, match:class (kitty-powermenu)"
       "stay_focused on, match:initial_class (kitty-powermenu)"
 
       "size 300 200, match:class (kitty-sink-selector)"
