@@ -36,10 +36,6 @@
             "immich"
             "hassistant"
           ];
-          snapserver = {
-            buffer = 300;
-            codec = "flac";
-          };
           snapclients = [
             "127.0.0.1"
             "192.168.1.110"
@@ -71,7 +67,7 @@
             "gameclient"
           ];
           snapserver = {
-            buffer = 300;
+            buffer = 400;
             codec = "flac";
           };
         }

@@ -21,7 +21,6 @@
 
     ./modules/keyd.nix
     ./modules/audio.nix
-    ./modules/snapcast.nix
     ./modules/syncthing.nix
     ./modules/environment.nix
   ]
@@ -46,6 +45,7 @@
 
   users.users.${host.username} = {
     shell = pkgs.zsh;
+    linger = hasRole "server";
     isNormalUser = true;
     extraGroups = [
       "wheel"
@@ -129,6 +129,8 @@
     57621 # spotify
     57622 # spotify
   ]
+  ++ lib.optionals (host ? snapserver) [ 1704 ]
+  ++ lib.optionals (host ? snapserver) [ 1705 ]
   ++ lib.optionals (hasRole "immich") [ 2283 ]
   ++ lib.optionals (hasRole "hassistant") [ 8123 ];
 
