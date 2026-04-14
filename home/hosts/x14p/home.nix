@@ -11,9 +11,8 @@ in
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
-      ", highres@highrr, 0x0, 1"
+      ", preferred@auto, 0x0, 1"
       "${monitors.central}, 2560x1600@60, 0x0, 1.6"
-      "${monitors.left}, 1920x1080@144, -1920x0, 1"
     ];
 
     exec-once = [

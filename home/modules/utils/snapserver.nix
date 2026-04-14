@@ -31,7 +31,7 @@ in
       Description = "Snapcast server daemon";
       After = [ "pipewire.service" ];
       Wants = [ "pipewire.service" ];
-      PartOf = [ "pipewire.service" ];
+      BindsTo = [ "pipewire.service" ];
     };
     Service = {
       ExecStart = "${pkgs.snapcast}/bin/snapserver --config ${snapconf}";
@@ -51,7 +51,7 @@ in
         args = {
           node.description = "Default"
           capture.props = {
-            "node.name" = "default_sink"
+            "node.name" = "default"
             "media.class" = "Audio/Sink"
           }
         }

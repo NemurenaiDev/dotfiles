@@ -8,29 +8,40 @@
 {
   home.packages = [ pkgs.snapcast ];
 
+  systemd.user.targets.snapclients = {
+    Unit = {
+      Description = "Snapcast clients group";
+      After = [ "pipewire.service" ];
+      Wants = [ "pipewire.service" ];
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
   systemd.user.services = builtins.listToAttrs (
-    map (hostAddr: {
-      name = "snapclient-${lib.replaceStrings [ "." ] [ "-" ] hostAddr}";
+    map (addr: {
+      name = "snapclient-${lib.replaceStrings [ "." ] [ "-" ] addr}.service";
       value = {
         Unit = {
-          Description = "Snapclient for ${hostAddr}";
+          Description = "Snapclient for ${addr}";
           After = [
-            "network-online.target"
             "pipewire.service"
+            "snapclients.target"
           ];
-          Wants = [
-            "network-online.target"
+          BindsTo = [
             "pipewire.service"
+            "snapclients.target"
           ];
-          PartOf = [ "pipewire.service" ];
-        };
-        Service = {
-          ExecStart = "${pkgs.snapcast}/bin/snapclient --host ${hostAddr}";
-          Restart = "always";
-          RestartSec = "3s";
+          PartOf = [ "snapclients.target" ];
         };
         Install = {
-          WantedBy = [ "default.target" ];
+          WantedBy = [ "snapclients.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.snapcast}/bin/snapclient --host ${lib.escapeShellArg addr}";
+          Restart = "always";
+          RestartSec = "3s";
         };
       };
     }) host.snapclients

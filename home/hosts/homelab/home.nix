@@ -3,7 +3,7 @@
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
-      ", highres@highrr, 0x0, 1"
+      ", preferred@auto, 0x0, 1"
     ];
   };
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-options="Shutdown\nReboot\nSuspend\nLogout\nSoft Reboot"
+options="Shutdown\nReboot\nSuspend\nLogout"
 
 choice=$(echo -e "$options" | fzf --ansi --highlight-line --margin=0%)
 
@@ -16,9 +16,6 @@ case $choice in
     ;;
     "Logout")
         hyprctl dispatch exit || loginctl terminate-session
-    ;;
-    "Soft Reboot")
-        soft-reboot
     ;;
     *)
         exit
