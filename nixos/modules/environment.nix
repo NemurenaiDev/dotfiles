@@ -159,7 +159,7 @@
         haruna
 
         kitty
-        deluge
+        qbittorrent
         obs-studio
         telegram-desktop
 
