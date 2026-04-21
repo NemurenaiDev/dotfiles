@@ -7,10 +7,7 @@
     enable = true;
     settings = {
       general = {
-        grace = 0;
         hide_cursor = true;
-        no_fade_in = false;
-        no_fade_out = false;
       };
 
       background = [

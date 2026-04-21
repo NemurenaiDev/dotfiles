@@ -15,7 +15,7 @@ in
         on_lock_cmd = "${config.xdg.dataHome}/bin/switch-layout 0";
         on_unlock_cmd = "";
 
-        before_sleep_cmd = "vc-unmount; ${hyprlock_cmd} --immediate --immediate-render --no-fade-in";
+        before_sleep_cmd = "vc-unmount; ${hyprlock_cmd} --grace 0 --immediate-render --no-fade-in";
         after_sleep_cmd = "";
 
         inhibit_sleep = 3;
