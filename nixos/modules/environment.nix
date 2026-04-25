@@ -49,7 +49,6 @@
       starship
       zellij
       lsof
-      btop
       jq
       bc
       tree

@@ -10,8 +10,6 @@
 
       lutris
       bottles
-
-      prismlauncher
     ]
     ++ lib.optionals (hasRole "gameclient") [
       moonlight-qt

@@ -101,6 +101,8 @@ in
     ${pkgs.coreutils}/bin/mkdir -p ${homedir}/${jail}
     ${pkgs.coreutils}/bin/mkdir -p ${homedir}/${jail-soft}
 
+    ${pkgs.findutils}/bin/find ${homedir}/${jail-soft} -maxdepth 1 -type l ! -exec test -e {} \; -delete 
+
     ${pkgs.coreutils}/bin/ln -sfn ${homedir}/.config ${homedir}/${jail-soft}/.config
     ${pkgs.coreutils}/bin/ln -sfn ${homedir}/.local ${homedir}/${jail-soft}/.local
     ${pkgs.coreutils}/bin/ln -sfn ${homedir}/.cache ${homedir}/${jail-soft}/.cache
@@ -139,6 +141,8 @@ in
     (enjail-soft steam-run)
 
     # ---------- Regular pkgs ---------- #
+
+    (enjail prismlauncher)
 
     (enjail anydesk)
     (enjail spotify)
