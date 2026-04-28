@@ -69,6 +69,7 @@
       typescript
       serve
       turbo
+      pnpm
 
       snapcast
       playerctl

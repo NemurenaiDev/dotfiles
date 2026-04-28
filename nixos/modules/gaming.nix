@@ -45,13 +45,17 @@
           name = "Steam";
           image-path = "steam.png";
           exclude-global-prep-cmd = "false";
-          detached = [ "setsid steam steam://open/bigpicture" ];
           prep-cmd = [
+            {
+              do = "hyprctl dispatch focusmonitor 1";
+              undo = "";
+            }
             {
               do = "";
               undo = "setsid steam steam://close/bigpicture";
             }
           ];
+          detached = [ "setsid steam steam://open/bigpicture" ];
         }
       ];
     };

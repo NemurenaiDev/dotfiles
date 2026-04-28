@@ -9,11 +9,6 @@
     dotDir = "${config.xdg.configHome}/zsh";
 
     completionInit = ''
-      [[ $PERF == 1 ]] && zmodload zsh/datetime
-      [[ $PERF == 1 ]] && start=$EPOCHREALTIME
-      [[ $PERF == 1 ]] && zmodload zsh/zprof
-
-
       if [ "$(tty)" = "/dev/tty1" ]; then
         exec sh -c '
           ${pkgs.jp2a}/bin/jp2a --term-fit --term-zoom --term-center "${config.xdg.dataHome}/assets/wallpapers/frieren-sleeps-for-ascii.png"
@@ -62,10 +57,6 @@
         fi
 
         USEPKGS="$USEPKGS $1" nix shell --impure "nixpkgs#$1" "''${@:2}"
-      }
-
-      dev() {
-        nix develop
       }
 
       gs() {
@@ -189,7 +180,8 @@
 
       alias rm="trash -v"
       alias hist="history 0 | tac | fzf | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | wl-copy -n"
-      alias ncdu="ncdu --exclude Remote --exclude /proc --exclude /run --exclude /mnt --exclude /home/yabai/Library"
+
+      alias code="code --new-window"
 
       alias vimv="vimv"
       alias rename="vimv"
@@ -213,11 +205,6 @@
 
 
 
-      eval "$(zoxide init --cmd cd zsh)"
-      eval "$(starship init zsh)"
-
-
-
       if [ -n "$USEPKGS" ]; then
         USEPKG_PATHS=("''${(@s/:/)PATH}")
         USEPKG_CURR="''${USEPKG_PATHS[1]}"
@@ -231,9 +218,8 @@
 
 
 
-      [[ $PERF == 1 ]] && zprof
-      [[ $PERF == 1 ]] && end=$EPOCHREALTIME
-      [[ $PERF == 1 ]] && echo "ENTIRE .zshrc LOADED IN: $(echo "$end - $start" | bc)s"
+      eval "$(zoxide init --cmd cd zsh)"
+      eval "$(starship init zsh)"
     '';
   };
 }

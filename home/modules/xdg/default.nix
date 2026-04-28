@@ -5,6 +5,8 @@
     ./apps/browser.nix
     ./apps/vscode.nix
 
+    ./npm-clean.nix
+
     ./xdg-jail.nix
   ];
 

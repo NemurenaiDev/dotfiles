@@ -32,7 +32,6 @@ let
     NPM_CONFIG_INIT_MODULE = "${config.xdg.configHome}/npm/config/npm-init.js";
     NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/config/npmrc";
     NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
-    NPM_CONFIG_TMP = "/run/npm/${host.username}";
 
     TERMINFO = "${config.xdg.dataHome}/terminfo";
     TERMINFO_DIRS = "${config.xdg.dataHome}/terminfo:/usr/share/terminfo";
