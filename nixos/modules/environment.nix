@@ -105,6 +105,7 @@
       aml
       bind
       bluez
+      bluetui
       bridge-utils
       cloc
       cpio

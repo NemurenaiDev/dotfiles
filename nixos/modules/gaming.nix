@@ -8,8 +8,8 @@
       winetricks
       mangohud
 
-      lutris
-      bottles
+      pkgs.stable.lutris
+      pkgs.stable.bottles
     ]
     ++ lib.optionals (hasRole "gameclient") [
       moonlight-qt

@@ -7,8 +7,8 @@
 
       "hyprlock --grace 0 --immediate-render --no-fade-in"
 
-      "uwsm app -t service -u app-waybar.service -- waybar"
-      "uwsm app -t service -u app-mako.service -- mako"
+      "uwsm app -t service -p Restart=always -u app-waybar.service -- waybar"
+      "uwsm app -t service -p Restart=always -u app-mako.service -- mako"
 
       "uwsm app -- udiskie --automount --notify --smart-tray"
 
