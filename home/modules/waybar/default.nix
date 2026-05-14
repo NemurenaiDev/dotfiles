@@ -26,6 +26,7 @@
         "modules-center" = [ "hyprland/workspaces" ];
         "modules-right" = [
           "tray"
+          "custom/warp"
           "backlight"
           "pulseaudio"
           "hyprland/language"
@@ -115,6 +116,23 @@
           "on-click-right" = "playerctl stop";
           "interval" = 1;
           "tooltip" = false;
+        };
+        "custom/warp" = {
+          "format" = "<span>{icon}</span>";
+          "format-icons" = {
+            "Unable" = "<span color='#ff0000'></span>";
+            "Connected" = "<span color='#f38020'></span>";
+            "Connecting" = "<span color='#ffffff'></span>";
+            "Disconnected" = "<span color='#808080'></span>";
+          };
+          "return-type" = "json";
+          "exec" =
+            ''jq -cn --arg status "$(warp-cli --json status | jq -r .status)" --arg tooltip "$(warp-cli status)" '{text: $tooltip, alt: $status, class: $status}' '';
+          "on-click" =
+            ''[[ "$(warp-cli --json status | jq -r .status)" == "Connected" ]] && warp-cli disconnect || warp-cli connect '';
+          "interval" = 1;
+          "tooltip" = true;
+          "tooltip-format" = "<span>{text}</span>";
         };
         "clock#n1" = {
           "interval" = 1;

@@ -15,6 +15,7 @@
       "uwsm app -- nm-applet"
       "uwsm app -- blueman-applet"
       "uwsm app -- copyq --start-server"
+      "uwsm app -- tailscale systray --theme dark:nobg"
 
       "uwsm app -- nemo ~/.local/share/nemo"
       "uwsm app -- run-on-workspace 'special:hidden' 'kitty --single-instance sh' --silent"

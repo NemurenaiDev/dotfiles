@@ -90,6 +90,7 @@
   services.getty.greetingLine = lib.mkForce "";
   services.getty.helpLine = lib.mkForce "";
 
+  services.cloudflare-warp.enable = true;
   services.mullvad-vpn.enable = true;
   services.tailscale.enable = true;
   services.resolved = {
