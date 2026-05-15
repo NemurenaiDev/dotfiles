@@ -1,5 +1,21 @@
-{ config, ... }:
+{ config, pkgs, host, ... }:
 
+let
+  cloudflare-warp-waybar-module = pkgs.writeShellScriptBin "cloudflare-warp-waybar-module" ''
+    STATE_FILE="/tmp/${host.username}-cwwm-state"
+    STATUS="$(warp-cli --json status | jq -r .status)"
+
+    [[ -f "$STATE_FILE" && "$(cat "$STATE_FILE")" == "$STATUS" ]] || printf '%s' "$STATUS" > "$STATE_FILE"
+
+    IP_RES="$(${pkgs.bkt}/bin/bkt --ttl 15m --modtime "$STATE_FILE" -- curl -fs "https://api.myip.com/")"
+
+    jq -cn \
+    	--arg status "$STATUS" \
+    	--arg tooltip1 "$(warp-cli status)" \
+    	--arg tooltip2 "$(echo "$IP_RES" | jq -r '"IP: \(.ip)\nCountry: \(.country)"')" \
+    	'{text: ($tooltip1 + "\n\n" + $tooltip2), alt: $status, class: $status}'
+  '';
+in
 {
   programs.waybar = {
     enable = true;
@@ -126,10 +142,9 @@
             "Disconnected" = "<span color='#808080'></span>";
           };
           "return-type" = "json";
-          "exec" =
-            ''jq -cn --arg status "$(warp-cli --json status | jq -r .status)" --arg tooltip "$(warp-cli status)" '{text: $tooltip, alt: $status, class: $status}' '';
+          "exec" = "${cloudflare-warp-waybar-module}/bin/cloudflare-warp-waybar-module";
           "on-click" =
-            ''[[ "$(warp-cli --json status | jq -r .status)" == "Connected" ]] && warp-cli disconnect || warp-cli connect '';
+            ''[[ "$(warp-cli --json status | jq -r .status)" == "Connected" ]] && warp-cli disconnect || warp-cli connect'';
           "interval" = 1;
           "tooltip" = true;
           "tooltip-format" = "<span>{text}</span>";
