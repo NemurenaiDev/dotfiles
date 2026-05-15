@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  systemd.user.services.npm-clean = {
+  systemd.user.services.cleaner = {
     Unit.Description = "Forcefully remove ~/.npm";
     Service = {
       Type = "oneshot";
@@ -10,12 +10,12 @@
     Install.WantedBy = [ "default.target" ];
   };
 
-  systemd.user.timers.npm-clean = {
-    Unit.Description = "Trigger npm-clean.service every 60 seconds";
+  systemd.user.timers.cleaner = {
+    Unit.Description = "Trigger cleaner.service every 60 seconds";
     Timer = {
       OnUnitActiveSec = "60s";
       Persistent = true;
-      Unit = "npm-clean.service";
+      Unit = "cleaner.service";
     };
     Install.WantedBy = [ "timers.target" ];
   };

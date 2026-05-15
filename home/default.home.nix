@@ -18,9 +18,6 @@ let
     SYSTEMD_PAGER = "${pkgs.moor}/bin/moor";
     SYSTEMD_PAGERSECURE = "0";
 
-    HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
-    HYPRCURSOR_SIZE = 24;
-
     NH_FLAKE = "${config.home.homeDirectory}/Projects/dotfiles";
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
 
@@ -39,30 +36,27 @@ let
 in
 {
   imports = [
-    ./hosts/${host.hostname}/home.nix
-
     inputs.catppuccin.homeModules.catppuccin
 
-    "${toString ./modules}/@assets"
-    "${toString ./modules}/@bin"
+    ./hosts/${host.hostname}/home.nix
+  ]
+  ++ [
+    ./bin
+    ./assets
 
-    ./modules/xdg
-    ./modules/shell
-    ./modules/utils
+    ./modules/cli
+    ./modules/theme
+
+    ./modules/system/services
   ]
   ++ lib.optionals (hasRole "desktop") [
-    ./modules/hyprland
-    ./modules/waybar
-    ./modules/mako
+    ./modules/gui
 
-    ./modules/clipboard
-    ./modules/terminal
-    ./modules/launcher
-    ./modules/explorer
-
-    ./modules/telegram
+    ./modules/system/session
+    ./modules/system/xdg-jail.nix
   ];
 
+  xdg.enable = true;
   nix.assumeXdg = true; # not sure i can remove it
   home.preferXdgDirectories = true;
 
@@ -72,46 +66,6 @@ in
   home.sessionVariables = sessionVariables;
 
   _module.args.wallpaper = "${config.xdg.dataHome}/assets/wallpapers/erinthul-moon-witch.png";
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    accent = "teal";
-  };
-
-  home.packages = lib.optionals (hasRole "desktop") [ pkgs.catppuccin-cursors.mochaLight ];
-
-  gtk = {
-    enable = hasRole "desktop";
-
-    theme = {
-      name = "catppuccin-mocha-teal-standard";
-      package = pkgs.catppuccin-gtk.override {
-        variant = "mocha";
-        accents = [ "teal" ];
-        size = "standard";
-      };
-    };
-
-    cursorTheme = {
-      name = config.home.sessionVariables.HYPRCURSOR_THEME;
-      size = config.home.sessionVariables.HYPRCURSOR_SIZE;
-      package = pkgs.catppuccin-cursors.mochaLight;
-    };
-
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-
-    gtk4.theme = config.gtk.theme;
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-  };
 
   systemd.user.tmpfiles.rules = [
     "d /tmp/${host.username}/ 1700 ${host.username} users - -"
