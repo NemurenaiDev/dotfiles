@@ -22,6 +22,7 @@
     ./modules/keyd.nix
     ./modules/audio.nix
     ./modules/syncthing.nix
+    ./modules/networking.nix
     ./modules/environment.nix
   ]
   ++ lib.optionals (hasRole "desktop") [
@@ -90,23 +91,6 @@
   services.getty.greetingLine = lib.mkForce "";
   services.getty.helpLine = lib.mkForce "";
 
-  services.cloudflare-warp.enable = true;
-  services.mullvad-vpn.enable = true;
-  services.tailscale.enable = true;
-  services.resolved = {
-    enable = true;
-    settings = {
-      Resolve = {
-        DNS = [
-          "94.140.14.14"
-          "94.140.15.15"
-        ];
-        FallbackDNS = [ ];
-        Domains = [ "~." ];
-      };
-    };
-  };
-
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.playerctld.enable = true;
@@ -116,26 +100,4 @@
   programs.dconf.enable = hasRole "desktop";
   programs.hyprland.enable = hasRole "desktop";
   programs.hyprland.withUWSM = hasRole "desktop";
-
-  networking.networkmanager.enable = true;
-  networking.networkmanager.settings.WiFi.powerSave = false;
-
-  networking.firewall.allowedUDPPorts = [
-    5353 # mDNS
-    57621 # spotify
-    57622 # spotify
-  ];
-  networking.firewall.allowedTCPPorts = [
-    25565 # minecraft
-    57621 # spotify
-    57622 # spotify
-  ]
-  ++ lib.optionals (host ? snapserver) [ 1704 ]
-  ++ lib.optionals (host ? snapserver) [ 1705 ]
-  ++ lib.optionals (hasRole "immich") [ 2283 ]
-  ++ lib.optionals (hasRole "hassistant") [ 8123 ];
-
-  systemd.tmpfiles.rules = [
-    "d /tmp/${host.username}/ 1700 ${host.username} users -"
-  ];
 }

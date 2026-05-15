@@ -7,7 +7,7 @@
 
 {
   systemd.tmpfiles.rules = [
-    "d /var/xdg-jail 0774 root users - -"
+    "d /tmp/xdg-jail/ 1774 root users - -"
   ];
 
   environment.sessionVariables = {
@@ -22,9 +22,9 @@
     NIXOS_OZONE_WL = "1";
     NIXPKGS_ALLOW_UNFREE = "1";
 
-    NUGET_PACKAGES = "/var/xdg-jail/nuget";
-    DOTNET_CLI_HOME = "/var/xdg-jail/dotnet";
-    GRADLE_USER_HOME = "/var/xdg-jail/gradle";
+    NUGET_PACKAGES = "/tmp/xdg-jail/nuget";
+    DOTNET_CLI_HOME = "/tmp/xdg-jail/dotnet";
+    GRADLE_USER_HOME = "/tmp/xdg-jail/gradle";
   };
 
   environment.systemPackages =

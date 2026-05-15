@@ -112,4 +112,8 @@ in
       '';
     };
   };
+
+  systemd.user.tmpfiles.rules = [
+    "d /tmp/${host.username}/ 1700 ${host.username} users - -"
+  ];
 }
