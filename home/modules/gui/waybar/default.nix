@@ -1,9 +1,14 @@
-{ config, pkgs, host, ... }:
+{
+  config,
+  pkgs,
+  host,
+  ...
+}:
 
 let
-  cloudflare-warp-waybar-module = pkgs.writeShellScriptBin "cloudflare-warp-waybar-module" ''
+  cloudflare-warp-waybar-module-state = pkgs.writeShellScriptBin "cloudflare-warp-waybar-module-state" ''
     STATE_FILE="/tmp/${host.username}-cwwm-state"
-    STATUS="$(warp-cli --json status | jq -r .status)"
+    STATUS="$(${pkgs.cloudflare-warp}/bin/warp-cli --json status | jq -r .status)"
 
     [[ -f "$STATE_FILE" && "$(cat "$STATE_FILE")" == "$STATUS" ]] || printf '%s' "$STATUS" > "$STATE_FILE"
 
@@ -11,9 +16,17 @@ let
 
     jq -cn \
     	--arg status "$STATUS" \
-    	--arg tooltip1 "$(warp-cli status)" \
+    	--arg tooltip1 "$(${pkgs.cloudflare-warp}/bin/warp-cli status)" \
     	--arg tooltip2 "$(echo "$IP_RES" | jq -r '"IP: \(.ip)\nCountry: \(.country)"')" \
     	'{text: ($tooltip1 + "\n\n" + $tooltip2), alt: $status, class: $status}'
+  '';
+
+  cloudflare-warp-waybar-module-toggle = pkgs.writeShellScriptBin "cloudflare-warp-waybar-module-toggle" ''
+    ${pkgs.cloudflare-warp}/bin/warp-cli --json status | \
+      ${pkgs.jq}/bin/jq -r .status | \
+      ${pkgs.ripgrep}/bin/rg -iq '^(connected|connecting)$' && \
+      ${pkgs.cloudflare-warp}/bin/warp-cli disconnect || \
+      ${pkgs.cloudflare-warp}/bin/warp-cli connect
   '';
 in
 {
@@ -127,9 +140,9 @@ in
           "return-type" = "json";
           "max-length" = 36;
           "exec" =
-            "playerctl -s metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' || echo '{\"text\": \"\", \"alt\": \"None\", \"class\": \"None\"}'";
-          "on-click" = "playerctl play-pause";
-          "on-click-right" = "playerctl stop";
+            "${pkgs.playerctl}/bin/playerctl -s metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' || echo '{\"text\": \"\", \"alt\": \"None\", \"class\": \"None\"}'";
+          "on-click" = "${pkgs.playerctl}/bin/playerctl play-pause";
+          "on-click-right" = "${pkgs.playerctl}/bin/playerctl stop";
           "interval" = 1;
           "tooltip" = false;
         };
@@ -142,9 +155,8 @@ in
             "Disconnected" = "<span color='#808080'></span>";
           };
           "return-type" = "json";
-          "exec" = "${cloudflare-warp-waybar-module}/bin/cloudflare-warp-waybar-module";
-          "on-click" =
-            ''[[ "$(warp-cli --json status | jq -r .status)" == "Connected" ]] && warp-cli disconnect || warp-cli connect'';
+          "exec" = "${cloudflare-warp-waybar-module-state}/bin/cloudflare-warp-waybar-module-state";
+          "on-click" = "${cloudflare-warp-waybar-module-toggle}/bin/cloudflare-warp-waybar-module-toggle";
           "interval" = 1;
           "tooltip" = true;
           "tooltip-format" = "<span>{text}</span>";
@@ -202,7 +214,6 @@ in
           "ignored-sinks" = [ "Easy Effects Sink" ];
           "scroll-step" = 5.0;
           "on-click" = "${config.xdg.dataHome}/bin/volume --toggle";
-          "on-click-right" = "pavucontrol";
           "on-scroll-up" = "${config.xdg.dataHome}/bin/volume --inc";
           "on-scroll-down" = "${config.xdg.dataHome}/bin/volume --dec";
           "smooth-scrolling-threshold" = 1;
