@@ -10,6 +10,11 @@
 
 let
   sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+
+    WLR_DRM_NO_ATOMIC = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+
     EDITOR = "micro";
     VISUAL = if hasRole "desktop" then "code --wait --new-window" else "micro";
 
@@ -36,7 +41,7 @@ let
 in
 {
   imports = [
-    inputs.catppuccin.homeModules.catppuccin
+    inputs.catppuccin.homeModules.default
 
     ./hosts/${host.hostname}/home.nix
   ]
@@ -67,7 +72,5 @@ in
 
   _module.args.wallpaper = "${config.xdg.dataHome}/assets/wallpapers/erinthul-moon-witch.png";
 
-  systemd.user.tmpfiles.rules = [
-    "d /tmp/${host.username}/ 1700 ${host.username} users - -"
-  ];
+  systemd.user.tmpfiles.rules = [ "d /tmp/${host.username}/ 1700 ${host.username} users - -" ];
 }

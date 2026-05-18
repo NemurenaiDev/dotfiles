@@ -5,6 +5,8 @@
     enable = true;
     systemd.enable = false;
 
+    configType = "hyprlang";
+
     settings = {
       general = {
         "gaps_in" = 2.5;
@@ -39,7 +41,6 @@
       };
 
       dwindle = {
-        "pseudotile" = true;
         "smart_split" = false;
         "preserve_split" = true;
       };
@@ -124,7 +125,6 @@
         "animate_manual_resizes" = true;
         "focus_on_activate" = false;
         "enable_swallow" = true;
-        "vfr" = true;
         "on_focus_under_fullscreen" = 2;
       };
 

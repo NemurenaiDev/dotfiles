@@ -7,16 +7,23 @@
 }:
 
 {
+  home.sessionVariables = {
+    HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
+    HYPRCURSOR_SIZE = 24;
+
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_QPA_PLATFORMTHEME = "gtk3";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+  };
+
+  home.packages = lib.optionals (hasRole "desktop") [ pkgs.catppuccin-cursors.mochaLight ];
+
   catppuccin = {
     enable = true;
     flavor = "mocha";
     accent = "teal";
   };
-
-  home.sessionVariables.HYPRCURSOR_THEME = "catppuccin-mocha-light-cursors";
-  home.sessionVariables.HYPRCURSOR_SIZE = 24;
-
-  home.packages = lib.optionals (hasRole "desktop") [ pkgs.catppuccin-cursors.mochaLight ];
 
   gtk = {
     enable = hasRole "desktop";

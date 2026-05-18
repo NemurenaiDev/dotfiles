@@ -11,15 +11,6 @@
   ];
 
   environment.sessionVariables = {
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_QPA_PLATFORMTHEME = "gtk3";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-
-    WLR_DRM_NO_ATOMIC = "1";
-    WLR_NO_HARDWARE_CURSORS = "1";
-
-    NIXOS_OZONE_WL = "1";
     NIXPKGS_ALLOW_UNFREE = "1";
 
     NUGET_PACKAGES = "/tmp/xdg-jail/nuget";

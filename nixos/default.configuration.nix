@@ -12,8 +12,8 @@
   imports = [
     ./hosts/${host.hostname}/configuration.nix
 
-    inputs.catppuccin.nixosModules.catppuccin
-    inputs.home-manager.nixosModules.home-manager
+    inputs.catppuccin.nixosModules.default
+    inputs.home-manager.nixosModules.default
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
