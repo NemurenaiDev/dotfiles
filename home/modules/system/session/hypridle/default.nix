@@ -20,6 +20,22 @@ in
 
         inhibit_sleep = 3;
       };
+
+      listener = [
+        {
+          timeout = 1800;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 1800;
+          on-timeout = "loginctl lock-session";
+        }
+        {
+          timeout = 3600;
+          on-timeout = "systemctl suspend";
+        }
+      ];
     };
   };
 }

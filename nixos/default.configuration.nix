@@ -51,6 +51,7 @@
     extraGroups = [
       "wheel"
       "audio"
+      "video"
       "docker"
       "plugdev"
       "networkmanager"
