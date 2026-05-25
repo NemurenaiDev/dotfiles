@@ -1,10 +1,7 @@
 #!/usr/bin/env sh
 
-BAT=/sys/class/power_supply/BATT
-BAT_LOW_THRESHOLD=20
-
-[ -n "$1" ] && BAT_LOW_THRESHOLD="$1"
-[ -n "$2" ] && BAT="$2"
+BAT="${2:-/sys/class/power_supply/BAT0}"
+BAT_LOW_THRESHOLD="${1:-20}"
 
 battery_status() {
 	cat "$BAT/status"
@@ -25,8 +22,23 @@ fi
 
 LOW_FIRED="0"
 
+if [ "$LOW" -eq 1 ] && [ "$STATUS" = "Discharging" ]; then
+	notify-send \
+		-u critical \
+		-c battery \
+		-i "$XDG_DATA_HOME/assets/icons/battery-low.png" \
+		"Low battery" \
+		"Battery below ${BAT_LOW_THRESHOLD}%"
+
+	paplay --volume 65536 "$XDG_DATA_HOME/assets/audio/low-battery.mp3"
+
+	LOW_FIRED="1"
+fi
+
 while true; do
-	inotifywait -q -e modify,create,delete "$BAT" >/dev/null 2>&1
+	inotifywait -q -e modify \
+		"$BAT/capacity" \
+		"$BAT/status" >/dev/null 2>&1
 
 	NEW_STATUS=$(battery_status)
 	NEW_CAPACITY=$(battery_capacity)
@@ -37,24 +49,46 @@ while true; do
 		NEW_LOW="0"
 	fi
 
-	if [ "$LOW" -eq 0 ] && [ "$NEW_LOW" -eq 1 ] && [ "$NEW_STATUS" = "Discharging" ]; then
-		notify-send -u critical -c battery -i "$XDG_DATA_HOME/assets/icons/battery-low.png" ""
+	if [ "$NEW_LOW" -eq 1 ] &&
+		[ "$NEW_STATUS" = "Discharging" ] &&
+		[ "$LOW_FIRED" -eq 0 ]; then
+
+		notify-send \
+			-u critical \
+			-c battery \
+			-i "$XDG_DATA_HOME/assets/icons/battery-low.png" \
+			"Low battery" \
+			"Battery below ${BAT_LOW_THRESHOLD}%"
+
 		paplay --volume 65536 "$XDG_DATA_HOME/assets/audio/low-battery.mp3"
+
 		LOW_FIRED="1"
+	fi
+
+	if [ "$NEW_LOW" -eq 0 ] || [ "$NEW_STATUS" = "Charging" ]; then
+		LOW_FIRED="0"
 	fi
 
 	if [ "$STATUS" != "$NEW_STATUS" ]; then
 		case "$NEW_STATUS" in
 		Charging)
-			notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-charging.png" ""
-			LOW_FIRED="0"
+			notify-send \
+				-c battery \
+				-i "$XDG_DATA_HOME/assets/icons/battery-charging.png" \
+				"Charging..."
 			;;
+
 		Discharging)
 			if [ "$NEW_LOW" -eq 1 ]; then
-				notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-low.png" ""
+				ICON="battery-low.png"
 			else
-				notify-send -c battery -i "$XDG_DATA_HOME/assets/icons/battery-full.png" ""
+				ICON="battery-full.png"
 			fi
+
+			notify-send \
+				-c battery \
+				-i "$XDG_DATA_HOME/assets/icons/$ICON" \
+				"Discharging..."
 			;;
 		esac
 	fi

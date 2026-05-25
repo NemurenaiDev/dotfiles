@@ -1,12 +1,14 @@
 {
   imports = [
     ./hyprland
+    
     ./hypridle
     ./hyprlock
     ./hyprpaper
     ./hyprsunset
 
-    ./mako
+    ./shell
+
     ./gamepad
     ./mangohud
   ];

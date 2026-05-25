@@ -13,12 +13,8 @@ get_icon() {
     fi
 }
 
-notify_user() {
-    notify-send -h string:x-canonical-private-synchronous:sys-notify -h int:value:"$current" -c adjustments -i "$icon" "$current%"
-}
-
 change_backlight() {
-    brightnessctl set "$1" && get_icon && notify_user
+    brightnessctl set "$1" && get_icon
 }
 
 case "$1" in

@@ -169,8 +169,6 @@
         veracrypt
         udiskie
 
-        mako
-        waybar
         libnotify
         droidcam
         electron
@@ -181,13 +179,10 @@
         freerdp
         tk
         wev
-        wttrbar
 
-        dipc
         eog
         grim
         slurp
-        rwpspread
 
         gtk-engine-murrine
       ]

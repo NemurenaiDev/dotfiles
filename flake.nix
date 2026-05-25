@@ -63,6 +63,7 @@
           hostname = "x14p";
           deviceId = "VZHX56X-H3U2APW-3E7QETV-3NR6QCV-7JTOVFF-FAY3E5B-DNY3HHH-RATQEAW";
           roles = [
+            "laptop"
             "desktop"
             "gameclient"
           ];

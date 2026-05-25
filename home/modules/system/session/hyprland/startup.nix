@@ -7,17 +7,12 @@
 
       "hyprlock --grace 0 --immediate-render --no-fade-in"
 
-      "uwsm app -t service -p Restart=always -u app-waybar.service -- waybar"
-      "uwsm app -t service -p Restart=always -u app-mako.service -- mako"
-
       "uwsm app -- udiskie --automount --notify --smart-tray"
 
-      "uwsm app -- nm-applet"
-      "uwsm app -- blueman-applet"
       "uwsm app -- copyq --start-server"
       "uwsm app -- tailscale systray --theme dark:nobg"
 
-      "uwsm app -- nemo ~/.local/share/nemo"
+      "uwsm app -- run-on-workspace 'special:hidden' 'nemo ~/.local/share/nemo' --silent"
       "uwsm app -- run-on-workspace 'special:hidden' 'kitty --single-instance sh' --silent"
 
       "uwsm app -- run-on-workspace 'special:aichat' 'chromium --app=https://chatgpt.com/' --silent"

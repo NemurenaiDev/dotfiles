@@ -48,6 +48,11 @@ in
           devices = userOtherDeviceNames;
         };
 
+        ".local" = basefolder // {
+          path = "/home/${host.nemurenai}/.local/share/wayle/icons";
+          devices = userOtherDeviceNames;
+        };
+
         ".config" = basefolder // {
           path = "/home/${host.username}/.config";
           devices = userOtherDeviceNames;

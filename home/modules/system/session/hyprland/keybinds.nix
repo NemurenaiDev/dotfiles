@@ -15,7 +15,7 @@
     ];
 
     bindr = [
-      "SHIFT, SHIFT_L, exec, makoctl dismiss"
+      "SHIFT, SHIFT_L, exec, wayle notify dismiss-all"
     ];
 
     bind = [
@@ -24,7 +24,7 @@
       "SUPER ALT, F1, exec, hyprctl -j activewindow > /tmp/.windowinfo && kitty --single-instance --class kitty-windowinfo sh -c 'cat /tmp/.windowinfo | moor -no-linenumbers'"
 
       "SUPER SHIFT, F11, exec, hyprctl reload config-only"
-      "SUPER SHIFT, F12, exec, systemctl --user restart app-waybar"
+      "SUPER SHIFT, F12, exec, systemctl --user restart wayle"
 
       "SUPER SHIFT, L, exec, run-powermenu"
 
