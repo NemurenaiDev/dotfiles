@@ -49,7 +49,7 @@ in
         };
 
         ".local" = basefolder // {
-          path = "/home/${host.nemurenai}/.local/share/wayle/icons";
+          path = "/home/${host.username}/.local/share/wayle/icons";
           devices = userOtherDeviceNames;
         };
 

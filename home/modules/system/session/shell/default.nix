@@ -218,6 +218,7 @@ in
         };
 
         notification = {
+          popup-duration = 8000;
           popup-position = "bottom-right";
         };
 
