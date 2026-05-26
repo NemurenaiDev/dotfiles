@@ -23,6 +23,8 @@
     enable = true;
     flavor = "mocha";
     accent = "teal";
+
+    hyprland.enable = false;
   };
 
   gtk = {

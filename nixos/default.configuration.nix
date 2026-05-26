@@ -54,6 +54,7 @@
       "video"
       "docker"
       "plugdev"
+      "libvirtd"
       "networkmanager"
     ];
   };
@@ -69,6 +70,7 @@
   };
 
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   security.polkit.enable = lib.mkForce (hasRole "desktop");
   security.sudo.extraRules = [

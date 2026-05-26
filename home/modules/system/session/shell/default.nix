@@ -1,4 +1,5 @@
 {
+  monitors,
   hasRole,
   config,
   pkgs,
@@ -33,6 +34,7 @@ in
 {
   services.wayle = {
     enable = true;
+    package = pkgs.previous.wayle;
 
     settings = {
       general = {
@@ -123,6 +125,7 @@ in
             middle-click = "playerctl stop";
             interval-ms = 1000;
             hide-if-empty = true;
+            label-max-length = 32;
             icon-map = {
               "Playing" = "tb-player-play-symbolic";
               "Paused" = "tb-player-pause-symbolic";
@@ -218,6 +221,7 @@ in
         };
 
         notification = {
+          popup-monitor = monitors.central;
           popup-duration = 8000;
           popup-position = "bottom-right";
         };

@@ -1,17 +1,17 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    previous.url = "github:NixOS/nixpkgs/nixos-25.11";
+    ancient.url = "github:NixOS/nixpkgs/nixos-25.05";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     catppuccin.url = "github:catppuccin/nix";
 
-    wallpapers = {
-      url = "github:nemurenaidev/wallpapers";
-      flake = false;
-    };
+    wallpapers.url = "github:nemurenaidev/wallpapers";
+    wallpapers.flake = false;
   };
 
   outputs =
@@ -80,7 +80,17 @@
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [
           (final: prev: {
-            stable = import inputs.stable {
+            previous = import inputs.previous {
+              overlays = prev.overlays;
+              system = prev.stdenv.hostPlatform.system;
+              config.allowUnfree = prev.config.allowUnfree;
+            };
+            ancient = import inputs.ancient {
+              overlays = prev.overlays;
+              system = prev.stdenv.hostPlatform.system;
+              config.allowUnfree = prev.config.allowUnfree;
+            };
+            unstable = import inputs.unstable {
               overlays = prev.overlays;
               system = prev.stdenv.hostPlatform.system;
               config.allowUnfree = prev.config.allowUnfree;

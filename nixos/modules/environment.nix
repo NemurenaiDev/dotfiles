@@ -169,6 +169,9 @@
         veracrypt
         udiskie
 
+        virt-manager
+        qemu_full
+
         libnotify
         droidcam
         electron

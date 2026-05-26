@@ -1,8 +1,8 @@
 {
   imports = [
-    ./startup.nix
     ./hyprland.nix
     ./keybinds.nix
+    ./startup.nix
     ./rules.nix
   ];
 }

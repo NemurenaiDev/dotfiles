@@ -8,8 +8,8 @@
       winetricks
       mangohud
 
-      pkgs.stable.lutris
-      pkgs.stable.bottles
+      ancient.lutris
+      ancient.bottles
     ]
     ++ lib.optionals (hasRole "gameclient") [
       moonlight-qt
@@ -26,7 +26,7 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
 
-    extraCompatPackages = [ pkgs.proton-ge-bin ];
+    extraCompatPackages = [ pkgs.unstable.proton-ge-bin ];
   };
 
   services.sunshine = {

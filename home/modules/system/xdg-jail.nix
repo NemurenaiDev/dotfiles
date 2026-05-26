@@ -135,34 +135,35 @@ in
   '';
 
   home.packages = with pkgs; [
-    # ---------- Soft jail ---------- #
-
-    (enjail-soft steam)
-    (enjail-soft steam-run)
-
     # ---------- Regular pkgs ---------- #
 
-    (enjail prismlauncher)
+    (enjail unstable.prismlauncher)
 
-    (enjail anydesk)
-    (enjail spotify)
+    (enjail unstable.anydesk)
+    (enjail unstable.spotify)
 
-    (enjail vivaldi)
-    (enjail ungoogled-chromium)
+    (enjail unstable.vivaldi)
+    (enjail unstable.ungoogled-chromium)
 
-    (enjail vscode-fhs)
-    (enjail code-cursor-fhs)
-    (enjail antigravity-fhs)
+    (enjail unstable.vscode-fhs)
+    (enjail unstable.code-cursor-fhs)
+    (enjail unstable.antigravity-fhs)
 
-    (enjail codex)
-    (enjail opencode)
-    (enjail stable.claude-code)
+    (enjail unstable.codex)
+    (enjail unstable.opencode)
+    (enjail unstable.cursor-cli)
+    (enjail unstable.claude-code)
+
+    # ---------- Soft jail ---------- #
+
+    (enjail-soft unstable.steam)
+    (enjail-soft unstable.steam-run)
 
     # ---------- Special pkgs ---------- #
 
-    (enjail-raw onlyoffice-desktopeditors { extraArgs = [ "--force-scale=1" ]; })
+    (enjail-raw unstable.onlyoffice-desktopeditors { extraArgs = [ "--force-scale=1" ]; })
 
-    (enjail-raw postman {
+    (enjail-raw unstable.postman {
       preRun = "export GSETTINGS_SCHEMA_DIR='${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}/glib-2.0/schemas'";
     })
   ];
