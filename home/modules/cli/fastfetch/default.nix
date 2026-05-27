@@ -121,7 +121,8 @@
             {
                 "type": "media",
                 "key": "│ └󰝚",
-                "keyColor": "cyan"
+                "keyColor": "cyan",
+                "format": "{artist} - {title}"  
             },
             {
                 "type": "custom",
