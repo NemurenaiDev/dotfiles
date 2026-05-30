@@ -24,6 +24,8 @@
     flavor = "mocha";
     accent = "teal";
 
+    autoEnable = true;
+
     hyprland.enable = false;
   };
 

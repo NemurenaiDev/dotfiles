@@ -126,6 +126,7 @@
         "focus_on_activate" = false;
         "enable_swallow" = true;
         "on_focus_under_fullscreen" = 2;
+        "allow_session_lock_restore" = 1;
       };
 
       ecosystem = {

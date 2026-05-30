@@ -22,19 +22,20 @@ in
       };
 
       listener = [
-        {
-          timeout = 1800;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
-        {
-          timeout = 1800;
-          on-timeout = "loginctl lock-session";
-        }
-        {
-          timeout = 3600;
-          on-timeout = "systemctl suspend";
-        }
+        # {
+        #   timeout = 1800;
+        #   on-timeout = "hyprctl dispatch dpms off";
+        #   on-resume = "hyprctl dispatch dpms on";
+        # }
+        # {
+        #   timeout = 1800;
+        #   on-timeout = "loginctl lock-session";
+        #   on-resume = "sleep 1 && ${hyprlock_cmd}"; # restore if crashed
+        # }
+        # {
+        #   timeout = 3600;
+        #   on-timeout = "systemctl suspend";
+        # }
       ];
     };
   };
