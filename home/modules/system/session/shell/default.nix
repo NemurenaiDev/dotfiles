@@ -34,7 +34,6 @@ in
 {
   services.wayle = {
     enable = true;
-    package = pkgs.previous.wayle;
 
     settings = {
       general = {
@@ -59,22 +58,26 @@ in
             monitor = "*";
             show = true;
 
-            left = [
+            left = builtins.filter (x: x != null) [
               "notifications"
               "dashboard"
               "clock"
+              (if hasRole "laptop" then "battery" else null)
               "custom-media"
             ];
 
-            center = [
+            center = builtins.filter (x: x != null) [
+              "separator"
               "hyprland-workspaces"
+              "separator"
             ];
 
-            right = (if hasRole "laptop" then [ "battery" ] else [ ]) ++ [
+            right = builtins.filter (x: x != null) [
               "systray"
               "bluetooth"
               "custom-cloudflare-warp"
               "network"
+              (if hasRole "laptop" then "brightness" else null)
               "volume"
               "keyboard-input"
             ];
@@ -151,6 +154,7 @@ in
         clock = {
           format = "%a %d.%m | %H:%M:%S";
           icon-show = false;
+          label-color = "blue";
           dropdown-show-seconds = true;
         };
 
@@ -202,7 +206,11 @@ in
           left-click = "${pkgs.playerctl}/bin/playerctl play-pause";
           right-click = "dropdown:media";
           middle-click = "${pkgs.playerctl}/bin/playerctl stop";
-          players-ignored = [ "*playerctld*" ];
+        };
+
+        brightness = {
+          scroll-up = "${config.xdg.dataHome}/bin/brightness --inc";
+          scroll-down = "${config.xdg.dataHome}/bin/brightness --dec";
         };
 
         volume = {
@@ -224,6 +232,10 @@ in
           popup-monitor = monitors.central;
           popup-duration = 8000;
           popup-position = "bottom-right";
+        };
+
+        osd = {
+          popup-monitor = monitors.central;
         };
 
         systray = {

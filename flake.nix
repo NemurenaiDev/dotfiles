@@ -1,13 +1,15 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    previous.url = "github:NixOS/nixpkgs/nixos-25.11";
     ancient.url = "github:NixOS/nixpkgs/nixos-25.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
 
     catppuccin.url = "github:catppuccin/nix";
+
+    wayle.url = "github:wayle-rs/wayle";
+    wayle.flake = false;
 
     wallpapers.url = "github:nemurenaidev/wallpapers";
     wallpapers.flake = false;
@@ -78,6 +80,32 @@
       basepkgs = {
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [
+          (final: prev: {
+            wayle = prev.rustPlatform.buildRustPackage {
+              meta = prev.wayle.meta;
+              pname = prev.wayle.pname;
+              version = "git-${inputs.wayle.lastModifiedDate}";
+
+              doCheck = false;
+
+              src = inputs.wayle;
+
+              cargoHash = "sha256-4PUXJwUP5h/ggZQbY78BdqMh5oZes1XCeWuT2/S94Z4=";
+
+              desktopItems = prev.wayle.desktopItems;
+
+              nativeBuildInputs = prev.wayle.nativeBuildInputs;
+              buildInputs = prev.wayle.buildInputs;
+
+              cargoBuildFlags = prev.wayle.cargoBuildFlags;
+
+              preCheck = prev.wayle.preCheck;
+              preInstall = prev.wayle.preInstall;
+              postInstall = prev.wayle.postInstall;
+              preFixup = prev.wayle.preFixup;
+            };
+          })
+
           (final: prev: {
             previous = import inputs.previous {
               overlays = prev.overlays;

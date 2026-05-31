@@ -95,6 +95,7 @@
   services.getty.helpLine = lib.mkForce "";
 
   services.gvfs.enable = true;
+  services.upower.enable = true;
   services.udisks2.enable = true;
   services.playerctld.enable = true;
 

@@ -4,17 +4,8 @@ get_backlight() {
     echo $(brightnessctl -m | cut -d, -f4)
 }
 
-get_icon() {
-    current=$(get_backlight | sed 's/%//')
-    if [ "$current" -le "20" ]; then
-        icon="$XDG_DATA_HOME/assets/icons/brightness-min.png"
-    else
-        icon="$XDG_DATA_HOME/assets/icons/brightness-max.png"
-    fi
-}
-
 change_backlight() {
-    brightnessctl set "$1" && get_icon
+    brightnessctl set "$1"
 }
 
 case "$1" in
