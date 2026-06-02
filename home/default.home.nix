@@ -31,6 +31,8 @@ let
     XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
     PKG_CACHE_PATH = "${config.xdg.cacheHome}/pkg-cache";
 
+    RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
+
     NPM_CONFIG_INIT_MODULE = "${config.xdg.configHome}/npm/config/npm-init.js";
     NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/config/npmrc";
     NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";

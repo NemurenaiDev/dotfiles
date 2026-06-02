@@ -6,11 +6,14 @@
 }:
 
 {
+  systemd.user.tmpfiles.rules = [
+    "d /tmp/${host.username}/TelegramDownloads 1700 ${host.username} users - -"
+  ];
+
   home.activation."link-telegram-downloads-to-tmp" = ''
     ${pkgs.coreutils}/bin/mkdir -p ${config.home.homeDirectory}/Downloads
     ${pkgs.coreutils}/bin/rm -rf ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
 
-    ${pkgs.coreutils}/bin/mkdir -p /tmp/${host.username}/TelegramDownloads
     ${pkgs.coreutils}/bin/ln -sfn /tmp/${host.username}/TelegramDownloads ${config.home.homeDirectory}/Downloads/Telegram\ Desktop
   '';
 

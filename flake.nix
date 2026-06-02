@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    ancient.url = "github:NixOS/nixpkgs/nixos-25.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -107,16 +106,6 @@
           })
 
           (final: prev: {
-            previous = import inputs.previous {
-              overlays = prev.overlays;
-              system = prev.stdenv.hostPlatform.system;
-              config.allowUnfree = prev.config.allowUnfree;
-            };
-            ancient = import inputs.ancient {
-              overlays = prev.overlays;
-              system = prev.stdenv.hostPlatform.system;
-              config.allowUnfree = prev.config.allowUnfree;
-            };
             unstable = import inputs.unstable {
               overlays = prev.overlays;
               system = prev.stdenv.hostPlatform.system;

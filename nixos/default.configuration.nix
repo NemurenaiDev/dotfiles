@@ -69,10 +69,7 @@
     "net.ipv6.conf.all.forwarding" = 1;
   };
 
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-
-  security.polkit.enable = lib.mkForce (hasRole "desktop");
+  security.polkit.enable = true;
   security.sudo.extraRules = [
     {
       groups = [ "wheel" ];
@@ -84,6 +81,9 @@
       ];
     }
   ];
+
+  virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   services.journald.extraConfig = "MaxRetentionSec=7day";
   services.libinput.enable = true;
