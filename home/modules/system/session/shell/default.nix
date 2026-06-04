@@ -232,6 +232,7 @@ in
           popup-monitor = monitors.central;
           popup-duration = 8000;
           popup-position = "bottom-right";
+          popup-stacking-order = "oldest-first";
         };
 
         osd = {
@@ -242,6 +243,7 @@ in
           icon-scale = 0.75;
           blacklist = [
             "*nm*"
+            "*wayle*"
             "*blueman*"
             "*openrgb*"
             "*spotify*"

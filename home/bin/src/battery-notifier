@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-BAT="${2:-/sys/class/power_supply/BAT0}"
+BAT="${2:-/sys/class/power_supply/BATT}"
 BAT_LOW_THRESHOLD="${1:-20}"
 
 battery_status() {
@@ -11,34 +11,14 @@ battery_capacity() {
 	cat "$BAT/capacity"
 }
 
+LOW="0"
+LOW_FIRED="0"
+
 STATUS=$(battery_status)
 CAPACITY=$(battery_capacity)
 
-if [ "$CAPACITY" -lt "$BAT_LOW_THRESHOLD" ]; then
-	LOW="1"
-else
-	LOW="0"
-fi
-
-LOW_FIRED="0"
-
-if [ "$LOW" -eq 1 ] && [ "$STATUS" = "Discharging" ]; then
-	notify-send \
-		-u critical \
-		-c battery \
-		-i "$XDG_DATA_HOME/assets/icons/battery-low.png" \
-		"Low battery" \
-		"Battery below ${BAT_LOW_THRESHOLD}%"
-
-	paplay --volume 65536 "$XDG_DATA_HOME/assets/audio/low-battery.mp3"
-
-	LOW_FIRED="1"
-fi
-
 while true; do
-	inotifywait -q -e modify \
-		"$BAT/capacity" \
-		"$BAT/status" >/dev/null 2>&1
+	sleep 1
 
 	NEW_STATUS=$(battery_status)
 	NEW_CAPACITY=$(battery_capacity)
@@ -49,11 +29,11 @@ while true; do
 		NEW_LOW="0"
 	fi
 
-	if [ "$NEW_LOW" -eq 1 ] &&
-		[ "$NEW_STATUS" = "Discharging" ] &&
-		[ "$LOW_FIRED" -eq 0 ]; then
+	[ "$NEW_LOW" = "$LOW" ] && [ "$NEW_CAPACITY" = "$CAPACITY" ] && [ "$NEW_STATUS" = "$STATUS" ] && continue
 
+	if [ "$NEW_LOW" -eq 1 ] && [ "$LOW_FIRED" -eq 0 ] && [ "$NEW_STATUS" = "Discharging" ]; then
 		notify-send \
+			--app-name=battery-notifier \
 			-u critical \
 			-c battery \
 			-i "$XDG_DATA_HOME/assets/icons/battery-low.png" \
@@ -71,8 +51,10 @@ while true; do
 
 	if [ "$STATUS" != "$NEW_STATUS" ]; then
 		case "$NEW_STATUS" in
+
 		Charging)
 			notify-send \
+				--app-name=battery-notifier \
 				-c battery \
 				-i "$XDG_DATA_HOME/assets/icons/battery-charging.png" \
 				"Charging..."
@@ -86,14 +68,16 @@ while true; do
 			fi
 
 			notify-send \
+				--app-name=battery-notifier \
 				-c battery \
 				-i "$XDG_DATA_HOME/assets/icons/$ICON" \
 				"Discharging..."
 			;;
+
 		esac
 	fi
 
+	LOW="$NEW_LOW"
 	STATUS="$NEW_STATUS"
 	CAPACITY="$NEW_CAPACITY"
-	LOW="$NEW_LOW"
 done
