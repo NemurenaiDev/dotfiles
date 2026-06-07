@@ -60,7 +60,7 @@ in
 
             left = builtins.filter (x: x != null) [
               "notifications"
-              "dashboard"
+              "weather"
               "clock"
               (if hasRole "laptop" then "battery" else null)
               "custom-media"

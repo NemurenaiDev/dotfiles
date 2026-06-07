@@ -89,7 +89,7 @@
 
               src = inputs.wayle;
 
-              cargoHash = "sha256-4PUXJwUP5h/ggZQbY78BdqMh5oZes1XCeWuT2/S94Z4=";
+              cargoHash = "sha256-rqMMtB4ogsSQ+iou6raKzMuI+EcOcqklfzxb+E7qJN0=";
 
               desktopItems = prev.wayle.desktopItems;
 
