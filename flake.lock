@@ -23,11 +23,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1780361225,
-        "narHash": "sha256-wnV9ttf4fPWNonBIQmvlrSlNpQYgx5HgWWd007mwIFA=",
+        "lastModified": 1780883961,
+        "narHash": "sha256-WU6SUrESuPiEXEUvX4D51AgWrXRJty+sLJBwBaDBGqE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e28654b71096e08c019d4861ca26acb646f583d8",
+        "rev": "4eb4fec41674d5b059aa2eedf0f98453890546fa",
         "type": "github"
       },
       "original": {
@@ -52,11 +52,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1779971959,
-        "narHash": "sha256-R5nauXyqyfRUFiZycFFZdkF7wl6eaUpPLst35+2nJQY=",
+        "lastModified": 1780453794,
+        "narHash": "sha256-bXMRa9VTsHSPXL4Cw8R6JJLQeY3Y/IP4+YJCYVmQ7FY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ec942ba042dad5ef097e2ef3a3effc034241f011",
+        "rev": "6b316287bae2ee04c9b93c8c858d930fd07d7338",
         "type": "github"
       },
       "original": {
@@ -88,17 +88,16 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
         "unstable": "unstable",
-        "wallpapers": "wallpapers",
-        "wayle": "wayle"
+        "wallpapers": "wallpapers"
       }
     },
     "unstable": {
       "locked": {
-        "lastModified": 1780243769,
-        "narHash": "sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw=",
+        "lastModified": 1780749050,
+        "narHash": "sha256-3av0pIjlOWQ6rDbNOmpUSvbNnJkGORQKKjb4LtCZsIY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "331800de5053fcebacf6813adb5db9c9dca22a0c",
+        "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
         "type": "github"
       },
       "original": {
@@ -121,22 +120,6 @@
       "original": {
         "owner": "nemurenaidev",
         "repo": "wallpapers",
-        "type": "github"
-      }
-    },
-    "wayle": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780873167,
-        "narHash": "sha256-XgdQGwhNx9tfbPqg/aLWP5DSFxaB02EEZrJltqXO3V8=",
-        "owner": "wayle-rs",
-        "repo": "wayle",
-        "rev": "87081a2cc57ba94433880138ad5bf18d9bf91228",
-        "type": "github"
-      },
-      "original": {
-        "owner": "wayle-rs",
-        "repo": "wayle",
         "type": "github"
       }
     }

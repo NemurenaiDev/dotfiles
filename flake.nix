@@ -7,9 +7,6 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    wayle.url = "github:wayle-rs/wayle";
-    wayle.flake = false;
-
     wallpapers.url = "github:nemurenaidev/wallpapers";
     wallpapers.flake = false;
   };
@@ -79,32 +76,6 @@
       basepkgs = {
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [
-          (final: prev: {
-            wayle = prev.rustPlatform.buildRustPackage {
-              meta = prev.wayle.meta;
-              pname = prev.wayle.pname;
-              version = "git-${inputs.wayle.lastModifiedDate}";
-
-              doCheck = false;
-
-              src = inputs.wayle;
-
-              cargoHash = "sha256-rqMMtB4ogsSQ+iou6raKzMuI+EcOcqklfzxb+E7qJN0=";
-
-              desktopItems = prev.wayle.desktopItems;
-
-              nativeBuildInputs = prev.wayle.nativeBuildInputs;
-              buildInputs = prev.wayle.buildInputs;
-
-              cargoBuildFlags = prev.wayle.cargoBuildFlags;
-
-              preCheck = prev.wayle.preCheck;
-              preInstall = prev.wayle.preInstall;
-              postInstall = prev.wayle.postInstall;
-              preFixup = prev.wayle.preFixup;
-            };
-          })
-
           (final: prev: {
             unstable = import inputs.unstable {
               overlays = prev.overlays;
