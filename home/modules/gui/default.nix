@@ -1,6 +1,7 @@
 {
   imports = [
     ./nemo
+    ./satty
     ./copyq
     ./kitty
     ./fuzzel

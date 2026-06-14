@@ -100,9 +100,9 @@
     itemfakevim\really_enable=false
     itemfakevim\source_file=
     itemimage\enabled=true
-    itemimage\image_editor=
-    itemimage\max_image_height=240
+    itemimage\image_editor=satty --filename
     itemimage\max_image_width=320
+    itemimage\max_image_height=240
     itemimage\svg_editor=
     itemnotes\enabled=true
     itemnotes\notes_at_bottom=false

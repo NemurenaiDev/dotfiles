@@ -1,32 +1,29 @@
 #!/usr/bin/env sh
 
 shot-win() {
-	w_pos="$(hyprctl activewindow -j | jq -r '.at | join(",")')"
-	w_size="$(hyprctl activewindow -j | jq -r '.size | join("x")')"
-	grim -g "$w_pos $w_size" - | wl-copy
+	grimblast copy active
 }
 
 shot-area() {
-	grim -g "$(slurp -b 1B1F28CC -w 0)" - | wl-copy
+	grimblast --freeze copy area
 }
 
-shot-and-ocr-area() {
-	grim -g "$(slurp -b 1B1F28CC -w 0)" - | tesseract stdin stdout -l eng+ukr+rus 2>/dev/null | wl-copy
+shot-ocr-area() {
+	grimblast --freeze save area - | tesseract stdin stdout -l eng+ukr+rus 2>/dev/null | wl-copy
 }
 
 shot-screen() {
-    grim -o "$(hyprctl -j activeworkspace | jq -r '.monitor')" - | wl-copy
+	grimblast copy output
 }
 
-
-if [[ "$1" == "--win" ]]; then
+if [ "$1" = "--win" ]; then
 	shot-win
-elif [[ "$1" == "--area" ]]; then
+elif [ "$1" = "--area" ]; then
 	shot-area
-elif [[ "$1" == "--screen" ]]; then
+elif [ "$1" = "--screen" ]; then
 	shot-screen
-elif [[ "$1" == "--ocr-area" ]]; then
-	shot-and-ocr-area
+elif [ "$1" = "--ocr-area" ]; then
+	shot-ocr-area
 else
-    echo -e "Available Options : --win --area --screen --ocr-area"
+	echo "Available: --win --area --screen --ocr-area"
 fi

@@ -168,6 +168,7 @@
         remmina
         veracrypt
         udiskie
+        gnome-disk-utility
 
         virt-manager
         qemu_full
@@ -184,8 +185,8 @@
         wev
 
         eog
-        grim
-        slurp
+        satty
+        grimblast
 
         gtk-engine-murrine
       ]

@@ -173,7 +173,6 @@ in
 
       ### utils ###
 
-      "pin on, match:class (com.github.hluk.copyq)"
       "float on, match:class (com.github.hluk.copyq)"
       "center on, match:class (com.github.hluk.copyq)"
       "size 960 720, match:class (com.github.hluk.copyq)"
@@ -182,20 +181,16 @@ in
       "center on, match:class (dconf-editor)"
       "size 1600 900, match:class (dconf-editor)"
 
-      "pin on, match:class (.*nm-.*)"
-      "pin on, match:class (.*blueman.*)"
-
       "float on, match:class (.*nm-.*)"
-      "float on, match:class (.*blueman.*)"
-
       "center on, match:class (.*nm-.*)"
+
+      "float on, match:class (.*blueman.*)"
       "center on, match:class (.*blueman.*)"
 
       "float on, match:class (.*(file-roller|FileRoller).*)"
       "center on, match:class (.*(file-roller|FileRoller).*)"
       "size 960 720, match:class (.*(file-roller|FileRoller).*)"
 
-      "pin on, match:class (.*(blueman|nm-connection-editor).*)"
       "float on, match:class (.*(blueman|nm-connection-editor).*)"
       "center on, match:class (.*(blueman|nm-connection-editor).*)"
       "size 960 720, match:class (.*(blueman|nm-connection-editor).*)"
