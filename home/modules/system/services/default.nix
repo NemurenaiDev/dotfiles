@@ -3,5 +3,6 @@
     ./docker
     ./cleaner
     ./snapcast
+    ./ssh-agent
   ];
 }

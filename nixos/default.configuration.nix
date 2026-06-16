@@ -70,34 +70,27 @@
   };
 
   security.polkit.enable = true;
-  security.sudo.extraRules = [
-    {
-      groups = [ "wheel" ];
-      commands = [
-        {
-          command = "/run/current-system/sw/bin/veracrypt --text --unmount";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-    }
-  ];
+  security.pam.services.su.enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
 
-  services.journald.extraConfig = "MaxRetentionSec=7day";
-  services.libinput.enable = true;
+  services.dbus.enable = true;
   services.openssh.enable = true;
-
-  services.getty.autologinOnce = hasRole "desktop";
-  services.getty.autologinUser = host.username;
-  services.getty.greetingLine = lib.mkForce "";
-  services.getty.helpLine = lib.mkForce "";
+  services.libinput.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  services.journald.extraConfig = "MaxRetentionSec=7day";
 
   services.gvfs.enable = true;
   services.upower.enable = true;
   services.udisks2.enable = true;
   services.playerctld.enable = true;
+
+  services.getty.helpLine = lib.mkForce "";
+  services.getty.greetingLine = lib.mkForce "";
+  services.getty.autologinUser = host.username;
+  services.getty.autologinOnce = hasRole "desktop";
 
   programs.zsh.enable = true;
 

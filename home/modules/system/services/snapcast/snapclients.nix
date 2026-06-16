@@ -41,7 +41,7 @@
         Service = {
           ExecStart = "${pkgs.snapcast}/bin/snapclient --host ${lib.escapeShellArg addr}";
           Restart = "always";
-          RestartSec = "3s";
+          RestartSec = "10s";
         };
       };
     }) host.snapclients

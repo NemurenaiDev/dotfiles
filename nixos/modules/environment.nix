@@ -143,6 +143,8 @@
         hyprpicker
         hyprpolkitagent
 
+        seahorse
+
         copyq
         wl-clipboard
         tesseract

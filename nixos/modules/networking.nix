@@ -8,9 +8,11 @@
 {
   services.tailscale.enable = true;
   services.mullvad-vpn.enable = true;
+
   services.cloudflare-warp.enable = true;
 
   systemd.user.services.warp-taskbar.enable = false;
+  systemd.services.cloudflare-warp.serviceConfig.LogLevelMax = "notice";
 
   services.resolved = {
     enable = true;
