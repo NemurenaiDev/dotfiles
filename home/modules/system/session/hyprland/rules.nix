@@ -74,8 +74,6 @@ in
       "border_size 0, match:workspace w[tv1]"
       "border_size 1, match:float true"
 
-      "workspace special:aichat silent, match:class (.*chrome-chatgpt.*)"
-
       "workspace special:hidden silent, match:class (^$), match:title (LibreOffice)"
       "workspace special:hidden silent, match:class (^$), match:title (.*is.sharing.*)"
       "workspace special:hidden silent, match:class (nemo), match:title (nemo.*/.local/share/nemo)"

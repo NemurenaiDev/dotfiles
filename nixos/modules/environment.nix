@@ -143,7 +143,8 @@
         hyprpicker
         hyprpolkitagent
 
-        seahorse
+        unstable.vivaldi
+        unstable.ungoogled-chromium
 
         copyq
         wl-clipboard

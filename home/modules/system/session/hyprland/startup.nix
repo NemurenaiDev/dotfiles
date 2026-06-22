@@ -15,9 +15,10 @@
       "uwsm app -- run-on-workspace 'special:hidden' 'nemo ~/.local/share/nemo' --silent"
       "uwsm app -- run-on-workspace 'special:hidden' 'kitty --single-instance sh' --silent"
 
-      "uwsm app -- run-on-workspace 'special:aichat' 'chromium --app=https://chatgpt.com/' --silent"
-      "uwsm app -- run-on-workspace '21' 'vivaldi' --silent"
       "uwsm app -- run-on-workspace '25' 'Telegram' --silent"
+
+      "uwsm app -- run-after-keyring run-on-workspace '21' 'vivaldi' --silent"
+      "uwsm app -- run-after-keyring run-on-workspace 'special:aichat' 'chromium --app=https://chatgpt.com/' --silent"
     ];
   };
 }

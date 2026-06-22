@@ -69,15 +69,21 @@
     "net.ipv6.conf.all.forwarding" = 1;
   };
 
-  security.polkit.enable = true;
-  security.pam.services.su.enableGnomeKeyring = true;
-  security.pam.services.login.enableGnomeKeyring = true;
-
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
 
-  services.dbus.enable = true;
+  security.polkit.enable = true;
+  security.pam.services.su.enableGnomeKeyring = hasRole "desktop";
+  security.pam.services.sudo.enableGnomeKeyring = hasRole "desktop";
+  security.pam.services.login.enableGnomeKeyring = hasRole "desktop";
+  security.pam.services.hyprlock.enableGnomeKeyring = hasRole "desktop";
+
   services.openssh.enable = true;
+  services.openssh.settings.PermitRootLogin = "no";
+  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.settings.KbdInteractiveAuthentication = false;
+
+  services.dbus.enable = true;
   services.libinput.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.journald.extraConfig = "MaxRetentionSec=7day";
@@ -95,6 +101,7 @@
   programs.zsh.enable = true;
 
   programs.dconf.enable = hasRole "desktop";
+  programs.hyprlock.enable = hasRole "desktop";
   programs.hyprland.enable = hasRole "desktop";
   programs.hyprland.withUWSM = hasRole "desktop";
 }

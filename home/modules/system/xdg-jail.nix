@@ -137,13 +137,12 @@ in
   home.packages = with pkgs; [
     # ---------- Regular pkgs ---------- #
 
+    (enjail seahorse)
+
     (enjail unstable.prismlauncher)
 
     (enjail unstable.anydesk)
     (enjail unstable.spotify)
-
-    (enjail unstable.vivaldi)
-    (enjail unstable.ungoogled-chromium)
 
     (enjail unstable.vscode-fhs)
     (enjail unstable.code-cursor-fhs)

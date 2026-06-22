@@ -2,6 +2,41 @@
 
 let
   scripts = {
+    run-after-keyring = ''
+      COLLECTION="/org/freedesktop/secrets/collection/login"
+
+      if [ "$#" -lt 1 ]; then
+          echo "Usage: $0 <command> [args...]"
+          exit 1
+      fi
+
+      echo "Waiting for keyring unlock..."
+
+      while true; do
+          locked=$(
+              ${pkgs.glib}/bin/gdbus call \
+                  --session \
+                  --dest org.freedesktop.secrets \
+                  --object-path "$COLLECTION" \
+                  --method org.freedesktop.DBus.Properties.Get \
+                  org.freedesktop.Secret.Collection Locked \
+              2>/dev/null \
+              | ${pkgs.gnugrep}/bin/grep -oE 'true|false' \
+              || true
+          )
+
+          if [ "$locked" = "false" ]; then
+              break
+          fi
+
+          sleep 1
+      done
+
+      echo "Keyring unlocked, executing..."
+
+      exec "$@"
+    '';
+
     run-on-workspace = ''
       workspace_id="$1"
       command="$2"
