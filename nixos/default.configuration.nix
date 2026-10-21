@@ -18,6 +18,8 @@
       home-manager.useUserPackages = true;
     }
 
+    ./modules/selinux
+
     ./modules/audio.nix
     ./modules/networking.nix
     ./modules/environment.nix
@@ -29,6 +31,9 @@
     ./modules/keyboard.nix
 
     ./modules/gaming.nix
+  ]
+  ++ lib.optionals (hasRole "selinux") [
+    ./modules/selinux
   ];
 
   system.stateVersion = host.stateVersion;

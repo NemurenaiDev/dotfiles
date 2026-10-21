@@ -1,0 +1,1 @@
+HOME_DIR/\.local/appdata(/.*)?    gen_context(system_u:object_r:appdata_t,s0)

@@ -1,0 +1,31 @@
+policy_module(appdata, 1.0)
+
+
+type appdata_t;
+files_type(appdata_t);
+
+
+gen_require(`
+    attribute domain;
+')
+
+allow domain appdata_t:dir {
+    getattr
+    open
+    read
+    search
+};
+
+allow domain appdata_t:file {
+    getattr
+    open
+    read
+    execute
+    execute_no_trans
+    map
+};
+
+allow domain appdata_t:lnk_file {
+    getattr
+    read
+};

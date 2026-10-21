@@ -1,0 +1,392 @@
+policy_module(vivaldi)
+
+
+
+optional_policy(`
+	vivaldi_role(user, user_t, user_application_exec_domain, user_r)
+')
+optional_policy(`
+	vivaldi_role(staff, staff_t, staff_application_exec_domain, staff_r)
+')
+optional_policy(`
+	vivaldi_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
+')
+
+
+
+########################################
+#
+# Declarations
+#
+
+## <desc>
+## <p>
+## Allow vivaldi to access direct rendering interface
+## </p>
+## <p>
+## Needed for good performance on complex sites
+## </p>
+## </desc>
+gen_tunable(vivaldi_dri, true)
+
+## <desc>
+## <p>
+## Allow vivaldi to execute heap
+## </p>
+## </desc>
+gen_tunable(vivaldi_exec_heap, false)
+
+## <desc>
+## <p>
+## Allow vivaldi to ptrace itself
+## </p>
+## </desc>
+gen_tunable(vivaldi_ptrace, false)
+
+## <desc>
+## <p>
+## Allow vivaldi to read system information
+## </p>
+## <p>
+## Although not needed for regular browsing, this will allow vivaldi to update
+## its own memory consumption based on system state, support additional
+## debugging, detect specific devices, etc.
+## </p>
+## </desc>
+gen_tunable(vivaldi_read_system_info, false)
+
+## <desc>
+## <p>
+## Allow vivaldi to bind to tcp ports
+## </p>
+## <p>
+## Although not needed for regular browsing, some chrome extensions need to
+## bind to tcp ports and accept connections.
+## </p>
+## </desc>
+gen_tunable(vivaldi_bind_tcp_unreserved_ports, false)
+
+## <desc>
+## <p>
+## Allow vivaldi to read/write USB devices
+## </p>
+## <p>
+## Although not needed for regular browsing, used for debugging over usb
+## or using FIDO U2F tokens.
+## </p>
+## </desc>
+gen_tunable(vivaldi_rw_usb_dev, false)
+
+type vivaldi_t;
+domain_dyntrans_type(vivaldi_t)
+
+type vivaldi_exec_t;
+application_domain(vivaldi_t, vivaldi_exec_t)
+
+type vivaldi_naclhelper_t;
+type vivaldi_naclhelper_exec_t;
+application_domain(vivaldi_naclhelper_t, vivaldi_naclhelper_exec_t)
+
+type vivaldi_sandbox_t;
+type vivaldi_sandbox_exec_t;
+application_domain(vivaldi_sandbox_t, vivaldi_sandbox_exec_t)
+
+type vivaldi_tmp_t;
+userdom_user_tmp_file(vivaldi_tmp_t)
+
+type vivaldi_tmpfs_t;
+userdom_user_tmpfs_file(vivaldi_tmpfs_t)
+optional_policy(`
+	pulseaudio_tmpfs_content(vivaldi_tmpfs_t)
+	pulseaudio_rw_tmpfs_files(vivaldi_t)
+	pulseaudio_stream_connect(vivaldi_t)
+	pulseaudio_use_fds(vivaldi_t)
+')
+
+type vivaldi_data_t;
+files_type(vivaldi_data_t)
+
+########################################
+#
+# vivaldi local policy
+#
+
+# execmem for load in plugins
+allow vivaldi_t self:process { execmem getcap getsched setcap setrlimit setsched sigkill signal signull };
+allow vivaldi_t self:dir { add_name write };
+allow vivaldi_t self:file create;
+allow vivaldi_t self:fifo_file rw_fifo_file_perms;
+allow vivaldi_t self:sem create_sem_perms;
+allow vivaldi_t self:netlink_kobject_uevent_socket client_stream_socket_perms;
+allow vivaldi_t self:user_namespace create;
+# cap_userns sys_admin for the sandbox
+allow vivaldi_t self:cap_userns { sys_admin sys_chroot sys_ptrace };
+
+allow vivaldi_t vivaldi_exec_t:file execute_no_trans;
+
+allow vivaldi_t vivaldi_sandbox_t:unix_dgram_socket { getattr read write };
+allow vivaldi_t vivaldi_sandbox_t:unix_stream_socket { getattr read write };
+allow vivaldi_t vivaldi_sandbox_t:file read_file_perms;
+
+allow vivaldi_t vivaldi_naclhelper_t:process { share };
+allow vivaldi_t vivaldi_naclhelper_t:process2 nnp_transition;
+
+# tmp has a wide class access (used for plugins)
+manage_files_pattern(vivaldi_t, vivaldi_tmp_t, vivaldi_tmp_t)
+allow vivaldi_t vivaldi_tmp_t:file map;
+manage_dirs_pattern(vivaldi_t, vivaldi_tmp_t, vivaldi_tmp_t)
+manage_lnk_files_pattern(vivaldi_t, vivaldi_tmp_t, vivaldi_tmp_t)
+manage_sock_files_pattern(vivaldi_t, vivaldi_tmp_t, vivaldi_tmp_t)
+manage_fifo_files_pattern(vivaldi_t, vivaldi_tmp_t, vivaldi_tmp_t)
+files_tmp_filetrans(vivaldi_t, vivaldi_tmp_t, { file dir sock_file })
+# for /run/user/$UID
+userdom_user_runtime_filetrans(vivaldi_t, vivaldi_tmp_t, { file sock_file })
+
+manage_files_pattern(vivaldi_t, vivaldi_tmpfs_t, vivaldi_tmpfs_t)
+allow vivaldi_t vivaldi_tmpfs_t:file map;
+fs_tmpfs_filetrans(vivaldi_t, vivaldi_tmpfs_t, file)
+
+manage_files_pattern(vivaldi_t, vivaldi_data_t, vivaldi_data_t)
+allow vivaldi_t vivaldi_data_t:file map;
+manage_lnk_files_pattern(vivaldi_t, vivaldi_data_t, vivaldi_data_t)
+manage_dirs_pattern(vivaldi_t, vivaldi_data_t, vivaldi_data_t)
+xdg_search_data_dirs(vivaldi_t)
+
+filetrans_pattern(vivaldi_t, xdg_data_t, appdata_t, { dir file }, "appdata")
+filetrans_pattern(vivaldi_t, appdata_t, vivaldi_data_t, { dir file }, "vivaldi")
+allow vivaldi_t appdata_t:dir create_dir_perms;
+allow vivaldi_t appdata_t:file create_file_perms;
+
+domtrans_pattern(vivaldi_t, vivaldi_sandbox_exec_t, vivaldi_sandbox_t)
+domtrans_pattern(vivaldi_t, vivaldi_naclhelper_exec_t, vivaldi_naclhelper_t)
+
+# for self:file create
+kernel_associate_proc(vivaldi_t)
+
+kernel_get_sysvipc_info(vivaldi_t)
+kernel_list_proc(vivaldi_t)
+kernel_read_device_sysctls(vivaldi_t)
+kernel_read_fs_sysctls(vivaldi_t)
+kernel_read_kernel_sysctls(vivaldi_t)
+kernel_read_net_sysctls(vivaldi_t)
+kernel_read_psi(vivaldi_t)
+kernel_read_vm_overcommit_sysctl(vivaldi_t)
+
+corecmd_exec_bin(vivaldi_t)
+# Look for /etc/gentoo-release through a shell invocation running find
+corecmd_exec_shell(vivaldi_t)
+
+corenet_tcp_connect_all_unreserved_ports(vivaldi_t)
+corenet_tcp_connect_ftp_port(vivaldi_t)
+corenet_tcp_connect_http_port(vivaldi_t)
+corenet_tcp_connect_ipp_port(vivaldi_t)
+corenet_udp_bind_generic_node(vivaldi_t)
+corenet_udp_bind_all_unreserved_ports(vivaldi_t)
+
+dev_read_sound(vivaldi_t)
+dev_write_sound(vivaldi_t)
+dev_read_urand(vivaldi_t)
+dev_read_rand(vivaldi_t)
+dev_rw_xserver_misc(vivaldi_t)
+dev_map_xserver_misc(vivaldi_t)
+
+domain_dontaudit_search_all_domains_state(vivaldi_t)
+domain_use_interactive_fds(vivaldi_t)
+
+files_list_home(vivaldi_t)
+files_search_home(vivaldi_t)
+files_read_usr_files(vivaldi_t)
+files_map_usr_files(vivaldi_t)
+files_read_etc_files(vivaldi_t)
+files_watch_etc_dirs(vivaldi_t)
+files_watch_root_dirs(vivaldi_t)
+files_watch_runtime_dirs(vivaldi_t)
+
+# During find for /etc/whatever-release we get lots of output otherwise
+files_dontaudit_getattr_all_dirs(vivaldi_t)
+
+fs_dontaudit_getattr_xattr_fs(vivaldi_t)
+fs_getattr_tmpfs(vivaldi_t)
+fs_search_cgroup_dirs(vivaldi_t)
+
+miscfiles_read_all_certs(vivaldi_t)
+miscfiles_read_localization(vivaldi_t)
+
+mount_list_runtime(vivaldi_t)
+
+sysnet_dns_name_resolve(vivaldi_t)
+
+# for /run/udev/data/*
+udev_read_runtime_files(vivaldi_t)
+
+userdom_user_content_access_template(vivaldi, vivaldi_t)
+userdom_dontaudit_list_user_home_dirs(vivaldi_t)
+# Debugging. Also on user_tty_device_t if X is started through "startx" for instance
+userdom_use_user_terminals(vivaldi_t)
+userdom_manage_user_certs(vivaldi_t)
+userdom_user_home_dir_filetrans_user_cert(vivaldi_t, dir, ".pki")
+
+xserver_user_x_domain_template(vivaldi, vivaldi_t, vivaldi_tmpfs_t)
+xserver_stream_connect_xdm(vivaldi_t)
+xserver_manage_mesa_shader_cache(vivaldi_t)
+
+tunable_policy(`vivaldi_bind_tcp_unreserved_ports',`
+	corenet_tcp_bind_generic_node(vivaldi_t)
+	corenet_tcp_bind_all_unreserved_ports(vivaldi_t)
+	allow vivaldi_t self:tcp_socket { accept listen };
+')
+
+tunable_policy(`vivaldi_dri', `
+	dev_rw_dri(vivaldi_t)
+')
+
+tunable_policy(`vivaldi_exec_heap',`
+	allow vivaldi_t self:process { execheap };
+')
+
+tunable_policy(`vivaldi_ptrace',`
+	allow vivaldi_t self:process { ptrace };
+')
+
+tunable_policy(`vivaldi_rw_usb_dev',`
+	dev_rw_generic_usb_dev(vivaldi_t)
+')
+
+tunable_policy(`vivaldi_read_system_info',`
+	kernel_read_kernel_sysctls(vivaldi_t)
+	# Memory optimizations & optimizations based on OS/version
+	kernel_read_system_state(vivaldi_t)
+
+	# Debugging (sys/kernel/debug) and device information (sys/bus and sys/devices).
+	dev_read_sysfs(vivaldi_t)
+
+	storage_getattr_fixed_disk_dev(vivaldi_t)
+
+	files_read_etc_runtime_files(vivaldi_t)
+
+	dev_dontaudit_getattr_all_chr_files(vivaldi_t)
+	init_dontaudit_getattr_initctl(vivaldi_t)
+',`
+	kernel_dontaudit_read_kernel_sysctl(vivaldi_t)
+	kernel_dontaudit_read_system_state(vivaldi_t)
+
+	dev_dontaudit_read_sysfs(vivaldi_t)
+
+	files_dontaudit_read_etc_runtime_files(vivaldi_t)
+')
+
+optional_policy(`
+	alsa_read_config(vivaldi_t)
+')
+
+optional_policy(`
+	cups_read_config(vivaldi_t)
+	cups_stream_connect(vivaldi_t)
+')
+
+optional_policy(`
+	dbus_all_session_bus_client(vivaldi_t)
+	dbus_send_fifo_file_all_session_bus(vivaldi_t)
+	dbus_system_bus_client(vivaldi_t)
+	dbus_getattr_session_runtime_socket(vivaldi_t)
+	dbus_write_session_runtime_socket(vivaldi_t)
+
+	optional_policy(`
+		unconfined_dbus_chat(vivaldi_t)
+	')
+
+	optional_policy(`
+		gnome_dbus_chat_all_gkeyringd(vivaldi_t)
+		gnome_watch_xdg_config_dirs(vivaldi_t)
+	')
+
+	optional_policy(`
+		devicekit_dbus_chat_disk(vivaldi_t)
+		devicekit_dbus_chat_power(vivaldi_t)
+	')
+
+	optional_policy(`
+		systemd_list_resolved_runtime(vivaldi_t)
+		systemd_dbus_chat_hostnamed(vivaldi_t)
+	')
+')
+
+optional_policy(`
+	apt_read_cache(vivaldi_t)
+	apt_read_db(vivaldi_t)
+	dpkg_exec(vivaldi_t)
+	dpkg_read_db(vivaldi_t)
+')
+
+optional_policy(`
+	networkmanager_dbus_chat(vivaldi_t)
+	networkmanager_watch_runtime_dirs(vivaldi_t)
+')
+
+optional_policy(`
+	ssh_dontaudit_agent_tmp(vivaldi_t)
+')
+
+optional_policy(`
+	wm_mmap_rw_tmpfs_files(vivaldi_t)
+')
+
+#########################################
+#
+# Vivaldi sandbox local policy
+#
+
+allow vivaldi_sandbox_t self:capability { dac_read_search setgid setuid sys_admin sys_chroot sys_ptrace };
+allow vivaldi_sandbox_t self:process { setrlimit };
+allow vivaldi_sandbox_t self:unix_stream_socket create_stream_socket_perms;
+
+allow vivaldi_sandbox_t vivaldi_t:process { share };
+# /proc access
+allow vivaldi_sandbox_t vivaldi_t:dir list_dir_perms;
+allow vivaldi_sandbox_t vivaldi_t:lnk_file read_lnk_file_perms;
+allow vivaldi_sandbox_t vivaldi_t:file rw_file_perms;
+
+allow vivaldi_sandbox_t vivaldi_t:unix_stream_socket { getattr read write };
+allow vivaldi_sandbox_t vivaldi_t:unix_dgram_socket { getattr read write };
+
+kernel_list_proc(vivaldi_sandbox_t)
+
+domain_dontaudit_read_all_domains_state(vivaldi_sandbox_t)
+domain_use_interactive_fds(vivaldi_sandbox_t)
+
+userdom_use_user_ptys(vivaldi_sandbox_t)
+
+vivaldi_domtrans(vivaldi_sandbox_t)
+domtrans_pattern(vivaldi_sandbox_t, vivaldi_naclhelper_exec_t, vivaldi_naclhelper_t)
+allow vivaldi_sandbox_t vivaldi_naclhelper_t:process share;
+
+##########################################
+#
+# Vivaldi nacl helper local policy
+#
+
+allow vivaldi_naclhelper_t self:user_namespace create;
+allow vivaldi_naclhelper_t vivaldi_t:unix_stream_socket { getattr read write };
+allow vivaldi_naclhelper_t vivaldi_sandbox_t:unix_stream_socket { getattr read write };
+
+allow vivaldi_naclhelper_t self:cap_userns { sys_admin sys_chroot };
+allow vivaldi_naclhelper_t self:process { setcap signal };
+
+dev_read_sysfs(vivaldi_naclhelper_t)
+dev_read_urand(vivaldi_naclhelper_t)
+
+domain_mmap_low_uncond(vivaldi_naclhelper_t)
+
+kernel_list_proc(vivaldi_naclhelper_t)
+
+miscfiles_read_localization(vivaldi_naclhelper_t)
+
+userdom_use_user_ptys(vivaldi_naclhelper_t)
+
+tunable_policy(`vivaldi_read_system_info',`
+	kernel_read_kernel_sysctls(vivaldi_naclhelper_t)
+	kernel_read_system_state(vivaldi_naclhelper_t)
+',`
+	kernel_dontaudit_read_kernel_sysctl(vivaldi_naclhelper_t)
+	kernel_dontaudit_read_system_state(vivaldi_naclhelper_t)
+')

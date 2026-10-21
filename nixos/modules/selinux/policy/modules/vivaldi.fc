@@ -1,0 +1,11 @@
+
+HOME_DIR/\.local/appdata/vivaldi(/.*)?    gen_context(system_u:object_r:vivaldi_data_t,s0)
+
+
+/nix/store/[^/]+-vivaldi-[^/]+/bin/.*    --    gen_context(system_u:object_r:vivaldi_exec_t,s0)
+
+/nix/store/[^/]+-vivaldi-[^/]+/opt/vivaldi/vivaldi    --    gen_context(system_u:object_r:vivaldi_exec_t,s0)
+/nix/store/[^/]+-vivaldi-[^/]+/opt/vivaldi/vivaldi-bin    --    gen_context(system_u:object_r:vivaldi_exec_t,s0)
+/nix/store/[^/]+-vivaldi-[^/]+/opt/vivaldi/chrome_crashpad_handler    --    gen_context(system_u:object_r:vivaldi_exec_t,s0)
+
+/nix/store/[^/]+-vivaldi-[^/]+/opt/vivaldi/vivaldi-sandbox    --    gen_context(system_u:object_r:vivaldi_sandbox_exec_t,s0)

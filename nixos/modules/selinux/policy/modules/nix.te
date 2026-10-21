@@ -1,0 +1,29 @@
+policy_module(nix, 1.0)
+
+type nix_store_t;
+files_type(nix_store_t);
+
+gen_require(`
+    attribute domain;
+')
+
+allow domain nix_store_t:dir {
+    getattr
+    open
+    read
+    search
+};
+
+allow domain nix_store_t:file {
+    getattr
+    open
+    read
+    execute
+    execute_no_trans
+    map
+};
+
+allow domain nix_store_t:lnk_file {
+    getattr
+    read
+};

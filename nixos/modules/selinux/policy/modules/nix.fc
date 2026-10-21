@@ -1,0 +1,1 @@
+/nix(/.*)?    gen_context(system_u:object_r:nix_store_t,s0)

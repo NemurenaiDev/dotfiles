@@ -1,0 +1,166 @@
+## <summary>Vivaldi browser</summary>
+
+#######################################
+## <summary>
+## 	Role access for vivaldi
+## </summary>
+## <param name="role_prefix">
+##	<summary>
+##	The prefix of the user role (e.g., user
+##	is the prefix for user_r).
+##	</summary>
+## </param>
+## <param name="user_domain">
+##	<summary>
+##	User domain for the role.
+##	</summary>
+## </param>
+## <param name="user_exec_domain">
+##	<summary>
+##	User exec domain for execute and transition access.
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	Role allowed access
+##	</summary>
+## </param>
+#
+template(`vivaldi_role',`
+	gen_require(`
+		type vivaldi_t;
+		type vivaldi_sandbox_t;
+		type vivaldi_naclhelper_t;
+		class dbus send_msg;
+	')
+
+	role $4 types vivaldi_t;
+	role $4 types vivaldi_sandbox_t;
+	role $4 types vivaldi_naclhelper_t;
+
+	# Transition from the user domain to the derived domain
+	vivaldi_domtrans($3)
+
+	# Allow ps to show vivaldi processes and allow the user to signal it
+	ps_process_pattern($3, vivaldi_t)
+
+	allow $3 vivaldi_t:process signal_perms;
+	allow $3 vivaldi_sandbox_t:process signal_perms;
+	allow $3 vivaldi_naclhelper_t:process signal_perms;
+	allow vivaldi_t $3:process { signal signull };
+	allow vivaldi_t $3:unix_stream_socket { read write };
+
+	allow $2 vivaldi_t:fifo_file write;
+
+	allow $3 vivaldi_t:unix_stream_socket connectto;
+
+	# for /tmp/.ICE-unix/* sockets
+	allow vivaldi_t $3:unix_stream_socket connectto;
+
+	allow vivaldi_sandbox_t $3:fd use;
+	allow vivaldi_naclhelper_t $3:fd use;
+
+	allow $3 vivaldi_t:dbus send_msg;
+	allow vivaldi_t $3:dbus send_msg;
+
+	optional_policy(`
+		systemd_user_app_status($1, vivaldi_t)
+	')
+')
+
+#######################################
+## <summary>
+##	Read-write access to Vivaldi's temporary fifo files
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access
+##	</summary>
+## </param>
+#
+interface(`vivaldi_rw_tmp_pipes',`
+	gen_require(`
+		type vivaldi_tmp_t;
+	')
+
+	rw_fifo_files_pattern($1, vivaldi_tmp_t, vivaldi_tmp_t)
+')
+
+##############################################
+## <summary>
+##	Automatically use the specified type for resources created in vivaldi's
+##	temporary locations
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain that creates the resource(s)
+##	</summary>
+## </param>
+## <param name="private_type">
+##	<summary>
+##	Private file type.
+##	</summary>
+## </param>
+## <param name="class">
+##	<summary>
+##	Type of the resource created
+##	</summary>
+## </param>
+## <param name="filename" optional="true">
+##	<summary>
+##	The name of the resource being created
+##	</summary>
+## </param>
+#
+interface(`vivaldi_tmp_filetrans',`
+	gen_require(`
+		type vivaldi_tmp_t;
+	')
+
+	search_dirs_pattern($1, vivaldi_tmp_t, vivaldi_tmp_t)
+	filetrans_pattern($1, vivaldi_tmp_t, $2, $3, $4)
+')
+
+#######################################
+## <summary>
+## 	Execute a domain transition to the vivaldi domain (vivaldi_t)
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access
+##	</summary>
+## </param>
+#
+interface(`vivaldi_domtrans',`
+	gen_require(`
+		type vivaldi_t;
+		type vivaldi_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, vivaldi_exec_t, vivaldi_t)
+')
+
+#######################################
+## <summary>
+## 	Execute vivaldi in the vivaldi domain and allow the specified role to access the vivaldi domain
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	Role allowed access
+##	</summary>
+## </param>
+#
+interface(`vivaldi_run',`
+	gen_require(`
+		type vivaldi_t;
+	')
+
+	vivaldi_domtrans($1)
+	role $2 types vivaldi_t;
+')
