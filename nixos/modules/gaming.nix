@@ -15,7 +15,6 @@
       moonlight-qt
     ];
 
-  programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
   programs.steam = {

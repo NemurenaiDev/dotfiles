@@ -43,9 +43,9 @@
       TLP_AUTO_SWITCH = 2;
 
       CPU_BOOST_ON_AC = 1;
-      # limit max cpu freq so it wont fry with active turbo (2100000 equals to 2.1 GHz)
+      # limit max cpu freq so it wont fry with active turbo (3750000 equals to 3.75 GHz)
       # note: this value goes into /sys/devices/system/cpu/cpufreq/policy*/scaling_max_freq
-      CPU_SCALING_MAX_FREQ_ON_AC = 3500000;
+      CPU_SCALING_MAX_FREQ_ON_AC = 3750000;
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
 

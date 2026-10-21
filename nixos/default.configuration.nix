@@ -18,14 +18,16 @@
       home-manager.useUserPackages = true;
     }
 
-    ./modules/keyd.nix
     ./modules/audio.nix
-    ./modules/syncthing.nix
-    ./modules/prometeus.nix
     ./modules/networking.nix
     ./modules/environment.nix
+
+    ./modules/syncthing.nix
+    ./modules/prometeus.nix
   ]
   ++ lib.optionals (hasRole "desktop") [
+    ./modules/keyboard.nix
+
     ./modules/gaming.nix
   ];
 
@@ -52,6 +54,7 @@
       "wheel"
       "audio"
       "video"
+      "render"
       "docker"
       "plugdev"
       "libvirtd"
@@ -80,6 +83,13 @@
   security.pam.services.login.enableGnomeKeyring = hasRole "desktop";
   security.pam.services.hyprlock.enableGnomeKeyring = hasRole "desktop";
 
+  services.getty = lib.mkIf (hasRole "desktop") {
+    helpLine = lib.mkForce "";
+    greetingLine = lib.mkForce "";
+    autologinUser = host.username;
+    autologinOnce = true;
+  };
+
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "no";
   services.openssh.settings.PasswordAuthentication = false;
@@ -95,11 +105,6 @@
   services.fstrim.enable = true;
   services.udisks2.enable = true;
   services.playerctld.enable = true;
-
-  services.getty.helpLine = lib.mkForce "";
-  services.getty.greetingLine = lib.mkForce "";
-  services.getty.autologinUser = host.username;
-  services.getty.autologinOnce = hasRole "desktop";
 
   programs.zsh.enable = true;
 

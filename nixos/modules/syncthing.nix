@@ -76,6 +76,8 @@ in
           path = "/home/${host.username}/Projects";
           devices = userOtherDeviceNames;
           ignorePatterns = [
+            "*[do-not-sync]*"
+
             # Garbage
             "logs/"
             "Logs/"

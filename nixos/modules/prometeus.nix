@@ -9,27 +9,30 @@
   services.prometheus.exporters.nvidia-gpu.enable = host.gpuVendor == "nvidia";
   services.prometheus.exporters.nvidia-gpu.port = 9109;
 
-  virtualisation.oci-containers.containers = lib.optionalAttrs (host.gpuVendor == "amd") {
-    device-metrics-exporter = {
-      image = "docker.io/rocm/device-metrics-exporter:v1.5.1";
-      ports = [ "9109:5000" ];
-      volumes = [ "/sys:/sys:ro" ];
-      extraOptions = [
-        "--device=/dev/dri"
-        "--device=/dev/kfd"
-      ];
+  virtualisation.oci-containers.containers =
+    lib.optionalAttrs (host.gpuVendor == "amd") {
+      amd-gpu-exporter = {
+        image = "docker.io/rocm/device-metrics-exporter:v1.5.1";
+        ports = [ "9109:5000" ];
+        volumes = [
+          "/sys/class/drm:/sys/class/drm:ro"
+          "/sys/bus/pci:/sys/bus/pci:ro"
+        ];
+        extraOptions = [
+          "--device=/dev/dri"
+          "--device=/dev/kfd"
+        ];
+      };
+    }
+    // lib.optionalAttrs (host.gpuVendor == "intel") {
+      intel-gpu-exporter = {
+        image = "docker.io/andrewgolikov55/intel-gpu-exporter:latest";
+        ports = [ "9109:9100" ];
+        extraOptions = [
+          "--pid=host"
+          "--privileged"
+          "--device=/dev/dri:/dev/dri"
+        ];
+      };
     };
-  };
-
-  # // lib.optionalAttrs (host.gpuVendor == "intel") {
-  #   intel-gpu-exporter = {
-  #     image = "docker.io/andrewgolikov55/intel-gpu-exporter:latest";
-  #     ports = [ "9109:9100" ];
-  #     extraOptions = [
-  #       "--pid=host"
-  #       "--privileged"
-  #       "--device=/dev/dri:/dev/dri"
-  #     ];
-  #   };
-  # };
 }

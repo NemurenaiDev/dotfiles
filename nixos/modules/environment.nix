@@ -29,9 +29,7 @@
       lm_sensors
 
       micro
-      nano
       neovim
-      vim
       vimv
       moor
       highlight
@@ -62,6 +60,12 @@
       serve
       turbo
       pnpm
+
+      cargo
+      rustc
+      rustfmt
+      clippy
+      rust-analyzer
 
       snapcast
       playerctl
@@ -120,7 +124,7 @@
       libva
       libva-utils
       libinput
-      ffmpeg
+      ffmpeg-full
       nmap
       proxychains
       rclone
@@ -146,8 +150,8 @@
         hyprpicker
         hyprpolkitagent
 
-        unstable.vivaldi
-        unstable.ungoogled-chromium
+        vivaldi
+        ungoogled-chromium
 
         copyq
         wl-clipboard

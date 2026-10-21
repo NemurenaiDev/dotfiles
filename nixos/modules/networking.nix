@@ -31,18 +31,46 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.settings.WiFi.powerSave = false;
 
-  networking.firewall.allowedUDPPorts = [
-    5353 # mDNS
-    57621 # spotify
-    57622 # spotify
-  ];
-  networking.firewall.allowedTCPPorts = [
-    25565 # minecraft
-    57621 # spotify
-    57622 # spotify
-  ]
-  ++ lib.optionals (host ? snapserver) [ 1704 ]
-  ++ lib.optionals (host ? snapserver) [ 1705 ]
-  ++ lib.optionals (hasRole "immich") [ 2283 ]
-  ++ lib.optionals (hasRole "hassistant") [ 8123 ];
+  networking.firewall = {
+
+    #
+    # TCP
+    #
+
+    allowedTCPPorts = [
+      25565 # minecraft
+      57621 # spotify
+      57622 # spotify
+    ]
+    ++ lib.optionals (host ? snapserver) [ 1704 ]
+    ++ lib.optionals (host ? snapserver) [ 1705 ]
+    ++ lib.optionals (hasRole "immich") [ 2283 ]
+    ++ lib.optionals (hasRole "hassistant") [ 8123 ];
+
+    # KDE Connect
+    allowedTCPPortRanges = lib.optionals (hasRole "desktop") [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+
+    #
+    # UPD
+    #
+
+    allowedUDPPorts = [
+      5353 # mDNS
+      57621 # spotify
+      57622 # spotify
+    ];
+
+    # KDE Connect
+    allowedUDPPortRanges = lib.optionals (hasRole "desktop") [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+  };
 }

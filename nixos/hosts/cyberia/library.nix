@@ -9,6 +9,7 @@
       "noatime"
       "defaults"
       "x-systemd.automount"
+      "x-systemd.device-timeout=5s"
     ];
   };
 
@@ -20,6 +21,7 @@
       "noatime"
       "defaults"
       "x-systemd.automount"
+      "x-systemd.device-timeout=5s"
     ];
   };
 }
