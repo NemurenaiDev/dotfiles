@@ -7,7 +7,7 @@
     ./hyprpaper
     ./hyprsunset
 
-    ./shell
+    ./wayle
 
     ./gamepad
     ./mangohud

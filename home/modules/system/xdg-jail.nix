@@ -69,7 +69,7 @@ let
               \
               --die-with-parent \
               \
-              \"$hidden\" ${lib.escapeShellArgs extraArgs} \"\$@\"
+              ${pkgs.coreutils-full}/bin/env -- \"$hidden\" ${lib.escapeShellArgs extraArgs} \"\$@\"
           "
 
         # fix the .desktop files to point to the new bin path

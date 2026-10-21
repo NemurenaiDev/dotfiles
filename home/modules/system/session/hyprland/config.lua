@@ -89,7 +89,7 @@ hl.config({
     },
 
     cursor = {
-        default_monitor = nix.monitors.central,
+        default_monitor = nix.monitors.primary,
         sync_gsettings_theme = true,
     },
 
@@ -101,6 +101,11 @@ hl.config({
     dwindle = {
         preserve_split = true,
         smart_split = false,
+    },
+
+    scrolling = {
+        column_width = 1,
+        follow_min_visible = 0,
     },
 
     animations = { enabled = true },

@@ -75,4 +75,6 @@ in
   _module.args.wallpaper = "${config.xdg.dataHome}/assets/wallpapers/erinthul-moon-witch.png";
 
   systemd.user.tmpfiles.rules = [ "d /tmp/${host.username}/ 1700 ${host.username} users - -" ];
+
+  services.kdeconnect.enable = hasRole "desktop";
 }

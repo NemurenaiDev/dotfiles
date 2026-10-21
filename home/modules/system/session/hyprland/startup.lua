@@ -12,14 +12,12 @@ hl.on("hyprland.start",
         hl.exec_cmd("uwsm app -- copyq --start-server")
 
 
-        hl.exec_cmd("uwsm app -- run-on-workspace 'special:hidden' 'nemo ~/.local/share/nemo' --silent")
-        hl.exec_cmd("uwsm app -- run-on-workspace 'special:hidden' 'kitty --single-instance sh' --silent")
+        hl.exec_cmd("run-on-workspace 'special:hidden' 'uwsm app -- nemo ~/.local/share/nemo' --silent")
+        hl.exec_cmd("run-on-workspace 'special:hidden' 'uwsm app -- kitty --single-instance sh' --silent")
 
-        hl.exec_cmd("uwsm app -- run-on-workspace '25' 'Telegram' --silent")
-        hl.exec_cmd("uwsm app -- run-after-keyring run-on-workspace '21' 'vivaldi' --silent")
+        hl.exec_cmd("run-on-workspace '25' 'uwsm app -- Telegram' --silent")
+        hl.exec_cmd("run-after-keyring run-on-workspace '21' 'uwsm app -- vivaldi' --silent")
 
-        hl.exec_cmd(
-            "uwsm app -- run-after-keyring run-on-workspace 'special:aichat' 'chromium --app=https://chatgpt.com/' --silent"
-        )
+        hl.exec_cmd("run-after-keyring uwsm app -- chromium --app=https://chatgpt.com/")
     end
 )

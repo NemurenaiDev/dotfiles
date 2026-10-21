@@ -3,6 +3,7 @@
   xdg.configFile."fuzzel/fuzzel.ini".text = ''
     font=JetBrainsMono Nerd Font Mono:weight=bold:size=13
     fields=name,generic,comment,categories,filename,keywords
+    launch-prefix=uwsm app --
     line-height=30
     terminal=kitty
     prompt="❯  " 

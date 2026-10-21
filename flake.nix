@@ -97,6 +97,7 @@
           specialArgs = {
             inherit inputs hosts host;
             hasRole = role: builtins.elem role host.roles;
+            skipKernelPatches = builtins.getEnv "SKIP_KERNEL_PATCHES" == "1";
           };
           modules = [ basepkgs ] ++ [ ./nixos/default.configuration.nix ];
         };

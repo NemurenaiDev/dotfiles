@@ -2,8 +2,8 @@
 
 let
   monitors = {
-    central = "DP-1";
-    left = "HDMI-A-1";
+    primary = "DP-1";
+    secondary = "HDMI-A-1";
   };
 in
 {
@@ -13,17 +13,17 @@ in
     monitor = [
       {
         _args = [
-          (lib.generators.mkLuaInline ''{ output = "", mode = "preferred@auto", position = "0x0", scale = "1" }'')
+          (lib.generators.mkLuaInline ''{ output = "", mode = "preferred@auto", position = "auto", scale = "1" }'')
         ];
       }
       {
         _args = [
-          (lib.generators.mkLuaInline ''{ output = "${monitors.central}", mode = "1920x1080@144", position = "0x0", scale = "1" }'')
+          (lib.generators.mkLuaInline ''{ output = "${monitors.primary}", mode = "1920x1080@144", position = "0x0", scale = "1" }'')
         ];
       }
       {
         _args = [
-          (lib.generators.mkLuaInline ''{ output = "${monitors.left}", mode = "1920x1080@144", position = "-1920x0", scale = "1" }'')
+          (lib.generators.mkLuaInline ''{ output = "${monitors.secondary}", mode = "1920x1080@144", position = "auto-left", scale = "1" }'')
         ];
       }
     ];

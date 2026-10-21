@@ -1,0 +1,130 @@
+--
+-- CRITICAL ISSUES: 
+-- there it no way to delete the window rule. Ignorance will degrade performance and cause the memory leak 
+-- there it no way to reset the window rule, which breaks reusing the rules
+--
+
+
+
+
+-- local TIMEOUT = 10000
+
+
+-- local pool = {
+--     { id = 0, tag = "ert0", name = "ern0", rule = nil },
+--     { id = 0, tag = "ert1", name = "ern1", rule = nil },
+--     { id = 0, tag = "ert2", name = "ern2", rule = nil },
+--     { id = 0, tag = "ert3", name = "ern3", rule = nil },
+--     { id = 0, tag = "ert4", name = "ern4", rule = nil },
+--     { id = 0, tag = "ert5", name = "ern5", rule = nil },
+--     { id = 0, tag = "ert6", name = "ern6", rule = nil },
+--     { id = 0, tag = "ert7", name = "ern7", rule = nil },
+--     { id = 0, tag = "ert8", name = "ern8", rule = nil },
+--     { id = 0, tag = "ert9", name = "ern9", rule = nil },
+-- }
+
+
+-- local function acquire_exec_rule()
+--     for _, exec_rule in ipairs(pool) do
+--         if exec_rule.rule == nil then
+--             exec_rule.rule = {}
+--             exec_rule.id = exec_rule.id + 1
+
+--             return exec_rule
+--         end
+--     end
+
+--     error("Exec rules pool is exhausted")
+-- end
+
+
+-- local function release_exec_rule(exec_rule, id)
+--     if exec_rule.rule == nil or exec_rule.id ~= id then
+--         return
+--     end
+
+--     exec_rule.rule = hl.window_rule({
+--         match = { tag = exec_rule.tag },
+--         name = exec_rule.name,
+--         tag = "-" .. exec_rule.tag,
+--     })
+
+--     hl.timer(
+--         function()
+--             exec_rule.rule:set_enabled(false)
+
+--             exec_rule.id = exec_rule.id + 1
+--             exec_rule.rule = nil
+--         end,
+--         { timeout = 100, type = "oneshot" }
+--     )
+-- end
+
+
+-- local function get_exec_rule(tag)
+--     for _, exec_rule in ipairs(pool) do
+--         if exec_rule.tag == tag then
+--             return exec_rule
+--         end
+--     end
+
+--     error("Exec rule tag:" .. tag .. " not found")
+-- end
+
+
+-- local function get_window_exec_rule_tag(w)
+--     local tags = w.tags
+
+--     if type(tags) == "string" then
+--         tags = { tags }
+--     end
+
+--     if (type(tags) == "table") then
+--         for _, tag in ipairs(tags) do
+--             tag = tag:gsub("%*$", "")
+--             if tag:match("^ert%d$") then
+--                 return tag
+--             end
+--         end
+--     end
+-- end
+
+
+-- --
+-- -- event handler. removes the rule after its been applied
+-- --
+-- hl.on("window.open", function(w)
+--     local tag = get_window_exec_rule_tag(w)
+--     if tag == nil then
+--         return
+--     end
+
+--     local exec_rule = get_exec_rule(tag)
+--     local id = exec_rule.id
+
+--     release_exec_rule(exec_rule, id)
+-- end)
+
+
+-- --
+-- -- actual executor
+-- --
+-- function exec_with_rules(cmd, rule)
+--     local exec_rule = acquire_exec_rule()
+
+--     local id = exec_rule.id
+
+--     rule.name = exec_rule.name
+--     rule.tag = "+" .. exec_rule.tag
+
+--     exec_rule.rule = hl.window_rule(rule)
+
+--     hl.timer(
+--         function()
+--             release_exec_rule(exec_rule, id)
+--         end,
+--         { timeout = TIMEOUT, type = "oneshot" }
+--     )
+
+--     hl.dispatch(hl.dsp.exec_cmd(cmd))
+-- end

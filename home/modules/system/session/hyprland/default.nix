@@ -15,8 +15,8 @@
     ${lib.readFile "${pkgs.hyprland}/share/hypr/stubs/hl.meta.lua"}
 
     ---@class Monitors
-    ---@field central string
-    ---@field leftOrCentral string
+    ---@field primary string
+    ---@field secondaryOrFallback string
 
     ---@class Nix
     ---@field binPath Path
@@ -37,8 +37,8 @@
       binPath = "${config.xdg.dataHome}/bin",
 
       monitors = {
-        central = "${monitors.central}",
-        leftOrCentral = "${monitors.left or monitors.central}",
+        primary = "${monitors.primary}",
+        secondaryOrFallback = "${monitors.secondary or monitors.primary}",
       },
     }
 
@@ -52,6 +52,7 @@
 
         return false
     end
+
 
 
     ${builtins.readFile ./config.lua}

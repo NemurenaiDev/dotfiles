@@ -108,7 +108,7 @@ let
     pidof steam 2>/dev/null && echo "Steam is already running pid:$(pidof steam)" && exit
 
     hyprctl dispatch "hl.dsp.focus({ workspace = '3' })" 1>/dev/null
-    hyprctl dispatch "hl.dsp.exec_cmd('steam -bigpicture', { workspace = '9' })" 1>/dev/null
+    hyprctl dispatch "hl.dsp.exec_cmd('uwsm app -- steam -bigpicture', { workspace = '9' })" 1>/dev/null
 
 
     notify-send -c gaming 'Launching steam...' --icon '${config.xdg.dataHome}/assets/icons/steam.png'

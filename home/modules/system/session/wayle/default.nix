@@ -14,7 +14,7 @@ let
 
     [[ -f "$STATE_FILE" && "$(cat "$STATE_FILE")" == "$STATUS" ]] || printf '%s' "$STATUS" > "$STATE_FILE"
 
-    IP_RES="$(${pkgs.bkt}/bin/bkt --ttl 15m --modtime "$STATE_FILE" -- curl -fs "https://api.myip.com/")"
+    IP_RES="$(${pkgs.bkt}/bin/bkt --ttl 15m --modtime "$STATE_FILE" -- curl --connect-timeout 3 -fs "https://ipwho.is/")"
 
     jq -cn \
     	--arg status "$STATUS" \
@@ -229,14 +229,14 @@ in
         };
 
         notification = {
-          popup-monitor = monitors.central;
+          popup-monitor = monitors.primary;
           popup-duration = 8000;
           popup-position = "bottom-right";
           popup-stacking-order = "oldest-first";
         };
 
-        osd = {
-          popup-monitor = monitors.central;
+        weather = {
+          time-format = "24h";
         };
 
         systray = {
@@ -252,6 +252,7 @@ in
       };
 
       osd = {
+        monitor = monitors.primary;
         margin = 50.0;
       };
     };

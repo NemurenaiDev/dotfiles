@@ -196,6 +196,9 @@
 
       alias code="code --new-window"
 
+      alias vi="nvim"
+      alias vim="nvim"
+
       alias vimv="vimv"
       alias rename="vimv"
 
@@ -239,6 +242,7 @@
 
       source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
+
 
 
       eval "$(zoxide init --cmd cd zsh)"
